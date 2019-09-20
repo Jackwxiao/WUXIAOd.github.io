@@ -26,25 +26,43 @@
     
 
     <meta property="og:title" content="如何使用 hugo 搭建个人博客" />
-<meta property="og:description" content="第一步 * 下载 hugo 安装包，解压到 D 盘 Software 目录下，（随便你解压到哪，只不过，后面配置环境变量添加 PATH 时记得把你所解压到的文件地址加上就行了），设置环境变量，在 PATH 中添加 D:\Software\hugo,(一定要有 hugo )。到此，之后都不用管这个安装包以及 hugo.exe 了。 * 下载地址一般到官网 https://gohugo.io/getting-started/installing/ 选择你需要的版本。 * 搞定之后可以打开命令行工具运行 `hugo version` 来检查你是否下载安装成功，如果执行上面命令后显示 hugo 的版本号及一些事件日期信息，则代表成功。  第二步 * 进入官网 [hugo](https://gohugo.io) 官网，点击 Quick Start 你便可得到一份官方的指南，指南上的第一步上面已经做完了。* 接下来可以按照它的提示照抄代码在你的终端运行。 * 进入 D 盘创建一个博客站点的存放文件如 codes , `cd codes` `hugo new site quickstart` //此处的 quickstart 必须更换为你的 github 用户名.github.io-creator (比如我的是 wuxiaod.github.io-creator,//其中 `-creator` 代表创建的只是一个生成器，具体为何，后面会讲，其实就是一个备份) * 运行成功后会在 codes 里面生成一个 `wuxiaod.github.io-creator` 的文件夹，里面有几个初始目录文件如 content、themes 等。 你可以 `cd wuxiaod." />
+<meta property="og:description" content="第一步  下载 hugo 安装包，解压到 D 盘 Software 目录下，（随便你解压到哪，只不过，后面配置环境变量添加 PATH 时记得把你所解压到的文件地址加上就行了），设置环境变量，在 PATH 中添加 D:\Software\hugo,(一定要有 hugo )。到此，之后都不用管这个安装包以及 hugo.exe 了。
+ 下载地址一般到官网 https://gohugo.io/getting-started/installing/ 选择你需要的版本。
+ 搞定之后可以打开命令行工具运行
+hugo version  来检查你是否下载安装成功，如果执行上面命令后显示 hugo 的版本号及一些事件日期信息，则代表成功。
+  第二步  进入官网 hugo 官网，点击 Quick Start 你便可得到一份官方的指南，指南上的第一步上面已经做完了。 接下来可以按照它的提示照抄代码在你的终端运行。 进入 D 盘创建一个博客站点的存放文件如 codes ,
+cd codes hugo new site quickstart  //此处的 quickstart 必须更换为你的 github 用户名.github.io-creator (比如我的是 wuxiaod.github.io-creator,其中 -creator 代表创建的只是一个生成器，具体为何，后面会讲，其实就是一个备份)
+ 运行成功后会在 codes 里面生成一个 wuxiaod.github.io-creator 的文件夹，里面有几个初始目录文件如 content、themes 等。" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://example.org/posts/%E7%AC%AC%E4%BA%8C%E7%AF%87%E4%BA%86/" />
 <meta property="article:published_time" content="2019-09-20T19:17:26+08:00" />
 <meta property="article:modified_time" content="2019-09-20T19:17:26+08:00" />
 <meta itemprop="name" content="如何使用 hugo 搭建个人博客">
-<meta itemprop="description" content="第一步 * 下载 hugo 安装包，解压到 D 盘 Software 目录下，（随便你解压到哪，只不过，后面配置环境变量添加 PATH 时记得把你所解压到的文件地址加上就行了），设置环境变量，在 PATH 中添加 D:\Software\hugo,(一定要有 hugo )。到此，之后都不用管这个安装包以及 hugo.exe 了。 * 下载地址一般到官网 https://gohugo.io/getting-started/installing/ 选择你需要的版本。 * 搞定之后可以打开命令行工具运行 `hugo version` 来检查你是否下载安装成功，如果执行上面命令后显示 hugo 的版本号及一些事件日期信息，则代表成功。  第二步 * 进入官网 [hugo](https://gohugo.io) 官网，点击 Quick Start 你便可得到一份官方的指南，指南上的第一步上面已经做完了。* 接下来可以按照它的提示照抄代码在你的终端运行。 * 进入 D 盘创建一个博客站点的存放文件如 codes , `cd codes` `hugo new site quickstart` //此处的 quickstart 必须更换为你的 github 用户名.github.io-creator (比如我的是 wuxiaod.github.io-creator,//其中 `-creator` 代表创建的只是一个生成器，具体为何，后面会讲，其实就是一个备份) * 运行成功后会在 codes 里面生成一个 `wuxiaod.github.io-creator` 的文件夹，里面有几个初始目录文件如 content、themes 等。 你可以 `cd wuxiaod.">
+<meta itemprop="description" content="第一步  下载 hugo 安装包，解压到 D 盘 Software 目录下，（随便你解压到哪，只不过，后面配置环境变量添加 PATH 时记得把你所解压到的文件地址加上就行了），设置环境变量，在 PATH 中添加 D:\Software\hugo,(一定要有 hugo )。到此，之后都不用管这个安装包以及 hugo.exe 了。
+ 下载地址一般到官网 https://gohugo.io/getting-started/installing/ 选择你需要的版本。
+ 搞定之后可以打开命令行工具运行
+hugo version  来检查你是否下载安装成功，如果执行上面命令后显示 hugo 的版本号及一些事件日期信息，则代表成功。
+  第二步  进入官网 hugo 官网，点击 Quick Start 你便可得到一份官方的指南，指南上的第一步上面已经做完了。 接下来可以按照它的提示照抄代码在你的终端运行。 进入 D 盘创建一个博客站点的存放文件如 codes ,
+cd codes hugo new site quickstart  //此处的 quickstart 必须更换为你的 github 用户名.github.io-creator (比如我的是 wuxiaod.github.io-creator,其中 -creator 代表创建的只是一个生成器，具体为何，后面会讲，其实就是一个备份)
+ 运行成功后会在 codes 里面生成一个 wuxiaod.github.io-creator 的文件夹，里面有几个初始目录文件如 content、themes 等。">
 
 
 <meta itemprop="datePublished" content="2019-09-20T19:17:26&#43;08:00" />
 <meta itemprop="dateModified" content="2019-09-20T19:17:26&#43;08:00" />
-<meta itemprop="wordCount" content="430">
+<meta itemprop="wordCount" content="305">
 
 
 
 <meta itemprop="keywords" content="" />
 <meta name="twitter:card" content="summary"/>
 <meta name="twitter:title" content="如何使用 hugo 搭建个人博客"/>
-<meta name="twitter:description" content="第一步 * 下载 hugo 安装包，解压到 D 盘 Software 目录下，（随便你解压到哪，只不过，后面配置环境变量添加 PATH 时记得把你所解压到的文件地址加上就行了），设置环境变量，在 PATH 中添加 D:\Software\hugo,(一定要有 hugo )。到此，之后都不用管这个安装包以及 hugo.exe 了。 * 下载地址一般到官网 https://gohugo.io/getting-started/installing/ 选择你需要的版本。 * 搞定之后可以打开命令行工具运行 `hugo version` 来检查你是否下载安装成功，如果执行上面命令后显示 hugo 的版本号及一些事件日期信息，则代表成功。  第二步 * 进入官网 [hugo](https://gohugo.io) 官网，点击 Quick Start 你便可得到一份官方的指南，指南上的第一步上面已经做完了。* 接下来可以按照它的提示照抄代码在你的终端运行。 * 进入 D 盘创建一个博客站点的存放文件如 codes , `cd codes` `hugo new site quickstart` //此处的 quickstart 必须更换为你的 github 用户名.github.io-creator (比如我的是 wuxiaod.github.io-creator,//其中 `-creator` 代表创建的只是一个生成器，具体为何，后面会讲，其实就是一个备份) * 运行成功后会在 codes 里面生成一个 `wuxiaod.github.io-creator` 的文件夹，里面有几个初始目录文件如 content、themes 等。 你可以 `cd wuxiaod."/>
+<meta name="twitter:description" content="第一步  下载 hugo 安装包，解压到 D 盘 Software 目录下，（随便你解压到哪，只不过，后面配置环境变量添加 PATH 时记得把你所解压到的文件地址加上就行了），设置环境变量，在 PATH 中添加 D:\Software\hugo,(一定要有 hugo )。到此，之后都不用管这个安装包以及 hugo.exe 了。
+ 下载地址一般到官网 https://gohugo.io/getting-started/installing/ 选择你需要的版本。
+ 搞定之后可以打开命令行工具运行
+hugo version  来检查你是否下载安装成功，如果执行上面命令后显示 hugo 的版本号及一些事件日期信息，则代表成功。
+  第二步  进入官网 hugo 官网，点击 Quick Start 你便可得到一份官方的指南，指南上的第一步上面已经做完了。 接下来可以按照它的提示照抄代码在你的终端运行。 进入 D 盘创建一个博客站点的存放文件如 codes ,
+cd codes hugo new site quickstart  //此处的 quickstart 必须更换为你的 github 用户名.github.io-creator (比如我的是 wuxiaod.github.io-creator,其中 -creator 代表创建的只是一个生成器，具体为何，后面会讲，其实就是一个备份)
+ 运行成功后会在 codes 里面生成一个 wuxiaod.github.io-creator 的文件夹，里面有几个初始目录文件如 content、themes 等。"/>
 
   </head>
 
@@ -107,47 +125,69 @@
 
 <h1 id="第一步">第一步</h1>
 
-<pre><code>* 下载 hugo 安装包，解压到 D 盘 Software 目录下，（随便你解压到哪，只不过，后面配置环境变量添加 PATH 时记得把你所解压到的文件地址加上就行了），设置环境变量，在 PATH 中添加 D:\Software\hugo,(一定要有 hugo )。到此，之后都不用管这个安装包以及 hugo.exe 了。
+<ul>
+<li><p>下载 hugo 安装包，解压到 D 盘 Software 目录下，（随便你解压到哪，只不过，后面配置环境变量添加 PATH 时记得把你所解压到的文件地址加上就行了），设置环境变量，在 PATH 中添加 D:\Software\hugo,(一定要有 hugo )。到此，之后都不用管这个安装包以及 hugo.exe 了。</p></li>
 
-* 下载地址一般到官网 https://gohugo.io/getting-started/installing/ 选择你需要的版本。
+<li><p>下载地址一般到官网 <a href="https://gohugo.io/getting-started/installing/">https://gohugo.io/getting-started/installing/</a> 选择你需要的版本。</p></li>
 
-* 搞定之后可以打开命令行工具运行
-`hugo version`
-来检查你是否下载安装成功，如果执行上面命令后显示 hugo 的版本号及一些事件日期信息，则代表成功。
+<li><p>搞定之后可以打开命令行工具运行</p>
+
+<pre><code>hugo version
 </code></pre>
+
+<p>来检查你是否下载安装成功，如果执行上面命令后显示 hugo 的版本号及一些事件日期信息，则代表成功。</p></li>
+</ul>
 
 <h1 id="第二步">第二步</h1>
 
-<pre><code>* 进入官网 [hugo](https://gohugo.io) 官网，点击 Quick Start 你便可得到一份官方的指南，指南上的第一步上面已经做完了。* 接下来可以按照它的提示照抄代码在你的终端运行。
-* 进入 D 盘创建一个博客站点的存放文件如 codes ,
-`cd codes`
-`hugo new site quickstart` 
-//此处的 quickstart 必须更换为你的 github 用户名.github.io-creator (比如我的是 wuxiaod.github.io-creator,//其中 `-creator` 代表创建的只是一个生成器，具体为何，后面会讲，其实就是一个备份)
-* 运行成功后会在 codes 里面生成一个 `wuxiaod.github.io-creator` 的文件夹，里面有几个初始目录文件如 content、themes 等。
-你可以
-`cd wuxiaod.github.io-creator` 回车。。。
-`ls -a` 回车。。。
-* 查看是否有 content 、 themes 等这些目录文件生成。也可以直接通过 VScode 来查看。
+<ul>
+<li>进入官网 <a href="https://gohugo.io">hugo</a> 官网，点击 Quick Start 你便可得到一份官方的指南，指南上的第一步上面已经做完了。</li>
+<li>接下来可以按照它的提示照抄代码在你的终端运行。</li>
+
+<li><p>进入 D 盘创建一个博客站点的存放文件如 codes ,</p>
+
+<pre><code>cd codes
+hugo new site quickstart
 </code></pre>
+
+<p>//此处的 quickstart 必须更换为你的 github 用户名.github.io-creator (比如我的是 wuxiaod.github.io-creator,其中 <code>-creator</code> 代表创建的只是一个生成器，具体为何，后面会讲，其实就是一个备份)</p></li>
+
+<li><p>运行成功后会在 codes 里面生成一个 <code>wuxiaod.github.io-creator</code> 的文件夹，里面有几个初始目录文件如 content、themes 等。</p></li>
+
+<li><p>你可以</p>
+
+<pre><code>cd wuxiaod.github.io-creator
+ls -a
+</code></pre></li>
+
+<li><p>查看是否有 content 、 themes 等这些目录文件生成。也可以直接通过 VScode 来查看。</p></li>
+</ul>
 
 <p># 第三步</p>
 
-<pre><code>* 对应官网教程 Step 3，主要是给你的博客添加一个主题，简单点，先添加一个默认的主题 ananke 吧，等熟悉了再来换。
-方法还是抄代码
-`cd wuxiaod.github.io-creator` //如果已经在此路径，这一句代码不抄
-`git init` //初始化，会生成 .git 的隐藏文件
-`git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke` // 把ananke主题添加到 themes 中，这一过程可能会花费一点时间，但也不一定，耐心等待。
-`echo 'theme = &quot;ananke&quot;' &gt;&gt; config.toml` //修改配置文件
-</code></pre>
+<ul>
+<li><p>对应官网教程 Step 3，主要是给你的博客添加一个主题，简单点，先添加一个默认的主题 ananke 吧，等熟悉了再来换。方法还是抄代码</p>
+
+<pre><code>cd wuxiaod.github.io-creator //如果已经在此路径，这一句代码不抄
+git init   //初始化，会生成 .git 的隐藏文件
+git submodule add https://github.com/budparr/gohugo-theme-ananke.git themes/ananke // 把ananke主题添加到 themes 中，这一过程可能会花费一点时间，但也不一定，耐心等待。
+echo 'theme = &quot;ananke&quot;' &gt;&gt; config.toml //修改配置文件
+</code></pre></li>
+</ul>
 
 <h1 id="第四步">第四步</h1>
 
-<pre><code>### 写一个测试文件
-` hugo new posts/自定义文件名.md `
-* 如果报错，一般是该主题有 bug，想改可以通过 VScode 编辑，一般都是些小错误，比如引号没加之类的。
-* 运行成功后，会在当前目录下的 /content/posts 下创建你的自定义文件名.md 文档，打开它，你就可以编辑你的测试内容了，这就是你的第一篇博客内容了。至于怎么打开编辑，可以使用 VScode 也可以使用 vi 编辑。
-```
----
+<h3 id="写一个测试文件">写一个测试文件</h3>
+
+<pre><code>hugo new posts/自定义文件名.md
+</code></pre>
+
+<ul>
+<li>如果报错，一般是该主题有 bug，想改可以通过 VScode 编辑，一般都是些小错误，比如引号没加之类的。</li>
+
+<li><p>运行成功后，会在当前目录下的 /content/posts 下创建你的自定义文件名.md 文档，打开它，你就可以编辑你的测试内容了，这就是你的第一篇博客内容了。至于怎么打开编辑，可以使用 VScode 也可以使用 vi 编辑。</p>
+
+<pre><code>---
 title: &quot;My First Post&quot;
 date: 2019-03-26T08:47:11+01:00
 draft: true  //写完你的博客内容后，就把 draft 的值改为 false
@@ -155,108 +195,104 @@ draft: true  //写完你的博客内容后，就把 draft 的值改为 false
  ## 此处填写你的博客内容
  ## 。。。。。。。
  ## 写完保存，下一步
-```
 </code></pre>
 
-<h1 id="第五步">第五步</h1>
+<h1 id="第五步">第五步</h1></li>
 
-<pre><code>* 开一个服务器，你就可以在本地预览你的博客了，
-* 执行：（记住，你此刻的路径还是在你博客存放仓库路径，也就是前面设置的 github用户名.github.io-creator，下面简称根目录）
-`hugo server -D` 回车
-* 运行成功后会给你一个 http://localhost:1313/ 的网址，打开你就可以预览到你的博客网站了。类似于下面的显示
-</code></pre>
+<li><p>开一个服务器，你就可以在本地预览你的博客了，</p></li>
 
-<blockquote>
-<pre><code>                  | EN
-+------------------+----+
-    Pages            | 10
-    Paginator pages  |  0
-    Non-page files   |  0
-     Static files     |  3
-    Processed images |  0
-    Aliases          |  1
-    Sitemaps         |  1
-    Cleaned          |  0
-</code></pre>
-</blockquote>
+<li><p>执行：（记住，你此刻的路径还是在你博客存放仓库路径，也就是前面设置的 github用户名.github.io-creator，下面简称根目录）</p>
 
-<pre><code>Total in 11 ms
-Watching for changes in /Users/bep/quickstart/{content,data,layouts,static,themes}
-Watching for config changes in /Users/bep/quickstart/config.toml
-Environment: &quot;development&quot;
-Serving pages from memory
-Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
-Web Server is available at http://localhost:1313/ (bind address 127.0.0.1)
-Press Ctrl+C to stop 
-</code></pre>
+<pre><code>hugo server -D
+</code></pre></li>
 
-<blockquote>
-</blockquote>
+<li><p>运行成功后会给你一个 <a href="http://localhost:1313/">http://localhost:1313/</a> 的网址，打开你就可以预览到你的博客网站了。</p></li>
+</ul>
 
 <h1 id="第六步">第六步</h1>
 
-<pre><code>### 配置一下你的 config.toml
-* 在根目录下找到 config.toml 文件，打开
-&gt;
-baseURL = &quot;https://example.org/&quot;   // 先不改
-languageCode = &quot;en-us&quot; // en-us 可以改为 zh-Hans
-title = &quot;My New Hugo Site&quot;   // 改成你的博客网站名吧
-theme = &quot;ananke&quot;  //主题等你想换的时候再来换成你想要的主题吧
-&gt;
-</code></pre>
+<h3 id="配置一下你的-config-toml">配置一下你的 config.toml</h3>
+
+<ul>
+<li>在根目录下找到 config.toml 文件，打开</li>
+</ul>
+
+<blockquote>
+<p>baseURL = &ldquo;<a href="https://example.org/&quot;">https://example.org/&quot;</a>   // 先不改</p>
+
+<p>languageCode = &ldquo;en-us&rdquo; // en-us 可以改为 zh-Hans</p>
+
+<p>title = &ldquo;My New Hugo Site&rdquo;   // 改成你的博客网站名吧</p>
+
+<p>theme = &ldquo;ananke&rdquo;  //主题等你想换的时候再来换成你想要的主题吧</p>
+</blockquote>
 
 <h1 id="第七步">第七步</h1>
 
-<pre><code>* 新建一个终端进入 根目录（github用户名.github.io-creator）
-` hugo `
-运行成功后会在根目录下生成一个 public 文件。
-*到此官方教程结束，可以看出，官方教程虽然简洁，但没有替新手考虑完全，因为新手根本不会把 public 文件放到网上，也可能有些人会，但其中还是有一些坑的。但它默认我们都会。*
-</code></pre>
+<ul>
+<li><p>新建一个终端进入 根目录（github用户名.github.io-creator）</p>
+
+<pre><code>hugo     // 运行成功后会在根目录下生成一个 public 文件。
+</code></pre></li>
+
+<li><p>到此官方教程结束，可以看出，官方教程虽然简洁，但没有替新手考虑完全，因为新手根本不会把 public 文件放到网上，也可能有些人会，但其中还是有一些坑的。但它默认我们都会。*</p></li>
+</ul>
 
 <h1 id="第八步">第八步</h1>
 
-<pre><code>* 在根目录下（github用户名.github.io-creator）新建一个 `.gitignore`文件，在这个文件里写上 `/public/`,意思是当前仓库不要存储 public ,忽略 public ，因为它要自成一个仓库
-* 接下来
-`cd public`
-`git init`
-`git add .`
-`git  commit -m &quot;第一次部署&quot;`
-* 开始上传，到 github 新建一个仓库,仓库名为 你的github用户名.github.io 。直接点击创建。然后复制 `git remote add origin git@github.com:你的github用户名/你的github用户名.github.io.git` 和 `git push -u origin master` 到终端运行
-* 运行成功后刷新你的仓库，就可以去 settings 中的 GitHub Pages 栏生成你的预览网址了，打开这个网址就是你的个人博客了。
-**至此，个人博客已经搭建完成，剩下来的就是详细配置（换主题之类的）和写博客了**
-</code></pre>
+<ul>
+<li>在根目录下（github用户名.github.io-creator）新建一个 <code>.gitignore</code>文件，在这个文件里写上 <code>/public/</code>,意思是当前仓库不要存储 public ,忽略 public ，因为它要自成一个仓库</li>
+
+<li><p>接下来</p>
+
+<pre><code>cd public
+git init
+git add .
+git  commit -m &quot;第一次部署&quot;
+</code></pre></li>
+
+<li><p>开始上传，到 github 新建一个仓库,仓库名为 你的github用户名.github.io 。直接点击创建。然后复制 <code>git remote add origin git@github.com:你的github用户名/你的github用户名.github.io.git</code> 和 <code>git push -u origin master</code> 到终端运行</p></li>
+
+<li><p>运行成功后刷新你的仓库，就可以去 settings 中的 GitHub Pages 栏生成你的预览网址了，打开这个网址就是你的个人博客了。</p></li>
+</ul>
+
+<p><strong>至此，个人博客已经搭建完成，剩下来的就是详细配置（换主题之类的）和写博客了。</strong></p>
 
 <h1 id="第九步">第九步</h1>
 
-<pre><code>### 备份，以防万一
-* 新建 github 仓库 ，仓库名为 github用户名.github.io-creator
-* 复制代码`git remote add origin git@github.com:你的github用户名/你的github用户名.github.io-creator.git`到终端运行(在github用户名.github.io-creator路径下)
-* `git add .`//如果有提示信息，最好是根据提示操作一下，不要形成 git 里面还有 git 
-* `git commit -m &quot;xxx&quot;`
-* `git push -u origin master`// 上传
-* 刷新github仓库，你会发现这是一个没有 public 文件的仓库，因为 public 已经被我们放到另一个仓库去了（wuxiaod.github.io），这是一个博客生成仓库，以后如果万一不小心把本地的硬盘弄坏，你也可以直接在此仓库 clone 然后 hugo 在此生成 public
-</code></pre>
+<h3 id="备份-以防万一">备份，以防万一</h3>
+
+<ul>
+<li>新建 github 仓库 ，仓库名为 github用户名.github.io-creator</li>
+<li>复制代码<code>git remote add origin git@github.com:你的github用户名/你的github用户名.github.io-creator.git</code>到终端运行(在github用户名.github.io-creator路径下)</li>
+<li><code>git add .</code>//如果有提示信息，最好是根据提示操作一下，不要形成 git 里面还有 git</li>
+<li><code>git commit -m &quot;xxx&quot;</code></li>
+<li><code>git push -u origin master</code>// 上传</li>
+<li>刷新github仓库，你会发现这是一个没有 public 文件的仓库，因为 public 已经被我们放到另一个仓库去了（wuxiaod.github.io），这是一个博客生成仓库，以后如果万一不小心把本地的硬盘弄坏，你也可以直接在此仓库 clone 然后 hugo 在此生成 public</li>
+</ul>
 
 <h1 id="第十步">第十步</h1>
 
-<pre><code>这一步可做可不做
-做什么呢？给你的博客网站配置你自己购买的域名
-很简单，不过你先要自己买一个域名，可以上外网的 namesilo,也可以到国内的阿里云购买域名。其他可能还有一些免费的域名网站，你也可以自己找一下，然后根据教程绑定一下就行了。如果需要，我再来详细阐述吧。写累了。。。
-</code></pre>
+<p>这一步可做可不做</p>
+
+<p>做什么呢？给你的博客网站配置你自己购买的域名
+很简单，不过你先要自己买一个域名，可以上外网的 namesilo,也可以到国内的阿里云购买域名。其他可能还有一些免费的域名网站，你也可以自己找一下，然后根据教程绑定一下就行了。如果需要，我再来详细阐述吧。写累了。。。</p>
 
 <h1 id="总结">总结</h1>
 
-<pre><code>* 每次写博客可以通过命令行在根目录（github用户名.github.io-creator）输入 `hugo new posts/xxx.md`来创建文件，也可以通过直接在根目录下的 /content/posts 文件夹中创建来完成。
-* 写完博客后，记得把 draft 的值改为 false，并保存
-* 写完博客后，要提交到远程仓库的话必须进行如下操作做：
-1. `cd public`    //重要步骤
-2. `git add .`
-3. `git commit -v`
-4. `git pull`
-5. `git push`
+<ul>
+<li>每次写博客可以通过命令行在根目录（github用户名.github.io-creator）输入 <code>hugo new posts/xxx.md</code>来创建文件，也可以通过直接在根目录下的 /content/posts 文件夹中创建来完成。</li>
+<li>写完博客后，记得把 draft 的值改为 false，并保存</li>
+<li>写完博客后，要提交到远程仓库的话必须进行如下操作做：</li>
+<li><code>cd public</code>    //重要步骤</li>
+<li><code>git add .</code></li>
+<li><code>git commit -v</code></li>
+<li><code>git pull</code></li>
+<li><code>git push</code>
+<br /></li>
+</ul>
 
-ok
-</code></pre>
+<p>finished</p>
 <ul class="pa0">
   
 </ul>
