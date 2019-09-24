@@ -33,7 +33,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://example.org/" />
 
-<meta property="og:updated_time" content="2019-09-20T19:17:26+08:00" />
+<meta property="og:updated_time" content="2019-09-24T15:30:30+08:00" />
 <meta itemprop="name" content="吴潇的个人博客">
 <meta itemprop="description" content="">
 
@@ -120,7 +120,36 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/%E7%AC%AC%E4%BA%8C%E7%AF%87%E4%BA%86/" class="color-inherit dim link">
+          <a href="/posts/vue%E5%88%9D%E4%BD%93%E9%AA%8C/" class="color-inherit dim link">
+            vue基础之实例与数据绑定
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          vue实例和数据绑定  cdn引入：  通过构造函数 Vue 就可以创建一个 Vue 的根实例，并启动 Vue 应用&mdash;入口
+var app ＝new Vue({ el:'', data:{ } })  必不可少的一个选项就是 el 。 el 用于指定一个页面中己存在的 DOM 元素来挂载 Vue实例,可以是标签。也可以是css语法。
+ 通过 Vue 实例的 data 选项，可以声明应用内需要双向绑定的数据。建议所有会用到的数据都预先在 data 内 声明，这样不至于将数据散落在业务逻辑中，难以维护。也可以指向一个已经有的变量。
+ 挂载成功后，我们可以通过 app.$el 来访问该元素。Vue 提供了很多常用的实例属性与方法，都以 el,app. &mdash;访问data元素的属性&mdash; 直接app.属性名，app.msg
+生命周期钩子 jquery---$(document).ready()
+  created : * 实例创建完成后调用，此阶段完成了数据的观测等，但尚未挂载， $el 还不可用。 * 需要初始化处理一些数据时会比较有用.&mdash;-还未挂载 mounted el : * 挂载到实例上后调用，一般我们的第一个业务逻辑会在这里开始 。 * 相当于 $(document).ready()&mdash;刚刚挂载 beforeDestroy : * 实例销毁之前调用。 * 主要解绑一些使用 addEventListener 监听的事件等。
+        </div>
+          <a href="/posts/vue%E5%88%9D%E4%BD%93%E9%AA%8C/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="relative w-100 mb4">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/posts/hugo-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="color-inherit dim link">
             如何使用 hugo 搭建个人博客
             </a>
         </h1>
@@ -134,7 +163,7 @@ hugo version  来检查你是否下载安装成功，如果执行上面命令后
 cd codes hugo new site quickstart  //此处的 quickstart 必须更换为你的 github 用户名.github.io-creator (比如我的是 wuxiaod.github.io-creator,其中 -creator 代表创建的只是一个生成器，具体为何，后面会讲，其实就是一个备份)
  运行成功后会在 codes 里面生成一个 wuxiaod.github.io-creator 的文件夹，里面有几个初始目录文件如 content、themes 等。
         </div>
-          <a href="/posts/%E7%AC%AC%E4%BA%8C%E7%AF%87%E4%BA%86/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+          <a href="/posts/hugo-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
         
       </div>
     </div>
