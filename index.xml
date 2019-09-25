@@ -6,10 +6,23 @@
     <description>Recent content on 吴潇的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Tue, 24 Sep 2019 16:26:04 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 25 Sep 2019 16:26:04 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>计算属性和方法</title>
+      <link>http://example.org/posts/%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95/</link>
+      <pubDate>Wed, 25 Sep 2019 16:26:04 +0800</pubDate>
+      
+      <guid>http://example.org/posts/%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95/</guid>
+      <description>计算属性 通过一个实例引入计算属性 ** 需求：将字符串123，456，789翻转变成789，456，123 ** 方法一：通过模块内表达式实现
+&amp;lt;div id=&amp;quot;demo1&amp;quot;&amp;gt; {{ text }} {{ text.split(&#39;,&#39;).reverse().join(&#39;,&#39;) }} &amp;lt;/div&amp;gt; &amp;lt;script&amp;gt; var app = new Vue({ el: &#39;#demo1&#39;, data:{ text: &#39;123,456,789&#39; } }) &amp;lt;/script&amp;gt;  方法二：通过计算属性实现
+&amp;lt;div id=&amp;quot;demo2&amp;quot;&amp;gt; {{text}} {{reverseText}} &amp;lt;/div&amp;gt; &amp;lt;script&amp;gt; var app = new Vue({ el: &#39;#demo1&#39;, data:{ text: &#39;123,456,789&#39; }, computed:{ reverseText:function(){ return this.text.split(&#39;,&#39;).reverse().join(&#39;,&#39;) } } }) &amp;lt;/script&amp;gt;  由此可以看出：
+ 模块内表达式非常便利，但只能用于简单的运算，在模块中放入太多逻辑会使模块臃肿难以维护； 计算属性也可以实现，并且可以处理复杂逻辑。  方法（methods）  计算缓存、 Methods，两者的区别： 只要发生重新渲染，methods 调用总会执行指定函数。但是计算属性却不一定，它是依赖缓存的。
+&amp;lt;div id =&amp;quot;date&amp;quot;&amp;gt; &amp;lt;!</description>
+    </item>
     
     <item>
       <title>vue 指令事件</title>

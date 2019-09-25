@@ -33,7 +33,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://example.org/" />
 
-<meta property="og:updated_time" content="2019-09-24T16:26:04+08:00" />
+<meta property="og:updated_time" content="2019-09-25T16:26:04+08:00" />
 <meta itemprop="name" content="吴潇的个人博客">
 <meta itemprop="description" content="">
 
@@ -120,6 +120,34 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/posts/%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95/" class="color-inherit dim link">
+            计算属性和方法
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          计算属性 通过一个实例引入计算属性 ** 需求：将字符串123，456，789翻转变成789，456，123 ** 方法一：通过模块内表达式实现
+&lt;div id=&quot;demo1&quot;&gt; {{ text }} {{ text.split(',').reverse().join(',') }} &lt;/div&gt; &lt;script&gt; var app = new Vue({ el: '#demo1', data:{ text: '123,456,789' } }) &lt;/script&gt;  方法二：通过计算属性实现
+&lt;div id=&quot;demo2&quot;&gt; {{text}} {{reverseText}} &lt;/div&gt; &lt;script&gt; var app = new Vue({ el: '#demo1', data:{ text: '123,456,789' }, computed:{ reverseText:function(){ return this.text.split(',').reverse().join(',') } } }) &lt;/script&gt;  由此可以看出：
+ 模块内表达式非常便利，但只能用于简单的运算，在模块中放入太多逻辑会使模块臃肿难以维护； 计算属性也可以实现，并且可以处理复杂逻辑。  方法（methods）  计算缓存、 Methods，两者的区别： 只要发生重新渲染，methods 调用总会执行指定函数。但是计算属性却不一定，它是依赖缓存的。
+&lt;div id =&quot;date&quot;&gt; &lt;!
+        </div>
+          <a href="/posts/%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="relative w-100 mb4">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="/posts/vue-%E6%8C%87%E4%BB%A4%E5%92%8C%E4%BA%8B%E4%BB%B6%E7%AD%89/" class="color-inherit dim link">
             vue 指令事件
             </a>
@@ -172,43 +200,18 @@ var app ＝new Vue({ el:'', data:{ } })  必不可少的一个选项就是 el �
 
           </div>
         
-          <div class="relative w-100 mb4">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/hugo-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="color-inherit dim link">
-            如何使用 hugo 搭建个人博客
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          本文默认大家都会在github上部署自己的博客，在此基础上，阐述如何使用hugo搭建一个自己的博客平台，hugo是用go语言实现的一个博客生成器。用它不需要有多好的基础，照着抄代码就行。本文于官方教程的区别是，详细，够详细！基本能避免实现过程中的一些暗坑。
-第一步  下载 hugo 安装包，解压到 D 盘 Software 目录下，（随便你解压到哪，只不过，后面配置环境变量添加 PATH 时记得把你所解压到的文件地址加上就行了），设置环境变量，在 PATH 中添加 D:\Software\hugo,(一定要有 hugo )。到此，之后都不用管这个安装包以及 hugo.exe 了。
- 下载地址一般到官网 hugo下载 选择你需要的版本。
- 搞定之后可以打开命令行工具运行
-hugo version  来检查你是否下载安装成功，如果执行上面命令后显示 hugo 的版本号及一些事件日期信息，则代表成功。
-  第二步  进入官网 hugo 官网，点击 Quick Start 你便可得到一份官方的指南，指南上的第一步上面已经做完了。 接下来可以按照它的提示照抄代码在你的终端运行。 进入 D 盘创建一个博客站点的存放文件如 codes ,
-cd codes hugo new site quickstart  //此处的 quickstart 必须更换为你的 github 用户名.github.io-creator (比如我的是 wuxiaod.github.io-creator,其中 -creator 代表创建的只是一个生成器，具体为何，后面会讲，其实就是一个备份)
- 运行成功后会在 codes 里面生成一个 wuxiaod.github.io-creator 的文件夹，里面有几个初始目录文件如 content、themes 等。
-        </div>
-          <a href="/posts/hugo-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-        
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
       </section>
 
       
       <section class="w-100">
         <h1 class="f3">More</h1>
         
+        
+          <h2 class="f5 fw4 mb4 dib mr3">
+            <a href="/posts/hugo-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="link black dim">
+              如何使用 hugo 搭建个人博客
+            </a>
+          </h2>
         
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="/posts/%E5%BC%80%E5%8D%9A%E5%A4%A7%E5%90%89/" class="link black dim">
