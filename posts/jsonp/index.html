@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>吴潇的个人博客  | 计算属性和方法</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.58.2" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.d98f2eb6bcd1eaedb7edf166bd16af26.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="计算属性和方法" />
+<meta property="og:description" content="###JSONP JSONP是服务器与客户端跨源通信的常用方法。最大特点就是简单适用，老式浏览器全部支持，服务器改造非常小。
+它的基本思想是，网页通过添加一个script元素，向服务器请求 JSON数据，这种做法不受同源政策限制；服务器收到请求后，将数据放在一个指定名字的回调函数里传回来。
+###如何向服务器发请求？ * 用 form 可以发请求，但是会刷新页面或新开页面 * 用 a 可以发 get 请求，但是也会刷新页面或新开页面 * 用 img 可以发 get 请求，但是只能以图片的形式展示 * 用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示 * 用 script 可以发 get 请求，但是只能以脚本的形式运行 其中，通过动态创建 script 并添加 callback 查询参数来发 get 请求的就是 JSONP &gt;请求方：frank.com 的前端程序员（浏览器） &gt;响应方：jack.com 的后端程序员（服务器） &gt; 1.请求方创建 script，src 指向响应方，同时传一个查询参数 ?callbackName=yyy &gt; 2.响应方根据查询参数callbackName，构造形如 &gt; i.yyy.call(undefined, &lsquo;你要的数据&rsquo;) &gt; ii.yyy(&lsquo;你要的数据&rsquo;) &gt; 这样的响应 &gt; 3.浏览器接收到响应，就会执行 yyy.call(undefined, &lsquo;你要的数据&rsquo;) &gt; 4.那么请求方就知道了他要的数据 &gt;这就是JSONP
+用 script 造 get 请求 button." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/jsonp/" />
+<meta property="article:published_time" content="2019-09-27T11:26:04+08:00" />
+<meta property="article:modified_time" content="2019-09-27T11:26:04+08:00" />
+<meta itemprop="name" content="计算属性和方法">
+<meta itemprop="description" content="###JSONP JSONP是服务器与客户端跨源通信的常用方法。最大特点就是简单适用，老式浏览器全部支持，服务器改造非常小。
+它的基本思想是，网页通过添加一个script元素，向服务器请求 JSON数据，这种做法不受同源政策限制；服务器收到请求后，将数据放在一个指定名字的回调函数里传回来。
+###如何向服务器发请求？ * 用 form 可以发请求，但是会刷新页面或新开页面 * 用 a 可以发 get 请求，但是也会刷新页面或新开页面 * 用 img 可以发 get 请求，但是只能以图片的形式展示 * 用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示 * 用 script 可以发 get 请求，但是只能以脚本的形式运行 其中，通过动态创建 script 并添加 callback 查询参数来发 get 请求的就是 JSONP &gt;请求方：frank.com 的前端程序员（浏览器） &gt;响应方：jack.com 的后端程序员（服务器） &gt; 1.请求方创建 script，src 指向响应方，同时传一个查询参数 ?callbackName=yyy &gt; 2.响应方根据查询参数callbackName，构造形如 &gt; i.yyy.call(undefined, &lsquo;你要的数据&rsquo;) &gt; ii.yyy(&lsquo;你要的数据&rsquo;) &gt; 这样的响应 &gt; 3.浏览器接收到响应，就会执行 yyy.call(undefined, &lsquo;你要的数据&rsquo;) &gt; 4.那么请求方就知道了他要的数据 &gt;这就是JSONP
+用 script 造 get 请求 button.">
+
+
+<meta itemprop="datePublished" content="2019-09-27T11:26:04&#43;08:00" />
+<meta itemprop="dateModified" content="2019-09-27T11:26:04&#43;08:00" />
+<meta itemprop="wordCount" content="248">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="计算属性和方法"/>
+<meta name="twitter:description" content="###JSONP JSONP是服务器与客户端跨源通信的常用方法。最大特点就是简单适用，老式浏览器全部支持，服务器改造非常小。
+它的基本思想是，网页通过添加一个script元素，向服务器请求 JSON数据，这种做法不受同源政策限制；服务器收到请求后，将数据放在一个指定名字的回调函数里传回来。
+###如何向服务器发请求？ * 用 form 可以发请求，但是会刷新页面或新开页面 * 用 a 可以发 get 请求，但是也会刷新页面或新开页面 * 用 img 可以发 get 请求，但是只能以图片的形式展示 * 用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示 * 用 script 可以发 get 请求，但是只能以脚本的形式运行 其中，通过动态创建 script 并添加 callback 查询参数来发 get 请求的就是 JSONP &gt;请求方：frank.com 的前端程序员（浏览器） &gt;响应方：jack.com 的后端程序员（服务器） &gt; 1.请求方创建 script，src 指向响应方，同时传一个查询参数 ?callbackName=yyy &gt; 2.响应方根据查询参数callbackName，构造形如 &gt; i.yyy.call(undefined, &lsquo;你要的数据&rsquo;) &gt; ii.yyy(&lsquo;你要的数据&rsquo;) &gt; 这样的响应 &gt; 3.浏览器接收到响应，就会执行 yyy.call(undefined, &lsquo;你要的数据&rsquo;) &gt; 4.那么请求方就知道了他要的数据 &gt;这就是JSONP
+用 script 造 get 请求 button."/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      吴潇的个人博客
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1">计算属性和方法</h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-09-27T11:26:04&#43;08:00">September 27, 2019</time>
+      
+      
+    </header>
+
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
+
+<p>###JSONP
+JSONP是服务器与客户端跨源通信的常用方法。最大特点就是简单适用，老式浏览器全部支持，服务器改造非常小。<br>
+它的基本思想是，网页通过添加一个script元素，向服务器请求    JSON数据，这种做法不受同源政策限制；服务器收到请求后，将数据放在一个指定名字的回调函数里传回来。</p>
+
+<p>###如何向服务器发请求？
+* 用 form 可以发请求，但是会刷新页面或新开页面
+* 用 a 可以发 get 请求，但是也会刷新页面或新开页面
+* 用 img 可以发 get 请求，但是只能以图片的形式展示
+* 用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示
+* 用 script 可以发 get 请求，但是只能以脚本的形式运行
+其中，通过动态创建 script 并添加 callback 查询参数来发 get 请求的就是 JSONP
+&gt;请求方：frank.com 的前端程序员（浏览器）
+&gt;响应方：jack.com 的后端程序员（服务器）
+&gt;       1.请求方创建 script，src 指向响应方，同时传一个查询参数 ?callbackName=yyy
+&gt;        2.响应方根据查询参数callbackName，构造形如
+&gt;           i.yyy.call(undefined, &lsquo;你要的数据&rsquo;)
+&gt;           ii.yyy(&lsquo;你要的数据&rsquo;)
+&gt;           这样的响应
+&gt;       3.浏览器接收到响应，就会执行 yyy.call(undefined, &lsquo;你要的数据&rsquo;)
+&gt;      4.那么请求方就知道了他要的数据
+&gt;这就是JSONP</p>
+
+<h3 id="用-script-造-get-请求">用 script 造 get 请求</h3>
+
+<pre><code>button.addEventListener('click', (e)=&gt;{
+    let script = document.createElement('script')
+    script.src = '/pay'
+    document.body.appendChild(script)
+    script.onload = function(e){ // 状态码是 200~299 则表示成功
+        e.currentTarget.remove()
+    }
+    script.onerror = function(e){ // 状态码大于等于 400 则表示失败
+        e.currentTarget.remove()
+    }
+})
+</code></pre>
+
+<p>//后端代码</p>
+
+<pre><code>if (path === '/pay'){
+    let amount = fs.readFileSync('./db', 'utf8')
+    amount -= 1
+    fs.writeFileSync('./db', amount)
+    response.setHeader('Content-Type', 'application/javascript')
+    response.write('amount.innerText = ' + amount)
+    response.end()
+}
+</code></pre>
+
+<p><strong>这种技术叫做 SRJ - Server Rendered JavaScript</strong></p>
+
+<h3 id="jsonp">JSONP</h3>
+
+<pre><code>button.addEventListener('click', (e)=&gt;{
+    let script = document.createElement('script')
+    let functionName = 'frank'+ parseInt(Math.random()*10000000 ,10)
+    window[functionName] = function(){  // 每次请求之前搞出一个随机的函数
+        amount.innerText = amount.innerText - 0 - 1
+    }
+    script.src = '/pay?callback=' + functionName
+    document.body.appendChild(script)
+    script.onload = function(e){ // 状态码是 200~299 则表示成功
+        e.currentTarget.remove()
+        delete window[functionName] // 请求完了就干掉这个随机函数
+    }
+    script.onerror = function(e){ // 状态码大于等于 400 则表示失败
+        e.currentTarget.remove()
+        delete window[functionName] // 请求完了就干掉这个随机函数
+    }
+})
+</code></pre>
+
+<p>//后端代码</p>
+
+<pre><code>if (path === '/pay'){
+    let amount = fs.readFileSync('./db', 'utf8')
+    amount -= 1
+    fs.writeFileSync('./db', amount)
+    let callbackName = query.callback
+    response.setHeader('Content-Type', 'application/javascript')
+    response.write(`
+        ${callbackName}.call(undefined, 'success')
+    `)
+    response.end()
+}
+</code></pre>
+
+<p>约定：</p>
+
+<pre><code>callbackName -&gt; callback
+yyy -&gt; 随机数 frank12312312312321325()
+
+ $.ajax({
+ url: &quot;http://jack.com:8002/pay&quot;,
+ dataType: &quot;jsonp&quot;,
+ success: function( response ) {
+     if(response === 'success'){
+     amount.innerText = amount.innerText - 1
+     }
+ }
+ })
+
+ $.jsonp()
+</code></pre>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+      
+      
+      </div>
+    </section>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2019 吴潇的个人博客
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

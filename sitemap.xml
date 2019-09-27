@@ -4,12 +4,17 @@
   
   <url>
     <loc>http://example.org/posts/</loc>
-    <lastmod>2019-09-25T16:26:04+08:00</lastmod>
+    <lastmod>2019-09-27T11:26:04+08:00</lastmod>
   </url>
   
   <url>
     <loc>http://example.org/</loc>
-    <lastmod>2019-09-25T16:26:04+08:00</lastmod>
+    <lastmod>2019-09-27T11:26:04+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://example.org/posts/jsonp/</loc>
+    <lastmod>2019-09-27T11:26:04+08:00</lastmod>
   </url>
   
   <url>
