@@ -33,7 +33,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://example.org/posts/" />
 
-<meta property="og:updated_time" content="2019-09-27T11:26:04+08:00" />
+<meta property="og:updated_time" content="2019-09-28T23:01:04+08:00" />
 <meta itemprop="name" content="Posts">
 <meta itemprop="description" content="">
 
@@ -89,6 +89,31 @@
   <article class="pa3 pa4-ns nested-copy-line-height nested-img">
     <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy mid-gray"></section>
     <section class="flex-ns flex-wrap justify-around mt5">
+      
+        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/js%E5%87%BD%E6%95%B0/" class="link black dim">
+        JS函数
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      ###函数 指可以执行代码的对象，和数组一样有不一致性。 #####三种函数声明方式
+ function f() { }
+ var f = function f() { }; //注意分号
+ f = new Function (&lsquo;x&rsquo;,&lsquo;y&rsquo;,&lsquo;return x+y&rsquo;) //只有最后一个参数会被当作函数体，可以不使用new 命令，不推荐使用这种声明方式
+  注意：如果同一个函数被多次声明，后面的声明会覆盖前面的声明。也就是说起前面的声明会失效。
+函数名的提升
+JS引擎将函数名视同变量名，使用function 声明函数时，整个函数回想变量声明一样被提升到代码头部。如果同时使用function命令和赋值语句声明同一个函数，左后总是采用赋值语句的定义
+var f = function () { console.log('1'); } function f() { console.log('2'); } f() // 1  函数的属性和方法
+ name :f.name返回函数的名字，如果通过变量赋值定义的匿名函数则返回变量名。具名函数返回function关键字后的函数名。 var f3 = function myName() {}; f3.name // 'myName'  上面代码中，f3.name返回函数表达式的名字。注意，真正的函数名还是f3，而myName这个名字只在函数体内部可用。
+  用处：可用来获取参数函数的名字。
+ length: f.length 返回函数预期传入的参数个数。
+    </div>
+  </div>
+</div>
+</div>
       
         <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
   <div class="bg-white mb3 pa4 gray overflow-hidden">
