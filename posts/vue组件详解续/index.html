@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>吴潇的个人博客  | vue组件详解</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.58.2" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.d98f2eb6bcd1eaedb7edf166bd16af26.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="vue组件详解" />
+<meta property="og:description" content="组件（二） 七、插槽slot  插槽：为了让组件可以组合，我们需要一种方式来混合父组件的内容与子组件自己的模板。这个过程被称为 内容分发。Vue.js 实现了一个内容分发 API，使用特殊的 ‘slot’ 元素作为原始内容的插槽。 编译的作用域：假定模板为：
+&lt;child-component&gt; {{ message }} &lt;/child-component&gt;  message 应该绑定到父组件的数据，还是绑定到子组件的数据？答案是父组件。组件作用域简单地说是： 父组件模板的内容在父组件作用域内编译； 子组件模板的内容在子组件作用域内编译。 插槽的用法：父组件的内容与子组件相混合，从而弥补了视图的不足。 混合父组件的内容与子组件自己的模板
+ 单个插槽：
+&lt;div id=&quot;app&quot; &gt; &lt;my-component&gt; &lt;p&gt;我是父组件的内容&lt;/p&gt; &lt;/my-component&gt; &lt;/div&gt; Vue.component(&#39;my-component&#39;,{ template:&#39;&lt;div&gt;\ &lt;slot&gt;\ 如果父组件没有插入内容，我就作为默认出现\ &lt;/slot&gt;\ &lt;/div&gt;&#39; })  具名插槽：
+&lt;name-component&gt; &lt;h3 slot=&quot;header&quot;&gt;我是标题&lt;/h3&gt; &lt;p&gt;我是正文内容&lt;/p&gt; &lt;p&gt;正文内容有两段&lt;/p&gt; &lt;p slot=&quot;footer&quot;&gt;我是底部信息&lt;/p&gt; &lt;/name-component&gt; Vue.component(&#39;name-component&#39;,{ template:&#39;&lt;div&gt;\ &lt;div class=&quot;header&quot;&gt;\n&#39; &#43; &#39;&lt;slot name=&quot;header&quot;&gt;\n&#39; &#43; &#39; \n&#39; &#43; &#39; &lt;/slot&gt;\n&#39; &#43; &#39;&lt;/div&gt;\n&#39; &#43; &#39;&lt;div class=&quot;contatiner&quot;&gt;\n&#39; &#43; &#39; &lt;slot&gt;\n&#39; &#43; &#39; \n&#39; &#43; &#39; &lt;/slot&gt;\n&#39; &#43; &#39;&lt;/div&gt;\n&#39; &#43; &#39;&lt;div class=&quot;footer&quot;&gt;\n&#39; &#43; &#39; &lt;slot name=&quot;footer&quot;&gt;\n&#39; &#43; &#39;\n&#39; &#43; &#39; &lt;/slot&gt; \n&#39; &#43; &#39;&lt;/div&gt;&#39;&#43; &#39; &lt;/div&gt;&#39; })  作用域插槽：作用域插槽是一种特殊的slot，使用一个可以复用的模板来替换已经渲染的元素——从子组件获取数据===template模板是不会被渲染的" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/" />
+<meta property="article:published_time" content="2019-10-09T15:30:30+08:00" />
+<meta property="article:modified_time" content="2019-10-09T15:30:30+08:00" />
+<meta itemprop="name" content="vue组件详解">
+<meta itemprop="description" content="组件（二） 七、插槽slot  插槽：为了让组件可以组合，我们需要一种方式来混合父组件的内容与子组件自己的模板。这个过程被称为 内容分发。Vue.js 实现了一个内容分发 API，使用特殊的 ‘slot’ 元素作为原始内容的插槽。 编译的作用域：假定模板为：
+&lt;child-component&gt; {{ message }} &lt;/child-component&gt;  message 应该绑定到父组件的数据，还是绑定到子组件的数据？答案是父组件。组件作用域简单地说是： 父组件模板的内容在父组件作用域内编译； 子组件模板的内容在子组件作用域内编译。 插槽的用法：父组件的内容与子组件相混合，从而弥补了视图的不足。 混合父组件的内容与子组件自己的模板
+ 单个插槽：
+&lt;div id=&quot;app&quot; &gt; &lt;my-component&gt; &lt;p&gt;我是父组件的内容&lt;/p&gt; &lt;/my-component&gt; &lt;/div&gt; Vue.component(&#39;my-component&#39;,{ template:&#39;&lt;div&gt;\ &lt;slot&gt;\ 如果父组件没有插入内容，我就作为默认出现\ &lt;/slot&gt;\ &lt;/div&gt;&#39; })  具名插槽：
+&lt;name-component&gt; &lt;h3 slot=&quot;header&quot;&gt;我是标题&lt;/h3&gt; &lt;p&gt;我是正文内容&lt;/p&gt; &lt;p&gt;正文内容有两段&lt;/p&gt; &lt;p slot=&quot;footer&quot;&gt;我是底部信息&lt;/p&gt; &lt;/name-component&gt; Vue.component(&#39;name-component&#39;,{ template:&#39;&lt;div&gt;\ &lt;div class=&quot;header&quot;&gt;\n&#39; &#43; &#39;&lt;slot name=&quot;header&quot;&gt;\n&#39; &#43; &#39; \n&#39; &#43; &#39; &lt;/slot&gt;\n&#39; &#43; &#39;&lt;/div&gt;\n&#39; &#43; &#39;&lt;div class=&quot;contatiner&quot;&gt;\n&#39; &#43; &#39; &lt;slot&gt;\n&#39; &#43; &#39; \n&#39; &#43; &#39; &lt;/slot&gt;\n&#39; &#43; &#39;&lt;/div&gt;\n&#39; &#43; &#39;&lt;div class=&quot;footer&quot;&gt;\n&#39; &#43; &#39; &lt;slot name=&quot;footer&quot;&gt;\n&#39; &#43; &#39;\n&#39; &#43; &#39; &lt;/slot&gt; \n&#39; &#43; &#39;&lt;/div&gt;&#39;&#43; &#39; &lt;/div&gt;&#39; })  作用域插槽：作用域插槽是一种特殊的slot，使用一个可以复用的模板来替换已经渲染的元素——从子组件获取数据===template模板是不会被渲染的">
+
+
+<meta itemprop="datePublished" content="2019-10-09T15:30:30&#43;08:00" />
+<meta itemprop="dateModified" content="2019-10-09T15:30:30&#43;08:00" />
+<meta itemprop="wordCount" content="172">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="vue组件详解"/>
+<meta name="twitter:description" content="组件（二） 七、插槽slot  插槽：为了让组件可以组合，我们需要一种方式来混合父组件的内容与子组件自己的模板。这个过程被称为 内容分发。Vue.js 实现了一个内容分发 API，使用特殊的 ‘slot’ 元素作为原始内容的插槽。 编译的作用域：假定模板为：
+&lt;child-component&gt; {{ message }} &lt;/child-component&gt;  message 应该绑定到父组件的数据，还是绑定到子组件的数据？答案是父组件。组件作用域简单地说是： 父组件模板的内容在父组件作用域内编译； 子组件模板的内容在子组件作用域内编译。 插槽的用法：父组件的内容与子组件相混合，从而弥补了视图的不足。 混合父组件的内容与子组件自己的模板
+ 单个插槽：
+&lt;div id=&quot;app&quot; &gt; &lt;my-component&gt; &lt;p&gt;我是父组件的内容&lt;/p&gt; &lt;/my-component&gt; &lt;/div&gt; Vue.component(&#39;my-component&#39;,{ template:&#39;&lt;div&gt;\ &lt;slot&gt;\ 如果父组件没有插入内容，我就作为默认出现\ &lt;/slot&gt;\ &lt;/div&gt;&#39; })  具名插槽：
+&lt;name-component&gt; &lt;h3 slot=&quot;header&quot;&gt;我是标题&lt;/h3&gt; &lt;p&gt;我是正文内容&lt;/p&gt; &lt;p&gt;正文内容有两段&lt;/p&gt; &lt;p slot=&quot;footer&quot;&gt;我是底部信息&lt;/p&gt; &lt;/name-component&gt; Vue.component(&#39;name-component&#39;,{ template:&#39;&lt;div&gt;\ &lt;div class=&quot;header&quot;&gt;\n&#39; &#43; &#39;&lt;slot name=&quot;header&quot;&gt;\n&#39; &#43; &#39; \n&#39; &#43; &#39; &lt;/slot&gt;\n&#39; &#43; &#39;&lt;/div&gt;\n&#39; &#43; &#39;&lt;div class=&quot;contatiner&quot;&gt;\n&#39; &#43; &#39; &lt;slot&gt;\n&#39; &#43; &#39; \n&#39; &#43; &#39; &lt;/slot&gt;\n&#39; &#43; &#39;&lt;/div&gt;\n&#39; &#43; &#39;&lt;div class=&quot;footer&quot;&gt;\n&#39; &#43; &#39; &lt;slot name=&quot;footer&quot;&gt;\n&#39; &#43; &#39;\n&#39; &#43; &#39; &lt;/slot&gt; \n&#39; &#43; &#39;&lt;/div&gt;&#39;&#43; &#39; &lt;/div&gt;&#39; })  作用域插槽：作用域插槽是一种特殊的slot，使用一个可以复用的模板来替换已经渲染的元素——从子组件获取数据===template模板是不会被渲染的"/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      吴潇的个人博客
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1">vue组件详解</h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-10-09T15:30:30&#43;08:00">October 9, 2019</time>
+      
+      
+    </header>
+
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
+
+<h2 id="组件-二">组件（二）</h2>
+
+<h4 id="七-插槽slot">七、插槽slot</h4>
+
+<ol>
+<li>插槽：为了让组件可以组合，我们需要一种方式来混合父组件的内容与子组件自己的模板。这个过程被称为 内容分发。Vue.js 实现了一个内容分发 API，使用特殊的 ‘slot’ 元素作为原始内容的插槽。</li>
+
+<li><p>编译的作用域：假定模板为：</p>
+
+<pre><code>&lt;child-component&gt;
+    {{ message }}
+&lt;/child-component&gt;
+</code></pre>
+
+<p>message 应该绑定到父组件的数据，还是绑定到子组件的数据？答案是父组件。组件作用域简单地说是：
+父组件模板的内容在父组件作用域内编译；
+子组件模板的内容在子组件作用域内编译。
+插槽的用法：父组件的内容与子组件相混合，从而弥补了视图的不足。
+<strong>混合父组件的内容与子组件自己的模板</strong></p></li>
+
+<li><p>单个插槽：</p>
+
+<pre><code>&lt;div id=&quot;app&quot; &gt;
+    &lt;my-component&gt;
+        &lt;p&gt;我是父组件的内容&lt;/p&gt;
+    &lt;/my-component&gt;
+&lt;/div&gt;
+Vue.component('my-component',{
+    template:'&lt;div&gt;\
+        &lt;slot&gt;\
+        如果父组件没有插入内容，我就作为默认出现\   
+        &lt;/slot&gt;\
+&lt;/div&gt;'
+})
+</code></pre></li>
+
+<li><p>具名插槽：</p>
+
+<pre><code>&lt;name-component&gt;
+    &lt;h3 slot=&quot;header&quot;&gt;我是标题&lt;/h3&gt;
+    &lt;p&gt;我是正文内容&lt;/p&gt;
+    &lt;p&gt;正文内容有两段&lt;/p&gt;
+    &lt;p slot=&quot;footer&quot;&gt;我是底部信息&lt;/p&gt;
+&lt;/name-component&gt;
+Vue.component('name-component',{
+    template:'&lt;div&gt;\
+        &lt;div class=&quot;header&quot;&gt;\n' +
+        '&lt;slot name=&quot;header&quot;&gt;\n' +
+        ' \n' +
+        ' &lt;/slot&gt;\n' +
+        '&lt;/div&gt;\n' +
+        '&lt;div class=&quot;contatiner&quot;&gt;\n' +
+        ' &lt;slot&gt;\n' +
+        ' \n' +
+        ' &lt;/slot&gt;\n' +
+        '&lt;/div&gt;\n' +
+        '&lt;div class=&quot;footer&quot;&gt;\n' +
+        ' &lt;slot name=&quot;footer&quot;&gt;\n' +
+        '\n' +
+        ' &lt;/slot&gt; \n' +
+        '&lt;/div&gt;'+
+        ' &lt;/div&gt;'
+})
+</code></pre></li>
+
+<li><p>作用域插槽：作用域插槽是一种特殊的slot，使用一个可以复用的模板来替换已经渲染的元素——从子组件获取数据===template模板是不会被渲染的</p>
+
+<pre><code>Vue.component('my-component',{
+    template:'&lt;div&gt;\
+    &lt;slot text=&quot;我是来自子组件的数据&quot; ss=&quot;fdjkfjlsd&quot; name=&quot;abc&quot;&gt;\
+    &lt;/slot&gt;\
+    &lt;/div&gt;'
+})
+</code></pre></li>
+
+<li><p>访问slot:通过this.$slots.(name)</p>
+
+<pre><code>mounted:function () {
+//访问插槽
+var header = this.$slots.header;
+var text = header[0].elm.innerText;
+var html = header[0].elm.innerHTML;
+console.log(header)
+console.log(text)
+console.log(html)
+}
+</code></pre>
+
+<h4 id="八-动态组件">八、动态组件</h4>
+
+<p>vue给我们提供了一个component元素，用来动态挂载不同的组件，使用 is特性来实现。
+需求：通过点击不同按钮切换不同视图</p>
+
+<pre><code>&lt;div id=&quot;app&quot;&gt;
+    &lt;button @click=&quot;handleView('A')&quot;&gt;第一句&lt;/button&gt;
+    &lt;button @click=&quot;handleView('B')&quot;&gt;第二句&lt;/button&gt;
+    &lt;button @click=&quot;handleView('C')&quot;&gt;第三句&lt;/button&gt;
+    &lt;button @click=&quot;handleView('D')&quot;&gt;第四句&lt;/button&gt;
+    &lt;component :is=&quot;thisView&quot;&gt;&lt;/component&gt;
+&lt;/div&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    Vue.component('compA',{
+        template:'&lt;div&gt;离离原上草&lt;/div&gt;'
+    })
+    Vue.component('compB',{
+        template:'&lt;div&gt;一岁一枯荣&lt;/div&gt;'
+    })
+    Vue.component('compC',{
+        template:'&lt;div&gt;野火烧不尽&lt;/div&gt;'
+    })
+    Vue.component('compD',{
+        template:'&lt;div&gt;春风吹又生&lt;/div&gt;'
+    })
+    var app = new Vue({
+        el:'#app',
+        data:{
+            thisView:'compA'
+        },
+        methods:{
+            handleView:function(tag){
+                this.thisView='comp' + tag;
+            }
+        }
+    })
+&lt;/script&gt;
+</code></pre></li>
+</ol>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+      
+      
+      </div>
+    </section>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2019 吴潇的个人博客
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

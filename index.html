@@ -33,7 +33,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://example.org/" />
 
-<meta property="og:updated_time" content="2019-10-08T15:30:30+08:00" />
+<meta property="og:updated_time" content="2019-10-09T15:30:30+08:00" />
 <meta itemprop="name" content="吴潇的个人博客">
 <meta itemprop="description" content="">
 
@@ -120,6 +120,34 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/posts/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/" class="color-inherit dim link">
+            vue组件详解
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          组件（二） 七、插槽slot  插槽：为了让组件可以组合，我们需要一种方式来混合父组件的内容与子组件自己的模板。这个过程被称为 内容分发。Vue.js 实现了一个内容分发 API，使用特殊的 ‘slot’ 元素作为原始内容的插槽。 编译的作用域：假定模板为：
+&lt;child-component&gt; {{ message }} &lt;/child-component&gt;  message 应该绑定到父组件的数据，还是绑定到子组件的数据？答案是父组件。组件作用域简单地说是： 父组件模板的内容在父组件作用域内编译； 子组件模板的内容在子组件作用域内编译。 插槽的用法：父组件的内容与子组件相混合，从而弥补了视图的不足。 混合父组件的内容与子组件自己的模板
+ 单个插槽：
+&lt;div id=&quot;app&quot; &gt; &lt;my-component&gt; &lt;p&gt;我是父组件的内容&lt;/p&gt; &lt;/my-component&gt; &lt;/div&gt; Vue.component('my-component',{ template:'&lt;div&gt;\ &lt;slot&gt;\ 如果父组件没有插入内容，我就作为默认出现\ &lt;/slot&gt;\ &lt;/div&gt;' })  具名插槽：
+&lt;name-component&gt; &lt;h3 slot=&quot;header&quot;&gt;我是标题&lt;/h3&gt; &lt;p&gt;我是正文内容&lt;/p&gt; &lt;p&gt;正文内容有两段&lt;/p&gt; &lt;p slot=&quot;footer&quot;&gt;我是底部信息&lt;/p&gt; &lt;/name-component&gt; Vue.component('name-component',{ template:'&lt;div&gt;\ &lt;div class=&quot;header&quot;&gt;\n' + '&lt;slot name=&quot;header&quot;&gt;\n' + ' \n' + ' &lt;/slot&gt;\n' + '&lt;/div&gt;\n' + '&lt;div class=&quot;contatiner&quot;&gt;\n' + ' &lt;slot&gt;\n' + ' \n' + ' &lt;/slot&gt;\n' + '&lt;/div&gt;\n' + '&lt;div class=&quot;footer&quot;&gt;\n' + ' &lt;slot name=&quot;footer&quot;&gt;\n' + '\n' + ' &lt;/slot&gt; \n' + '&lt;/div&gt;'+ ' &lt;/div&gt;' })  作用域插槽：作用域插槽是一种特殊的slot，使用一个可以复用的模板来替换已经渲染的元素——从子组件获取数据===template模板是不会被渲染的
+        </div>
+          <a href="/posts/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="relative w-100 mb4">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="/posts/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/" class="color-inherit dim link">
             vue组件详解
             </a>
@@ -175,44 +203,18 @@ var f = function () { console.log('1'); } function f() { console.log('2'); } f()
 
           </div>
         
-          <div class="relative w-100 mb4">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/jsonp/" class="color-inherit dim link">
-            JSONP
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          JSONP JSONP是服务器与客户端跨源通信的常用方法。最大特点就是简单适用，老式浏览器全部支持，服务器改造非常小。
-它的基本思想是，网页通过添加一个script元素，向服务器请求 JSON数据，这种做法不受同源政策限制；服务器收到请求后，将数据放在一个指定名字的回调函数里传回来。
-###如何向服务器发请求？
- 用 form 可以发请求，但是会刷新页面或新开页面
- 用 a 可以发 get 请求，但是也会刷新页面或新开页面
- 用 img 可以发 get 请求，但是只能以图片的形式展示
- 用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示
- 用 script 可以发 get 请求，但是只能以脚本的形式运行
-  其中，通过动态创建 script 并添加 callback 查询参数来发 get 请求的就是 JSONP &gt;请求方：frank.com 的前端程序员（浏览器） &gt;响应方：jack.com 的后端程序员（服务器） &gt; 1.请求方创建 script，src 指向响应方，同时传一个查询参数 ?callbackName=yyy &gt; 2.响应方根据查询参数callbackName，构造形如 &gt; i.yyy.call(undefined, &lsquo;你要的数据&rsquo;) &gt; ii.yyy(&lsquo;你要的数据&rsquo;) &gt; 这样的响应 &gt; 3.浏览器接收到响应，就会执行 yyy.call(undefined, &lsquo;你要的数据&rsquo;) &gt; 4.那么请求方就知道了他要的数据 &gt;这就是JSONP
-        </div>
-          <a href="/posts/jsonp/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-        
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
       </section>
 
       
       <section class="w-100">
         <h1 class="f3">More</h1>
         
+        
+          <h2 class="f5 fw4 mb4 dib mr3">
+            <a href="/posts/jsonp/" class="link black dim">
+              JSONP
+            </a>
+          </h2>
         
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="/posts/%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95/" class="link black dim">
@@ -229,12 +231,6 @@ var f = function () { console.log('1'); } function f() { console.log('2'); } f()
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="/posts/vue%E5%88%9D%E4%BD%93%E9%AA%8C/" class="link black dim">
               vue基础之实例与数据绑定
-            </a>
-          </h2>
-        
-          <h2 class="f5 fw4 mb4 dib mr3">
-            <a href="/posts/hugo-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="link black dim">
-              如何使用 hugo 搭建个人博客
             </a>
           </h2>
         

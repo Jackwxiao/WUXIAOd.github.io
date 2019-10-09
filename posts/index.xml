@@ -6,10 +6,23 @@
     <description>Recent content in Posts on 吴潇的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Tue, 08 Oct 2019 15:30:30 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 09 Oct 2019 15:30:30 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>vue组件详解</title>
+      <link>http://example.org/posts/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/</link>
+      <pubDate>Wed, 09 Oct 2019 15:30:30 +0800</pubDate>
+      
+      <guid>http://example.org/posts/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/</guid>
+      <description>组件（二） 七、插槽slot  插槽：为了让组件可以组合，我们需要一种方式来混合父组件的内容与子组件自己的模板。这个过程被称为 内容分发。Vue.js 实现了一个内容分发 API，使用特殊的 ‘slot’ 元素作为原始内容的插槽。 编译的作用域：假定模板为：
+&amp;lt;child-component&amp;gt; {{ message }} &amp;lt;/child-component&amp;gt;  message 应该绑定到父组件的数据，还是绑定到子组件的数据？答案是父组件。组件作用域简单地说是： 父组件模板的内容在父组件作用域内编译； 子组件模板的内容在子组件作用域内编译。 插槽的用法：父组件的内容与子组件相混合，从而弥补了视图的不足。 混合父组件的内容与子组件自己的模板
+ 单个插槽：
+&amp;lt;div id=&amp;quot;app&amp;quot; &amp;gt; &amp;lt;my-component&amp;gt; &amp;lt;p&amp;gt;我是父组件的内容&amp;lt;/p&amp;gt; &amp;lt;/my-component&amp;gt; &amp;lt;/div&amp;gt; Vue.component(&#39;my-component&#39;,{ template:&#39;&amp;lt;div&amp;gt;\ &amp;lt;slot&amp;gt;\ 如果父组件没有插入内容，我就作为默认出现\ &amp;lt;/slot&amp;gt;\ &amp;lt;/div&amp;gt;&#39; })  具名插槽：
+&amp;lt;name-component&amp;gt; &amp;lt;h3 slot=&amp;quot;header&amp;quot;&amp;gt;我是标题&amp;lt;/h3&amp;gt; &amp;lt;p&amp;gt;我是正文内容&amp;lt;/p&amp;gt; &amp;lt;p&amp;gt;正文内容有两段&amp;lt;/p&amp;gt; &amp;lt;p slot=&amp;quot;footer&amp;quot;&amp;gt;我是底部信息&amp;lt;/p&amp;gt; &amp;lt;/name-component&amp;gt; Vue.component(&#39;name-component&#39;,{ template:&#39;&amp;lt;div&amp;gt;\ &amp;lt;div class=&amp;quot;header&amp;quot;&amp;gt;\n&#39; + &#39;&amp;lt;slot name=&amp;quot;header&amp;quot;&amp;gt;\n&#39; + &#39; \n&#39; + &#39; &amp;lt;/slot&amp;gt;\n&#39; + &#39;&amp;lt;/div&amp;gt;\n&#39; + &#39;&amp;lt;div class=&amp;quot;contatiner&amp;quot;&amp;gt;\n&#39; + &#39; &amp;lt;slot&amp;gt;\n&#39; + &#39; \n&#39; + &#39; &amp;lt;/slot&amp;gt;\n&#39; + &#39;&amp;lt;/div&amp;gt;\n&#39; + &#39;&amp;lt;div class=&amp;quot;footer&amp;quot;&amp;gt;\n&#39; + &#39; &amp;lt;slot name=&amp;quot;footer&amp;quot;&amp;gt;\n&#39; + &#39;\n&#39; + &#39; &amp;lt;/slot&amp;gt; \n&#39; + &#39;&amp;lt;/div&amp;gt;&#39;+ &#39; &amp;lt;/div&amp;gt;&#39; })  作用域插槽：作用域插槽是一种特殊的slot，使用一个可以复用的模板来替换已经渲染的元素——从子组件获取数据===template模板是不会被渲染的</description>
+    </item>
     
     <item>
       <title>vue组件详解</title>

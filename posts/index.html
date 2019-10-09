@@ -33,7 +33,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://example.org/posts/" />
 
-<meta property="og:updated_time" content="2019-10-08T15:30:30+08:00" />
+<meta property="og:updated_time" content="2019-10-09T15:30:30+08:00" />
 <meta itemprop="name" content="Posts">
 <meta itemprop="description" content="">
 
@@ -89,6 +89,25 @@
   <article class="pa3 pa4-ns nested-copy-line-height nested-img">
     <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy mid-gray"></section>
     <section class="flex-ns flex-wrap justify-around mt5">
+      
+        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/" class="link black dim">
+        vue组件详解
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      组件（二） 七、插槽slot  插槽：为了让组件可以组合，我们需要一种方式来混合父组件的内容与子组件自己的模板。这个过程被称为 内容分发。Vue.js 实现了一个内容分发 API，使用特殊的 ‘slot’ 元素作为原始内容的插槽。 编译的作用域：假定模板为：
+&lt;child-component&gt; {{ message }} &lt;/child-component&gt;  message 应该绑定到父组件的数据，还是绑定到子组件的数据？答案是父组件。组件作用域简单地说是： 父组件模板的内容在父组件作用域内编译； 子组件模板的内容在子组件作用域内编译。 插槽的用法：父组件的内容与子组件相混合，从而弥补了视图的不足。 混合父组件的内容与子组件自己的模板
+ 单个插槽：
+&lt;div id=&quot;app&quot; &gt; &lt;my-component&gt; &lt;p&gt;我是父组件的内容&lt;/p&gt; &lt;/my-component&gt; &lt;/div&gt; Vue.component('my-component',{ template:'&lt;div&gt;\ &lt;slot&gt;\ 如果父组件没有插入内容，我就作为默认出现\ &lt;/slot&gt;\ &lt;/div&gt;' })  具名插槽：
+&lt;name-component&gt; &lt;h3 slot=&quot;header&quot;&gt;我是标题&lt;/h3&gt; &lt;p&gt;我是正文内容&lt;/p&gt; &lt;p&gt;正文内容有两段&lt;/p&gt; &lt;p slot=&quot;footer&quot;&gt;我是底部信息&lt;/p&gt; &lt;/name-component&gt; Vue.component('name-component',{ template:'&lt;div&gt;\ &lt;div class=&quot;header&quot;&gt;\n' + '&lt;slot name=&quot;header&quot;&gt;\n' + ' \n' + ' &lt;/slot&gt;\n' + '&lt;/div&gt;\n' + '&lt;div class=&quot;contatiner&quot;&gt;\n' + ' &lt;slot&gt;\n' + ' \n' + ' &lt;/slot&gt;\n' + '&lt;/div&gt;\n' + '&lt;div class=&quot;footer&quot;&gt;\n' + ' &lt;slot name=&quot;footer&quot;&gt;\n' + '\n' + ' &lt;/slot&gt; \n' + '&lt;/div&gt;'+ ' &lt;/div&gt;' })  作用域插槽：作用域插槽是一种特殊的slot，使用一个可以复用的模板来替换已经渲染的元素——从子组件获取数据===template模板是不会被渲染的
+    </div>
+  </div>
+</div>
+</div>
       
         <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
   <div class="bg-white mb3 pa4 gray overflow-hidden">
