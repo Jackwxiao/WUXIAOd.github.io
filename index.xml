@@ -6,10 +6,24 @@
     <description>Recent content on 吴潇的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Sat, 28 Sep 2019 23:01:04 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 08 Oct 2019 15:30:30 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>vue组件详解</title>
+      <link>http://example.org/posts/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/</link>
+      <pubDate>Tue, 08 Oct 2019 15:30:30 +0800</pubDate>
+      
+      <guid>http://example.org/posts/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/</guid>
+      <description>组件（一） 一、组件的作用 组件的作用：提高代码的复用性。
+二、组件的使用方法 1.全局注册组件：
+全局注册： &amp;lt;html&amp;gt; &amp;lt;my-component&amp;gt;&amp;lt;/my-component&amp;gt; &amp;lt;/html&amp;gt; &amp;lt;script&amp;gt; Vue.component(&#39;my-component&#39;,{ template:&#39;&amp;lt;div&amp;gt;这是全局注册的组件&amp;lt;/div&amp;gt;&#39; }) &amp;lt;/script&amp;gt;  2.局部注册组件：
+&amp;lt;html&amp;gt; &amp;lt;app-component&amp;gt;&amp;lt;/app-component&amp;gt; &amp;lt;/html&amp;gt; 在vue实例中定义组件 &amp;lt;script&amp;gt; var app = new Vue({ el:&#39;#app&#39;, components:{ &#39;app-component&#39;:{ template:&#39;&amp;lt;div&amp;gt;这是局部注册的组件&amp;lt;/div&amp;gt;&#39; } } }) &amp;lt;/script&amp;gt;  两种注册方式的优缺点： 全局注册：优点是所有的vue实例都可以使用；缺点是权限太大，容错率低。 局部注册：只能在所注册的vue实例中使用。 注意事项： 1. html标签受限：Vue组件模板在某些情况下回受到html标签的限制，如table标签内只能有tr、td、tbody这些元素,如果把组件名挂载到table内,实际内容是不会被渲染到table标签中的，会把组件内容踢出去。 此时需要 is 属性来挂载组件名，is=&#39;组件名&#39;
+&amp;lt;table&amp;gt; &amp;lt;tbody is = &#39;app-component&#39;&amp;gt;&amp;lt;/tbody&amp;gt; &amp;lt;/table&amp;gt;   组件名使用小写字母或小写字母加 - 来命名； template中的内容必须被一个DOM元素包裹，可以嵌套； 在组件定义中，除了template之外的其他选项:data,omputed,methods 组件中，data必须是一个方法。  三、使用props传递数据 在子组件中使用props接收来自父组件的数据，在props中定义的属性，都可以在组件中直接使用； 子组件中的props来自父组件，子组件中的data return的是组件自己的数据；props中定义的和data返回的，其作用域都是组件本身，可以在template,methods,computed中直接使用。
+&amp;lt;div id=&amp;quot;app&amp;quot; style=&amp;quot;border:1px solid red;height: 350px;&amp;quot;&amp;gt; &amp;lt;h5 style=&amp;quot;text-align: center&amp;quot;&amp;gt;父组件&amp;lt;/h5&amp;gt; &amp;lt;child-component msg=&amp;quot;这是来自父组件的内容&amp;quot;&amp;gt;&amp;lt;/child-component&amp;gt; &amp;lt;!</description>
+    </item>
     
     <item>
       <title>JS函数</title>
