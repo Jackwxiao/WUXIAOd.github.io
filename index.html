@@ -33,7 +33,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://example.org/" />
 
-<meta property="og:updated_time" content="2019-10-09T15:30:30+08:00" />
+<meta property="og:updated_time" content="2019-10-09T20:30:30+09:00" />
 <meta itemprop="name" content="吴潇的个人博客">
 <meta itemprop="description" content="">
 
@@ -120,6 +120,38 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/posts/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" class="color-inherit dim link">
+            vue自定义指令
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          自定义指令 自定义指令的基本用法 和组件类似分全局注册和局部注册，区别就是把component换成了derective
+需求：自动获取焦点 &lt;div id=&quot;app&quot;&gt; 获取焦点：&lt;input type=&quot;text&quot; v-focus&gt;&lt;br&gt; 未加自定义指令v-focus：&lt;br&gt; &lt;input type=&quot;text&quot;&gt; &lt;/div&gt; &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js&quot;&gt;&lt;/script&gt; &lt;script&gt; Vue.directive('focus',{ inserted:function(el){ //el：指令所绑定的元素可以用来直接操作DOM el.focus(); } }); var app = new Vue({ el:'#app', data:{ } }) &lt;/script  钩子函数 指令定义函数提供了几个钩子函数（可选）：
+ bind: 只调用一次，指令第一次绑定到元素时调用，用这个钩子函数可以定义一个在绑定时执行一次的初始化动作。
+ inserted: 被绑定元素插入父节点时调用（父节点存在即可调用，不必存在于 document中）
+ update: 被绑定元素所在的模板更新时调用，而不论绑定值是否变化。通过比较更新前后的绑定值，可以忽略不必要的模板更新（详细的钩子函数参数见下）。
+ componentUpdated: 被绑定元素所在模板完成一次更新周期时调用。
+ unbind: 只调用一次， 指令与元素解绑时调用。
+  钩子函数的参数有：  el: 指令所绑定的元素，可以用来直接操作 DOM 。
+ binding: 一个对象，包含以下属性： ——–name: 指令名，不包括 v­ 前缀。 ——–value: 指令的绑定值， 例如： v­my­directive=”1 + 1”, value 的值是 2。 ——–oldValue: 指令绑定的前一个值，仅在 update 和 componentUpdated 钩子中可用。无 论值是否改变都可用。 ——–expression: 绑定值的字符串形式。 例如 v­my­directive=”1 + 1” ， expression 的值是 “1 + 1”。 ——–arg: 传给指令的参数。例如 v­my­directive:foo， arg 的值是 “foo”。 ——–modifiers: 一个包含修饰符的对象。 例如： v­my­directive.
+        </div>
+          <a href="/posts/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="relative w-100 mb4">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="/posts/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/" class="color-inherit dim link">
             vue组件详解
             </a>
@@ -169,46 +201,18 @@
 
           </div>
         
-          <div class="relative w-100 mb4">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/js%E5%87%BD%E6%95%B0/" class="color-inherit dim link">
-            JS函数
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          ###函数 指可以执行代码的对象，和数组一样有不一致性。 #####三种函数声明方式
- function f() { }
- var f = function f() { }; //注意分号
- f = new Function (&lsquo;x&rsquo;,&lsquo;y&rsquo;,&lsquo;return x+y&rsquo;) //只有最后一个参数会被当作函数体，可以不使用new 命令，不推荐使用这种声明方式
-  注意：如果同一个函数被多次声明，后面的声明会覆盖前面的声明。也就是说起前面的声明会失效。
-函数名的提升
-JS引擎将函数名视同变量名，使用function 声明函数时，整个函数回想变量声明一样被提升到代码头部。如果同时使用function命令和赋值语句声明同一个函数，左后总是采用赋值语句的定义
-var f = function () { console.log('1'); } function f() { console.log('2'); } f() // 1  函数的属性和方法
- name :f.name返回函数的名字，如果通过变量赋值定义的匿名函数则返回变量名。具名函数返回function关键字后的函数名。 var f3 = function myName() {}; f3.name // 'myName'  上面代码中，f3.name返回函数表达式的名字。注意，真正的函数名还是f3，而myName这个名字只在函数体内部可用。
-  用处：可用来获取参数函数的名字。
- length: f.length 返回函数预期传入的参数个数。
-        </div>
-          <a href="/posts/js%E5%87%BD%E6%95%B0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-        
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
       </section>
 
       
       <section class="w-100">
         <h1 class="f3">More</h1>
         
+        
+          <h2 class="f5 fw4 mb4 dib mr3">
+            <a href="/posts/js%E5%87%BD%E6%95%B0/" class="link black dim">
+              JS函数
+            </a>
+          </h2>
         
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="/posts/jsonp/" class="link black dim">
@@ -225,12 +229,6 @@ var f = function () { console.log('1'); } function f() { console.log('2'); } f()
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="/posts/vue-%E6%8C%87%E4%BB%A4%E5%92%8C%E4%BA%8B%E4%BB%B6%E7%AD%89/" class="link black dim">
               vue 指令事件
-            </a>
-          </h2>
-        
-          <h2 class="f5 fw4 mb4 dib mr3">
-            <a href="/posts/vue%E5%88%9D%E4%BD%93%E9%AA%8C/" class="link black dim">
-              vue基础之实例与数据绑定
             </a>
           </h2>
         

@@ -163,6 +163,7 @@ var app = new Vue({
 <p><strong>两种注册方式的优缺点：</strong>
 全局注册：优点是所有的vue实例都可以使用；缺点是权限太大，容错率低。
 局部注册：只能在所注册的vue实例中使用。
+<br>
 <strong>注意事项：</strong>
 1. html标签受限：Vue组件模板在某些情况下回受到html标签的限制，如table标签内只能有tr、td、tbody这些元素,如果把组件名挂载到table内,实际内容是不会被渲染到table标签中的，会把组件内容踢出去。
 此时需要 is 属性来挂载组件名，<code>is='组件名'</code></p>
