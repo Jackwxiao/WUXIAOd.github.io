@@ -33,7 +33,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://example.org/" />
 
-<meta property="og:updated_time" content="2019-10-09T20:30:30+09:00" />
+<meta property="og:updated_time" content="2019-10-15T20:30:30+09:00" />
 <meta itemprop="name" content="吴潇的个人博客">
 <meta itemprop="description" content="">
 
@@ -120,6 +120,33 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/posts/vue-routeraxiosvuex/" class="color-inherit dim link">
+            vue自定义指令
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          vue-router 路由的基本加载  安装 npm install --save vue-router 2.引用
+在router 的index.js中 import router from 'vue-router' Vue.use(router)  配置路由文件，并在vue实例中注入
+var rt = new router({ routes:[{ path:'/', //指定要跳转的路径 component: HelloWorld //指定要跳转的组件 }] }) new Vue({ el: '#app', router, components: { App }, template: '' })  确定试图加载的位置
+&lt;router-view&gt;&lt;/router-view&gt;  路由的跳转  &lt;template&gt; &lt;ul&gt; &lt;li&gt; &lt;router-link to=&quot;/helloearth&quot;&gt;HELLO EARTH 33&lt;/router-link&gt; &lt;/li&gt; &lt;li&gt; &lt;router-link to=&quot;/helloworld&quot;&gt;HELLO WORLD 22&lt;/router-link&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/template&gt;   路由参数传递  必须在路由内加入路由的name .
+        </div>
+          <a href="/posts/vue-routeraxiosvuex/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="relative w-100 mb4">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="/posts/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" class="color-inherit dim link">
             vue自定义指令
             </a>
@@ -172,41 +199,18 @@
 
           </div>
         
-          <div class="relative w-100 mb4">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/" class="color-inherit dim link">
-            vue组件详解
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          组件（一） 一、组件的作用 组件的作用：提高代码的复用性。
-二、组件的使用方法 1.全局注册组件：
-全局注册： &lt;html&gt; &lt;my-component&gt;&lt;/my-component&gt; &lt;/html&gt; &lt;script&gt; Vue.component('my-component',{ template:'&lt;div&gt;这是全局注册的组件&lt;/div&gt;' }) &lt;/script&gt;  2.局部注册组件：
-&lt;html&gt; &lt;app-component&gt;&lt;/app-component&gt; &lt;/html&gt; 在vue实例中定义组件 &lt;script&gt; var app = new Vue({ el:'#app', components:{ 'app-component':{ template:'&lt;div&gt;这是局部注册的组件&lt;/div&gt;' } } }) &lt;/script&gt;  两种注册方式的优缺点： 全局注册：优点是所有的vue实例都可以使用；缺点是权限太大，容错率低。 局部注册：只能在所注册的vue实例中使用。 注意事项： 1. html标签受限：Vue组件模板在某些情况下回受到html标签的限制，如table标签内只能有tr、td、tbody这些元素,如果把组件名挂载到table内,实际内容是不会被渲染到table标签中的，会把组件内容踢出去。 此时需要 is 属性来挂载组件名，is='组件名'
-&lt;table&gt; &lt;tbody is = 'app-component'&gt;&lt;/tbody&gt; &lt;/table&gt;   组件名使用小写字母或小写字母加 - 来命名； template中的内容必须被一个DOM元素包裹，可以嵌套； 在组件定义中，除了template之外的其他选项:data,omputed,methods 组件中，data必须是一个方法。  三、使用props传递数据 在子组件中使用props接收来自父组件的数据，在props中定义的属性，都可以在组件中直接使用； 子组件中的props来自父组件，子组件中的data return的是组件自己的数据；props中定义的和data返回的，其作用域都是组件本身，可以在template,methods,computed中直接使用。
-&lt;div id=&quot;app&quot; style=&quot;border:1px solid red;height: 350px;&quot;&gt; &lt;h5 style=&quot;text-align: center&quot;&gt;父组件&lt;/h5&gt; &lt;child-component msg=&quot;这是来自父组件的内容&quot;&gt;&lt;/child-component&gt; &lt;!
-        </div>
-          <a href="/posts/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-        
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
       </section>
 
       
       <section class="w-100">
         <h1 class="f3">More</h1>
         
+        
+          <h2 class="f5 fw4 mb4 dib mr3">
+            <a href="/posts/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/" class="link black dim">
+              vue组件详解
+            </a>
+          </h2>
         
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="/posts/js%E5%87%BD%E6%95%B0/" class="link black dim">
@@ -223,12 +227,6 @@
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="/posts/%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95/" class="link black dim">
               计算属性和方法
-            </a>
-          </h2>
-        
-          <h2 class="f5 fw4 mb4 dib mr3">
-            <a href="/posts/vue-%E6%8C%87%E4%BB%A4%E5%92%8C%E4%BA%8B%E4%BB%B6%E7%AD%89/" class="link black dim">
-              vue 指令事件
             </a>
           </h2>
         

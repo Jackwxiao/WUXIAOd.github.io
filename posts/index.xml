@@ -6,10 +6,22 @@
     <description>Recent content in Posts on 吴潇的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Wed, 09 Oct 2019 20:30:30 +0900</lastBuildDate>
+    <lastBuildDate>Tue, 15 Oct 2019 20:30:30 +0900</lastBuildDate>
     
 	<atom:link href="http://example.org/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>vue自定义指令</title>
+      <link>http://example.org/posts/vue-routeraxiosvuex/</link>
+      <pubDate>Tue, 15 Oct 2019 20:30:30 +0900</pubDate>
+      
+      <guid>http://example.org/posts/vue-routeraxiosvuex/</guid>
+      <description>vue-router 路由的基本加载  安装 npm install --save vue-router 2.引用
+在router 的index.js中 import router from &#39;vue-router&#39; Vue.use(router)  配置路由文件，并在vue实例中注入
+var rt = new router({ routes:[{ path:&#39;/&#39;, //指定要跳转的路径 component: HelloWorld //指定要跳转的组件 }] }) new Vue({ el: &#39;#app&#39;, router, components: { App }, template: &#39;&#39; })  确定试图加载的位置
+&amp;lt;router-view&amp;gt;&amp;lt;/router-view&amp;gt;  路由的跳转  &amp;lt;template&amp;gt; &amp;lt;ul&amp;gt; &amp;lt;li&amp;gt; &amp;lt;router-link to=&amp;quot;/helloearth&amp;quot;&amp;gt;HELLO EARTH 33&amp;lt;/router-link&amp;gt; &amp;lt;/li&amp;gt; &amp;lt;li&amp;gt; &amp;lt;router-link to=&amp;quot;/helloworld&amp;quot;&amp;gt;HELLO WORLD 22&amp;lt;/router-link&amp;gt; &amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; &amp;lt;/template&amp;gt;   路由参数传递  必须在路由内加入路由的name .</description>
+    </item>
     
     <item>
       <title>vue自定义指令</title>
