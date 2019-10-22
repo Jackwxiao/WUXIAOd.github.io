@@ -33,7 +33,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://example.org/" />
 
-<meta property="og:updated_time" content="2019-10-15T20:30:30+09:00" />
+<meta property="og:updated_time" content="2019-10-20T19:17:26+08:00" />
 <meta itemprop="name" content="吴潇的个人博客">
 <meta itemprop="description" content="">
 
@@ -120,6 +120,45 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/posts/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="color-inherit dim link">
+            web性能优化
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+           web性能优化：（从理论上来讲） 地址栏输入url到按下回车这一过程中有哪些前端相关的内容：
+ 看有没有缓存 DNS查询 建立TCP连接 发送HTTP请求 后台处理 接收响应 接收完成得到一个html 判断文本类型，DOCTYPE html/xml 浏览器逐行解析html 看到chrom会等css加载完再渲染到页面 看到CSS，下载css，如果有多个css便同时下载(chrom8个)。css,并行下载，串行解析。 看JS，下载并行，串行解析。在chrom中，css会阻塞html渲染，IE不会。JS一定会阻塞html渲染（不管什么浏览器）。  跟前端无关的优化：  优化DNS查询：减少DNS查询（减少域名数量）。
+ TCP连接复用（keep-alive）http/2.0多路复用。
+  前端优化：  发送http请求：   减少cookie体积（减少请求）；合并文件。
+ 使用cache-control（干掉请求）；
+ 同时发多个请求，如ie中一个域名能发4个请求，但我可以使用两个域名或多个。于是与上面的DNS查询优化有矛盾，但是经过权衡之后，文件少的时候，就减少域名使用。文件多时，增加DNS查询时间，但减少了请求时间（用户带宽足够前提下）。
+   接收响应   使用ETAG，如果请求时带上服务器给的ETAG时，服务器便不再响应新的内容，返回304,表示not modifile；
+ 文件大时使用Gzip压缩。
+   返回的html中的DOCTYPE不能不写，不能写错。尽量减少标签。
+ CSS和JS优化：
+   使用CDN（内容分发网络）；
+ CSS放到head, JS 放body最后。css放前面的原因是让它尽早下载完，下载完就可以渲染了。js放后面是因为页面没有js还是可以看的，所以可以保证用户优先看到完整的页面。尽早显示页面，获取节点。
+ 延迟加载，懒加载：必须初始化的先加载，剩余的延迟加载。如第一屏先加载，其余的等用户滚到再加载。
+ 使用外部js和css，就是不要把js,css写在html中。
+ 压缩图片。
+  
+        </div>
+          <a href="/posts/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="relative w-100 mb4">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="/posts/vue-routeraxiosvuex/" class="color-inherit dim link">
             vue-router、axios、vuex
             </a>
@@ -171,40 +210,18 @@ var rt = new router({ routes:[{ path:'/', //指定要跳转的路径 component: 
 
           </div>
         
-          <div class="relative w-100 mb4">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/" class="color-inherit dim link">
-            vue组件详解
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          组件（二） 七、插槽slot  插槽：为了让组件可以组合，我们需要一种方式来混合父组件的内容与子组件自己的模板。这个过程被称为 内容分发。Vue.js 实现了一个内容分发 API，使用特殊的 ‘slot’ 元素作为原始内容的插槽。 编译的作用域：假定模板为：
-&lt;child-component&gt; {{ message }} &lt;/child-component&gt;  message 应该绑定到父组件的数据，还是绑定到子组件的数据？答案是父组件。组件作用域简单地说是： 父组件模板的内容在父组件作用域内编译； 子组件模板的内容在子组件作用域内编译。 插槽的用法：父组件的内容与子组件相混合，从而弥补了视图的不足。 混合父组件的内容与子组件自己的模板
- 单个插槽：
-&lt;div id=&quot;app&quot; &gt; &lt;my-component&gt; &lt;p&gt;我是父组件的内容&lt;/p&gt; &lt;/my-component&gt; &lt;/div&gt; Vue.component('my-component',{ template:'&lt;div&gt;\ &lt;slot&gt;\ 如果父组件没有插入内容，我就作为默认出现\ &lt;/slot&gt;\ &lt;/div&gt;' })  具名插槽：
-&lt;name-component&gt; &lt;h3 slot=&quot;header&quot;&gt;我是标题&lt;/h3&gt; &lt;p&gt;我是正文内容&lt;/p&gt; &lt;p&gt;正文内容有两段&lt;/p&gt; &lt;p slot=&quot;footer&quot;&gt;我是底部信息&lt;/p&gt; &lt;/name-component&gt; Vue.component('name-component',{ template:'&lt;div&gt;\ &lt;div class=&quot;header&quot;&gt;\n' + '&lt;slot name=&quot;header&quot;&gt;\n' + ' \n' + ' &lt;/slot&gt;\n' + '&lt;/div&gt;\n' + '&lt;div class=&quot;contatiner&quot;&gt;\n' + ' &lt;slot&gt;\n' + ' \n' + ' &lt;/slot&gt;\n' + '&lt;/div&gt;\n' + '&lt;div class=&quot;footer&quot;&gt;\n' + ' &lt;slot name=&quot;footer&quot;&gt;\n' + '\n' + ' &lt;/slot&gt; \n' + '&lt;/div&gt;'+ ' &lt;/div&gt;' })  作用域插槽：作用域插槽是一种特殊的slot，使用一个可以复用的模板来替换已经渲染的元素——从子组件获取数据===template模板是不会被渲染的
-        </div>
-          <a href="/posts/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-        
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
       </section>
 
       
       <section class="w-100">
         <h1 class="f3">More</h1>
         
+        
+          <h2 class="f5 fw4 mb4 dib mr3">
+            <a href="/posts/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/" class="link black dim">
+              vue组件详解
+            </a>
+          </h2>
         
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="/posts/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/" class="link black dim">
@@ -221,12 +238,6 @@ var rt = new router({ routes:[{ path:'/', //指定要跳转的路径 component: 
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="/posts/jsonp/" class="link black dim">
               JSONP
-            </a>
-          </h2>
-        
-          <h2 class="f5 fw4 mb4 dib mr3">
-            <a href="/posts/%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95/" class="link black dim">
-              计算属性和方法
             </a>
           </h2>
         

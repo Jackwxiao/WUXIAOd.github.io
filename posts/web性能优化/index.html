@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>吴潇的个人博客  | web性能优化</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.58.2" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.d98f2eb6bcd1eaedb7edf166bd16af26.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="web性能优化" />
+<meta property="og:description" content=" web性能优化：（从理论上来讲） 地址栏输入url到按下回车这一过程中有哪些前端相关的内容：
+ 看有没有缓存 DNS查询 建立TCP连接 发送HTTP请求 后台处理 接收响应 接收完成得到一个html 判断文本类型，DOCTYPE html/xml 浏览器逐行解析html 看到chrom会等css加载完再渲染到页面 看到CSS，下载css，如果有多个css便同时下载(chrom8个)。css,并行下载，串行解析。 看JS，下载并行，串行解析。在chrom中，css会阻塞html渲染，IE不会。JS一定会阻塞html渲染（不管什么浏览器）。  跟前端无关的优化：  优化DNS查询：减少DNS查询（减少域名数量）。
+ TCP连接复用（keep-alive）http/2.0多路复用。
+  前端优化：  发送http请求：   减少cookie体积（减少请求）；合并文件。
+ 使用cache-control（干掉请求）；
+ 同时发多个请求，如ie中一个域名能发4个请求，但我可以使用两个域名或多个。于是与上面的DNS查询优化有矛盾，但是经过权衡之后，文件少的时候，就减少域名使用。文件多时，增加DNS查询时间，但减少了请求时间（用户带宽足够前提下）。
+   接收响应   使用ETAG，如果请求时带上服务器给的ETAG时，服务器便不再响应新的内容，返回304,表示not modifile；
+ 文件大时使用Gzip压缩。
+   返回的html中的DOCTYPE不能不写，不能写错。尽量减少标签。
+ CSS和JS优化：
+   使用CDN（内容分发网络）；
+ CSS放到head, JS 放body最后。css放前面的原因是让它尽早下载完，下载完就可以渲染了。js放后面是因为页面没有js还是可以看的，所以可以保证用户优先看到完整的页面。尽早显示页面，获取节点。
+ 延迟加载，懒加载：必须初始化的先加载，剩余的延迟加载。如第一屏先加载，其余的等用户滚到再加载。
+ 使用外部js和css，就是不要把js,css写在html中。
+ 压缩图片。
+  " />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" />
+<meta property="article:published_time" content="2019-10-20T19:17:26+08:00" />
+<meta property="article:modified_time" content="2019-10-20T19:17:26+08:00" />
+<meta itemprop="name" content="web性能优化">
+<meta itemprop="description" content=" web性能优化：（从理论上来讲） 地址栏输入url到按下回车这一过程中有哪些前端相关的内容：
+ 看有没有缓存 DNS查询 建立TCP连接 发送HTTP请求 后台处理 接收响应 接收完成得到一个html 判断文本类型，DOCTYPE html/xml 浏览器逐行解析html 看到chrom会等css加载完再渲染到页面 看到CSS，下载css，如果有多个css便同时下载(chrom8个)。css,并行下载，串行解析。 看JS，下载并行，串行解析。在chrom中，css会阻塞html渲染，IE不会。JS一定会阻塞html渲染（不管什么浏览器）。  跟前端无关的优化：  优化DNS查询：减少DNS查询（减少域名数量）。
+ TCP连接复用（keep-alive）http/2.0多路复用。
+  前端优化：  发送http请求：   减少cookie体积（减少请求）；合并文件。
+ 使用cache-control（干掉请求）；
+ 同时发多个请求，如ie中一个域名能发4个请求，但我可以使用两个域名或多个。于是与上面的DNS查询优化有矛盾，但是经过权衡之后，文件少的时候，就减少域名使用。文件多时，增加DNS查询时间，但减少了请求时间（用户带宽足够前提下）。
+   接收响应   使用ETAG，如果请求时带上服务器给的ETAG时，服务器便不再响应新的内容，返回304,表示not modifile；
+ 文件大时使用Gzip压缩。
+   返回的html中的DOCTYPE不能不写，不能写错。尽量减少标签。
+ CSS和JS优化：
+   使用CDN（内容分发网络）；
+ CSS放到head, JS 放body最后。css放前面的原因是让它尽早下载完，下载完就可以渲染了。js放后面是因为页面没有js还是可以看的，所以可以保证用户优先看到完整的页面。尽早显示页面，获取节点。
+ 延迟加载，懒加载：必须初始化的先加载，剩余的延迟加载。如第一屏先加载，其余的等用户滚到再加载。
+ 使用外部js和css，就是不要把js,css写在html中。
+ 压缩图片。
+  ">
+
+
+<meta itemprop="datePublished" content="2019-10-20T19:17:26&#43;08:00" />
+<meta itemprop="dateModified" content="2019-10-20T19:17:26&#43;08:00" />
+<meta itemprop="wordCount" content="36">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="web性能优化"/>
+<meta name="twitter:description" content=" web性能优化：（从理论上来讲） 地址栏输入url到按下回车这一过程中有哪些前端相关的内容：
+ 看有没有缓存 DNS查询 建立TCP连接 发送HTTP请求 后台处理 接收响应 接收完成得到一个html 判断文本类型，DOCTYPE html/xml 浏览器逐行解析html 看到chrom会等css加载完再渲染到页面 看到CSS，下载css，如果有多个css便同时下载(chrom8个)。css,并行下载，串行解析。 看JS，下载并行，串行解析。在chrom中，css会阻塞html渲染，IE不会。JS一定会阻塞html渲染（不管什么浏览器）。  跟前端无关的优化：  优化DNS查询：减少DNS查询（减少域名数量）。
+ TCP连接复用（keep-alive）http/2.0多路复用。
+  前端优化：  发送http请求：   减少cookie体积（减少请求）；合并文件。
+ 使用cache-control（干掉请求）；
+ 同时发多个请求，如ie中一个域名能发4个请求，但我可以使用两个域名或多个。于是与上面的DNS查询优化有矛盾，但是经过权衡之后，文件少的时候，就减少域名使用。文件多时，增加DNS查询时间，但减少了请求时间（用户带宽足够前提下）。
+   接收响应   使用ETAG，如果请求时带上服务器给的ETAG时，服务器便不再响应新的内容，返回304,表示not modifile；
+ 文件大时使用Gzip压缩。
+   返回的html中的DOCTYPE不能不写，不能写错。尽量减少标签。
+ CSS和JS优化：
+   使用CDN（内容分发网络）；
+ CSS放到head, JS 放body最后。css放前面的原因是让它尽早下载完，下载完就可以渲染了。js放后面是因为页面没有js还是可以看的，所以可以保证用户优先看到完整的页面。尽早显示页面，获取节点。
+ 延迟加载，懒加载：必须初始化的先加载，剩余的延迟加载。如第一屏先加载，其余的等用户滚到再加载。
+ 使用外部js和css，就是不要把js,css写在html中。
+ 压缩图片。
+  "/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      吴潇的个人博客
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1">web性能优化</h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-10-20T19:17:26&#43;08:00">October 20, 2019</time>
+      
+      
+    </header>
+
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
+
+<h4 id="web性能优化-从理论上来讲">web性能优化：（从理论上来讲）</h4>
+
+<p>地址栏输入url到按下回车这一过程中有哪些前端相关的内容：</p>
+
+<ol>
+<li>看有没有缓存</li>
+<li>DNS查询</li>
+<li>建立TCP连接</li>
+<li>发送HTTP请求   后台处理</li>
+<li>接收响应</li>
+<li>接收完成得到一个html</li>
+<li>判断文本类型，DOCTYPE     html/xml</li>
+<li>浏览器逐行解析html</li>
+<li>看到<h1>chrom会等css加载完再渲染到页面</li>
+<li>看到CSS，下载css，如果有多个css便同时下载(chrom8个)。css,并行下载，串行解析。</li>
+<li>看JS，下载并行，串行解析。在chrom中，css会阻塞html渲染，IE不会。JS一定会阻塞html渲染（不管什么浏览器）。</li>
+</ol>
+
+<h4 id="跟前端无关的优化">跟前端无关的优化：</h4>
+
+<ul>
+<li><p>优化DNS查询：减少DNS查询（减少域名数量）。</p></li>
+
+<li><p>TCP连接复用（keep-alive）http/2.0多路复用。</p></li>
+</ul>
+
+<h4 id="前端优化">前端优化：</h4>
+
+<ol>
+<li>发送http请求：</li>
+</ol>
+
+<ul>
+<li><p>减少cookie体积（减少请求）；合并文件。</p></li>
+
+<li><p>使用cache-control（干掉请求）；</p></li>
+
+<li><p>同时发多个请求，如ie中一个域名能发4个请求，但我可以使用两个域名或多个。于是与上面的DNS查询优化有矛盾，但是经过权衡之后，文件少的时候，就减少域名使用。文件多时，增加DNS查询时间，但减少了请求时间（用户带宽足够前提下）。</p></li>
+</ul>
+
+<ol>
+<li>接收响应</li>
+</ol>
+
+<ul>
+<li><p>使用ETAG，如果请求时带上服务器给的ETAG时，服务器便不再响应新的内容，返回304,表示not modifile；</p></li>
+
+<li><p>文件大时使用Gzip压缩。</p></li>
+</ul>
+
+<ol>
+<li><p>返回的html中的DOCTYPE不能不写，不能写错。尽量减少标签。</p></li>
+
+<li><p>CSS和JS优化：</p></li>
+</ol>
+
+<ul>
+<li><p>使用CDN（内容分发网络）；</p></li>
+
+<li><p>CSS放到head, JS 放body最后。css放前面的原因是让它尽早下载完，下载完就可以渲染了。js放后面是因为页面没有js还是可以看的，所以可以保证用户优先看到完整的页面。尽早显示页面，获取节点。</p></li>
+
+<li><p>延迟加载，懒加载：必须初始化的先加载，剩余的延迟加载。如第一屏先加载，其余的等用户滚到再加载。</p></li>
+
+<li><p>使用外部js和css，就是不要把js,css写在html中。</p></li>
+
+<li><p>压缩图片。</p></li>
+</ul>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+      
+      
+      </div>
+    </section>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2019 吴潇的个人博客
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>
