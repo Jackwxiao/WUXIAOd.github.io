@@ -33,7 +33,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://example.org/" />
 
-<meta property="og:updated_time" content="2019-10-20T19:17:26+08:00" />
+<meta property="og:updated_time" content="2019-10-22T11:17:26+08:00" />
 <meta itemprop="name" content="吴潇的个人博客">
 <meta itemprop="description" content="">
 
@@ -120,6 +120,42 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/posts/cookiecache-controlsession/" class="color-inherit dim link">
+            http之Cookie、Cache-control、Session
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+           (HTTP请求与响应)[https://www.jianshu.com/p/1938d3c995d2]
+Cookie Cookie 是什么？  Cookie 是浏览器访问服务器后，服务器传给浏览器的一段数据。 浏览器需要保存这段数据，不得轻易删除。 此后每次浏览器访问该服务器，都必须带上这段数据。  Cookie特点：  服务器通过 Set-Cookie 头设给客户端一串字符串 浏览器（客户端）得到Cookie 之后，每次访问相同域名的网页时都要带上这段字符串 服务器读取Cookie就知道登录用户的信息。客户端要在一段时间内保存这个Cookie。  cookie会被用户更改，所以要使用session来阻止用户更改。
+什么是Session? 服务器通过Cookie给用户一个session id,session id对应服务器里面的一小块内存，每次用户访问服务器时，服务器通过session id去读取对应的session就知道用户的隐私信息了。
+Session是基于Cookie实现的，反过来说，cookie是session的基石。
+cookie和localstorage的区别：  localstorage和http无关，不会被带到服务器上，cookie每次请求的时候会被浏览器带到服务器上；
+ localstorage最大存储量为5Mb左右,cookie为4k左右。
+  localstorage和sessionstorage的区别：  sessionstroage在用户关闭页面后就失效（会话结束后），localstorage永久有效。
+ cookie默认在用户关闭页面后就失效，后台代码可以任意设置Cookie的失效期限。
+  Cache-control 你想要哪个请求被缓存，就给一个Cache-Control response.setHeader('Cache-Control','max-age=30')//30秒内请求时返回的是内存给你的
+但是首页不能设置Cache-Conrol,如果首页都缓存了，用户在缓存时间内无法获得最新内容。
+Cache-Control可以让浏览器在一段时间内不访问浏览器，直接用本地的内存或硬盘作为响应，可以极快的请求到资源。 如果要更新，只要在入口（html）文件里把URL变一下，跟以前的所有URL不一样就不会使用缓存，会把最新版的缓存下来，如果又过时了，再改一下就可以了。 #### Expires和Cache-Control的区别：
+ Cache-Control是多长时间过期，Expires是什么时候过期，也就是设置的时候，C是设置时长，E设置时间点。   #### cache-control与Etag: 设置了Cache-Control直接不请求,Etag会请求但如果MD5一样就不会下载。
+登陆注册图解： 
+        </div>
+          <a href="/posts/cookiecache-controlsession/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="relative w-100 mb4">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="/posts/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="color-inherit dim link">
             web性能优化
             </a>
@@ -178,44 +214,18 @@ var rt = new router({ routes:[{ path:'/', //指定要跳转的路径 component: 
 
           </div>
         
-          <div class="relative w-100 mb4">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" class="color-inherit dim link">
-            vue自定义指令
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          自定义指令 自定义指令的基本用法 和组件类似分全局注册和局部注册，区别就是把component换成了derective
-需求：自动获取焦点 &lt;div id=&quot;app&quot;&gt; 获取焦点：&lt;input type=&quot;text&quot; v-focus&gt;&lt;br&gt; 未加自定义指令v-focus：&lt;br&gt; &lt;input type=&quot;text&quot;&gt; &lt;/div&gt; &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js&quot;&gt;&lt;/script&gt; &lt;script&gt; Vue.directive('focus',{ inserted:function(el){ //el：指令所绑定的元素可以用来直接操作DOM el.focus(); } }); var app = new Vue({ el:'#app', data:{ } }) &lt;/script  钩子函数 指令定义函数提供了几个钩子函数（可选）：
- bind: 只调用一次，指令第一次绑定到元素时调用，用这个钩子函数可以定义一个在绑定时执行一次的初始化动作。
- inserted: 被绑定元素插入父节点时调用（父节点存在即可调用，不必存在于 document中）
- update: 被绑定元素所在的模板更新时调用，而不论绑定值是否变化。通过比较更新前后的绑定值，可以忽略不必要的模板更新（详细的钩子函数参数见下）。
- componentUpdated: 被绑定元素所在模板完成一次更新周期时调用。
- unbind: 只调用一次， 指令与元素解绑时调用。
-  钩子函数的参数有：  el: 指令所绑定的元素，可以用来直接操作 DOM 。
- binding: 一个对象，包含以下属性： ——–name: 指令名，不包括 v­ 前缀。 ——–value: 指令的绑定值， 例如： v­my­directive=”1 + 1”, value 的值是 2。 ——–oldValue: 指令绑定的前一个值，仅在 update 和 componentUpdated 钩子中可用。无 论值是否改变都可用。 ——–expression: 绑定值的字符串形式。 例如 v­my­directive=”1 + 1” ， expression 的值是 “1 + 1”。 ——–arg: 传给指令的参数。例如 v­my­directive:foo， arg 的值是 “foo”。 ——–modifiers: 一个包含修饰符的对象。 例如： v­my­directive.
-        </div>
-          <a href="/posts/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-        
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
       </section>
 
       
       <section class="w-100">
         <h1 class="f3">More</h1>
         
+        
+          <h2 class="f5 fw4 mb4 dib mr3">
+            <a href="/posts/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" class="link black dim">
+              vue自定义指令
+            </a>
+          </h2>
         
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="/posts/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/" class="link black dim">
@@ -232,12 +242,6 @@ var rt = new router({ routes:[{ path:'/', //指定要跳转的路径 component: 
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="/posts/js%E5%87%BD%E6%95%B0/" class="link black dim">
               JS函数
-            </a>
-          </h2>
-        
-          <h2 class="f5 fw4 mb4 dib mr3">
-            <a href="/posts/jsonp/" class="link black dim">
-              JSONP
             </a>
           </h2>
         
