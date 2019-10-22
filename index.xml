@@ -6,10 +6,22 @@
     <description>Recent content on 吴潇的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Tue, 22 Oct 2019 11:17:26 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 22 Oct 2019 19:17:26 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>JS模拟继承</title>
+      <link>http://example.org/posts/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF/</link>
+      <pubDate>Tue, 22 Oct 2019 19:17:26 +0800</pubDate>
+      
+      <guid>http://example.org/posts/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF/</guid>
+      <description>JS模拟继承 继承：面向对象编程中的一个概念，继承可以使子类具有父类的各种属性和方法。
+能产生对象的东西即为类。 var person = new Human()中的person就是一个对象，所以Human()便是一个类。 但是父类Object（）到子类Human（）是一个自带的继承。
+ES5写继承： function Human(name){ //父类 Human() this.name = (name) //自有属性name } Human.prototype.run = function(){ //共有属性为run console.log(“我叫”+this.name&amp;quot;,我有run的属性&amp;quot;) return undefined } function Man(name){ //声明 Man() Human.call(this, name) //call 父类 this.gender = &#39;男&#39; //声明自身的属性gender } var f = function(){ } f.prototype = Human.prototype man.prototype = new f( ) Man.prototype.fight = function(){ console.log(&#39;如来神掌&#39;) }  这三句：
+var f = function(){ } f.prototype = Human.prototype man.prototype = new f( )  等价于：</description>
+    </item>
     
     <item>
       <title>http之Cookie、Cache-control、Session</title>

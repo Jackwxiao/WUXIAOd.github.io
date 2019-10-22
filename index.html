@@ -33,7 +33,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://example.org/" />
 
-<meta property="og:updated_time" content="2019-10-22T11:17:26+08:00" />
+<meta property="og:updated_time" content="2019-10-22T19:17:26+08:00" />
 <meta itemprop="name" content="吴潇的个人博客">
 <meta itemprop="description" content="">
 
@@ -120,6 +120,33 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/posts/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF/" class="color-inherit dim link">
+            JS模拟继承
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          JS模拟继承 继承：面向对象编程中的一个概念，继承可以使子类具有父类的各种属性和方法。
+能产生对象的东西即为类。 var person = new Human()中的person就是一个对象，所以Human()便是一个类。 但是父类Object（）到子类Human（）是一个自带的继承。
+ES5写继承： function Human(name){ //父类 Human() this.name = (name) //自有属性name } Human.prototype.run = function(){ //共有属性为run console.log(“我叫”+this.name&quot;,我有run的属性&quot;) return undefined } function Man(name){ //声明 Man() Human.call(this, name) //call 父类 this.gender = '男' //声明自身的属性gender } var f = function(){ } f.prototype = Human.prototype man.prototype = new f( ) Man.prototype.fight = function(){ console.log('如来神掌') }  这三句：
+var f = function(){ } f.prototype = Human.prototype man.prototype = new f( )  等价于：
+        </div>
+          <a href="/posts/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="relative w-100 mb4">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="/posts/cookiecache-controlsession/" class="color-inherit dim link">
             http之Cookie、Cache-control、Session
             </a>
@@ -187,39 +214,18 @@ Cache-Control可以让浏览器在一段时间内不访问浏览器，直接用�
 
           </div>
         
-          <div class="relative w-100 mb4">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/vue-routeraxiosvuex/" class="color-inherit dim link">
-            vue-router、axios、vuex
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          vue-router 路由的基本加载  安装 npm install --save vue-router 2.引用
-在router 的index.js中 import router from 'vue-router' Vue.use(router)  配置路由文件，并在vue实例中注入
-var rt = new router({ routes:[{ path:'/', //指定要跳转的路径 component: HelloWorld //指定要跳转的组件 }] }) new Vue({ el: '#app', router, components: { App }, template: '' })  确定试图加载的位置
-&lt;router-view&gt;&lt;/router-view&gt;  路由的跳转  &lt;template&gt; &lt;ul&gt; &lt;li&gt; &lt;router-link to=&quot;/helloearth&quot;&gt;HELLO EARTH 33&lt;/router-link&gt; &lt;/li&gt; &lt;li&gt; &lt;router-link to=&quot;/helloworld&quot;&gt;HELLO WORLD 22&lt;/router-link&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/template&gt;   路由参数传递  必须在路由内加入路由的name .
-        </div>
-          <a href="/posts/vue-routeraxiosvuex/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-        
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
       </section>
 
       
       <section class="w-100">
         <h1 class="f3">More</h1>
         
+        
+          <h2 class="f5 fw4 mb4 dib mr3">
+            <a href="/posts/vue-routeraxiosvuex/" class="link black dim">
+              vue-router、axios、vuex
+            </a>
+          </h2>
         
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="/posts/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" class="link black dim">
@@ -236,12 +242,6 @@ var rt = new router({ routes:[{ path:'/', //指定要跳转的路径 component: 
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="/posts/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/" class="link black dim">
               vue组件详解
-            </a>
-          </h2>
-        
-          <h2 class="f5 fw4 mb4 dib mr3">
-            <a href="/posts/js%E5%87%BD%E6%95%B0/" class="link black dim">
-              JS函数
             </a>
           </h2>
         

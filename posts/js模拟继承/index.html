@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>吴潇的个人博客  | JS模拟继承</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.58.2" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.d98f2eb6bcd1eaedb7edf166bd16af26.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="JS模拟继承" />
+<meta property="og:description" content="JS模拟继承 继承：面向对象编程中的一个概念，继承可以使子类具有父类的各种属性和方法。
+能产生对象的东西即为类。 var person = new Human()中的person就是一个对象，所以Human()便是一个类。 但是父类Object（）到子类Human（）是一个自带的继承。
+ES5写继承： function Human(name){ //父类 Human() this.name = (name) //自有属性name } Human.prototype.run = function(){ //共有属性为run console.log(“我叫”&#43;this.name&quot;,我有run的属性&quot;) return undefined } function Man(name){ //声明 Man() Human.call(this, name) //call 父类 this.gender = &#39;男&#39; //声明自身的属性gender } var f = function(){ } f.prototype = Human.prototype man.prototype = new f( ) Man.prototype.fight = function(){ console.log(&#39;如来神掌&#39;) }  这三句：
+var f = function(){ } f.prototype = Human.prototype man.prototype = new f( )  等价于：" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF/" />
+<meta property="article:published_time" content="2019-10-22T19:17:26+08:00" />
+<meta property="article:modified_time" content="2019-10-22T19:17:26+08:00" />
+<meta itemprop="name" content="JS模拟继承">
+<meta itemprop="description" content="JS模拟继承 继承：面向对象编程中的一个概念，继承可以使子类具有父类的各种属性和方法。
+能产生对象的东西即为类。 var person = new Human()中的person就是一个对象，所以Human()便是一个类。 但是父类Object（）到子类Human（）是一个自带的继承。
+ES5写继承： function Human(name){ //父类 Human() this.name = (name) //自有属性name } Human.prototype.run = function(){ //共有属性为run console.log(“我叫”&#43;this.name&quot;,我有run的属性&quot;) return undefined } function Man(name){ //声明 Man() Human.call(this, name) //call 父类 this.gender = &#39;男&#39; //声明自身的属性gender } var f = function(){ } f.prototype = Human.prototype man.prototype = new f( ) Man.prototype.fight = function(){ console.log(&#39;如来神掌&#39;) }  这三句：
+var f = function(){ } f.prototype = Human.prototype man.prototype = new f( )  等价于：">
+
+
+<meta itemprop="datePublished" content="2019-10-22T19:17:26&#43;08:00" />
+<meta itemprop="dateModified" content="2019-10-22T19:17:26&#43;08:00" />
+<meta itemprop="wordCount" content="112">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="JS模拟继承"/>
+<meta name="twitter:description" content="JS模拟继承 继承：面向对象编程中的一个概念，继承可以使子类具有父类的各种属性和方法。
+能产生对象的东西即为类。 var person = new Human()中的person就是一个对象，所以Human()便是一个类。 但是父类Object（）到子类Human（）是一个自带的继承。
+ES5写继承： function Human(name){ //父类 Human() this.name = (name) //自有属性name } Human.prototype.run = function(){ //共有属性为run console.log(“我叫”&#43;this.name&quot;,我有run的属性&quot;) return undefined } function Man(name){ //声明 Man() Human.call(this, name) //call 父类 this.gender = &#39;男&#39; //声明自身的属性gender } var f = function(){ } f.prototype = Human.prototype man.prototype = new f( ) Man.prototype.fight = function(){ console.log(&#39;如来神掌&#39;) }  这三句：
+var f = function(){ } f.prototype = Human.prototype man.prototype = new f( )  等价于："/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      吴潇的个人博客
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1">JS模拟继承</h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-10-22T19:17:26&#43;08:00">October 22, 2019</time>
+      
+      
+    </header>
+
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
+
+<h3 id="js模拟继承">JS模拟继承</h3>
+
+<p>继承：面向对象编程中的一个概念，继承可以使子类具有父类的各种属性和方法。</p>
+
+<p>能产生对象的东西即为类。
+<code>var  person = new Human()</code>中的person就是一个对象，所以Human()便是一个类。
+但是父类Object（）到子类Human（）是一个自带的继承。</p>
+
+<h4 id="es5写继承">ES5写继承：</h4>
+
+<pre><code>function Human(name){     //父类 Human()
+    this.name = (name) //自有属性name
+}
+Human.prototype.run = function(){ //共有属性为run
+    console.log(“我叫”+this.name&quot;,我有run的属性&quot;)
+    return undefined
+}
+
+function Man(name){  //声明 Man()
+    Human.call(this, name) //call 父类
+    this.gender = '男'   //声明自身的属性gender
+}
+
+var f = function(){ }
+    f.prototype = Human.prototype
+    man.prototype = new f( )
+    
+    Man.prototype.fight = function(){
+    console.log('如来神掌')
+    }
+</code></pre>
+
+<p><img src="https://i.loli.net/2019/10/22/861syzlNhKfdG7E.png" alt="继承.png" /></p>
+
+<p>这三句：</p>
+
+<pre><code>var f = function(){ }
+    f.prototype = Human.prototype
+    man.prototype = new f( )
+</code></pre>
+
+<p>等价于：</p>
+
+<pre><code>Man.prototype.__proto__ = Human.prototype  //Man的原型的原型等于Human的原型
+
+IE不支持上面代码，所以用上面的三句话代替。
+</code></pre>
+
+<p><img src="https://i.loli.net/2019/10/22/jvCDkybAQ983BMe.png" alt="原型链的继承.png" /></p>
+
+<hr />
+
+<p><img src="https://i.loli.net/2019/10/22/F3m1WsVjebdc8OZ.png" alt="为何要一个空对象图解.png" /></p>
+
+<p>但是如果按上图红字那样写就会出现不该出现的东西如下图所示：这是因为上图第四句，执行了this.name = name。所以就有了那三句话代替这一句。</p>
+
+<p><img src="https://i.loli.net/2019/10/22/utlJdCf4m7IThFA.png" alt="出错图.png" /></p>
+
+<h4 id="es6写法">ES6写法：</h4>
+
+<p><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes">MDN关于 类 的解析</a></p>
+
+<pre><code>class Human{
+     constructor(name){
+         this.name = name
+     }
+     run(){
+         console.log(&quot;我叫&quot;+this.name+&quot;，我有run的属性&quot;)
+         return undefined
+     }
+ }
+ class Man extends Human{
+     constructor(name){
+         super(name)
+         this.gender = '男'
+     }
+     fight(){
+         console.log('如来神掌')
+     }
+ }
+</code></pre>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+      
+      
+      </div>
+    </section>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2019 吴潇的个人博客
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

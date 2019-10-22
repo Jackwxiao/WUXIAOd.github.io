@@ -33,7 +33,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://example.org/posts/" />
 
-<meta property="og:updated_time" content="2019-10-22T11:17:26+08:00" />
+<meta property="og:updated_time" content="2019-10-22T19:17:26+08:00" />
 <meta itemprop="name" content="Posts">
 <meta itemprop="description" content="">
 
@@ -89,6 +89,24 @@
   <article class="pa3 pa4-ns nested-copy-line-height nested-img">
     <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy mid-gray"></section>
     <section class="flex-ns flex-wrap justify-around mt5">
+      
+        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF/" class="link black dim">
+        JS模拟继承
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      JS模拟继承 继承：面向对象编程中的一个概念，继承可以使子类具有父类的各种属性和方法。
+能产生对象的东西即为类。 var person = new Human()中的person就是一个对象，所以Human()便是一个类。 但是父类Object（）到子类Human（）是一个自带的继承。
+ES5写继承： function Human(name){ //父类 Human() this.name = (name) //自有属性name } Human.prototype.run = function(){ //共有属性为run console.log(“我叫”+this.name&quot;,我有run的属性&quot;) return undefined } function Man(name){ //声明 Man() Human.call(this, name) //call 父类 this.gender = '男' //声明自身的属性gender } var f = function(){ } f.prototype = Human.prototype man.prototype = new f( ) Man.prototype.fight = function(){ console.log('如来神掌') }  这三句：
+var f = function(){ } f.prototype = Human.prototype man.prototype = new f( )  等价于：
+    </div>
+  </div>
+</div>
+</div>
       
         <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
   <div class="bg-white mb3 pa4 gray overflow-hidden">
@@ -289,29 +307,6 @@ var f = function () { console.log('1'); } function f() { console.log('2'); } f()
 &lt;div id=&quot;demo2&quot;&gt; {{text}} {{reverseText}} &lt;/div&gt; &lt;script&gt; var app = new Vue({ el: '#demo1', data:{ text: '123,456,789' }, computed:{ reverseText:function(){ return this.text.split(',').reverse().join(',') } } }) &lt;/script&gt;  由此可以看出：
  模块内表达式非常便利，但只能用于简单的运算，在模块中放入太多逻辑会使模块臃肿难以维护； 计算属性也可以实现，并且可以处理复杂逻辑。  方法（methods）  计算缓存、 Methods，两者的区别： 只要发生重新渲染，methods 调用总会执行指定函数。但是计算属性却不一定，它是依赖缓存的。
 &lt;div id =&quot;date&quot;&gt; &lt;!
-    </div>
-  </div>
-</div>
-</div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/vue-%E6%8C%87%E4%BB%A4%E5%92%8C%E4%BA%8B%E4%BB%B6%E7%AD%89/" class="link black dim">
-        vue 指令事件
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      过滤器 Vue.js支持在 {{}} 插值的尾部添加一小管道符 &ldquo;|&rdquo; 对数据进行过滤，经常用于格式化文本，比如字母全部大写、货币千位使用逗号分隔等。过滤的规则是自定义的,通过给 Vue 实例添加选项 filters 来设置过滤器： {{ data | filter1 |filter2}} {{date | formatDate(66,99)}}中的第一个和第二个参数，分别对应过滤器的第二个和第三个参数
-指令和事件 指令（Directives）是 Vue 模板中最常用的一项功能，它带有前缀 v-，能帮我们快速完成DOM操作。循环渲染。显示和隐藏。
- v-­text:解析文本 和{{ }} 作用一样
- v­-html:解析html
- v-­bind: v­bind 的基本用途是动态更新 HTML 元素上的属性，比如 id、class 等
- v-­on: 它用来绑定事件监听器
-v­-on具体介绍 在普通元素上，v-­on可以监听原生的 DOM 事件，除了 click 外，还有dblclick、 keyup, mousemove 等。表达式可以是一个方法名，这些方法都写在 Vue 实例的 methods 属性内，并且是函数的形式，函数内的 this 指向的是当前 Vue 实例本身，因此可以直接使用 this.xxx形式来访问或修改数据
- vue中用到的所有方法都定义在methods中
-  语法糖  语法糖是指在不影响功能的情况下，添加某种简洁方法实现同样的效果，从而更加方便程序开发。 v-bind ——&gt; : (冒号) v-on ——&gt; @  实例 &lt;!
     </div>
   </div>
 </div>
