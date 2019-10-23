@@ -43,7 +43,7 @@ var f = function(){ } f.prototype = Human.prototype man.prototype = new f( )  �
 
 <meta itemprop="datePublished" content="2019-10-22T19:17:26&#43;08:00" />
 <meta itemprop="dateModified" content="2019-10-22T19:17:26&#43;08:00" />
-<meta itemprop="wordCount" content="112">
+<meta itemprop="wordCount" content="118">
 
 
 
@@ -168,7 +168,8 @@ IE不支持上面代码，所以用上面的三句话代替。
 
 <p><img src="https://i.loli.net/2019/10/22/F3m1WsVjebdc8OZ.png" alt="为何要一个空对象图解.png" /></p>
 
-<p>但是如果按上图红字那样写就会出现不该出现的东西如下图所示：这是因为上图第四句，执行了this.name = name。所以就有了那三句话代替这一句。</p>
+<p>但是如果按上图红字那样写<code>Man prototype  =new Human()</code>虽然可以达到插入原型链的目的，即<code>Man.prototype.__proto__ = Human.prototype</code>
+但会出现不该出现的东西如下图所示：这是因为上图第四句，执行了this.name = name。所以就有了那三句话代替这一句。。</p>
 
 <p><img src="https://i.loli.net/2019/10/22/utlJdCf4m7IThFA.png" alt="出错图.png" /></p>
 

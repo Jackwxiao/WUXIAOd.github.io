@@ -6,10 +6,19 @@
     <description>Recent content on 吴潇的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Tue, 22 Oct 2019 19:17:26 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 23 Oct 2019 19:17:26 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Promise</title>
+      <link>http://example.org/posts/promise/</link>
+      <pubDate>Wed, 23 Oct 2019 19:17:26 +0800</pubDate>
+      
+      <guid>http://example.org/posts/promise/</guid>
+      <description>用 Promise 对象实现 Ajax 操作 const getJSON = function(url) { const promise = new Promise(function(resolve, reject){ const handler = function() { if (this.readyState !== 4) { return; } if (this.status === 200) { resolve(this.response); } else { reject(new Error(this.statusText)); } }; const client = new XMLHttpRequest(); client.open(&amp;quot;GET&amp;quot;, url); client.onreadystatechange = handler; client.responseType = &amp;quot;json&amp;quot;; client.setRequestHeader(&amp;quot;Accept&amp;quot;, &amp;quot;application/json&amp;quot;); client.send(); }); return promise; }; getJSON(&amp;quot;/posts.json&amp;quot;).then(function(json) { console.log(&#39;Contents: &#39; + json); }, function(error) { console.</description>
+    </item>
     
     <item>
       <title>JS模拟继承</title>

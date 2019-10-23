@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>吴潇的个人博客  | Promise</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.58.2" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.d98f2eb6bcd1eaedb7edf166bd16af26.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="Promise" />
+<meta property="og:description" content="用 Promise 对象实现 Ajax 操作 const getJSON = function(url) { const promise = new Promise(function(resolve, reject){ const handler = function() { if (this.readyState !== 4) { return; } if (this.status === 200) { resolve(this.response); } else { reject(new Error(this.statusText)); } }; const client = new XMLHttpRequest(); client.open(&quot;GET&quot;, url); client.onreadystatechange = handler; client.responseType = &quot;json&quot;; client.setRequestHeader(&quot;Accept&quot;, &quot;application/json&quot;); client.send(); }); return promise; }; getJSON(&quot;/posts.json&quot;).then(function(json) { console.log(&#39;Contents: &#39; &#43; json); }, function(error) { console." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/promise/" />
+<meta property="article:published_time" content="2019-10-23T19:17:26+08:00" />
+<meta property="article:modified_time" content="2019-10-23T19:17:26+08:00" />
+<meta itemprop="name" content="Promise">
+<meta itemprop="description" content="用 Promise 对象实现 Ajax 操作 const getJSON = function(url) { const promise = new Promise(function(resolve, reject){ const handler = function() { if (this.readyState !== 4) { return; } if (this.status === 200) { resolve(this.response); } else { reject(new Error(this.statusText)); } }; const client = new XMLHttpRequest(); client.open(&quot;GET&quot;, url); client.onreadystatechange = handler; client.responseType = &quot;json&quot;; client.setRequestHeader(&quot;Accept&quot;, &quot;application/json&quot;); client.send(); }); return promise; }; getJSON(&quot;/posts.json&quot;).then(function(json) { console.log(&#39;Contents: &#39; &#43; json); }, function(error) { console.">
+
+
+<meta itemprop="datePublished" content="2019-10-23T19:17:26&#43;08:00" />
+<meta itemprop="dateModified" content="2019-10-23T19:17:26&#43;08:00" />
+<meta itemprop="wordCount" content="93">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Promise"/>
+<meta name="twitter:description" content="用 Promise 对象实现 Ajax 操作 const getJSON = function(url) { const promise = new Promise(function(resolve, reject){ const handler = function() { if (this.readyState !== 4) { return; } if (this.status === 200) { resolve(this.response); } else { reject(new Error(this.statusText)); } }; const client = new XMLHttpRequest(); client.open(&quot;GET&quot;, url); client.onreadystatechange = handler; client.responseType = &quot;json&quot;; client.setRequestHeader(&quot;Accept&quot;, &quot;application/json&quot;); client.send(); }); return promise; }; getJSON(&quot;/posts.json&quot;).then(function(json) { console.log(&#39;Contents: &#39; &#43; json); }, function(error) { console."/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      吴潇的个人博客
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1">Promise</h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-10-23T19:17:26&#43;08:00">October 23, 2019</time>
+      
+      
+    </header>
+
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
+
+<h4 id="用-promise-对象实现-ajax-操作">用 Promise 对象实现 Ajax 操作</h4>
+
+<pre><code>const getJSON = function(url) {
+  const promise = new Promise(function(resolve, reject){
+    const handler = function() {
+      if (this.readyState !== 4) {
+        return;
+      }
+      if (this.status === 200) {
+        resolve(this.response);
+      } else {
+        reject(new Error(this.statusText));
+      }
+    };
+    const client = new XMLHttpRequest();
+    client.open(&quot;GET&quot;, url);
+    client.onreadystatechange = handler;
+    client.responseType = &quot;json&quot;;
+    client.setRequestHeader(&quot;Accept&quot;, &quot;application/json&quot;);
+    client.send();
+
+  });
+
+  return promise;
+};
+
+getJSON(&quot;/posts.json&quot;).then(function(json) {
+  console.log('Contents: ' + json);
+}, function(error) {
+  console.error('出错了', error);
+});
+</code></pre>
+
+<p><strong>getJSON是对 XMLHttpRequest 对象的封装，用于发出一个针对 JSON 数据的 HTTP 请求，并且返回一个Promise对象。需要注意的是，在getJSON内部，resolve函数和reject函数调用时，都带有参数。</strong></p>
+
+<h4 id="手写promise">手写Promise</h4>
+
+<pre><code>function xxx(){
+return new Promise((f1,f2)=&gt;{
+doSomething()
+setTimeout(()=&gt;{
+//成功就调用f1，失败就调用f2
+}，3000)
+})
+}
+xxx().then(success,fail)
+</code></pre>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+      
+      
+      </div>
+    </section>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2019 吴潇的个人博客
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>
