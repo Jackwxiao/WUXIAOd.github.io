@@ -6,10 +6,25 @@
     <description>Recent content on 吴潇的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Wed, 23 Oct 2019 19:17:26 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 23 Oct 2019 19:21:26 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>JS之函数</title>
+      <link>http://example.org/posts/js%E4%B9%8B%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Wed, 23 Oct 2019 19:21:26 +0800</pubDate>
+      
+      <guid>http://example.org/posts/js%E4%B9%8B%E5%87%BD%E6%95%B0/</guid>
+      <description>函数 指可以执行代码的对象，和数组一样有不一致性。
+三种函数声明方式 function f() { } var f = function f() { }; //注意分号 f = new Function (&#39;x&#39;,&#39;y&#39;,&#39;return x+y&#39;) //只有最后一个参数会被当作函数体，可以不使用new 命令，不推荐使用这种声明方式  注意：如果同一个函数被多次声明，后面的声明会覆盖前面的声明。也就是说起前面的声明会失效。
+函数名的提升 JS引擎将函数名视同变量名，使用function 声明函数时，整个函数会像变量声明一样被提升到代码头部。如果同时使用function命令和赋值语句声明同一个函数，最后总是采用赋值语句的定义
+var f = function () { console.log(&#39;1&#39;); } function f() { console.log(&#39;2&#39;); } f() // 1  函数的属性和方法  name : f.name返回函数的名字，如果通过变量赋值定义的匿名函数则返回变量名。具名函数返回function关键字后的函数名。
+var f3 = function myName() {}; f3.name // &#39;myName&#39;   上面代码中，f3.name返回函数表达式的名字。注意，真正的函数名还是f3，而myName这个名字只在函数体内部可用。 用处：可用来获取参数函数的名字。
+ length: f.length 返回函数预期传入的参数个数。
+ toString: 返回一个字符串，内容是函数源码。</description>
+    </item>
     
     <item>
       <title>Promise</title>

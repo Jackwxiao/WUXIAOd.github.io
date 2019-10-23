@@ -33,7 +33,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://example.org/" />
 
-<meta property="og:updated_time" content="2019-10-23T19:17:26+08:00" />
+<meta property="og:updated_time" content="2019-10-23T19:21:26+08:00" />
 <meta itemprop="name" content="吴潇的个人博客">
 <meta itemprop="description" content="">
 
@@ -120,6 +120,36 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/posts/js%E4%B9%8B%E5%87%BD%E6%95%B0/" class="color-inherit dim link">
+            JS之函数
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          函数 指可以执行代码的对象，和数组一样有不一致性。
+三种函数声明方式 function f() { } var f = function f() { }; //注意分号 f = new Function ('x','y','return x+y') //只有最后一个参数会被当作函数体，可以不使用new 命令，不推荐使用这种声明方式  注意：如果同一个函数被多次声明，后面的声明会覆盖前面的声明。也就是说起前面的声明会失效。
+函数名的提升 JS引擎将函数名视同变量名，使用function 声明函数时，整个函数会像变量声明一样被提升到代码头部。如果同时使用function命令和赋值语句声明同一个函数，最后总是采用赋值语句的定义
+var f = function () { console.log('1'); } function f() { console.log('2'); } f() // 1  函数的属性和方法  name : f.name返回函数的名字，如果通过变量赋值定义的匿名函数则返回变量名。具名函数返回function关键字后的函数名。
+var f3 = function myName() {}; f3.name // 'myName'   上面代码中，f3.name返回函数表达式的名字。注意，真正的函数名还是f3，而myName这个名字只在函数体内部可用。 用处：可用来获取参数函数的名字。
+ length: f.length 返回函数预期传入的参数个数。
+ toString: 返回一个字符串，内容是函数源码。
+        </div>
+          <a href="/posts/js%E4%B9%8B%E5%87%BD%E6%95%B0/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="relative w-100 mb4">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="/posts/promise/" class="color-inherit dim link">
             Promise
             </a>
@@ -163,48 +193,18 @@ var f = function(){ } f.prototype = Human.prototype man.prototype = new f( )  �
 
           </div>
         
-          <div class="relative w-100 mb4">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/cookiecache-controlsession/" class="color-inherit dim link">
-            http之Cookie、Cache-control、Session
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-           HTTP请求与响应
-Cookie Cookie 是什么？  Cookie 是浏览器访问服务器后，服务器传给浏览器的一段数据。 浏览器需要保存这段数据，不得轻易删除。 此后每次浏览器访问该服务器，都必须带上这段数据。  Cookie特点：  服务器通过 Set-Cookie 头设给客户端一串字符串 浏览器（客户端）得到Cookie 之后，每次访问相同域名的网页时都要带上这段字符串 服务器读取Cookie就知道登录用户的信息。客户端要在一段时间内保存这个Cookie。  cookie会被用户更改，所以要使用session来阻止用户更改。
-什么是Session? 服务器通过Cookie给用户一个session id,session id对应服务器里面的一小块内存，每次用户访问服务器时，服务器通过session id去读取对应的session就知道用户的隐私信息了。
-Session是基于Cookie实现的，反过来说，cookie是session的基石。
-cookie和localstorage的区别：  localstorage和http无关，不会被带到服务器上，cookie每次请求的时候会被浏览器带到服务器上；
- localstorage最大存储量为5Mb左右,cookie为4k左右。
-  localstorage和sessionstorage的区别：  sessionstroage在用户关闭页面后就失效（会话结束后），localstorage永久有效。
- cookie默认在用户关闭页面后就失效，后台代码可以任意设置Cookie的失效期限。
-  Cache-control 你想要哪个请求被缓存，就给一个Cache-Control response.setHeader('Cache-Control','max-age=30')//30秒内请求时返回的是内存给你的
-但是首页不能设置Cache-Conrol,如果首页都缓存了，用户在缓存时间内无法获得最新内容。
-Cache-Control可以让浏览器在一段时间内不访问浏览器，直接用本地的内存或硬盘作为响应，可以极快的请求到资源。 如果要更新，只要在入口（html）文件里把URL变一下，跟以前的所有URL不一样就不会使用缓存，会把最新版的缓存下来，如果又过时了，再改一下就可以了。 #### Expires和Cache-Control的区别：
- Cache-Control是多长时间过期，Expires是什么时候过期，也就是设置的时候，C是设置时长，E设置时间点。   #### cache-control与Etag: 设置了Cache-Control直接不请求,Etag会请求但如果MD5一样就不会下载。
-登陆注册图解： 
-        </div>
-          <a href="/posts/cookiecache-controlsession/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-        
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
       </section>
 
       
       <section class="w-100">
         <h1 class="f3">More</h1>
         
+        
+          <h2 class="f5 fw4 mb4 dib mr3">
+            <a href="/posts/cookiecache-controlsession/" class="link black dim">
+              http之Cookie、Cache-control、Session
+            </a>
+          </h2>
         
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="/posts/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="link black dim">
@@ -221,12 +221,6 @@ Cache-Control可以让浏览器在一段时间内不访问浏览器，直接用�
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="/posts/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" class="link black dim">
               vue自定义指令
-            </a>
-          </h2>
-        
-          <h2 class="f5 fw4 mb4 dib mr3">
-            <a href="/posts/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/" class="link black dim">
-              vue组件详解
             </a>
           </h2>
         
