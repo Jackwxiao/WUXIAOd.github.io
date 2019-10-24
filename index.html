@@ -33,7 +33,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://example.org/" />
 
-<meta property="og:updated_time" content="2019-10-24T11:32:33+08:00" />
+<meta property="og:updated_time" content="2019-10-24T18:21:29+08:00" />
 <meta itemprop="name" content="吴潇的个人博客">
 <meta itemprop="description" content="">
 
@@ -120,6 +120,51 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/posts/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E9%97%AE%E9%A2%98/" class="color-inherit dim link">
+            移动端的问题
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          300ms延迟问题： 延迟的原因：
+iphone是无键盘全触屏手机的始祖，当时的网站都是为大屏幕设备所设计的（没有设置），为了便于用户阅读浏览器引入了双击缩放的功能。手指在屏幕上快速点击两次，iOS 自带的 Safari 浏览器会将网页缩放至原始比例。那如何判断用户快速点击两次呢？假定用户点击后300ms内如果有第二次点击，就认为用户的目的是双击缩放而不是普通的点击页面元素。所以用户第一次点击一个链接后，必须等300ms，浏览器才能决定是否是跳转还是缩放页面。 后来全触屏手机流行后，其他设备浏览器也开始效仿。
+如何解决：
+方法1、设置 meta&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;
+经过测试，在android手机只要添加name=viewport的meta即可消除延迟， 在ios上必须设置width=device-width。
+其他方法:
+fastclick库，或者不用click用touchstart
+什么时候使用: 1. 当移动端因为一些原因未使用 的时候使用。 2. 2017年以前使用，现在一般不用。但为了应付面试仍然学习它，因为不少面试官还生活在2017年以前。
+如何使用:
+ &lt;script src=&quot;https://cdn.bootcss.com/fastclick/1.0.6/fastclick.js&quot;&gt;&lt;/script&gt; document.addEventListener('DOMContentLoaded', function() { FastClick.attach(document.body) }, false)  fastclick 原理: 在检测到touchend事件的时候，会通过DOM自定义事件立即出发模拟一个click事件，并把浏览器在300ms之后真正的click事件阻止掉
+点击穿透现象： 在移动端，当用户通过绑定touchstar事件监听函数让浮层关闭时，关闭后浮层后面对应位置页面其他元素也被点击，比如浮层的关闭按钮下是一个链接，当用户点击浮层关闭按钮浮层消失后大约300ms页面同时发生跳转。
+原因分析： 触屏设备为了区分用户双击缩放，对click做了300ms延迟触发，因此用户在移动端触屏设备的操作流程以及事件触发为：
+ 手指触摸屏幕到屏幕，触发 touchstart 手指在屏幕短暂停留(如果是移动，触发 touchmove) 手指离开屏幕, 触发 touchend 等待约300ms，看用户在此时间内是否再次触摸屏幕。如果没有 300ms后 在用户手指离开的位置触发 click事件  击穿的根源在第4步。当用户用户点击关闭让遮罩隐藏后，浏览器在300ms后在原来用户手指离开的位置触发click事件，此时遮罩不存在了，自然“点击”到后面的元素。
+解决方法:
+方法1
+设置&lt;meta name=&quot;viewport&quot; content=&quot;device-width&quot;&gt; 表面上看起来解决了300ms延时，就能解决穿透。实际上这种方法不可行。因为click事件是在touchend事件之后，更晚于touchstart（间隔了60~100ms），如果在touchstart 里绑定关闭了浮层，约100ms后 click事件触发的时候仍然会引发问题。
+方法2
+关闭浮层用click，不用touchstart。 可行。因为浮层关闭监听的是click，当浮层消失后不会再在原来的位置再冒出个click
+方法3
+浮层关闭的时间延长。可行。当用户触发touchstart关闭浮层时，浮层可以使用渐变消失（可设置浮层关闭动画在300ms以上），此刻click事件在原来的位置触发时点击的还是浮层，而不是浮层后面的链接
+方法4
+在ontouchstart 里阻止默认事件。可行。 这样可以阻止click的触发
+        </div>
+          <a href="/posts/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E9%97%AE%E9%A2%98/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="relative w-100 mb4">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="/posts/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/" class="color-inherit dim link">
             移动端适配方案
             </a>
@@ -170,36 +215,18 @@ var f3 = function myName() {}; f3.name // 'myName'   上面代码中，f3.name�
 
           </div>
         
-          <div class="relative w-100 mb4">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/promise/" class="color-inherit dim link">
-            Promise
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          用 Promise 对象实现 Ajax 操作 const getJSON = function(url) { const promise = new Promise(function(resolve, reject){ const handler = function() { if (this.readyState !== 4) { return; } if (this.status === 200) { resolve(this.response); } else { reject(new Error(this.statusText)); } }; const client = new XMLHttpRequest(); client.open(&quot;GET&quot;, url); client.onreadystatechange = handler; client.responseType = &quot;json&quot;; client.setRequestHeader(&quot;Accept&quot;, &quot;application/json&quot;); client.send(); }); return promise; }; getJSON(&quot;/posts.json&quot;).then(function(json) { console.log('Contents: ' + json); }, function(error) { console.
-        </div>
-          <a href="/posts/promise/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-        
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
       </section>
 
       
       <section class="w-100">
         <h1 class="f3">More</h1>
         
+        
+          <h2 class="f5 fw4 mb4 dib mr3">
+            <a href="/posts/promise/" class="link black dim">
+              Promise
+            </a>
+          </h2>
         
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="/posts/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF/" class="link black dim">
@@ -216,12 +243,6 @@ var f3 = function myName() {}; f3.name // 'myName'   上面代码中，f3.name�
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="/posts/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="link black dim">
               web性能优化
-            </a>
-          </h2>
-        
-          <h2 class="f5 fw4 mb4 dib mr3">
-            <a href="/posts/vue-routeraxiosvuex/" class="link black dim">
-              vue-router、axios、vuex
             </a>
           </h2>
         
