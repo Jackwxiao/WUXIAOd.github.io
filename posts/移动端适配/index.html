@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    
+    <title>吴潇的个人博客  | 移动端适配方案</title>
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    <meta name="generator" content="Hugo 0.58.2" />
+    
+    
+      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+    
+
+    
+    
+      <link href="/dist/css/app.d98f2eb6bcd1eaedb7edf166bd16af26.css" rel="stylesheet">
+    
+
+    
+
+    
+      
+    
+
+    
+
+    <meta property="og:title" content="移动端适配方案" />
+<meta property="og:description" content="移动端适配的几种方案： viewport适配 开发流程: 1. 开发者拿到设计稿（假设设计稿尺寸为750px，设计稿的元素标是基于此宽度标注） 2. 开始开发，css以设计稿标注的尺寸来开发，比如页面元素字体标注的大小是32px 4. 在html的head里引入适配代码
+简言之：CSS按照设计稿写，加几句动态生成meta标签的JS代码。
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt; &lt;script&gt; const WIDTH = 750 const mobileAdapter = () =&gt; { let scale = screen.width/WIDTH let content = `width=${WIDTH}, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}` let meta = document.querySelector(&#39;meta[name=viewport]&#39;) if(!meta) { meta = document.createElement(&#39;meta&#39;) meta.setAttribute(&#39;name&#39;, &#39;viewport&#39;) document.head.appendChild(meta) } meta.setAttribute(&#39;content&#39;, content) } mobileAdapter() window.onorientationchange = mobileAdapter &lt;/script&gt;  原理解析：
+&lt;meta name=&quot;viewport&quot; content=&quot;width=750px,inital-scale=0.5&quot;&gt;  content=750px是设计稿的尺寸。 initial-scale为默认缩放比，它是由设备尺寸/设计稿尺寸决定，不能写死，所以要动态生成。 优点是使用简单，缺点是页面整体缩放，如果页面中有一个1px的边框，经整体缩放，这个1px可能就不见了或者又太大了。
+vw适配： 750px=100vw; 1px=0.1333vw; 84px=11.20vw&hellip;&hellip;" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/posts/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/" />
+<meta property="article:published_time" content="2019-10-24T11:32:33+08:00" />
+<meta property="article:modified_time" content="2019-10-24T11:32:33+08:00" />
+<meta itemprop="name" content="移动端适配方案">
+<meta itemprop="description" content="移动端适配的几种方案： viewport适配 开发流程: 1. 开发者拿到设计稿（假设设计稿尺寸为750px，设计稿的元素标是基于此宽度标注） 2. 开始开发，css以设计稿标注的尺寸来开发，比如页面元素字体标注的大小是32px 4. 在html的head里引入适配代码
+简言之：CSS按照设计稿写，加几句动态生成meta标签的JS代码。
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt; &lt;script&gt; const WIDTH = 750 const mobileAdapter = () =&gt; { let scale = screen.width/WIDTH let content = `width=${WIDTH}, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}` let meta = document.querySelector(&#39;meta[name=viewport]&#39;) if(!meta) { meta = document.createElement(&#39;meta&#39;) meta.setAttribute(&#39;name&#39;, &#39;viewport&#39;) document.head.appendChild(meta) } meta.setAttribute(&#39;content&#39;, content) } mobileAdapter() window.onorientationchange = mobileAdapter &lt;/script&gt;  原理解析：
+&lt;meta name=&quot;viewport&quot; content=&quot;width=750px,inital-scale=0.5&quot;&gt;  content=750px是设计稿的尺寸。 initial-scale为默认缩放比，它是由设备尺寸/设计稿尺寸决定，不能写死，所以要动态生成。 优点是使用简单，缺点是页面整体缩放，如果页面中有一个1px的边框，经整体缩放，这个1px可能就不见了或者又太大了。
+vw适配： 750px=100vw; 1px=0.1333vw; 84px=11.20vw&hellip;&hellip;">
+
+
+<meta itemprop="datePublished" content="2019-10-24T11:32:33&#43;08:00" />
+<meta itemprop="dateModified" content="2019-10-24T11:32:33&#43;08:00" />
+<meta itemprop="wordCount" content="218">
+
+
+
+<meta itemprop="keywords" content="" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="移动端适配方案"/>
+<meta name="twitter:description" content="移动端适配的几种方案： viewport适配 开发流程: 1. 开发者拿到设计稿（假设设计稿尺寸为750px，设计稿的元素标是基于此宽度标注） 2. 开始开发，css以设计稿标注的尺寸来开发，比如页面元素字体标注的大小是32px 4. 在html的head里引入适配代码
+简言之：CSS按照设计稿写，加几句动态生成meta标签的JS代码。
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt; &lt;script&gt; const WIDTH = 750 const mobileAdapter = () =&gt; { let scale = screen.width/WIDTH let content = `width=${WIDTH}, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}` let meta = document.querySelector(&#39;meta[name=viewport]&#39;) if(!meta) { meta = document.createElement(&#39;meta&#39;) meta.setAttribute(&#39;name&#39;, &#39;viewport&#39;) document.head.appendChild(meta) } meta.setAttribute(&#39;content&#39;, content) } mobileAdapter() window.onorientationchange = mobileAdapter &lt;/script&gt;  原理解析：
+&lt;meta name=&quot;viewport&quot; content=&quot;width=750px,inital-scale=0.5&quot;&gt;  content=750px是设计稿的尺寸。 initial-scale为默认缩放比，它是由设备尺寸/设计稿尺寸决定，不能写死，所以要动态生成。 优点是使用简单，缺点是页面整体缩放，如果页面中有一个1px的边框，经整体缩放，这个1px可能就不见了或者又太大了。
+vw适配： 750px=100vw; 1px=0.1333vw; 84px=11.20vw&hellip;&hellip;"/>
+
+  </head>
+
+  <body class="ma0 avenir bg-near-white">
+
+    
+   
+  
+
+  <header>
+    <div class="bg-black">
+      <nav class="pv3 ph3 ph4-ns" role="navigation">
+  <div class="flex-l justify-between items-center center">
+    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
+      吴潇的个人博客
+    </a>
+    <div class="flex-l items-center">
+      
+
+      
+      
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+  </div>
+</nav>
+
+    </div>
+  </header>
+
+
+
+    <main class="pb7" role="main">
+      
+  
+  <article class="flex-l flex-wrap justify-between mw8 center ph3">
+
+    <header class="mt4 w-100">
+      <p class="f6 b helvetica tracked">
+          
+        POSTS
+      </p>
+      <h1 class="f1 athelas mb1">移动端适配方案</h1>
+      
+      <time class="f6 mv4 dib tracked" datetime="2019-10-24T11:32:33&#43;08:00">October 24, 2019</time>
+      
+      
+    </header>
+
+    <section class="nested-copy-line-height lh-copy serif f4 nested-links nested-img mid-gray pr4-l w-two-thirds-l">
+
+<h2 id="移动端适配的几种方案">移动端适配的几种方案：</h2>
+
+<h3 id="viewport适配">viewport适配</h3>
+
+<p>开发流程:
+1. 开发者拿到设计稿（假设设计稿尺寸为750px，设计稿的元素标是基于此宽度标注）
+2. 开始开发，css以设计稿标注的尺寸来开发，比如页面元素字体标注的大小是32px
+4. 在html的head里引入适配代码</p>
+
+<p>简言之：CSS按照设计稿写，加几句动态生成meta标签的JS代码。</p>
+
+<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;
+   &lt;script&gt;
+    const WIDTH = 750
+    const mobileAdapter = () =&gt; {
+      let scale = screen.width/WIDTH
+      let content = `width=${WIDTH}, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}`
+      let meta = document.querySelector('meta[name=viewport]')
+      if(!meta) {
+        meta = document.createElement('meta')
+        meta.setAttribute('name', 'viewport')
+        document.head.appendChild(meta)
+      } 
+      meta.setAttribute('content', content)
+    }
+    mobileAdapter()
+    window.onorientationchange = mobileAdapter
+  &lt;/script&gt; 
+</code></pre>
+
+<p>原理解析：</p>
+
+<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=750px,inital-scale=0.5&quot;&gt;
+</code></pre>
+
+<p>content=750px是设计稿的尺寸。
+initial-scale为默认缩放比，它是由设备尺寸/设计稿尺寸决定，不能写死，所以要动态生成。
+优点是使用简单，缺点是页面整体缩放，如果页面中有一个1px的边框，经整体缩放，这个1px可能就不见了或者又太大了。</p>
+
+<h3 id="vw适配">vw适配：</h3>
+
+<p>750px=100vw;
+1px=0.1333vw;
+84px=11.20vw&hellip;&hellip;</p>
+
+<p>开发流程:
+1. 开发者拿到设计稿（假设设计稿尺寸为750px，设计稿的元素标是基于此宽度标注）
+2. 开始开发，对设计稿的标注进行转换，把px换成vw。比如页面元素字体标注的大小是32px，换成vw为 (<sup>100</sup>&frasl;<sub>750</sub>)*32 vw
+3. 对于需要等比缩放的元素，CSS使用转换后的单位
+4.对于不需要缩放的元素，比如边框阴影，使用固定单位px</p>
+
+<p>但是不能每次都手动计算吧。所以：使用CSS的自定义属性</p>
+
+<pre><code>&lt;style&gt;
+ :root {//相当于html
+      --color: red; 
+    }
+ 
+ header {
+      font-size: calc(28vw * var(--width));
+      display: flex;
+      padding: 0 calc(20vw * var(--width));
+      text-align: center;
+    }
+&lt;/style&gt;
+</code></pre>
+
+<p>当然前提是header里有meta标签和JS转换代码</p>
+
+<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1&quot;&gt;
+
+&lt;script&gt;
+    const WIDTH = 750
+    document.documentElement.style.setProperty('--width', (100/WIDTH));
+  &lt;/script&gt;
+</code></pre>
+
+<h3 id="动态rem适配">动态rem适配：</h3>
+
+<p>rem: 相对于根元素html的font-size的大小。
+ 如： 设计稿的字体大小为40px,设计稿宽度为750px,设备实际宽度为420px,那么40px在设备上的实际大小应该为 <sup>420</sup>&frasl;<sub>750</sub> *40
+ 假设html的font-size为100px，那么420/750 *40就是对应的结果。但是这个结果算出来的数字未必是一些整数或者好看的数。
+ 于是做一个规定：如果设计稿是28px，那对应的rem为0.28rem。这样的话需要进行设置。其实就是加几句JS来转换而已：</p>
+
+<pre><code> 
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1&quot;&gt;
+  &lt;script&gt;
+    const WIDTH = 750  //设计稿尺寸
+    const setView = () =&gt; {
+      console.log(screen.width)
+      document.documentElement.style.fontSize = (100*screen.width/WIDTH) + 'px'
+    }
+    window.onorientationchange = setView
+    setView()
+  &lt;/script&gt;
+  
+  &lt;style&gt; 
+ html {
+      /*font-size: 100 * window.innerWidth / 750*/
+    }
+  &lt;/style&gt;
+
+ main figure &gt; img {
+      width: 6.80rem;
+      height: 4.20rem;
+      object-fit: cover;
+      border-radius: 8px;
+    }  
+  
+</code></pre>
+
+<p>解析：
+1. viewport设置 <code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1&quot;&gt; </code>。把layout viewport 宽度设置为设备宽度，不需要缩放。
+2. 用js定义html的fontSize。假设设计稿的宽度和屏幕宽度相同，我们设置html的fontSize为100px，对应设计稿的20px即为0.2rem。若设计稿的尺寸和屏幕尺寸不同，那让html的fontSize为 100*屏幕宽度/设计稿宽度，此时设计稿中的20px仍然对应0.2rem。
+3. 对于不需要等比缩放的元素，比如边框，可以直接使用固定单位px即可。比如<code>border-bottom: 1px solid #ccc</code></p>
+
+<p>以上三种方案都是属于整体缩放比例。</p>
+
+<h3 id="弹性盒适配">弹性盒适配：</h3>
+
+<p><strong>原理：</strong>
+不需要等比缩放，页面元素使用固定单位。使用弹性盒(flex)做布局，可结合媒体查询调整文字大小。</p>
+
+<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;
+
+
+ section .detail {
+        margin-left: 10px;
+        flex: 1;
+      }
+......
+</code></pre>
+
+<p><strong>对于大屏适配，可以使用vh适配。</strong></p>
+<ul class="pa0">
+  
+</ul>
+<div class="mt6">
+      
+      
+      </div>
+    </section>
+
+    <aside class="w-30-l mt6-l">
+
+
+
+
+</aside>
+
+  </article>
+
+    </main>
+    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
+  <div class="flex justify-between">
+  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
+    &copy; 2019 吴潇的个人博客
+  </a>
+    <div>
+
+
+
+
+
+
+
+
+
+
+</div>
+  </div>
+</footer>
+
+    
+
+  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
+
+
+  </body>
+</html>

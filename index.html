@@ -33,7 +33,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://example.org/" />
 
-<meta property="og:updated_time" content="2019-10-23T19:21:26+08:00" />
+<meta property="og:updated_time" content="2019-10-24T11:32:33+08:00" />
 <meta itemprop="name" content="吴潇的个人博客">
 <meta itemprop="description" content="">
 
@@ -120,6 +120,34 @@
       
       <div class="blah w-100">
         <h1 class="f3 fw1 athelas mt0 lh-title">
+          <a href="/posts/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/" class="color-inherit dim link">
+            移动端适配方案
+            </a>
+        </h1>
+        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
+          移动端适配的几种方案： viewport适配 开发流程: 1. 开发者拿到设计稿（假设设计稿尺寸为750px，设计稿的元素标是基于此宽度标注） 2. 开始开发，css以设计稿标注的尺寸来开发，比如页面元素字体标注的大小是32px 4. 在html的head里引入适配代码
+简言之：CSS按照设计稿写，加几句动态生成meta标签的JS代码。
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt; &lt;script&gt; const WIDTH = 750 const mobileAdapter = () =&gt; { let scale = screen.width/WIDTH let content = `width=${WIDTH}, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}` let meta = document.querySelector('meta[name=viewport]') if(!meta) { meta = document.createElement('meta') meta.setAttribute('name', 'viewport') document.head.appendChild(meta) } meta.setAttribute('content', content) } mobileAdapter() window.onorientationchange = mobileAdapter &lt;/script&gt;  原理解析：
+&lt;meta name=&quot;viewport&quot; content=&quot;width=750px,inital-scale=0.5&quot;&gt;  content=750px是设计稿的尺寸。 initial-scale为默认缩放比，它是由设备尺寸/设计稿尺寸决定，不能写死，所以要动态生成。 优点是使用简单，缺点是页面整体缩放，如果页面中有一个1px的边框，经整体缩放，这个1px可能就不见了或者又太大了。
+vw适配： 750px=100vw; 1px=0.1333vw; 84px=11.20vw&hellip;&hellip;
+        </div>
+          <a href="/posts/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
+        
+      </div>
+    </div>
+  </div>
+</article>
+
+          </div>
+        
+          <div class="relative w-100 mb4">
+            
+<article class="bb b--black-10">
+  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
+    <div class="flex flex-column flex-row-ns">
+      
+      <div class="blah w-100">
+        <h1 class="f3 fw1 athelas mt0 lh-title">
           <a href="/posts/js%E4%B9%8B%E5%87%BD%E6%95%B0/" class="color-inherit dim link">
             JS之函数
             </a>
@@ -166,39 +194,18 @@ var f3 = function myName() {}; f3.name // 'myName'   上面代码中，f3.name�
 
           </div>
         
-          <div class="relative w-100 mb4">
-            
-<article class="bb b--black-10">
-  <div class="db pv4 ph3 ph0-l no-underline dark-gray">
-    <div class="flex flex-column flex-row-ns">
-      
-      <div class="blah w-100">
-        <h1 class="f3 fw1 athelas mt0 lh-title">
-          <a href="/posts/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF/" class="color-inherit dim link">
-            JS模拟继承
-            </a>
-        </h1>
-        <div class="f6 f5-l lh-copy nested-copy-line-height nested-links">
-          JS模拟继承 继承：面向对象编程中的一个概念，继承可以使子类具有父类的各种属性和方法。
-能产生对象的东西即为类。 var person = new Human()中的person就是一个对象，所以Human()便是一个类。 但是父类Object（）到子类Human（）是一个自带的继承。
-ES5写继承： function Human(name){ //父类 Human() this.name = (name) //自有属性name } Human.prototype.run = function(){ //共有属性为run console.log(“我叫”+this.name&quot;,我有run的属性&quot;) return undefined } function Man(name){ //声明 Man() Human.call(this, name) //call 父类 this.gender = '男' //声明自身的属性gender } var f = function(){ } f.prototype = Human.prototype man.prototype = new f( ) Man.prototype.fight = function(){ console.log('如来神掌') }  这三句：
-var f = function(){ } f.prototype = Human.prototype man.prototype = new f( )  等价于：
-        </div>
-          <a href="/posts/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF/" class="ba b--moon-gray bg-light-gray br2 color-inherit dib f7 hover-bg-moon-gray link mt2 ph2 pv1">read more</a>
-        
-      </div>
-    </div>
-  </div>
-</article>
-
-          </div>
-        
       </section>
 
       
       <section class="w-100">
         <h1 class="f3">More</h1>
         
+        
+          <h2 class="f5 fw4 mb4 dib mr3">
+            <a href="/posts/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF/" class="link black dim">
+              JS模拟继承
+            </a>
+          </h2>
         
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="/posts/cookiecache-controlsession/" class="link black dim">
@@ -215,12 +222,6 @@ var f = function(){ } f.prototype = Human.prototype man.prototype = new f( )  �
           <h2 class="f5 fw4 mb4 dib mr3">
             <a href="/posts/vue-routeraxiosvuex/" class="link black dim">
               vue-router、axios、vuex
-            </a>
-          </h2>
-        
-          <h2 class="f5 fw4 mb4 dib mr3">
-            <a href="/posts/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" class="link black dim">
-              vue自定义指令
             </a>
           </h2>
         

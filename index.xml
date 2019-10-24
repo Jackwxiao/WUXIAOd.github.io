@@ -6,10 +6,23 @@
     <description>Recent content on 吴潇的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-Hans</language>
-    <lastBuildDate>Wed, 23 Oct 2019 19:21:26 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 24 Oct 2019 11:32:33 +0800</lastBuildDate>
     
 	<atom:link href="http://example.org/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>移动端适配方案</title>
+      <link>http://example.org/posts/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/</link>
+      <pubDate>Thu, 24 Oct 2019 11:32:33 +0800</pubDate>
+      
+      <guid>http://example.org/posts/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/</guid>
+      <description>移动端适配的几种方案： viewport适配 开发流程: 1. 开发者拿到设计稿（假设设计稿尺寸为750px，设计稿的元素标是基于此宽度标注） 2. 开始开发，css以设计稿标注的尺寸来开发，比如页面元素字体标注的大小是32px 4. 在html的head里引入适配代码
+简言之：CSS按照设计稿写，加几句动态生成meta标签的JS代码。
+&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width&amp;quot;&amp;gt; &amp;lt;script&amp;gt; const WIDTH = 750 const mobileAdapter = () =&amp;gt; { let scale = screen.width/WIDTH let content = `width=${WIDTH}, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}` let meta = document.querySelector(&#39;meta[name=viewport]&#39;) if(!meta) { meta = document.createElement(&#39;meta&#39;) meta.setAttribute(&#39;name&#39;, &#39;viewport&#39;) document.head.appendChild(meta) } meta.setAttribute(&#39;content&#39;, content) } mobileAdapter() window.onorientationchange = mobileAdapter &amp;lt;/script&amp;gt;  原理解析：
+&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=750px,inital-scale=0.5&amp;quot;&amp;gt;  content=750px是设计稿的尺寸。 initial-scale为默认缩放比，它是由设备尺寸/设计稿尺寸决定，不能写死，所以要动态生成。 优点是使用简单，缺点是页面整体缩放，如果页面中有一个1px的边框，经整体缩放，这个1px可能就不见了或者又太大了。
+vw适配： 750px=100vw; 1px=0.1333vw; 84px=11.20vw&amp;hellip;&amp;hellip;</description>
+    </item>
     
     <item>
       <title>JS之函数</title>

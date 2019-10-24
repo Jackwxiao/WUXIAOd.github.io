@@ -33,7 +33,7 @@
 <meta property="og:type" content="website" />
 <meta property="og:url" content="http://example.org/posts/" />
 
-<meta property="og:updated_time" content="2019-10-23T19:21:26+08:00" />
+<meta property="og:updated_time" content="2019-10-24T11:32:33+08:00" />
 <meta itemprop="name" content="Posts">
 <meta itemprop="description" content="">
 
@@ -89,6 +89,25 @@
   <article class="pa3 pa4-ns nested-copy-line-height nested-img">
     <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy mid-gray"></section>
     <section class="flex-ns flex-wrap justify-around mt5">
+      
+        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
+  <div class="bg-white mb3 pa4 gray overflow-hidden">
+    <span class="f6 db">Posts</span>
+    <h1 class="f3 near-black">
+      <a href="/posts/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/" class="link black dim">
+        移动端适配方案
+      </a>
+    </h1>
+    <div class="nested-links f5 lh-copy nested-copy-line-height">
+      移动端适配的几种方案： viewport适配 开发流程: 1. 开发者拿到设计稿（假设设计稿尺寸为750px，设计稿的元素标是基于此宽度标注） 2. 开始开发，css以设计稿标注的尺寸来开发，比如页面元素字体标注的大小是32px 4. 在html的head里引入适配代码
+简言之：CSS按照设计稿写，加几句动态生成meta标签的JS代码。
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt; &lt;script&gt; const WIDTH = 750 const mobileAdapter = () =&gt; { let scale = screen.width/WIDTH let content = `width=${WIDTH}, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}` let meta = document.querySelector('meta[name=viewport]') if(!meta) { meta = document.createElement('meta') meta.setAttribute('name', 'viewport') document.head.appendChild(meta) } meta.setAttribute('content', content) } mobileAdapter() window.onorientationchange = mobileAdapter &lt;/script&gt;  原理解析：
+&lt;meta name=&quot;viewport&quot; content=&quot;width=750px,inital-scale=0.5&quot;&gt;  content=750px是设计稿的尺寸。 initial-scale为默认缩放比，它是由设备尺寸/设计稿尺寸决定，不能写死，所以要动态生成。 优点是使用简单，缺点是页面整体缩放，如果页面中有一个1px的边框，经整体缩放，这个1px可能就不见了或者又太大了。
+vw适配： 750px=100vw; 1px=0.1333vw; 84px=11.20vw&hellip;&hellip;
+    </div>
+  </div>
+</div>
+</div>
       
         <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
   <div class="bg-white mb3 pa4 gray overflow-hidden">
@@ -276,31 +295,6 @@ var rt = new router({ routes:[{ path:'/', //指定要跳转的路径 component: 
 &lt;html&gt; &lt;app-component&gt;&lt;/app-component&gt; &lt;/html&gt; 在vue实例中定义组件 &lt;script&gt; var app = new Vue({ el:'#app', components:{ 'app-component':{ template:'&lt;div&gt;这是局部注册的组件&lt;/div&gt;' } } }) &lt;/script&gt;  两种注册方式的优缺点： 全局注册：优点是所有的vue实例都可以使用；缺点是权限太大，容错率低。 局部注册：只能在所注册的vue实例中使用。 注意事项： 1. html标签受限：Vue组件模板在某些情况下回受到html标签的限制，如table标签内只能有tr、td、tbody这些元素,如果把组件名挂载到table内,实际内容是不会被渲染到table标签中的，会把组件内容踢出去。 此时需要 is 属性来挂载组件名，is='组件名'
 &lt;table&gt; &lt;tbody is = 'app-component'&gt;&lt;/tbody&gt; &lt;/table&gt;   组件名使用小写字母或小写字母加 - 来命名； template中的内容必须被一个DOM元素包裹，可以嵌套； 在组件定义中，除了template之外的其他选项:data,omputed,methods 组件中，data必须是一个方法。  三、使用props传递数据 在子组件中使用props接收来自父组件的数据，在props中定义的属性，都可以在组件中直接使用； 子组件中的props来自父组件，子组件中的data return的是组件自己的数据；props中定义的和data返回的，其作用域都是组件本身，可以在template,methods,computed中直接使用。
 &lt;div id=&quot;app&quot; style=&quot;border:1px solid red;height: 350px;&quot;&gt; &lt;h5 style=&quot;text-align: center&quot;&gt;父组件&lt;/h5&gt; &lt;child-component msg=&quot;这是来自父组件的内容&quot;&gt;&lt;/child-component&gt; &lt;!
-    </div>
-  </div>
-</div>
-</div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/js%E5%87%BD%E6%95%B0/" class="link black dim">
-        JS函数
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      ###函数 指可以执行代码的对象，和数组一样有不一致性。 #####三种函数声明方式
- function f() { }
- var f = function f() { }; //注意分号
- f = new Function (&lsquo;x&rsquo;,&lsquo;y&rsquo;,&lsquo;return x+y&rsquo;) //只有最后一个参数会被当作函数体，可以不使用new 命令，不推荐使用这种声明方式
-  注意：如果同一个函数被多次声明，后面的声明会覆盖前面的声明。也就是说起前面的声明会失效。
-函数名的提升
-JS引擎将函数名视同变量名，使用function 声明函数时，整个函数回想变量声明一样被提升到代码头部。如果同时使用function命令和赋值语句声明同一个函数，左后总是采用赋值语句的定义
-var f = function () { console.log('1'); } function f() { console.log('2'); } f() // 1  函数的属性和方法
- name :f.name返回函数的名字，如果通过变量赋值定义的匿名函数则返回变量名。具名函数返回function关键字后的函数名。 var f3 = function myName() {}; f3.name // 'myName'  上面代码中，f3.name返回函数表达式的名字。注意，真正的函数名还是f3，而myName这个名字只在函数体内部可用。
-  用处：可用来获取参数函数的名字。
- length: f.length 返回函数预期传入的参数个数。
     </div>
   </div>
 </div>
