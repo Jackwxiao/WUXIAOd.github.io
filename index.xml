@@ -13,10 +13,10 @@
     
     <item>
       <title>移动端的问题</title>
-      <link>http://example.org/posts/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E9%97%AE%E9%A2%98/</link>
+      <link>http://example.org/posts/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>
       <pubDate>Thu, 24 Oct 2019 18:21:29 +0800</pubDate>
       
-      <guid>http://example.org/posts/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E9%97%AE%E9%A2%98/</guid>
+      <guid>http://example.org/posts/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
       <description>300ms延迟问题： 延迟的原因：
 iphone是无键盘全触屏手机的始祖，当时的网站都是为大屏幕设备所设计的（没有设置），为了便于用户阅读浏览器引入了双击缩放的功能。手指在屏幕上快速点击两次，iOS 自带的 Safari 浏览器会将网页缩放至原始比例。那如何判断用户快速点击两次呢？假定用户点击后300ms内如果有第二次点击，就认为用户的目的是双击缩放而不是普通的点击页面元素。所以用户第一次点击一个链接后，必须等300ms，浏览器才能决定是否是跳转还是缩放页面。 后来全触屏手机流行后，其他设备浏览器也开始效仿。
 如何解决：
