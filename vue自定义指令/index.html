@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="吴潇">
+  <meta name="description" content="吴潇的个人网站">
+  <meta name="keywords" content="吴潇,前端,程序猿">
+  
+  <link rel="prev" href="http://www.pigxw.top/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/" />
+  <link rel="next" href="http://www.pigxw.top/vue-routeraxiosvuex/" />
+  <link rel="canonical" href="http://www.pigxw.top/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           vue自定义指令 | 吴潇的个人博客
+       
+  </title>
+  <meta name="title" content="vue自定义指令 | 吴潇的个人博客">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "http:\/\/www.pigxw.top\/"
+    },
+    "articleSection" : "posts",
+    "name" : "vue自定义指令",
+    "headline" : "vue自定义指令",
+    "description" : "自定义指令 自定义指令的基本用法 和组件类似分全局注册和局部注册，区别就是把component换成了derective\n需求：自动获取焦点 \x26lt;div id=\x26quot;app\x26quot;\x26gt; 获取焦点：\x26lt;input type=\x26quot;text\x26quot; v-focus\x26gt;\x26lt;br\x26gt; 未加自定义指令v-focus：\x26lt;br\x26gt; \x26lt;input type=\x26quot;text\x26quot;\x26gt; \x26lt;\/div\x26gt; \x26lt;script src=\x26quot;https:\/\/cdn.jsdelivr.net\/npm\/vue@2.5.16\/dist\/vue.js\x26quot;\x26gt;\x26lt;\/script\x26gt; \x26lt;script\x26gt; Vue.directive(\x27focus\x27,{ inserted:function(el){ \/\/el：指令所绑定的元素可以用来直接操作DOM el.focus(); } }); var app = new Vue({ el:\x27#app\x27, data:{ } }) \x26lt;\/script  钩子函数 指令定义函数提供了几个钩子函数（可选）：\n bind: 只调用一次，指令第一次绑定到元素时调用，用这个钩子函数可以定义一个在绑定时执行一次的初始化动作。\n inserted: 被绑定元素插入父节点时调用（父节点存在即可调用，不必存在于 document中）\n update: 被绑定元素所在的模板更新时调用，而不论绑定值是否变化。通过比较更新前后的绑定值，可以忽略不必要的模板更新（详细的钩子函数参数见下）。\n componentUpdated: 被绑定元素所在模板完成一次更新周期时调用。\n unbind: 只调用一次， 指令与元素解绑时调用。\n  钩子函数的参数有：  el: 指令所绑定的元素，可以用来直接操作 DOM 。\n binding: 一个对象，包含以下属性： ——–name: 指令名，不包括 v­ 前缀。 ——–value: 指令的绑定值， 例如： v­my­directive=”1 \x2b 1”, value 的值是 2。 ——–oldValue: 指令绑定的前一个值，仅在 update 和 componentUpdated 钩子中可用。无 论值是否改变都可用。 ——–expression: 绑定值的字符串形式。 例如 v­my­directive=”1 \x2b 1” ， expression 的值是 “1 \x2b 1”。 ——–arg: 传给指令的参数。例如 v­my­directive:foo， arg 的值是 “foo”。 ——–modifiers: 一个包含修饰符的对象。 例如： v­my­directive.",
+    "inLanguage" : "zh-CN",
+    "author" : "吴潇",
+    "creator" : "吴潇",
+    "publisher": "吴潇",
+    "accountablePerson" : "吴潇",
+    "copyrightHolder" : "吴潇",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-10-09 20:30:30 \x2b0900 \x2b0900",
+    "dateModified" : "2019-10-09 20:30:30 \x2b0900 \x2b0900",
+    "url" : "http:\/\/www.pigxw.top\/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4\/",
+    "wordCount" : "176",
+    "keywords" : [  "吴潇的个人博客"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">吴潇的个人博客</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/search/" title="">搜索</a>
+                
+                <a class="menu-item" href="/" title="">首页</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/contacts/" title="">联系我</a>
+                
+                <a class="menu-item" href="/wechat-subscribe/" title="">订阅</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">吴潇的个人博客</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/search/" title="">搜索</a>
+                
+                <a class="menu-item" href="/" title="">首页</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/contacts/" title="">联系我</a>
+                
+                <a class="menu-item" href="/wechat-subscribe/" title="">订阅</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">vue自定义指令</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="http://www.pigxw.top/" rel="author">吴潇</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-10-09 itemprop="datePublished">October 9, 2019</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h2 id="自定义指令">自定义指令</h2>
+
+<h4 id="自定义指令的基本用法">自定义指令的基本用法</h4>
+
+<p>和组件类似分全局注册和局部注册，区别就是把component换成了derective</p>
+
+<pre><code>需求：自动获取焦点
+    &lt;div id=&quot;app&quot;&gt;
+        获取焦点：&lt;input type=&quot;text&quot; v-focus&gt;&lt;br&gt;
+        未加自定义指令v-focus：&lt;br&gt;
+        &lt;input type=&quot;text&quot;&gt;
+    &lt;/div&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+    Vue.directive('focus',{
+        inserted:function(el){
+            //el：指令所绑定的元素可以用来直接操作DOM
+            el.focus();
+        }
+    });
+     var app = new Vue({
+        el:'#app',
+        data:{
+
+        }
+    })
+    &lt;/script
+</code></pre>
+
+<h4 id="钩子函数">钩子函数</h4>
+
+<p>指令定义函数提供了几个钩子函数（可选）：</p>
+
+<ul>
+<li><p>bind: 只调用一次，指令第一次绑定到元素时调用，用这个钩子函数可以定义一个在绑定时执行一次的初始化动作。</p></li>
+
+<li><p>inserted: 被绑定元素插入父节点时调用（父节点存在即可调用，不必存在于 document中）</p></li>
+
+<li><p>update: 被绑定元素所在的模板更新时调用，而不论绑定值是否变化。通过比较更新前后的绑定值，可以忽略不必要的模板更新（详细的钩子函数参数见下）。</p></li>
+
+<li><p>componentUpdated: 被绑定元素所在模板完成一次更新周期时调用。</p></li>
+
+<li><p>unbind: 只调用一次， 指令与元素解绑时调用。</p></li>
+</ul>
+
+<h4 id="钩子函数的参数有">钩子函数的参数有：</h4>
+
+<ul>
+<li><p>el: 指令所绑定的元素，可以用来直接操作 DOM 。</p></li>
+
+<li><p>binding: 一个对象，包含以下属性：
+——–name: 指令名，不包括 v­ 前缀。
+——–value: 指令的绑定值， 例如： v­my­directive=”1 + 1”, value 的值是 2。
+——–oldValue: 指令绑定的前一个值，仅在 update 和 componentUpdated 钩子中可用。无
+论值是否改变都可用。
+——–expression: 绑定值的字符串形式。 例如 v­my­directive=”1 + 1” ， expression 的值是
+“1 + 1”。
+——–arg: 传给指令的参数。例如 v­my­directive:foo， arg 的值是 “foo”。
+——–modifiers: 一个包含修饰符的对象。 例如： v­my­directive.foo.bar, 修饰符对
+象。modifiers 的值是 { foo: true, bar: true }。</p></li>
+
+<li><p>vnode: Vue 编译生成的虚拟节点。</p></li>
+
+<li><p>oldVnode: 上一个虚拟节点，仅在 update 和 componentUpdated 钩子中可用
+```
+<div>
+自定义指令钩子函数得参数：<br>
+    <div v-cuihua:goudan.a.b.c="obq"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+<script>
+<script>
+   Vue.directive(&lsquo;cuihua&rsquo;,{
+   bind:function(el,binding,vnode){
+       var keys=[];
+       for(var key in vnode){
+           keys.push(key)
+       }
+    el.innerHTML =
+    &lsquo;name&rsquo; + &lsquo;:&rsquo; + binding.name+&rsquo;<br>&rsquo;+
+    &lsquo;value&rsquo; + &lsquo;:&rsquo; + binding.value+&rsquo;<br>&rsquo;+
+    &lsquo;expression&rsquo; + &lsquo;:&rsquo; + binding.expression+&rsquo;<br>&rsquo;+
+    &lsquo;argument&rsquo; + &lsquo;:&rsquo; + binding.arg+&rsquo;<br>&rsquo;+
+    &lsquo;modifiers&rsquo; + &lsquo;:&rsquo; + JSON.stringify(binding.modifiers)+&rsquo;<br>&rsquo;+
+    &lsquo;vnode中的keys&rsquo; + &lsquo;:&rsquo; + keys.join(&lsquo;&ndash;&rsquo;)+&rsquo;<br>&lsquo;</p>
+
+<p>}
+});
+var app = new Vue({
+    el:&lsquo;#app&rsquo;,
+    data:{
+        abcde:&lsquo;我是value值&rsquo;,
+        obq:&lsquo;我是自定义指令绑定的值&rsquo;
+    }
+})
+</script></p></li>
+</ul>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>吴潇 </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=http://www.pigxw.top/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/>http://www.pigxw.top/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="http://www.pigxw.top/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="http://www.pigxw.top/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/" class="prev" rel="prev" title="vue组件详解"><i class="iconfont icon-left"></i>&nbsp;vue组件详解</a>
+         
+        
+        <a href="http://www.pigxw.top/vue-routeraxiosvuex/" class="next" rel="next" title="vue-router、axios、vuex">vue-router、axios、vuex&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="http://www.pigxw.top/">吴潇</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

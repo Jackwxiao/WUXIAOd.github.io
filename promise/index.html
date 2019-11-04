@@ -46,7 +46,7 @@
     "articleSection" : "posts",
     "name" : "Promise",
     "headline" : "Promise",
-    "description" : "用 Promise 对象实现 Ajax 操作 const getJSON = function(url) { const promise = new Promise(function(resolve, reject){ const handler = function() { if (this.readyState !== 4) { return; } if (this.status === 200) { resolve(this.response); } else { reject(new Error(this.statusText)); } }; const client = new XMLHttpRequest(); client.open(\x26quot;GET\x26quot;, url); client.onreadystatechange = handler; client.responseType = \x26quot;json\x26quot;; client.setRequestHeader(\x26quot;Accept\x26quot;, \x26quot;application\/json\x26quot;); client.send(); }); return promise; }; getJSON(\x26quot;\/posts.json\x26quot;).then(function(json) { console.log(\x27Contents: \x27 \x2b json); }, function(error) { console.",
+    "description" : "异步与Promise promise的由来 promise 是现在前端解决异步问题的统一方案！！！！\n插一道面试题：\nconst array= [\x271\x27,\x272\x27,\x273\x27].map( parseInt） console.log( array ) \/\/ [1,NaN,NaN]  只能这样写：\nconst array= [\x271\x27,\x272\x27,\x273\x27].map( item =\x26gt;parseInt(item)） console.log( array ) \/\/ [1,2,3]  异步任务拿不到结果，于是传一个回调给异步任务，异步任务完成时调用回调，调用的时候把结果作为参数。 如果有两结果呢，比如成功和失败\n 可以接收两个参数\nfs.readFile(\x27.\/1.txt\x27, ( error, data )=\x26gt;{ if( error ){ console.,log(\x27失败\x27)；return } console.log(data.toString())\/\/成功 })  搞两个回调\naiax(\x27get\x27, \x271.json\x27, data=\x26gt;{ }, error=\x26gt;{ }) \/\/前面函数是成功调用，后面失败调用 ajax( \x27get\x27, \x271.json\x27 , { success: () =\x26gt;{ }, fail: ()=\x26gt;{ } }) \/\/接收一个对象，对象有两个 key 表示成功和失败   上面方法都有问题：",
     "inLanguage" : "zh-CN",
     "author" : "吴潇",
     "creator" : "吴潇",
@@ -57,7 +57,7 @@
     "datePublished": "2019-10-23 19:17:26 \x2b0800 CST",
     "dateModified" : "2019-10-23 19:17:26 \x2b0800 CST",
     "url" : "http:\/\/www.pigxw.top\/promise\/",
-    "wordCount" : "93",
+    "wordCount" : "325",
     "keywords" : [  "吴潇的个人博客"]
 }
 </script>
@@ -148,7 +148,136 @@
 
           
 
-<h4 id="用-promise-对象实现-ajax-操作">用 Promise 对象实现 Ajax 操作</h4>
+<h2 id="异步与promise">异步与Promise</h2>
+
+<h4 id="promise的由来">promise的由来</h4>
+
+<p>promise 是现在前端解决异步问题的统一方案！！！！</p>
+
+<p>插一道面试题：</p>
+
+<pre><code>const array=  ['1','2','3'].map( parseInt）
+
+console.log( array )
+// [1,NaN,NaN]
+</code></pre>
+
+<p>只能这样写：</p>
+
+<pre><code>const array=  ['1','2','3'].map( item =&gt;parseInt(item)）
+
+console.log( array )
+// [1,2,3]
+</code></pre>
+
+<p>异步任务拿不到结果，于是传一个回调给异步任务，异步任务完成时调用回调，调用的时候把结果作为参数。
+如果有两结果呢，比如成功和失败</p>
+
+<ul>
+<li><p>可以接收两个参数</p>
+
+<pre><code>fs.readFile('./1.txt', ( error, data )=&gt;{
+if( error ){
+    console.,log('失败')；return
+}
+console.log(data.toString())//成功
+})
+</code></pre></li>
+
+<li><p>搞两个回调</p>
+
+<pre><code>aiax('get', '1.json', data=&gt;{ }, error=&gt;{ })
+//前面函数是成功调用，后面失败调用
+   
+ajax( 'get', '1.json' , {
+success: () =&gt;{ },  fail: ()=&gt;{ }
+})
+//接收一个对象，对象有两个 key 表示成功和失败
+</code></pre></li>
+</ul>
+
+<p>上面方法都有问题：</p>
+
+<ol>
+<li>不规范，名称五花八门</li>
+<li>容易出现回调地狱，代码看不懂</li>
+<li>很难进行错误处理</li>
+</ol>
+
+<p>怎么解决这三个问题？
+-规范回调的名字或顺序；拒绝回调地狱，让代码可读性更强；很方便地捕获错误。</p>
+
+<h4 id="以-ajax-的封装为例来逐步讲解-promise">以 AJAX 的封装为例来逐步讲解 Promise</h4>
+
+<p>首先是 用回调来封装</p>
+
+<pre><code>    ajax = (method, url, options)=&gt;{
+        const { succes, fail  } = options   //es6 析构赋值
+        const request = new XMLHttpRequest()
+        request .open(method, url)
+        request.onreadystatechange = () =&gt;{
+            if(request.readyState = == 4){
+              if(request.status &lt; 400){
+                success.call( null , request.response)
+            }else if(request.status &gt;= 400 ) {
+                fail.call( null,request,request.status)
+              }
+        }
+    }
+    request.send()
+} 
+
+//封装完之后，使用ajax就只用写下面几句了
+
+ajax('get', '/xxx',{
+success(response){} , fail: (request,status) = &gt;{}
+})
+
+</code></pre>
+
+<p>promise 说这代码太蠢了。。。。</p>
+
+<p><strong>用promise 改写</strong></p>
+
+<pre><code>ajax = (method,url , options)=&gt;{ 
+return new Promise((resolve,reject)=&gt;{
+    const { succes,fail } = options
+    const request = new XMLHttpRequest() 
+    request .open(method, url) 
+    request.onreadystatechange = () =&gt;{ 
+         if (request.readyState = == 4){ 
+            if(request.status &lt; 400){ 
+    resolve.call( null , request.response) 
+        }else if (request.status &gt;= 400){ 
+        reject.call( null,request) 
+            } 
+        } 
+    } request.send( )
+})
+ }
+   
+   aiax('get','/xxx')
+   .then( (response)=&gt;{ } , (request)=&gt;{ } )
+    //虽然也是回调，但不用记 success 和 fail  了 ，then 的第一个参数就是 success , 第二个参数是 fail
+    //ajax 返回一个含有 .then( )  方法的对象
+</code></pre>
+
+<p>上面封装ajax 的缺点：</p>
+
+<ol>
+<li>post 无法上传数据
+<code>rquest.send(这里可以上传数据)</code></li>
+<li>不能设置请求头
+<code>request.setRequestHeader(key,value)</code></li>
+</ol>
+
+<p>可以使用 jQyery.ajax 或者 axios</p>
+
+<p>不需要掌握jquery.ajax 了，现在都一般用 axios</p>
+
+<p>axios 抄袭了jquery.ajax</p>
+
+<h4 id="用-promise-对象实现-ajax-操作-完善">用 Promise 对象实现 Ajax 操作(完善)</h4>
 
 <pre><code>const getJSON = function(url) {
   const promise = new Promise(function(resolve, reject){

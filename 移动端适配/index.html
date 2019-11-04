@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="吴潇">
+  <meta name="description" content="吴潇的个人网站">
+  <meta name="keywords" content="吴潇,前端,程序猿">
+  
+  <link rel="prev" href="http://www.pigxw.top/js%E4%B9%8B%E5%87%BD%E6%95%B0/" />
+  <link rel="next" href="http://www.pigxw.top/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" />
+  <link rel="canonical" href="http://www.pigxw.top/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           移动端适配方案 | 吴潇的个人博客
+       
+  </title>
+  <meta name="title" content="移动端适配方案 | 吴潇的个人博客">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "http:\/\/www.pigxw.top\/"
+    },
+    "articleSection" : "posts",
+    "name" : "移动端适配方案",
+    "headline" : "移动端适配方案",
+    "description" : "移动端适配的几种方案： viewport适配 开发流程: 1. 开发者拿到设计稿（假设设计稿尺寸为750px，设计稿的元素标是基于此宽度标注） 2. 开始开发，css以设计稿标注的尺寸来开发，比如页面元素字体标注的大小是32px 4. 在html的head里引入适配代码\n简言之：CSS按照设计稿写，加几句动态生成meta标签的JS代码。\n\x26lt;meta name=\x26quot;viewport\x26quot; content=\x26quot;width=device-width\x26quot;\x26gt; \x26lt;script\x26gt; const WIDTH = 750 const mobileAdapter = () =\x26gt; { let scale = screen.width\/WIDTH let content = `width=${WIDTH}, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}` let meta = document.querySelector(\x27meta[name=viewport]\x27) if(!meta) { meta = document.createElement(\x27meta\x27) meta.setAttribute(\x27name\x27, \x27viewport\x27) document.head.appendChild(meta) } meta.setAttribute(\x27content\x27, content) } mobileAdapter() window.onorientationchange = mobileAdapter \x26lt;\/script\x26gt;  原理解析：\n\x26lt;meta name=\x26quot;viewport\x26quot; content=\x26quot;width=750px,inital-scale=0.5\x26quot;\x26gt;  content=750px是设计稿的尺寸。 initial-scale为默认缩放比，它是由设备尺寸\/设计稿尺寸决定，不能写死，所以要动态生成。 优点是使用简单，缺点是页面整体缩放，如果页面中有一个1px的边框，经整体缩放，这个1px可能就不见了或者又太大了。\nvw适配： 750px=100vw; 1px=0.1333vw; 84px=11.20vw\x26hellip;\x26hellip;",
+    "inLanguage" : "zh-CN",
+    "author" : "吴潇",
+    "creator" : "吴潇",
+    "publisher": "吴潇",
+    "accountablePerson" : "吴潇",
+    "copyrightHolder" : "吴潇",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-10-24 11:32:33 \x2b0800 CST",
+    "dateModified" : "2019-10-24 11:32:33 \x2b0800 CST",
+    "url" : "http:\/\/www.pigxw.top\/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D\/",
+    "wordCount" : "218",
+    "keywords" : [  "吴潇的个人博客"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">吴潇的个人博客</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/search/" title="">搜索</a>
+                
+                <a class="menu-item" href="/" title="">首页</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/contacts/" title="">联系我</a>
+                
+                <a class="menu-item" href="/wechat-subscribe/" title="">订阅</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">吴潇的个人博客</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/search/" title="">搜索</a>
+                
+                <a class="menu-item" href="/" title="">首页</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/contacts/" title="">联系我</a>
+                
+                <a class="menu-item" href="/wechat-subscribe/" title="">订阅</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">移动端适配方案</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="http://www.pigxw.top/" rel="author">吴潇</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-10-24 itemprop="datePublished">October 24, 2019</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h2 id="移动端适配的几种方案">移动端适配的几种方案：</h2>
+
+<h3 id="viewport适配">viewport适配</h3>
+
+<p>开发流程:
+1. 开发者拿到设计稿（假设设计稿尺寸为750px，设计稿的元素标是基于此宽度标注）
+2. 开始开发，css以设计稿标注的尺寸来开发，比如页面元素字体标注的大小是32px
+4. 在html的head里引入适配代码</p>
+
+<p>简言之：CSS按照设计稿写，加几句动态生成meta标签的JS代码。</p>
+
+<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;
+   &lt;script&gt;
+    const WIDTH = 750
+    const mobileAdapter = () =&gt; {
+      let scale = screen.width/WIDTH
+      let content = `width=${WIDTH}, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}`
+      let meta = document.querySelector('meta[name=viewport]')
+      if(!meta) {
+        meta = document.createElement('meta')
+        meta.setAttribute('name', 'viewport')
+        document.head.appendChild(meta)
+      } 
+      meta.setAttribute('content', content)
+    }
+    mobileAdapter()
+    window.onorientationchange = mobileAdapter
+  &lt;/script&gt; 
+</code></pre>
+
+<p>原理解析：</p>
+
+<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=750px,inital-scale=0.5&quot;&gt;
+</code></pre>
+
+<p>content=750px是设计稿的尺寸。
+initial-scale为默认缩放比，它是由设备尺寸/设计稿尺寸决定，不能写死，所以要动态生成。
+优点是使用简单，缺点是页面整体缩放，如果页面中有一个1px的边框，经整体缩放，这个1px可能就不见了或者又太大了。</p>
+
+<h3 id="vw适配">vw适配：</h3>
+
+<p>750px=100vw;
+1px=0.1333vw;
+84px=11.20vw&hellip;&hellip;</p>
+
+<p>开发流程:
+1. 开发者拿到设计稿（假设设计稿尺寸为750px，设计稿的元素标是基于此宽度标注）
+2. 开始开发，对设计稿的标注进行转换，把px换成vw。比如页面元素字体标注的大小是32px，换成vw为 (<sup>100</sup>&frasl;<sub>750</sub>)*32 vw
+3. 对于需要等比缩放的元素，CSS使用转换后的单位
+4.对于不需要缩放的元素，比如边框阴影，使用固定单位px</p>
+
+<p>但是不能每次都手动计算吧。所以：使用CSS的自定义属性</p>
+
+<pre><code>&lt;style&gt;
+ :root {//相当于html
+      --color: red; 
+    }
+ 
+ header {
+      font-size: calc(28vw * var(--width));
+      display: flex;
+      padding: 0 calc(20vw * var(--width));
+      text-align: center;
+    }
+&lt;/style&gt;
+</code></pre>
+
+<p>当然前提是header里有meta标签和JS转换代码</p>
+
+<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1&quot;&gt;
+
+&lt;script&gt;
+    const WIDTH = 750
+    document.documentElement.style.setProperty('--width', (100/WIDTH));
+  &lt;/script&gt;
+</code></pre>
+
+<h3 id="动态rem适配">动态rem适配：</h3>
+
+<p>rem: 相对于根元素html的font-size的大小。
+ 如： 设计稿的字体大小为40px,设计稿宽度为750px,设备实际宽度为420px,那么40px在设备上的实际大小应该为 <sup>420</sup>&frasl;<sub>750</sub> *40
+ 假设html的font-size为100px，那么420/750 *40就是对应的结果。但是这个结果算出来的数字未必是一些整数或者好看的数。
+ 于是做一个规定：如果设计稿是28px，那对应的rem为0.28rem。这样的话需要进行设置。其实就是加几句JS来转换而已：</p>
+
+<pre><code> 
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1&quot;&gt;
+  &lt;script&gt;
+    const WIDTH = 750  //设计稿尺寸
+    const setView = () =&gt; {
+      console.log(screen.width)
+      document.documentElement.style.fontSize = (100*screen.width/WIDTH) + 'px'
+    }
+    window.onorientationchange = setView
+    setView()
+  &lt;/script&gt;
+  
+  &lt;style&gt; 
+ html {
+      /*font-size: 100 * window.innerWidth / 750*/
+    }
+  &lt;/style&gt;
+
+ main figure &gt; img {
+      width: 6.80rem;
+      height: 4.20rem;
+      object-fit: cover;
+      border-radius: 8px;
+    }  
+  
+</code></pre>
+
+<p>解析：
+1. viewport设置 <code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1&quot;&gt; </code>。把layout viewport 宽度设置为设备宽度，不需要缩放。
+2. 用js定义html的fontSize。假设设计稿的宽度和屏幕宽度相同，我们设置html的fontSize为100px，对应设计稿的20px即为0.2rem。若设计稿的尺寸和屏幕尺寸不同，那让html的fontSize为 100*屏幕宽度/设计稿宽度，此时设计稿中的20px仍然对应0.2rem。
+3. 对于不需要等比缩放的元素，比如边框，可以直接使用固定单位px即可。比如<code>border-bottom: 1px solid #ccc</code></p>
+
+<p>以上三种方案都是属于整体缩放比例。</p>
+
+<h3 id="弹性盒适配">弹性盒适配：</h3>
+
+<p><strong>原理：</strong>
+不需要等比缩放，页面元素使用固定单位。使用弹性盒(flex)做布局，可结合媒体查询调整文字大小。</p>
+
+<pre><code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;
+
+
+ section .detail {
+        margin-left: 10px;
+        flex: 1;
+      }
+......
+</code></pre>
+
+<p><strong>对于大屏适配，可以使用vh适配。</strong></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>吴潇 </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=http://www.pigxw.top/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/>http://www.pigxw.top/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="http://www.pigxw.top/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="http://www.pigxw.top/js%E4%B9%8B%E5%87%BD%E6%95%B0/" class="prev" rel="prev" title="JS之函数"><i class="iconfont icon-left"></i>&nbsp;JS之函数</a>
+         
+        
+        <a href="http://www.pigxw.top/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="next" rel="next" title="移动端的问题">移动端的问题&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="http://www.pigxw.top/">吴潇</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

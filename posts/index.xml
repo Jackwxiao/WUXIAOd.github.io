@@ -75,7 +75,13 @@ var f3 = function myName() {}; f3.name // &#39;myName&#39;   上面代码中，f
       <pubDate>Wed, 23 Oct 2019 19:17:26 +0800</pubDate>
       
       <guid>http://www.pigxw.top/promise/</guid>
-      <description>用 Promise 对象实现 Ajax 操作 const getJSON = function(url) { const promise = new Promise(function(resolve, reject){ const handler = function() { if (this.readyState !== 4) { return; } if (this.status === 200) { resolve(this.response); } else { reject(new Error(this.statusText)); } }; const client = new XMLHttpRequest(); client.open(&amp;quot;GET&amp;quot;, url); client.onreadystatechange = handler; client.responseType = &amp;quot;json&amp;quot;; client.setRequestHeader(&amp;quot;Accept&amp;quot;, &amp;quot;application/json&amp;quot;); client.send(); }); return promise; }; getJSON(&amp;quot;/posts.json&amp;quot;).then(function(json) { console.log(&#39;Contents: &#39; + json); }, function(error) { console.</description>
+      <description>异步与Promise promise的由来 promise 是现在前端解决异步问题的统一方案！！！！
+插一道面试题：
+const array= [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;].map( parseInt） console.log( array ) // [1,NaN,NaN]  只能这样写：
+const array= [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;].map( item =&amp;gt;parseInt(item)） console.log( array ) // [1,2,3]  异步任务拿不到结果，于是传一个回调给异步任务，异步任务完成时调用回调，调用的时候把结果作为参数。 如果有两结果呢，比如成功和失败
+ 可以接收两个参数
+fs.readFile(&#39;./1.txt&#39;, ( error, data )=&amp;gt;{ if( error ){ console.,log(&#39;失败&#39;)；return } console.log(data.toString())//成功 })  搞两个回调
+aiax(&#39;get&#39;, &#39;1.json&#39;, data=&amp;gt;{ }, error=&amp;gt;{ }) //前面函数是成功调用，后面失败调用 ajax( &#39;get&#39;, &#39;1.json&#39; , { success: () =&amp;gt;{ }, fail: ()=&amp;gt;{ } }) //接收一个对象，对象有两个 key 表示成功和失败   上面方法都有问题：</description>
     </item>
     
     <item>
