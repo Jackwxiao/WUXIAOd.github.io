@@ -46,7 +46,7 @@
     "articleSection" : "posts",
     "name" : "Promise",
     "headline" : "Promise",
-    "description" : "异步与Promise promise的由来 promise 是现在前端解决异步问题的统一方案！！！！\n插一道面试题：\nconst array= [\x271\x27,\x272\x27,\x273\x27].map( parseInt） console.log( array ) \/\/ [1,NaN,NaN]  只能这样写：\nconst array= [\x271\x27,\x272\x27,\x273\x27].map( item =\x26gt;parseInt(item)） console.log( array ) \/\/ [1,2,3]  异步任务拿不到结果，于是传一个回调给异步任务，异步任务完成时调用回调，调用的时候把结果作为参数。 如果有两结果呢，比如成功和失败\n 可以接收两个参数\nfs.readFile(\x27.\/1.txt\x27, ( error, data )=\x26gt;{ if( error ){ console.,log(\x27失败\x27)；return } console.log(data.toString())\/\/成功 })  搞两个回调\naiax(\x27get\x27, \x271.json\x27, data=\x26gt;{ }, error=\x26gt;{ }) \/\/前面函数是成功调用，后面失败调用 ajax( \x27get\x27, \x271.json\x27 , { success: () =\x26gt;{ }, fail: ()=\x26gt;{ } }) \/\/接收一个对象，对象有两个 key 表示成功和失败   上面方法都有问题：",
+    "description" : "异步与Promise 如果 JS 不能直接拿到一个函数的结果，可以先去执行别的代码，等结果到了再取结果，这就是异步\n异步的结果可以通过轮询获取，轮询就是定时去询问结果拿到了没有\n异步的结果可以通过回调获取，一般来说结果会被作为回调的第一个参数\n异步的好处是可以把用来等待的时间拿去做别的事情\npromise的由来  promise 是现在前端解决异步问题的统一方案！！！！\nPromise 不是前端发明的\nwindow.Promise 是一个全局函数，可以用来构造 Promise 对象\n使用 return new Promise((resolve, reject)=\x26gt; {}) 就可以构造一个 Promise 对象\n构造出来的 Promise 对象含有一个 .then() 函数属性\nresolve 和 reject 都只接受一个参数\nresolve 和 reject 并不是 .then(succes, fail) 里面的 success 和 fail，resolve 会去调用 \x26gt;success，reject 会去调用 fail 插一道面试题：\n const array= [\x271\x27,\x272\x27,\x273\x27].map( parseInt） console.log( array ) \/\/ [1,NaN,NaN]  只能这样写：\nconst array= [\x271\x27,\x272\x27,\x273\x27].map( item =\x26gt;parseInt(item)） console.log( array ) \/\/ [1,2,3]  异步任务拿不到结果，于是传一个回调给异步任务，异步任务完成时调用回调，调用的时候把结果作为参数。 如果有两结果呢，比如成功和失败",
     "inLanguage" : "zh-CN",
     "author" : "吴潇",
     "creator" : "吴潇",
@@ -57,7 +57,7 @@
     "datePublished": "2019-10-23 19:17:26 \x2b0800 CST",
     "dateModified" : "2019-10-23 19:17:26 \x2b0800 CST",
     "url" : "http:\/\/www.pigxw.top\/promise\/",
-    "wordCount" : "325",
+    "wordCount" : "389",
     "keywords" : [  "吴潇的个人博客"]
 }
 </script>
@@ -150,11 +150,23 @@
 
 <h2 id="异步与promise">异步与Promise</h2>
 
+<p>如果 JS 不能直接拿到一个函数的结果，可以先去执行别的代码，等结果到了再取结果，这就是异步<br>
+异步的结果可以通过轮询获取，轮询就是定时去询问结果拿到了没有<br>
+异步的结果可以通过回调获取，一般来说结果会被作为回调的第一个参数<br>
+异步的好处是可以把用来等待的时间拿去做别的事情</p>
+
 <h4 id="promise的由来">promise的由来</h4>
 
-<p>promise 是现在前端解决异步问题的统一方案！！！！</p>
-
-<p>插一道面试题：</p>
+<blockquote>
+<p>promise 是现在前端解决异步问题的统一方案！！！！<br>
+Promise 不是前端发明的<br>
+window.Promise 是一个全局函数，可以用来构造 Promise 对象<br>
+使用 return new Promise((resolve, reject)=&gt; {}) 就可以构造一个 Promise 对象<br>
+构造出来的 Promise 对象含有一个 .then() 函数属性<br>
+resolve 和 reject 都只接受一个参数<br>
+resolve 和 reject 并不是 .then(succes, fail) 里面的 success 和 fail，resolve 会去调用 &gt;success，reject 会去调用 fail
+插一道面试题：</p>
+</blockquote>
 
 <pre><code>const array=  ['1','2','3'].map( parseInt）
 
@@ -184,17 +196,21 @@ console.log(data.toString())//成功
 })
 </code></pre></li>
 
-<li><p>搞两个回调</p>
-
-<pre><code>aiax('get', '1.json', data=&gt;{ }, error=&gt;{ })
-//前面函数是成功调用，后面失败调用
-   
-ajax( 'get', '1.json' , {
-success: () =&gt;{ },  fail: ()=&gt;{ }
-})
-//接收一个对象，对象有两个 key 表示成功和失败
-</code></pre></li>
+<li><p>搞两个回调</p></li>
 </ul>
+
+<p>满足某些条件的函数才被称为回调，比如我写一个函数 A，传给另一个函数 B 调用，那么函数 A 就是回调<br>
+回调可以用于同步任务，不一定非要用于异步任务<br>
+有的时候回调还可以传给一个对象，如 request.onreadystatechange，等待浏览器来调用</p>
+
+<pre><code>    aiax('get', '1.json', data=&gt;{ }, error=&gt;{ })
+    //前面函数是成功调用，后面失败调用
+   
+   ajax( 'get', '1.json' , {
+    success: () =&gt;{ },  fail: ()=&gt;{ }
+   })
+   //接收一个对象，对象有两个 key 表示成功和失败
+</code></pre>
 
 <p>上面方法都有问题：</p>
 
@@ -275,7 +291,9 @@ return new Promise((resolve,reject)=&gt;{
 
 <p>不需要掌握jquery.ajax 了，现在都一般用 axios</p>
 
-<p>axios 抄袭了jquery.ajax</p>
+<p>axios 抄袭了jquery.ajax
+它是一个专门用于操作 AJAX 的库
+axios.get(&lsquo;/xxx&rsquo;) 返回一个 Promise 对象axios.get(&lsquo;/xxx&rsquo;).then(s, f) 在请求成功的时候调用 s，失败的使用调用 f</p>
 
 <h4 id="用-promise-对象实现-ajax-操作-完善">用 Promise 对象实现 Ajax 操作(完善)</h4>
 
