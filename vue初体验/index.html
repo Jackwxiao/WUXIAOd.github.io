@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="吴潇">
+  <meta name="description" content="吴潇的个人网站">
+  <meta name="keywords" content="吴潇,前端,程序猿">
+  
+  <link rel="prev" href="http://www.pigxw.top/hugo-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" />
+  <link rel="next" href="http://www.pigxw.top/vue-%E6%8C%87%E4%BB%A4%E5%92%8C%E4%BA%8B%E4%BB%B6%E7%AD%89/" />
+  <link rel="canonical" href="http://www.pigxw.top/vue%E5%88%9D%E4%BD%93%E9%AA%8C/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           vue基础之实例与数据绑定 | 吴潇的个人博客
+       
+  </title>
+  <meta name="title" content="vue基础之实例与数据绑定 | 吴潇的个人博客">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "http:\/\/www.pigxw.top\/"
+    },
+    "articleSection" : "posts",
+    "name" : "vue基础之实例与数据绑定",
+    "headline" : "vue基础之实例与数据绑定",
+    "description" : "vue实例和数据绑定  cdn引入vue.js：\x26lt;script src=\x26quot;https:\/\/cdn.jsdelivr.net\/npm\/vue@2.5.16\/dist\/vue.js\x26quot;\x26gt;\x26lt;\/script\x26gt; 通过构造函数 Vue 就可以创建一个 Vue 的根实例，并启动 Vue 应用\x26mdash;入口\nvar app ＝new Vue({ el:\x27\x27, data:{ } })  必不可少的一个选项就是 el 。 el 用于指定一个页面中己存在的 DOM 元素来挂载 Vue实例,可以是标签。也可以是css语法。\n 通过 Vue 实例的 data 选项，可以声明应用内需要双向绑定的数据。建议所有会用到的数据都预先在 data 内 声明，这样不至于将数据散落在业务逻辑中，难以维护。也可以指向一个已经有的变量。\n 挂载成功后，我们可以通过 app.$el 来访问该元素。Vue 提供了很多常用的实例属性与方法，都以 el,app. \x26mdash;访问data元素的属性\x26mdash; 直接app.属性名，app.msg\n  生命周期钩子 created: * 实例创建完成后调用，此阶段完成了数据的观测等，但尚未挂载， $el 还不可用； * 需要初始化处理一些数据时会比较有用.\x26mdash;-还未挂载； mounted el: * 挂载到实例上后调用，一般我们的第一个业务逻辑会在这里开始； * 相当于 $(document).ready()\x26mdash;刚刚挂载； beforeDestroy: * 实例销毁之前调用； * 主要解绑一些使用 addEventListener 监听的事件等。",
+    "inLanguage" : "zh-CN",
+    "author" : "吴潇",
+    "creator" : "吴潇",
+    "publisher": "吴潇",
+    "accountablePerson" : "吴潇",
+    "copyrightHolder" : "吴潇",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-09-24 15:30:30 \x2b0800 CST",
+    "dateModified" : "2019-09-24 15:30:30 \x2b0800 CST",
+    "url" : "http:\/\/www.pigxw.top\/vue%E5%88%9D%E4%BD%93%E9%AA%8C\/",
+    "wordCount" : "166",
+    "keywords" : [  "吴潇的个人博客"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">吴潇的个人博客</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/search/" title="">搜索</a>
+                
+                <a class="menu-item" href="/" title="">首页</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/contacts/" title="">联系我</a>
+                
+                <a class="menu-item" href="/wechat-subscribe/" title="">订阅</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">吴潇的个人博客</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/search/" title="">搜索</a>
+                
+                <a class="menu-item" href="/" title="">首页</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/contacts/" title="">联系我</a>
+                
+                <a class="menu-item" href="/wechat-subscribe/" title="">订阅</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">vue基础之实例与数据绑定</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="http://www.pigxw.top/" rel="author">吴潇</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-09-24 itemprop="datePublished">September 24, 2019</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h1 id="vue实例和数据绑定">vue实例和数据绑定</h1>
+
+<ol>
+<li>cdn引入vue.js：<code>&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js&quot;&gt;&lt;/script&gt;</code></li>
+
+<li><p>通过构造函数 Vue 就可以创建一个 Vue 的根实例，并启动 Vue 应用&mdash;入口</p>
+
+<pre><code>var app ＝new Vue({
+ el:'',
+ data:{
+}
+})
+</code></pre></li>
+
+<li><p>必不可少的一个选项就是 el 。 el 用于指定一个页面中己存在的 DOM 元素来挂载 Vue实例,可以是标签。也可以是css语法。</p></li>
+
+<li><p>通过 Vue 实例的 data 选项，可以声明应用内需要双向绑定的数据。建议所有会用到的数据都预先在 data 内 声明，这样不至于将数据散落在业务逻辑中，难以维护。也可以指向一个已经有的变量。</p></li>
+
+<li><p>挂载成功后，我们可以通过
+<code>app.$el</code>
+来访问该元素。Vue 提供了很多常用的实例属性与方法，都以
+el,app.
+&mdash;访问data元素的属性&mdash; 直接app.属性名，<code>app.msg</code></p></li>
+</ol>
+
+<h2 id="生命周期钩子">生命周期钩子</h2>
+
+<p>created:
+* 实例创建完成后调用，此阶段完成了数据的观测等，但尚未挂载， $el 还不可用；
+* 需要初始化处理一些数据时会比较有用.&mdash;-还未挂载；
+mounted el:
+* 挂载到实例上后调用，一般我们的第一个业务逻辑会在这里开始；
+* 相当于 $(document).ready()&mdash;刚刚挂载；
+beforeDestroy:
+* 实例销毁之前调用；
+* 主要解绑一些使用 addEventListener 监听的事件等。</p>
+
+<h2 id="文本插值和表达式">文本插值和表达式</h2>
+
+<ul>
+<li>语法：使用双大括号(Mustache 语法）<code>{{}}</code>是最基本的文本插值方法，它会自动将双向绑定的数据实时显示出来。</li>
+
+<li><p>用法: 在<code>{{}}</code>中，除了简单的绑定属性值外，还可以使用 JavaScript 表达式进行简单的运算、三元运算等。
+<br>
+Vue .js 只支持单个表达式，不支持语句和流控制。
+<code>{{6+6 *3}}    //可以进行简单的运算</code>
+<code>{{6&lt;3?msg:a}} //可以用三元运算符</code>
+<code>{{if(6&gt;3){}} //注意：文本插值的形式，其中不能书写表达式,支持单个表达式。</code>
+el，Vue实例本身也代理了data对象里的所有属性，所以可以这样访问:
+访问vue实例的属性: <code>app.data</code></p>
+
+<pre><code>{{var a = 6}}
+var a ;a = 6;     //这是语旬，不是表达式
+{{var book ='Vue.js 实战'}}  //不能使用流控制，要使用三元运算`
+{{if (ok) return msg}}
+</code></pre></li>
+</ul>
+
+<h2 id="实例">实例</h2>
+
+<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;title&gt;demo&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id=&quot;dateApp&quot;&gt;
+        {{date}}
+    &lt;/div&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+    /*  需求：在页面中实时显示当前时间*/
+    var app = new Vue({
+        el: &quot;#dateApp&quot;,
+        data:{
+            date: new Date()
+        },
+        mounted: function(){
+            var _this= this;//this 代表 vue 实例
+            this.timer = setInterval(function(){
+                _this.date= new Date();
+            },1000)
+        },
+        beforeDestory:function(){
+            if(this.timer){
+                clearInterval(this.timer)
+            }
+        }
+
+
+    })
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>吴潇 </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=http://www.pigxw.top/vue%E5%88%9D%E4%BD%93%E9%AA%8C/>http://www.pigxw.top/vue%E5%88%9D%E4%BD%93%E9%AA%8C/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="http://www.pigxw.top/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="http://www.pigxw.top/hugo-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="prev" rel="prev" title="如何使用 hugo 搭建个人博客"><i class="iconfont icon-left"></i>&nbsp;如何使用 hugo 搭建个人博客</a>
+         
+        
+        <a href="http://www.pigxw.top/vue-%E6%8C%87%E4%BB%A4%E5%92%8C%E4%BA%8B%E4%BB%B6%E7%AD%89/" class="next" rel="next" title="vue 指令事件">vue 指令事件&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="http://www.pigxw.top/">吴潇</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

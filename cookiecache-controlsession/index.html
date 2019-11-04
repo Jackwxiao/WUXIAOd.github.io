@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="吴潇">
+  <meta name="description" content="吴潇的个人网站">
+  <meta name="keywords" content="吴潇,前端,程序猿">
+  
+  <link rel="prev" href="http://www.pigxw.top/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" />
+  <link rel="next" href="http://www.pigxw.top/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF/" />
+  <link rel="canonical" href="http://www.pigxw.top/cookiecache-controlsession/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           http之Cookie、Cache-control、Session | 吴潇的个人博客
+       
+  </title>
+  <meta name="title" content="http之Cookie、Cache-control、Session | 吴潇的个人博客">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "http:\/\/www.pigxw.top\/"
+    },
+    "articleSection" : "posts",
+    "name" : "http之Cookie、Cache-control、Session",
+    "headline" : "http之Cookie、Cache-control、Session",
+    "description" : " HTTP请求与响应\nCookie Cookie 是什么？  Cookie 是浏览器访问服务器后，服务器传给浏览器的一段数据。 浏览器需要保存这段数据，不得轻易删除。 此后每次浏览器访问该服务器，都必须带上这段数据。  Cookie特点：  服务器通过 Set-Cookie 头设给客户端一串字符串 浏览器（客户端）得到Cookie 之后，每次访问相同域名的网页时都要带上这段字符串 服务器读取Cookie就知道登录用户的信息。客户端要在一段时间内保存这个Cookie。  cookie会被用户更改，所以要使用session来阻止用户更改。\n什么是Session? 服务器通过Cookie给用户一个session id,session id对应服务器里面的一小块内存，每次用户访问服务器时，服务器通过session id去读取对应的session就知道用户的隐私信息了。\nSession是基于Cookie实现的，反过来说，cookie是session的基石。\ncookie和localstorage的区别：  localstorage和http无关，不会被带到服务器上，cookie每次请求的时候会被浏览器带到服务器上；\n localstorage最大存储量为5Mb左右,cookie为4k左右。\n  localstorage和sessionstorage的区别：  sessionstroage在用户关闭页面后就失效（会话结束后），localstorage永久有效。\n cookie默认在用户关闭页面后就失效，后台代码可以任意设置Cookie的失效期限。\n  Cache-control 你想要哪个请求被缓存，就给一个Cache-Control response.setHeader(\x27Cache-Control\x27,\x27max-age=30\x27)\/\/30秒内请求时返回的是内存给你的\n但是首页不能设置Cache-Conrol,如果首页都缓存了，用户在缓存时间内无法获得最新内容。\nCache-Control可以让浏览器在一段时间内不访问浏览器，直接用本地的内存或硬盘作为响应，可以极快的请求到资源。 如果要更新，只要在入口（html）文件里把URL变一下，跟以前的所有URL不一样就不会使用缓存，会把最新版的缓存下来，如果又过时了，再改一下就可以了。 #### Expires和Cache-Control的区别：\n Cache-Control是多长时间过期，Expires是什么时候过期，也就是设置的时候，C是设置时长，E设置时间点。   #### cache-control与Etag: 设置了Cache-Control直接不请求,Etag会请求但如果MD5一样就不会下载。\n登陆注册图解： ",
+    "inLanguage" : "zh-CN",
+    "author" : "吴潇",
+    "creator" : "吴潇",
+    "publisher": "吴潇",
+    "accountablePerson" : "吴潇",
+    "copyrightHolder" : "吴潇",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-10-22 11:17:26 \x2b0800 CST",
+    "dateModified" : "2019-10-22 11:17:26 \x2b0800 CST",
+    "url" : "http:\/\/www.pigxw.top\/cookiecache-controlsession\/",
+    "wordCount" : "41",
+    "keywords" : [  "吴潇的个人博客"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">吴潇的个人博客</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/search/" title="">搜索</a>
+                
+                <a class="menu-item" href="/" title="">首页</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/contacts/" title="">联系我</a>
+                
+                <a class="menu-item" href="/wechat-subscribe/" title="">订阅</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">吴潇的个人博客</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/search/" title="">搜索</a>
+                
+                <a class="menu-item" href="/" title="">首页</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/contacts/" title="">联系我</a>
+                
+                <a class="menu-item" href="/wechat-subscribe/" title="">订阅</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">http之Cookie、Cache-control、Session</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="http://www.pigxw.top/" rel="author">吴潇</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-10-22 itemprop="datePublished">October 22, 2019</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<p><a href="https://www.jianshu.com/p/1938d3c995d2" rel="nofollow noreferrer" target="_blank">HTTP请求与响应</a></p>
+
+<h2 id="cookie">Cookie</h2>
+
+<h4 id="cookie-是什么">Cookie 是什么？</h4>
+
+<ol>
+<li>Cookie 是浏览器访问服务器后，服务器传给浏览器的一段数据。</li>
+<li>浏览器需要保存这段数据，不得轻易删除。</li>
+<li>此后每次浏览器访问该服务器，都必须带上这段数据。</li>
+</ol>
+
+<h4 id="cookie特点">Cookie特点：</h4>
+
+<ol>
+<li>服务器通过 Set-Cookie 头设给客户端一串字符串</li>
+<li>浏览器（客户端）得到Cookie 之后，每次访问相同域名的网页时都要带上这段字符串</li>
+<li>服务器读取Cookie就知道登录用户的信息。客户端要在一段时间内保存这个Cookie。</li>
+</ol>
+
+<p><strong>cookie会被用户更改，所以要使用session来阻止用户更改。</strong></p>
+
+<h4 id="什么是session">什么是Session?</h4>
+
+<p>服务器通过Cookie给用户一个session id,session id对应服务器里面的一小块内存，每次用户访问服务器时，服务器通过session id去读取对应的session就知道用户的隐私信息了。</p>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://i.loli.net/2019/10/22/iJAR95E128p4vmX.png" alt="cookie、session.png" class="lazyload"><figcaption class="image-caption">cookie、session.png</figcaption></figure></p>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://i.loli.net/2019/10/22/Ou7Apy2P6RDVLaw.png" alt="localStorage、sessionStorage.png" class="lazyload"><figcaption class="image-caption">localStorage、sessionStorage.png</figcaption></figure></p>
+
+<p>Session是基于Cookie实现的，反过来说，cookie是session的基石。</p>
+
+<h4 id="cookie和localstorage的区别">cookie和localstorage的区别：</h4>
+
+<ul>
+<li><p>localstorage和http无关，不会被带到服务器上，cookie每次请求的时候会被浏览器带到服务器上；</p></li>
+
+<li><p>localstorage最大存储量为5Mb左右,cookie为4k左右。</p></li>
+</ul>
+
+<h4 id="localstorage和sessionstorage的区别">localstorage和sessionstorage的区别：</h4>
+
+<ul>
+<li><p>sessionstroage在用户关闭页面后就失效（会话结束后），localstorage永久有效。</p></li>
+
+<li><p>cookie默认在用户关闭页面后就失效，后台代码可以任意设置Cookie的失效期限。</p></li>
+</ul>
+
+<h4 id="cache-control">Cache-control</h4>
+
+<p><strong>你想要哪个请求被缓存，就给一个Cache-Control</strong>
+ <code>response.setHeader('Cache-Control','max-age=30')//30秒内请求时返回的是内存给你的</code></p>
+
+<p>但是首页不能设置Cache-Conrol,如果首页都缓存了，用户在缓存时间内无法获得最新内容。</p>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://i.loli.net/2019/10/22/o2a91Bmiyzu7r5l.png" alt="Cache-control.png" class="lazyload"><figcaption class="image-caption">Cache-control.png</figcaption></figure></p>
+
+<p>Cache-Control可以让浏览器在一段时间内不访问浏览器，直接用本地的内存或硬盘作为响应，可以极快的请求到资源。 如果要更新，只要在入口（html）文件里把URL变一下，跟以前的所有URL不一样就不会使用缓存，会把最新版的缓存下来，如果又过时了，再改一下就可以了。
+ #### Expires和Cache-Control的区别：</p>
+
+<ul>
+<li>Cache-Control是多长时间过期，Expires是什么时候过期，也就是设置的时候，C是设置时长，E设置时间点。
+<br /></li>
+</ul>
+
+<p>#### cache-control与Etag:
+ 设置了Cache-Control直接不请求,Etag会请求但如果MD5一样就不会下载。</p>
+
+<p>登陆注册图解：
+<figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://i.loli.net/2019/10/22/aXdWhxKSziBkpTr.png" alt="登陆注册图解.png" class="lazyload"><figcaption class="image-caption">登陆注册图解.png</figcaption></figure></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>吴潇 </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=http://www.pigxw.top/cookiecache-controlsession/>http://www.pigxw.top/cookiecache-controlsession/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="http://www.pigxw.top/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="http://www.pigxw.top/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="prev" rel="prev" title="web性能优化"><i class="iconfont icon-left"></i>&nbsp;web性能优化</a>
+         
+        
+        <a href="http://www.pigxw.top/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF/" class="next" rel="next" title="JS模拟继承">JS模拟继承&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="http://www.pigxw.top/">吴潇</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

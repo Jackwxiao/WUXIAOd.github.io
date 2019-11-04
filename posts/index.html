@@ -1,332 +1,195 @@
 <!DOCTYPE html>
-<html lang="zh-Hans">
+<html lang="zh-CN">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    
-    <title>吴潇的个人博客 </title>
-    <meta name="viewport" content="width=device-width,minimum-scale=1">
-    <meta name="generator" content="Hugo 0.58.2" />
-    
-    
-      <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
-    
-
-    
-    
-      <link href="/dist/css/app.d98f2eb6bcd1eaedb7edf166bd16af26.css" rel="stylesheet">
-    
-
-    
-
-    
-      
-    
-
-    
-      <link href="%7balternate%20%7bRSS%20application/rss&#43;xml%20%20index%20alternate%20%20false%20false%20true%20false%20false%200%7d%20/posts/index.xml%20http://example.org/posts/index.xml%7d" rel="alternate" type="application/rss+xml" title="吴潇的个人博客" />
-      <link href="%7balternate%20%7bRSS%20application/rss&#43;xml%20%20index%20alternate%20%20false%20false%20true%20false%20false%200%7d%20/posts/index.xml%20http://example.org/posts/index.xml%7d" rel="feed" type="application/rss+xml" title="吴潇的个人博客" />
-    
-
-    <meta property="og:title" content="Posts" />
-<meta property="og:description" content="" />
-<meta property="og:type" content="website" />
-<meta property="og:url" content="http://example.org/posts/" />
-
-<meta property="og:updated_time" content="2019-10-24T18:21:29+08:00" />
-<meta itemprop="name" content="Posts">
-<meta itemprop="description" content="">
-
-<meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Posts"/>
-<meta name="twitter:description" content=""/>
-
-  </head>
-
-  <body class="ma0 avenir bg-near-white">
-
-    
-
-  <header>
-    <div class="pb3-m pb6-l bg-black">
-      <nav class="pv3 ph3 ph4-ns" role="navigation">
-  <div class="flex-l justify-between items-center center">
-    <a href="http://example.org/" class="f3 fw2 hover-white no-underline white-90 dib">
-      吴潇的个人博客
-    </a>
-    <div class="flex-l items-center">
-      
-
-      
-      
-
-
-
-
-
-
-
-
-
-
-
-    </div>
-  </div>
-</nav>
-
-      <div class="tc-l pv3 ph3 ph4-ns">
-        <h1 class="f2 f-subheadline-l fw2 light-silver mb0 lh-title">
-          Posts
-        </h1>
-        
-      </div>
-    </div>
-  </header>
-
-
-    <main class="pb7" role="main">
-      
-  <article class="pa3 pa4-ns nested-copy-line-height nested-img">
-    <section class="cf ph3 ph5-l pv3 pv4-l f4 tc-l center measure-wide lh-copy mid-gray"></section>
-    <section class="flex-ns flex-wrap justify-around mt5">
-      
-        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="link black dim">
-        移动端的问题
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      300ms延迟问题： 延迟的原因：
-iphone是无键盘全触屏手机的始祖，当时的网站都是为大屏幕设备所设计的（没有设置），为了便于用户阅读浏览器引入了双击缩放的功能。手指在屏幕上快速点击两次，iOS 自带的 Safari 浏览器会将网页缩放至原始比例。那如何判断用户快速点击两次呢？假定用户点击后300ms内如果有第二次点击，就认为用户的目的是双击缩放而不是普通的点击页面元素。所以用户第一次点击一个链接后，必须等300ms，浏览器才能决定是否是跳转还是缩放页面。 后来全触屏手机流行后，其他设备浏览器也开始效仿。
-如何解决：
-方法1、设置 meta&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt;
-经过测试，在android手机只要添加name=viewport的meta即可消除延迟， 在ios上必须设置width=device-width。
-其他方法:
-fastclick库，或者不用click用touchstart
-什么时候使用: 1. 当移动端因为一些原因未使用 的时候使用。 2. 2017年以前使用，现在一般不用。但为了应付面试仍然学习它，因为不少面试官还生活在2017年以前。
-如何使用:
- &lt;script src=&quot;https://cdn.bootcss.com/fastclick/1.0.6/fastclick.js&quot;&gt;&lt;/script&gt; document.addEventListener('DOMContentLoaded', function() { FastClick.attach(document.body) }, false)  fastclick 原理: 在检测到touchend事件的时候，会通过DOM自定义事件立即出发模拟一个click事件，并把浏览器在300ms之后真正的click事件阻止掉
-点击穿透现象： 在移动端，当用户通过绑定touchstar事件监听函数让浮层关闭时，关闭后浮层后面对应位置页面其他元素也被点击，比如浮层的关闭按钮下是一个链接，当用户点击浮层关闭按钮浮层消失后大约300ms页面同时发生跳转。
-原因分析： 触屏设备为了区分用户双击缩放，对click做了300ms延迟触发，因此用户在移动端触屏设备的操作流程以及事件触发为：
- 手指触摸屏幕到屏幕，触发 touchstart 手指在屏幕短暂停留(如果是移动，触发 touchmove) 手指离开屏幕, 触发 touchend 等待约300ms，看用户在此时间内是否再次触摸屏幕。如果没有 300ms后 在用户手指离开的位置触发 click事件  击穿的根源在第4步。当用户用户点击关闭让遮罩隐藏后，浏览器在300ms后在原来用户手指离开的位置触发click事件，此时遮罩不存在了，自然“点击”到后面的元素。
-解决方法:
-方法1
-设置&lt;meta name=&quot;viewport&quot; content=&quot;device-width&quot;&gt; 表面上看起来解决了300ms延时，就能解决穿透。实际上这种方法不可行。因为click事件是在touchend事件之后，更晚于touchstart（间隔了60~100ms），如果在touchstart 里绑定关闭了浮层，约100ms后 click事件触发的时候仍然会引发问题。
-方法2
-关闭浮层用click，不用touchstart。 可行。因为浮层关闭监听的是click，当浮层消失后不会再在原来的位置再冒出个click
-方法3
-浮层关闭的时间延长。可行。当用户触发touchstart关闭浮层时，浮层可以使用渐变消失（可设置浮层关闭动画在300ms以上），此刻click事件在原来的位置触发时点击的还是浮层，而不是浮层后面的链接
-方法4
-在ontouchstart 里阻止默认事件。可行。 这样可以阻止click的触发
-    </div>
-  </div>
-</div>
-</div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/" class="link black dim">
-        移动端适配方案
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      移动端适配的几种方案： viewport适配 开发流程: 1. 开发者拿到设计稿（假设设计稿尺寸为750px，设计稿的元素标是基于此宽度标注） 2. 开始开发，css以设计稿标注的尺寸来开发，比如页面元素字体标注的大小是32px 4. 在html的head里引入适配代码
-简言之：CSS按照设计稿写，加几句动态生成meta标签的JS代码。
-&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width&quot;&gt; &lt;script&gt; const WIDTH = 750 const mobileAdapter = () =&gt; { let scale = screen.width/WIDTH let content = `width=${WIDTH}, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}` let meta = document.querySelector('meta[name=viewport]') if(!meta) { meta = document.createElement('meta') meta.setAttribute('name', 'viewport') document.head.appendChild(meta) } meta.setAttribute('content', content) } mobileAdapter() window.onorientationchange = mobileAdapter &lt;/script&gt;  原理解析：
-&lt;meta name=&quot;viewport&quot; content=&quot;width=750px,inital-scale=0.5&quot;&gt;  content=750px是设计稿的尺寸。 initial-scale为默认缩放比，它是由设备尺寸/设计稿尺寸决定，不能写死，所以要动态生成。 优点是使用简单，缺点是页面整体缩放，如果页面中有一个1px的边框，经整体缩放，这个1px可能就不见了或者又太大了。
-vw适配： 750px=100vw; 1px=0.1333vw; 84px=11.20vw&hellip;&hellip;
-    </div>
-  </div>
-</div>
-</div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/js%E4%B9%8B%E5%87%BD%E6%95%B0/" class="link black dim">
-        JS之函数
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      函数 指可以执行代码的对象，和数组一样有不一致性。
-三种函数声明方式 function f() { } var f = function f() { }; //注意分号 f = new Function ('x','y','return x+y') //只有最后一个参数会被当作函数体，可以不使用new 命令，不推荐使用这种声明方式  注意：如果同一个函数被多次声明，后面的声明会覆盖前面的声明。也就是说起前面的声明会失效。
-函数名的提升 JS引擎将函数名视同变量名，使用function 声明函数时，整个函数会像变量声明一样被提升到代码头部。如果同时使用function命令和赋值语句声明同一个函数，最后总是采用赋值语句的定义
-var f = function () { console.log('1'); } function f() { console.log('2'); } f() // 1  函数的属性和方法  name : f.name返回函数的名字，如果通过变量赋值定义的匿名函数则返回变量名。具名函数返回function关键字后的函数名。
-var f3 = function myName() {}; f3.name // 'myName'   上面代码中，f3.name返回函数表达式的名字。注意，真正的函数名还是f3，而myName这个名字只在函数体内部可用。 用处：可用来获取参数函数的名字。
- length: f.length 返回函数预期传入的参数个数。
- toString: 返回一个字符串，内容是函数源码。
-    </div>
-  </div>
-</div>
-</div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/promise/" class="link black dim">
-        Promise
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      用 Promise 对象实现 Ajax 操作 const getJSON = function(url) { const promise = new Promise(function(resolve, reject){ const handler = function() { if (this.readyState !== 4) { return; } if (this.status === 200) { resolve(this.response); } else { reject(new Error(this.statusText)); } }; const client = new XMLHttpRequest(); client.open(&quot;GET&quot;, url); client.onreadystatechange = handler; client.responseType = &quot;json&quot;; client.setRequestHeader(&quot;Accept&quot;, &quot;application/json&quot;); client.send(); }); return promise; }; getJSON(&quot;/posts.json&quot;).then(function(json) { console.log('Contents: ' + json); }, function(error) { console.
-    </div>
-  </div>
-</div>
-</div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF/" class="link black dim">
-        JS模拟继承
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      JS模拟继承 继承：面向对象编程中的一个概念，继承可以使子类具有父类的各种属性和方法。
-能产生对象的东西即为类。 var person = new Human()中的person就是一个对象，所以Human()便是一个类。 但是父类Object（）到子类Human（）是一个自带的继承。
-ES5写继承： function Human(name){ //父类 Human() this.name = (name) //自有属性name } Human.prototype.run = function(){ //共有属性为run console.log(“我叫”+this.name&quot;,我有run的属性&quot;) return undefined } function Man(name){ //声明 Man() Human.call(this, name) //call 父类 this.gender = '男' //声明自身的属性gender } var f = function(){ } f.prototype = Human.prototype man.prototype = new f( ) Man.prototype.fight = function(){ console.log('如来神掌') }  这三句：
-var f = function(){ } f.prototype = Human.prototype man.prototype = new f( )  等价于：
-    </div>
-  </div>
-</div>
-</div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/cookiecache-controlsession/" class="link black dim">
-        http之Cookie、Cache-control、Session
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-       HTTP请求与响应
-Cookie Cookie 是什么？  Cookie 是浏览器访问服务器后，服务器传给浏览器的一段数据。 浏览器需要保存这段数据，不得轻易删除。 此后每次浏览器访问该服务器，都必须带上这段数据。  Cookie特点：  服务器通过 Set-Cookie 头设给客户端一串字符串 浏览器（客户端）得到Cookie 之后，每次访问相同域名的网页时都要带上这段字符串 服务器读取Cookie就知道登录用户的信息。客户端要在一段时间内保存这个Cookie。  cookie会被用户更改，所以要使用session来阻止用户更改。
-什么是Session? 服务器通过Cookie给用户一个session id,session id对应服务器里面的一小块内存，每次用户访问服务器时，服务器通过session id去读取对应的session就知道用户的隐私信息了。
-Session是基于Cookie实现的，反过来说，cookie是session的基石。
-cookie和localstorage的区别：  localstorage和http无关，不会被带到服务器上，cookie每次请求的时候会被浏览器带到服务器上；
- localstorage最大存储量为5Mb左右,cookie为4k左右。
-  localstorage和sessionstorage的区别：  sessionstroage在用户关闭页面后就失效（会话结束后），localstorage永久有效。
- cookie默认在用户关闭页面后就失效，后台代码可以任意设置Cookie的失效期限。
-  Cache-control 你想要哪个请求被缓存，就给一个Cache-Control response.setHeader('Cache-Control','max-age=30')//30秒内请求时返回的是内存给你的
-但是首页不能设置Cache-Conrol,如果首页都缓存了，用户在缓存时间内无法获得最新内容。
-Cache-Control可以让浏览器在一段时间内不访问浏览器，直接用本地的内存或硬盘作为响应，可以极快的请求到资源。 如果要更新，只要在入口（html）文件里把URL变一下，跟以前的所有URL不一样就不会使用缓存，会把最新版的缓存下来，如果又过时了，再改一下就可以了。 #### Expires和Cache-Control的区别：
- Cache-Control是多长时间过期，Expires是什么时候过期，也就是设置的时候，C是设置时长，E设置时间点。   #### cache-control与Etag: 设置了Cache-Control直接不请求,Etag会请求但如果MD5一样就不会下载。
-登陆注册图解： 
-    </div>
-  </div>
-</div>
-</div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="link black dim">
-        web性能优化
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-       web性能优化：（从理论上来讲） 地址栏输入url到按下回车这一过程中有哪些前端相关的内容：
- 看有没有缓存 DNS查询 建立TCP连接 发送HTTP请求 后台处理 接收响应 接收完成得到一个html 判断文本类型，DOCTYPE html/xml 浏览器逐行解析html 看到chrom会等css加载完再渲染到页面 看到CSS，下载css，如果有多个css便同时下载(chrom8个)。css,并行下载，串行解析。 看JS，下载并行，串行解析。在chrom中，css会阻塞html渲染，IE不会。JS一定会阻塞html渲染（不管什么浏览器）。  跟前端无关的优化：  优化DNS查询：减少DNS查询（减少域名数量）。
- TCP连接复用（keep-alive）http/2.0多路复用。
-  前端优化：  发送http请求：   减少cookie体积（减少请求）；合并文件。
- 使用cache-control（干掉请求）；
- 同时发多个请求，如ie中一个域名能发4个请求，但我可以使用两个域名或多个。于是与上面的DNS查询优化有矛盾，但是经过权衡之后，文件少的时候，就减少域名使用。文件多时，增加DNS查询时间，但减少了请求时间（用户带宽足够前提下）。
-   接收响应   使用ETAG，如果请求时带上服务器给的ETAG时，服务器便不再响应新的内容，返回304,表示not modifile；
- 文件大时使用Gzip压缩。
-   返回的html中的DOCTYPE不能不写，不能写错。尽量减少标签。
- CSS和JS优化：
-   使用CDN（内容分发网络）；
- CSS放到head, JS 放body最后。css放前面的原因是让它尽早下载完，下载完就可以渲染了。js放后面是因为页面没有js还是可以看的，所以可以保证用户优先看到完整的页面。尽早显示页面，获取节点。
- 延迟加载，懒加载：必须初始化的先加载，剩余的延迟加载。如第一屏先加载，其余的等用户滚到再加载。
- 使用外部js和css，就是不要把js,css写在html中。
- 压缩图片。
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="吴潇">
+  <meta name="description" content="吴潇的个人网站">
+  <meta name="keywords" content="吴潇,前端,程序猿">
   
+  
+  
+  <link rel="canonical" href="http://www.pigxw.top/posts/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Posts | 吴潇的个人博客
+       
+  </title>
+  <meta name="title" content="Posts | 吴潇的个人博客">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+    <link href="http://www.pigxw.top/posts/index.xml" rel="alternate" type="application/rss+xml" title="吴潇的个人博客" />
+    <link href="http://www.pigxw.top/posts/index.xml" rel="feed" type="application/rss+xml" title="吴潇的个人博客" />
+  
+  
+ 
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">吴潇的个人博客</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/search/" title="">搜索</a>
+                
+                <a class="menu-item" href="/" title="">首页</a>
+                
+                <a class="menu-item active" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/contacts/" title="">联系我</a>
+                
+                <a class="menu-item" href="/wechat-subscribe/" title="">订阅</a>
+                
+        </div>
     </div>
-  </div>
-</div>
-</div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/vue-routeraxiosvuex/" class="link black dim">
-        vue-router、axios、vuex
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      vue-router 路由的基本加载  安装 npm install --save vue-router 2.引用
-在router 的index.js中 import router from 'vue-router' Vue.use(router)  配置路由文件，并在vue实例中注入
-var rt = new router({ routes:[{ path:'/', //指定要跳转的路径 component: HelloWorld //指定要跳转的组件 }] }) new Vue({ el: '#app', router, components: { App }, template: '' })  确定试图加载的位置
-&lt;router-view&gt;&lt;/router-view&gt;  路由的跳转  &lt;template&gt; &lt;ul&gt; &lt;li&gt; &lt;router-link to=&quot;/helloearth&quot;&gt;HELLO EARTH 33&lt;/router-link&gt; &lt;/li&gt; &lt;li&gt; &lt;router-link to=&quot;/helloworld&quot;&gt;HELLO WORLD 22&lt;/router-link&gt; &lt;/li&gt; &lt;/ul&gt; &lt;/template&gt;   路由参数传递  必须在路由内加入路由的name .
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">吴潇的个人博客</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/search/" title="">搜索</a>
+                
+                <a class="menu-item" href="/" title="">首页</a>
+                
+                <a class="menu-item active" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/contacts/" title="">联系我</a>
+                
+                <a class="menu-item" href="/wechat-subscribe/" title="">订阅</a>
+                
+        </div>
     </div>
-  </div>
-</div>
-</div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" class="link black dim">
-        vue自定义指令
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      自定义指令 自定义指令的基本用法 和组件类似分全局注册和局部注册，区别就是把component换成了derective
-需求：自动获取焦点 &lt;div id=&quot;app&quot;&gt; 获取焦点：&lt;input type=&quot;text&quot; v-focus&gt;&lt;br&gt; 未加自定义指令v-focus：&lt;br&gt; &lt;input type=&quot;text&quot;&gt; &lt;/div&gt; &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js&quot;&gt;&lt;/script&gt; &lt;script&gt; Vue.directive('focus',{ inserted:function(el){ //el：指令所绑定的元素可以用来直接操作DOM el.focus(); } }); var app = new Vue({ el:'#app', data:{ } }) &lt;/script  钩子函数 指令定义函数提供了几个钩子函数（可选）：
- bind: 只调用一次，指令第一次绑定到元素时调用，用这个钩子函数可以定义一个在绑定时执行一次的初始化动作。
- inserted: 被绑定元素插入父节点时调用（父节点存在即可调用，不必存在于 document中）
- update: 被绑定元素所在的模板更新时调用，而不论绑定值是否变化。通过比较更新前后的绑定值，可以忽略不必要的模板更新（详细的钩子函数参数见下）。
- componentUpdated: 被绑定元素所在模板完成一次更新周期时调用。
- unbind: 只调用一次， 指令与元素解绑时调用。
-  钩子函数的参数有：  el: 指令所绑定的元素，可以用来直接操作 DOM 。
- binding: 一个对象，包含以下属性： ——–name: 指令名，不包括 v­ 前缀。 ——–value: 指令的绑定值， 例如： v­my­directive=”1 + 1”, value 的值是 2。 ——–oldValue: 指令绑定的前一个值，仅在 update 和 componentUpdated 钩子中可用。无 论值是否改变都可用。 ——–expression: 绑定值的字符串形式。 例如 v­my­directive=”1 + 1” ， expression 的值是 “1 + 1”。 ——–arg: 传给指令的参数。例如 v­my­directive:foo， arg 的值是 “foo”。 ——–modifiers: 一个包含修饰符的对象。 例如： v­my­directive.
-    </div>
-  </div>
-</div>
-</div>
-      
-        <div class="relative w-100 w-30-l mb4 bg-white"><div class="relative w-100 mb4 bg-white nested-copy-line-height">
-  <div class="bg-white mb3 pa4 gray overflow-hidden">
-    <span class="f6 db">Posts</span>
-    <h1 class="f3 near-black">
-      <a href="/posts/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/" class="link black dim">
-        vue组件详解
-      </a>
-    </h1>
-    <div class="nested-links f5 lh-copy nested-copy-line-height">
-      组件（二） 七、插槽slot  插槽：为了让组件可以组合，我们需要一种方式来混合父组件的内容与子组件自己的模板。这个过程被称为 内容分发。Vue.js 实现了一个内容分发 API，使用特殊的 ‘slot’ 元素作为原始内容的插槽。 编译的作用域：假定模板为：
-&lt;child-component&gt; {{ message }} &lt;/child-component&gt;  message 应该绑定到父组件的数据，还是绑定到子组件的数据？答案是父组件。组件作用域简单地说是： 父组件模板的内容在父组件作用域内编译； 子组件模板的内容在子组件作用域内编译。 插槽的用法：父组件的内容与子组件相混合，从而弥补了视图的不足。 混合父组件的内容与子组件自己的模板
- 单个插槽：
-&lt;div id=&quot;app&quot; &gt; &lt;my-component&gt; &lt;p&gt;我是父组件的内容&lt;/p&gt; &lt;/my-component&gt; &lt;/div&gt; Vue.component('my-component',{ template:'&lt;div&gt;\ &lt;slot&gt;\ 如果父组件没有插入内容，我就作为默认出现\ &lt;/slot&gt;\ &lt;/div&gt;' })  具名插槽：
-&lt;name-component&gt; &lt;h3 slot=&quot;header&quot;&gt;我是标题&lt;/h3&gt; &lt;p&gt;我是正文内容&lt;/p&gt; &lt;p&gt;正文内容有两段&lt;/p&gt; &lt;p slot=&quot;footer&quot;&gt;我是底部信息&lt;/p&gt; &lt;/name-component&gt; Vue.component('name-component',{ template:'&lt;div&gt;\ &lt;div class=&quot;header&quot;&gt;\n' + '&lt;slot name=&quot;header&quot;&gt;\n' + ' \n' + ' &lt;/slot&gt;\n' + '&lt;/div&gt;\n' + '&lt;div class=&quot;contatiner&quot;&gt;\n' + ' &lt;slot&gt;\n' + ' \n' + ' &lt;/slot&gt;\n' + '&lt;/div&gt;\n' + '&lt;div class=&quot;footer&quot;&gt;\n' + ' &lt;slot name=&quot;footer&quot;&gt;\n' + '\n' + ' &lt;/slot&gt; \n' + '&lt;/div&gt;'+ ' &lt;/div&gt;' })  作用域插槽：作用域插槽是一种特殊的slot，使用一个可以复用的模板来替换已经渲染的元素——从子组件获取数据===template模板是不会被渲染的
-    </div>
-  </div>
-</div>
-</div>
-      
-    </section>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<div class="post-warp archive">
+    
+    <h3>2019</h3>
+
+    
+    <article class="archive-item">
+        <a href="/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="archive-item-link">移动端的问题</a>
+        <span class="archive-item-date">
+            October 24, 2019
+        </span>
+    </article>
+    
+    <article class="archive-item">
+        <a href="/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/" class="archive-item-link">移动端适配方案</a>
+        <span class="archive-item-date">
+            October 24, 2019
+        </span>
+    </article>
+    
+    <article class="archive-item">
+        <a href="/js%E4%B9%8B%E5%87%BD%E6%95%B0/" class="archive-item-link">JS之函数</a>
+        <span class="archive-item-date">
+            October 23, 2019
+        </span>
+    </article>
+    
+    <article class="archive-item">
+        <a href="/promise/" class="archive-item-link">Promise</a>
+        <span class="archive-item-date">
+            October 23, 2019
+        </span>
+    </article>
+    
+    <article class="archive-item">
+        <a href="/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF/" class="archive-item-link">JS模拟继承</a>
+        <span class="archive-item-date">
+            October 22, 2019
+        </span>
+    </article>
+    
+    <article class="archive-item">
+        <a href="/cookiecache-controlsession/" class="archive-item-link">http之Cookie、Cache-control、Session</a>
+        <span class="archive-item-date">
+            October 22, 2019
+        </span>
+    </article>
+    
+    <article class="archive-item">
+        <a href="/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" class="archive-item-link">web性能优化</a>
+        <span class="archive-item-date">
+            October 20, 2019
+        </span>
+    </article>
+    
+    <article class="archive-item">
+        <a href="/vue-routeraxiosvuex/" class="archive-item-link">vue-router、axios、vuex</a>
+        <span class="archive-item-date">
+            October 15, 2019
+        </span>
+    </article>
+    
+    <article class="archive-item">
+        <a href="/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/" class="archive-item-link">vue自定义指令</a>
+        <span class="archive-item-date">
+            October 9, 2019
+        </span>
+    </article>
+    
+    <article class="archive-item">
+        <a href="/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/" class="archive-item-link">vue组件详解</a>
+        <span class="archive-item-date">
+            October 9, 2019
+        </span>
+    </article>
+    
+    <article class="archive-item">
+        <a href="/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/" class="archive-item-link">vue组件详解</a>
+        <span class="archive-item-date">
+            October 8, 2019
+        </span>
+    </article>
+    
+    <article class="archive-item">
+        <a href="/js%E5%87%BD%E6%95%B0/" class="archive-item-link">JS函数</a>
+        <span class="archive-item-date">
+            September 28, 2019
+        </span>
+    </article>
+     
+    
 
 <ul class="pagination">
     
-    <li class="page-item">
-        <a href="/posts/" class="page-link" aria-label="First"><span aria-hidden="true">&laquo;&laquo;</span></a>
-    </li>
     
-    <li class="page-item disabled">
-    <a  class="page-link" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a>
-    </li>
+    
     
     
     
@@ -338,7 +201,10 @@ var rt = new router({ routes:[{ path:'/', //指定要跳转的路径 component: 
         
     
     
-    <li class="page-item active"><a class="page-link" href="/posts/">1</a></li>
+    <li class="page-item active">
+        <span class="page-link">
+            <a href="/posts/">1</a></li>
+        </span>
     
     
     
@@ -349,46 +215,53 @@ var rt = new router({ routes:[{ path:'/', //指定要跳转的路径 component: 
         
     
     
-    <li class="page-item"><a class="page-link" href="/posts/page/2/">2</a></li>
+    <li class="page-item ">
+        <span class="page-link">
+            <a href="/posts/page/2/">2</a></li>
+        </span>
     
     
-    <li class="page-item">
-    <a href="/posts/page/2/" class="page-link" aria-label="Next"><span aria-hidden="true">&raquo;</span></a>
-    </li>
     
-    <li class="page-item">
-        <a href="/posts/page/2/" class="page-link" aria-label="Last"><span aria-hidden="true">&raquo;&raquo;</span></a>
-    </li>
     
 </ul>
 
-</article>
-
-    </main>
-    <footer class="bg-black bottom-0 w-100 pa3" role="contentinfo">
-  <div class="flex justify-between">
-  <a class="f4 fw4 hover-white no-underline white-70 dn dib-ns pv2 ph3" href="http://example.org/" >
-    &copy; 2019 吴潇的个人博客
-  </a>
-    <div>
-
-
-
-
-
-
-
-
-
-
 </div>
-  </div>
+
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="http://www.pigxw.top/">吴潇</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
 </footer>
 
+
+
+
+
+
+
+
+
+
+
     
+    <script src="/js/vendor_main.min.js" async=""></script>
 
-  <script src="/dist/js/app.3fc0f988d21662902933.js"></script>
 
 
+     </div>
   </body>
 </html>

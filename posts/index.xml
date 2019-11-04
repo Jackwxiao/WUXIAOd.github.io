@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on 吴潇的个人博客</title>
-    <link>http://example.org/posts/</link>
+    <link>http://www.pigxw.top/posts/</link>
     <description>Recent content in Posts on 吴潇的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>zh-Hans</language>
+    <language>zh-CN</language>
     <lastBuildDate>Thu, 24 Oct 2019 18:21:29 +0800</lastBuildDate>
     
-	<atom:link href="http://example.org/posts/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="http://www.pigxw.top/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>移动端的问题</title>
-      <link>http://example.org/posts/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>
+      <link>http://www.pigxw.top/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>
       <pubDate>Thu, 24 Oct 2019 18:21:29 +0800</pubDate>
       
-      <guid>http://example.org/posts/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
+      <guid>http://www.pigxw.top/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
       <description>300ms延迟问题： 延迟的原因：
 iphone是无键盘全触屏手机的始祖，当时的网站都是为大屏幕设备所设计的（没有设置），为了便于用户阅读浏览器引入了双击缩放的功能。手指在屏幕上快速点击两次，iOS 自带的 Safari 浏览器会将网页缩放至原始比例。那如何判断用户快速点击两次呢？假定用户点击后300ms内如果有第二次点击，就认为用户的目的是双击缩放而不是普通的点击页面元素。所以用户第一次点击一个链接后，必须等300ms，浏览器才能决定是否是跳转还是缩放页面。 后来全触屏手机流行后，其他设备浏览器也开始效仿。
 如何解决：
@@ -43,10 +43,10 @@ fastclick库，或者不用click用touchstart
     
     <item>
       <title>移动端适配方案</title>
-      <link>http://example.org/posts/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/</link>
+      <link>http://www.pigxw.top/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/</link>
       <pubDate>Thu, 24 Oct 2019 11:32:33 +0800</pubDate>
       
-      <guid>http://example.org/posts/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/</guid>
+      <guid>http://www.pigxw.top/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/</guid>
       <description>移动端适配的几种方案： viewport适配 开发流程: 1. 开发者拿到设计稿（假设设计稿尺寸为750px，设计稿的元素标是基于此宽度标注） 2. 开始开发，css以设计稿标注的尺寸来开发，比如页面元素字体标注的大小是32px 4. 在html的head里引入适配代码
 简言之：CSS按照设计稿写，加几句动态生成meta标签的JS代码。
 &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width&amp;quot;&amp;gt; &amp;lt;script&amp;gt; const WIDTH = 750 const mobileAdapter = () =&amp;gt; { let scale = screen.width/WIDTH let content = `width=${WIDTH}, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}` let meta = document.querySelector(&#39;meta[name=viewport]&#39;) if(!meta) { meta = document.createElement(&#39;meta&#39;) meta.setAttribute(&#39;name&#39;, &#39;viewport&#39;) document.head.appendChild(meta) } meta.setAttribute(&#39;content&#39;, content) } mobileAdapter() window.onorientationchange = mobileAdapter &amp;lt;/script&amp;gt;  原理解析：
@@ -56,10 +56,10 @@ vw适配： 750px=100vw; 1px=0.1333vw; 84px=11.20vw&amp;hellip;&amp;hellip;</des
     
     <item>
       <title>JS之函数</title>
-      <link>http://example.org/posts/js%E4%B9%8B%E5%87%BD%E6%95%B0/</link>
+      <link>http://www.pigxw.top/js%E4%B9%8B%E5%87%BD%E6%95%B0/</link>
       <pubDate>Wed, 23 Oct 2019 19:21:26 +0800</pubDate>
       
-      <guid>http://example.org/posts/js%E4%B9%8B%E5%87%BD%E6%95%B0/</guid>
+      <guid>http://www.pigxw.top/js%E4%B9%8B%E5%87%BD%E6%95%B0/</guid>
       <description>函数 指可以执行代码的对象，和数组一样有不一致性。
 三种函数声明方式 function f() { } var f = function f() { }; //注意分号 f = new Function (&#39;x&#39;,&#39;y&#39;,&#39;return x+y&#39;) //只有最后一个参数会被当作函数体，可以不使用new 命令，不推荐使用这种声明方式  注意：如果同一个函数被多次声明，后面的声明会覆盖前面的声明。也就是说起前面的声明会失效。
 函数名的提升 JS引擎将函数名视同变量名，使用function 声明函数时，整个函数会像变量声明一样被提升到代码头部。如果同时使用function命令和赋值语句声明同一个函数，最后总是采用赋值语句的定义
@@ -71,19 +71,19 @@ var f3 = function myName() {}; f3.name // &#39;myName&#39;   上面代码中，f
     
     <item>
       <title>Promise</title>
-      <link>http://example.org/posts/promise/</link>
+      <link>http://www.pigxw.top/promise/</link>
       <pubDate>Wed, 23 Oct 2019 19:17:26 +0800</pubDate>
       
-      <guid>http://example.org/posts/promise/</guid>
+      <guid>http://www.pigxw.top/promise/</guid>
       <description>用 Promise 对象实现 Ajax 操作 const getJSON = function(url) { const promise = new Promise(function(resolve, reject){ const handler = function() { if (this.readyState !== 4) { return; } if (this.status === 200) { resolve(this.response); } else { reject(new Error(this.statusText)); } }; const client = new XMLHttpRequest(); client.open(&amp;quot;GET&amp;quot;, url); client.onreadystatechange = handler; client.responseType = &amp;quot;json&amp;quot;; client.setRequestHeader(&amp;quot;Accept&amp;quot;, &amp;quot;application/json&amp;quot;); client.send(); }); return promise; }; getJSON(&amp;quot;/posts.json&amp;quot;).then(function(json) { console.log(&#39;Contents: &#39; + json); }, function(error) { console.</description>
     </item>
     
     <item>
       <title>JS模拟继承</title>
-      <link>http://example.org/posts/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF/</link>
+      <link>http://www.pigxw.top/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF/</link>
       <pubDate>Tue, 22 Oct 2019 19:17:26 +0800</pubDate>
       
-      <guid>http://example.org/posts/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF/</guid>
+      <guid>http://www.pigxw.top/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF/</guid>
       <description>JS模拟继承 继承：面向对象编程中的一个概念，继承可以使子类具有父类的各种属性和方法。
 能产生对象的东西即为类。 var person = new Human()中的person就是一个对象，所以Human()便是一个类。 但是父类Object（）到子类Human（）是一个自带的继承。
 ES5写继承： function Human(name){ //父类 Human() this.name = (name) //自有属性name } Human.prototype.run = function(){ //共有属性为run console.log(“我叫”+this.name&amp;quot;,我有run的属性&amp;quot;) return undefined } function Man(name){ //声明 Man() Human.call(this, name) //call 父类 this.gender = &#39;男&#39; //声明自身的属性gender } var f = function(){ } f.prototype = Human.prototype man.prototype = new f( ) Man.prototype.fight = function(){ console.log(&#39;如来神掌&#39;) }  这三句：
@@ -92,10 +92,10 @@ var f = function(){ } f.prototype = Human.prototype man.prototype = new f( )  �
     
     <item>
       <title>http之Cookie、Cache-control、Session</title>
-      <link>http://example.org/posts/cookiecache-controlsession/</link>
+      <link>http://www.pigxw.top/cookiecache-controlsession/</link>
       <pubDate>Tue, 22 Oct 2019 11:17:26 +0800</pubDate>
       
-      <guid>http://example.org/posts/cookiecache-controlsession/</guid>
+      <guid>http://www.pigxw.top/cookiecache-controlsession/</guid>
       <description> HTTP请求与响应
 Cookie Cookie 是什么？  Cookie 是浏览器访问服务器后，服务器传给浏览器的一段数据。 浏览器需要保存这段数据，不得轻易删除。 此后每次浏览器访问该服务器，都必须带上这段数据。  Cookie特点：  服务器通过 Set-Cookie 头设给客户端一串字符串 浏览器（客户端）得到Cookie 之后，每次访问相同域名的网页时都要带上这段字符串 服务器读取Cookie就知道登录用户的信息。客户端要在一段时间内保存这个Cookie。  cookie会被用户更改，所以要使用session来阻止用户更改。
 什么是Session? 服务器通过Cookie给用户一个session id,session id对应服务器里面的一小块内存，每次用户访问服务器时，服务器通过session id去读取对应的session就知道用户的隐私信息了。
@@ -113,10 +113,10 @@ Cache-Control可以让浏览器在一段时间内不访问浏览器，直接用�
     
     <item>
       <title>web性能优化</title>
-      <link>http://example.org/posts/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</link>
+      <link>http://www.pigxw.top/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</link>
       <pubDate>Sun, 20 Oct 2019 19:17:26 +0800</pubDate>
       
-      <guid>http://example.org/posts/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</guid>
+      <guid>http://www.pigxw.top/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</guid>
       <description> web性能优化：（从理论上来讲） 地址栏输入url到按下回车这一过程中有哪些前端相关的内容：
  看有没有缓存 DNS查询 建立TCP连接 发送HTTP请求 后台处理 接收响应 接收完成得到一个html 判断文本类型，DOCTYPE html/xml 浏览器逐行解析html 看到chrom会等css加载完再渲染到页面 看到CSS，下载css，如果有多个css便同时下载(chrom8个)。css,并行下载，串行解析。 看JS，下载并行，串行解析。在chrom中，css会阻塞html渲染，IE不会。JS一定会阻塞html渲染（不管什么浏览器）。  跟前端无关的优化：  优化DNS查询：减少DNS查询（减少域名数量）。
  TCP连接复用（keep-alive）http/2.0多路复用。
@@ -137,10 +137,10 @@ Cache-Control可以让浏览器在一段时间内不访问浏览器，直接用�
     
     <item>
       <title>vue-router、axios、vuex</title>
-      <link>http://example.org/posts/vue-routeraxiosvuex/</link>
+      <link>http://www.pigxw.top/vue-routeraxiosvuex/</link>
       <pubDate>Tue, 15 Oct 2019 20:30:30 +0900</pubDate>
       
-      <guid>http://example.org/posts/vue-routeraxiosvuex/</guid>
+      <guid>http://www.pigxw.top/vue-routeraxiosvuex/</guid>
       <description>vue-router 路由的基本加载  安装 npm install --save vue-router 2.引用
 在router 的index.js中 import router from &#39;vue-router&#39; Vue.use(router)  配置路由文件，并在vue实例中注入
 var rt = new router({ routes:[{ path:&#39;/&#39;, //指定要跳转的路径 component: HelloWorld //指定要跳转的组件 }] }) new Vue({ el: &#39;#app&#39;, router, components: { App }, template: &#39;&#39; })  确定试图加载的位置
@@ -149,10 +149,10 @@ var rt = new router({ routes:[{ path:&#39;/&#39;, //指定要跳转的路径 com
     
     <item>
       <title>vue自定义指令</title>
-      <link>http://example.org/posts/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/</link>
+      <link>http://www.pigxw.top/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/</link>
       <pubDate>Wed, 09 Oct 2019 20:30:30 +0900</pubDate>
       
-      <guid>http://example.org/posts/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/</guid>
+      <guid>http://www.pigxw.top/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/</guid>
       <description>自定义指令 自定义指令的基本用法 和组件类似分全局注册和局部注册，区别就是把component换成了derective
 需求：自动获取焦点 &amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt; 获取焦点：&amp;lt;input type=&amp;quot;text&amp;quot; v-focus&amp;gt;&amp;lt;br&amp;gt; 未加自定义指令v-focus：&amp;lt;br&amp;gt; &amp;lt;input type=&amp;quot;text&amp;quot;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; Vue.directive(&#39;focus&#39;,{ inserted:function(el){ //el：指令所绑定的元素可以用来直接操作DOM el.focus(); } }); var app = new Vue({ el:&#39;#app&#39;, data:{ } }) &amp;lt;/script  钩子函数 指令定义函数提供了几个钩子函数（可选）：
  bind: 只调用一次，指令第一次绑定到元素时调用，用这个钩子函数可以定义一个在绑定时执行一次的初始化动作。
@@ -166,10 +166,10 @@ var rt = new router({ routes:[{ path:&#39;/&#39;, //指定要跳转的路径 com
     
     <item>
       <title>vue组件详解</title>
-      <link>http://example.org/posts/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/</link>
+      <link>http://www.pigxw.top/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/</link>
       <pubDate>Wed, 09 Oct 2019 15:30:30 +0800</pubDate>
       
-      <guid>http://example.org/posts/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/</guid>
+      <guid>http://www.pigxw.top/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/</guid>
       <description>组件（二） 七、插槽slot  插槽：为了让组件可以组合，我们需要一种方式来混合父组件的内容与子组件自己的模板。这个过程被称为 内容分发。Vue.js 实现了一个内容分发 API，使用特殊的 ‘slot’ 元素作为原始内容的插槽。 编译的作用域：假定模板为：
 &amp;lt;child-component&amp;gt; {{ message }} &amp;lt;/child-component&amp;gt;  message 应该绑定到父组件的数据，还是绑定到子组件的数据？答案是父组件。组件作用域简单地说是： 父组件模板的内容在父组件作用域内编译； 子组件模板的内容在子组件作用域内编译。 插槽的用法：父组件的内容与子组件相混合，从而弥补了视图的不足。 混合父组件的内容与子组件自己的模板
  单个插槽：
@@ -179,10 +179,10 @@ var rt = new router({ routes:[{ path:&#39;/&#39;, //指定要跳转的路径 com
     
     <item>
       <title>vue组件详解</title>
-      <link>http://example.org/posts/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/</link>
+      <link>http://www.pigxw.top/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/</link>
       <pubDate>Tue, 08 Oct 2019 15:30:30 +0800</pubDate>
       
-      <guid>http://example.org/posts/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/</guid>
+      <guid>http://www.pigxw.top/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/</guid>
       <description>组件（一） 一、组件的作用 组件的作用：提高代码的复用性。
 二、组件的使用方法 1.全局注册组件：
 全局注册： &amp;lt;html&amp;gt; &amp;lt;my-component&amp;gt;&amp;lt;/my-component&amp;gt; &amp;lt;/html&amp;gt; &amp;lt;script&amp;gt; Vue.component(&#39;my-component&#39;,{ template:&#39;&amp;lt;div&amp;gt;这是全局注册的组件&amp;lt;/div&amp;gt;&#39; }) &amp;lt;/script&amp;gt;  2.局部注册组件：
@@ -193,10 +193,10 @@ var rt = new router({ routes:[{ path:&#39;/&#39;, //指定要跳转的路径 com
     
     <item>
       <title>JS函数</title>
-      <link>http://example.org/posts/js%E5%87%BD%E6%95%B0/</link>
+      <link>http://www.pigxw.top/js%E5%87%BD%E6%95%B0/</link>
       <pubDate>Sat, 28 Sep 2019 23:01:04 +0800</pubDate>
       
-      <guid>http://example.org/posts/js%E5%87%BD%E6%95%B0/</guid>
+      <guid>http://www.pigxw.top/js%E5%87%BD%E6%95%B0/</guid>
       <description>###函数 指可以执行代码的对象，和数组一样有不一致性。 #####三种函数声明方式
  function f() { }
  var f = function f() { }; //注意分号
@@ -212,10 +212,10 @@ var f = function () { console.log(&#39;1&#39;); } function f() { console.log(&#3
     
     <item>
       <title>JSONP</title>
-      <link>http://example.org/posts/jsonp/</link>
+      <link>http://www.pigxw.top/jsonp/</link>
       <pubDate>Fri, 27 Sep 2019 11:26:04 +0800</pubDate>
       
-      <guid>http://example.org/posts/jsonp/</guid>
+      <guid>http://www.pigxw.top/jsonp/</guid>
       <description>JSONP JSONP是服务器与客户端跨源通信的常用方法。最大特点就是简单适用，老式浏览器全部支持，服务器改造非常小。
 它的基本思想是，网页通过添加一个script元素，向服务器请求 JSON数据，这种做法不受同源政策限制；服务器收到请求后，将数据放在一个指定名字的回调函数里传回来。
 ###如何向服务器发请求？
@@ -229,10 +229,10 @@ var f = function () { console.log(&#39;1&#39;); } function f() { console.log(&#3
     
     <item>
       <title>计算属性和方法</title>
-      <link>http://example.org/posts/%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95/</link>
+      <link>http://www.pigxw.top/%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95/</link>
       <pubDate>Wed, 25 Sep 2019 16:26:04 +0800</pubDate>
       
-      <guid>http://example.org/posts/%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95/</guid>
+      <guid>http://www.pigxw.top/%E8%AE%A1%E7%AE%97%E5%B1%9E%E6%80%A7%E5%92%8C%E6%96%B9%E6%B3%95/</guid>
       <description>计算属性 通过一个实例引入计算属性 需求：将字符串123，456，789翻转变成789，456，123 方法一：通过模块内表达式实现
 &amp;lt;div id=&amp;quot;demo1&amp;quot;&amp;gt; {{ text }} {{ text.split(&#39;,&#39;).reverse().join(&#39;,&#39;) }} &amp;lt;/div&amp;gt; &amp;lt;script&amp;gt; var app = new Vue({ el: &#39;#demo1&#39;, data:{ text: &#39;123,456,789&#39; } }) &amp;lt;/script&amp;gt;  方法二：通过计算属性实现
 &amp;lt;div id=&amp;quot;demo2&amp;quot;&amp;gt; {{text}} {{reverseText}} &amp;lt;/div&amp;gt; &amp;lt;script&amp;gt; var app = new Vue({ el: &#39;#demo1&#39;, data:{ text: &#39;123,456,789&#39; }, computed:{ reverseText:function(){ return this.text.split(&#39;,&#39;).reverse().join(&#39;,&#39;) } } }) &amp;lt;/script&amp;gt;  由此可以看出：
@@ -242,10 +242,10 @@ var f = function () { console.log(&#39;1&#39;); } function f() { console.log(&#3
     
     <item>
       <title>vue 指令事件</title>
-      <link>http://example.org/posts/vue-%E6%8C%87%E4%BB%A4%E5%92%8C%E4%BA%8B%E4%BB%B6%E7%AD%89/</link>
+      <link>http://www.pigxw.top/vue-%E6%8C%87%E4%BB%A4%E5%92%8C%E4%BA%8B%E4%BB%B6%E7%AD%89/</link>
       <pubDate>Tue, 24 Sep 2019 16:26:04 +0800</pubDate>
       
-      <guid>http://example.org/posts/vue-%E6%8C%87%E4%BB%A4%E5%92%8C%E4%BA%8B%E4%BB%B6%E7%AD%89/</guid>
+      <guid>http://www.pigxw.top/vue-%E6%8C%87%E4%BB%A4%E5%92%8C%E4%BA%8B%E4%BB%B6%E7%AD%89/</guid>
       <description>过滤器 Vue.js支持在 {{}} 插值的尾部添加一小管道符 &amp;ldquo;|&amp;rdquo; 对数据进行过滤，经常用于格式化文本，比如字母全部大写、货币千位使用逗号分隔等。过滤的规则是自定义的,通过给 Vue 实例添加选项 filters 来设置过滤器： {{ data | filter1 |filter2}} {{date | formatDate(66,99)}}中的第一个和第二个参数，分别对应过滤器的第二个和第三个参数
 指令和事件 指令（Directives）是 Vue 模板中最常用的一项功能，它带有前缀 v-，能帮我们快速完成DOM操作。循环渲染。显示和隐藏。
  v-­text:解析文本 和{{ }} 作用一样
@@ -259,10 +259,10 @@ v­-on具体介绍 在普通元素上，v-­on可以监听原生的 DOM 事件�
     
     <item>
       <title>vue基础之实例与数据绑定</title>
-      <link>http://example.org/posts/vue%E5%88%9D%E4%BD%93%E9%AA%8C/</link>
+      <link>http://www.pigxw.top/vue%E5%88%9D%E4%BD%93%E9%AA%8C/</link>
       <pubDate>Tue, 24 Sep 2019 15:30:30 +0800</pubDate>
       
-      <guid>http://example.org/posts/vue%E5%88%9D%E4%BD%93%E9%AA%8C/</guid>
+      <guid>http://www.pigxw.top/vue%E5%88%9D%E4%BD%93%E9%AA%8C/</guid>
       <description>vue实例和数据绑定  cdn引入vue.js：&amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 通过构造函数 Vue 就可以创建一个 Vue 的根实例，并启动 Vue 应用&amp;mdash;入口
 var app ＝new Vue({ el:&#39;&#39;, data:{ } })  必不可少的一个选项就是 el 。 el 用于指定一个页面中己存在的 DOM 元素来挂载 Vue实例,可以是标签。也可以是css语法。
  通过 Vue 实例的 data 选项，可以声明应用内需要双向绑定的数据。建议所有会用到的数据都预先在 data 内 声明，这样不至于将数据散落在业务逻辑中，难以维护。也可以指向一个已经有的变量。
@@ -272,10 +272,10 @@ var app ＝new Vue({ el:&#39;&#39;, data:{ } })  必不可少的一个选项就�
     
     <item>
       <title>如何使用 hugo 搭建个人博客</title>
-      <link>http://example.org/posts/hugo-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
+      <link>http://www.pigxw.top/hugo-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
       <pubDate>Fri, 20 Sep 2019 19:17:26 +0800</pubDate>
       
-      <guid>http://example.org/posts/hugo-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
+      <guid>http://www.pigxw.top/hugo-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
       <description>本文默认大家都会在github上部署自己的博客，在此基础上，阐述如何使用hugo搭建一个自己的博客平台，hugo是用go语言实现的一个博客生成器。用它不需要有多好的基础，照着抄代码就行。本文于官方教程的区别是，详细，够详细！基本能避免实现过程中的一些暗坑。
 第一步  下载 hugo 安装包，解压到 D 盘 Software 目录下，（随便你解压到哪，只不过，后面配置环境变量添加 PATH 时记得把你所解压到的文件地址加上就行了），设置环境变量，在 PATH 中添加 D:\Software\hugo,(一定要有 hugo )。到此，之后都不用管这个安装包以及 hugo.exe 了。
  下载地址一般到官网 hugo下载 选择你需要的版本。
@@ -288,10 +288,10 @@ cd codes hugo new site quickstart  //此处的 quickstart 必须更换为你的 
     
     <item>
       <title>开博大吉</title>
-      <link>http://example.org/posts/%E5%BC%80%E5%8D%9A%E5%A4%A7%E5%90%89/</link>
+      <link>http://www.pigxw.top/%E5%BC%80%E5%8D%9A%E5%A4%A7%E5%90%89/</link>
       <pubDate>Fri, 20 Sep 2019 18:32:04 +0800</pubDate>
       
-      <guid>http://example.org/posts/%E5%BC%80%E5%8D%9A%E5%A4%A7%E5%90%89/</guid>
+      <guid>http://www.pigxw.top/%E5%BC%80%E5%8D%9A%E5%A4%A7%E5%90%89/</guid>
       <description>hello everyone nice to meet you !</description>
     </item>
     
