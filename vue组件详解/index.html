@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="吴潇">
+  <meta name="description" content="吴潇的个人网站">
+  <meta name="keywords" content="吴潇,前端,程序猿">
+  
+  <link rel="prev" href="http://www.pigxw.top/js%E5%87%BD%E6%95%B0/" />
+  <link rel="next" href="http://www.pigxw.top/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/" />
+  <link rel="canonical" href="http://www.pigxw.top/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           vue组件详解 | 吴潇的个人博客
+       
+  </title>
+  <meta name="title" content="vue组件详解 | 吴潇的个人博客">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "http:\/\/www.pigxw.top\/"
+    },
+    "articleSection" : "posts",
+    "name" : "vue组件详解",
+    "headline" : "vue组件详解",
+    "description" : "组件（一） 一、组件的作用 组件的作用：提高代码的复用性。\n二、组件的使用方法 1.全局注册组件：\n全局注册： \x26lt;html\x26gt; \x26lt;my-component\x26gt;\x26lt;\/my-component\x26gt; \x26lt;\/html\x26gt; \x26lt;script\x26gt; Vue.component(\x27my-component\x27,{ template:\x27\x26lt;div\x26gt;这是全局注册的组件\x26lt;\/div\x26gt;\x27 }) \x26lt;\/script\x26gt;  2.局部注册组件：\n\x26lt;html\x26gt; \x26lt;app-component\x26gt;\x26lt;\/app-component\x26gt; \x26lt;\/html\x26gt; 在vue实例中定义组件 \x26lt;script\x26gt; var app = new Vue({ el:\x27#app\x27, components:{ \x27app-component\x27:{ template:\x27\x26lt;div\x26gt;这是局部注册的组件\x26lt;\/div\x26gt;\x27 } } }) \x26lt;\/script\x26gt;  两种注册方式的优缺点： 全局注册：优点是所有的vue实例都可以使用；缺点是权限太大，容错率低。 局部注册：只能在所注册的vue实例中使用。 注意事项： 1. html标签受限：Vue组件模板在某些情况下回受到html标签的限制，如table标签内只能有tr、td、tbody这些元素,如果把组件名挂载到table内,实际内容是不会被渲染到table标签中的，会把组件内容踢出去。 此时需要 is 属性来挂载组件名，is=\x27组件名\x27\n\x26lt;table\x26gt; \x26lt;tbody is = \x27app-component\x27\x26gt;\x26lt;\/tbody\x26gt; \x26lt;\/table\x26gt;   组件名使用小写字母或小写字母加 - 来命名； template中的内容必须被一个DOM元素包裹，可以嵌套； 在组件定义中，除了template之外的其他选项:data,omputed,methods 组件中，data必须是一个方法。  三、使用props传递数据 在子组件中使用props接收来自父组件的数据，在props中定义的属性，都可以在组件中直接使用； 子组件中的props来自父组件，子组件中的data return的是组件自己的数据；props中定义的和data返回的，其作用域都是组件本身，可以在template,methods,computed中直接使用。\n\x26lt;div id=\x26quot;app\x26quot; style=\x26quot;border:1px solid red;height: 350px;\x26quot;\x26gt; \x26lt;h5 style=\x26quot;text-align: center\x26quot;\x26gt;父组件\x26lt;\/h5\x26gt; \x26lt;child-component msg=\x26quot;这是来自父组件的内容\x26quot;\x26gt;\x26lt;\/child-component\x26gt; \x26lt;!",
+    "inLanguage" : "zh-CN",
+    "author" : "吴潇",
+    "creator" : "吴潇",
+    "publisher": "吴潇",
+    "accountablePerson" : "吴潇",
+    "copyrightHolder" : "吴潇",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-10-08 15:30:30 \x2b0800 CST",
+    "dateModified" : "2019-10-08 15:30:30 \x2b0800 CST",
+    "url" : "http:\/\/www.pigxw.top\/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3\/",
+    "wordCount" : "426",
+    "keywords" : [  "吴潇的个人博客"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">吴潇的个人博客</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/search/" title="">搜索</a>
+                
+                <a class="menu-item" href="/" title="">首页</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/contacts/" title="">联系我</a>
+                
+                <a class="menu-item" href="/wechat-subscribe/" title="">订阅</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">吴潇的个人博客</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/search/" title="">搜索</a>
+                
+                <a class="menu-item" href="/" title="">首页</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/contacts/" title="">联系我</a>
+                
+                <a class="menu-item" href="/wechat-subscribe/" title="">订阅</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">vue组件详解</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="http://www.pigxw.top/" rel="author">吴潇</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-10-08 itemprop="datePublished">October 8, 2019</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h2 id="组件-一">组件（一）</h2>
+
+<h4 id="一-组件的作用">一、组件的作用</h4>
+
+<p>组件的作用：提高代码的复用性。</p>
+
+<h4 id="二-组件的使用方法">二、组件的使用方法</h4>
+
+<p>1.全局注册组件：</p>
+
+<pre><code>全局注册：
+&lt;html&gt;
+&lt;my-component&gt;&lt;/my-component&gt;
+&lt;/html&gt;
+
+&lt;script&gt;
+Vue.component('my-component',{
+    template:'&lt;div&gt;这是全局注册的组件&lt;/div&gt;'
+})
+&lt;/script&gt;
+</code></pre>
+
+<p>2.局部注册组件：</p>
+
+<pre><code>&lt;html&gt;
+&lt;app-component&gt;&lt;/app-component&gt;
+&lt;/html&gt;
+在vue实例中定义组件
+&lt;script&gt;
+var app = new Vue({
+    el:'#app',
+    components:{
+        'app-component':{
+            template:'&lt;div&gt;这是局部注册的组件&lt;/div&gt;'
+        }
+    }
+})
+&lt;/script&gt;
+</code></pre>
+
+<p><strong>两种注册方式的优缺点：</strong>
+全局注册：优点是所有的vue实例都可以使用；缺点是权限太大，容错率低。
+局部注册：只能在所注册的vue实例中使用。
+<br>
+<strong>注意事项：</strong>
+1. html标签受限：Vue组件模板在某些情况下回受到html标签的限制，如table标签内只能有tr、td、tbody这些元素,如果把组件名挂载到table内,实际内容是不会被渲染到table标签中的，会把组件内容踢出去。
+此时需要 is 属性来挂载组件名，<code>is='组件名'</code></p>
+
+<pre><code>&lt;table&gt;
+   &lt;tbody is = 'app-component'&gt;&lt;/tbody&gt;
+&lt;/table&gt;
+</code></pre>
+
+<ol>
+<li>组件名使用小写字母或小写字母加 -  来命名；</li>
+<li>template中的内容必须被一个DOM元素包裹，可以嵌套；</li>
+<li>在组件定义中，除了template之外的其他选项:data,omputed,methods</li>
+<li>组件中，data必须是一个方法。</li>
+</ol>
+
+<h4 id="三-使用props传递数据">三、使用props传递数据</h4>
+
+<p>在子组件中使用props接收来自父组件的数据，在props中定义的属性，都可以在组件中直接使用；
+子组件中的props来自父组件，子组件中的data return的是组件自己的数据；props中定义的和data返回的，其作用域都是组件本身，可以在template,methods,computed中直接使用。</p>
+
+<pre><code>&lt;div id=&quot;app&quot; style=&quot;border:1px solid red;height: 350px;&quot;&gt;
+        &lt;h5 style=&quot;text-align: center&quot;&gt;父组件&lt;/h5&gt;
+        &lt;child-component msg=&quot;这是来自父组件的内容&quot;&gt;&lt;/child-component&gt;
+        &lt;!-- msg是父组件传过来的 --&gt;
+
+        &lt;input type=&quot;text&quot; v-model=&quot;parentmsg&quot;&gt;
+        &lt;bind-component v-bind:msg=&quot;parentmsg&quot;&gt;&lt;/bind-component&gt;
+    &lt;/div&gt;
+
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+    var app = new Vue({
+        el:'#app',
+        data:{
+            parentmsg:'parentmsg'
+        },
+        components:{
+            'child-component':{
+                props:['msg'],//子组件使用父组件的数据信息，用props，props的内容来自父组件
+                template:'&lt;div style=&quot;border:1px solid blue;height: 75px;&quot;&gt;{{msg}}&lt;/div&gt;',
+            },
+            'bind-component':{
+                props:['msg'],
+                template:'&lt;div style=&quot;border:1px solid yellow;height: 75px;&quot;&gt;{{msg}}&lt;/div&gt;',
+            }
+        }
+    })
+    &lt;/script&gt;
+</code></pre>
+
+<p>使用v-bind进行数据的动态绑定；把input中的msg传递给子组件，input v-model中绑定的是父组件中data的parentmsg,要传递给子组件需用v-bind绑定属性再用props接收。</p>
+
+<h4 id="四-单项数据流-props的应用场景">四、单项数据流，props的应用场景</h4>
+
+<ol>
+<li>单向数据流：通过props传递数据是单向的，也就是父组件数据变化时会传递给子组件，但反过来不行。</li>
+<li>目的：尽可能的将父子组件解耦，避免子组件无意中修改父组件的状态。</li>
+<li>两种应用场景：<br></li>
+<li>父组件传递初始值进来，子组件将它作为初始值保存起来，在自己的作用域下可以随意使用和修改；
+<code>这种情况可以在组件data 中再声明一个数据，引用父组件的prop。</code>
+步骤：
+a: 注册组件；
+b: 将父组件的数据传递进来，并在子组件中用props接收；
+c: 将传递进来的数据通过初始值保存起来。</li>
+
+<li><p>prop作为需要被转变的原始值传入，使用计算属性重新计算。
+<code>通过input输入动态改变width，将传递进来的数据通过计算属性重新计算。</code></p>
+
+<pre><code>&lt;div id=&quot;app&quot;&gt;
+    &lt;my-component msg=&quot;应用一:我是父组件传递的数据&quot;&gt;&lt;/my-component&gt;
+    &lt;hr&gt;
+应用二: &lt;input type=&quot;text&quot; v-model=&quot;width&quot;&gt;
+&lt;width-component :width=&quot;width&quot;&gt;&lt;/width-component&gt;
+&lt;/div&gt;
+
+&lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+Vue.component('my-component',{
+     props:['msg'],
+     template:'&lt;div&gt;{{count}}&lt;/div&gt;',
+     data:function(){
+         return{//props中的值可以通过this.xxx来进行获取
+             count:this.msg
+         }
+     }
+})
+Vue.component('width-component',{
+     props:['width'],
+     template:'&lt;div :style=&quot;style&quot;&gt;&lt;/div&gt;',
+     data:function(){
+         return{}
+         },
+    computed:{
+        style:function(){
+            return{//重新计算
+                width:this.width + 'px',
+                background:'red',
+                height:'30px'
+            }
+        }
+    }
+     })
+  var app = new Vue({
+      el:'#app',
+      data:{
+          width:0
+      },
+          
+  })
+ &lt;/script&gt;
+</code></pre></li>
+</ol>
+
+<h4 id="五-组件通信">五、组件通信</h4>
+
+<h5 id="子组件给父组件传递数据-自定义事件">子组件给父组件传递数据&ndash;自定义事件</h5>
+
+<p>使用v­on 除了监昕 DOM 事件外，还可以用于组件之间的自定义事件。JavaScript 的设计模式 一一观察者模式， dispatchEvent 和addEventListener这两个方法。Vue 组件也有与之类似的一套模式，子组件使用 \$emit() 来触发事件，父组件使用 \$on() 来监听子组件事件。
+第一步：自定义事件change；
+第二步：在子组件的methods中用 \$emit()触发事件，第一个参数是事件名change，后边的参数是要传递的数据this.count；
+第三步：在自定义事件中用一个参数value来接受传过来的数据。</p>
+
+<pre><code>//通过点击子组件的按钮实现父组件余额total的加减
+&lt;div id=&quot;app&quot;&gt;
+    &lt;h5&gt;子组件给父组件传数据&lt;h5&gt;
+    余额：{{total}}
+    &lt;son-component @change=&quot;handletotal&quot;&gt;&lt;/son-component&gt;
+&lt;/div&gt;
+
+ &lt;script&gt;
+    Vue.component('son-component',{
+        template:'&lt;div&gt;\
+              &lt;button @click=&quot;handleincrease&quot;&gt;+1000&lt;/button&gt;\
+              &lt;button @click=&quot;handlereduce&quot;&gt;-1000&lt;/button&gt;\
+        &lt;/div&gt;',
+        data:function(){
+            return {
+                count:1000
+            }
+        },
+        methods:{
+            handleincrease:function(){
+                this.count=this.count +1000;
+                this.$emit('change',this.count)
+                //change是emit 触发的事件名，后面的参数是要传递的数据
+            },
+            handlereduce:function(){
+                this.count= this.count -1000;
+                this.$emit('change',this.count)
+            }
+        }
+    })
+    var app = new Vue({
+        el:'#app',
+        data:{
+          total:1000
+        },
+        methods:{
+            handletotal:function(value){
+            //此处的形参value 是传过来的数据this.count
+                   this.total=value;
+            }
+        }
+    })
+    &lt;/script&gt;
+</code></pre>
+
+<h5 id="在组件中使用v-model">在组件中使用v-model</h5>
+
+<p>$emit的代码,这行代码实际上会触发一个 input事件, ‘input’后的参数就是传递给v-­model绑定的属性的值。
+<strong>v-­model 其实是一个语法糖，这背后其实做了两个操作:</strong>
+* v­-bind 绑定一个value 属性;
+* v-­on 指令给当前元素绑定 input 事件。</p>
+
+<p><strong>要使用v­-model,要做到:</strong>
+* 接收一个 value 属性。
+* 在有新的 value 时触发 input 事件。</p>
+
+<pre><code>&lt;div id=&quot;app&quot;&gt;
+        余额为：{{total}}
+        &lt;son-component v-model=&quot;total&quot;&gt;&lt;/son-component&gt;   
+    &lt;!-- v-model其实就绑定了input事件，当触发input时，input事件会自动接受传递过来的参数，并赋值给已绑定的total--&gt;
+    &lt;/div&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+    Vue.component('son-component',{
+        template:'&lt;div&gt;\
+              &lt;button @click=&quot;handleincrease&quot;&gt;+1000&lt;/button&gt;\
+        &lt;/div&gt;',
+        data:function(){
+            return {
+                count:1000
+            }
+        },
+        methods:{
+            handleincrease:function(){
+                this.count=this.count +1000;
+                this.$emit('input',this.count)
+            },
+        }
+    })
+    var app = new Vue({
+        el:'#app',
+        data:{
+          total:1000
+        },
+        // methods:{
+        //     handletotal:function(value){//此处的形参value 是传过来的数据this.count
+        //            this.total=value;
+        //     }
+        // }
+    })
+    &lt;/script&gt;
+</code></pre>
+
+<h4 id="六-非父组件之间的通信">六、非父组件之间的通信</h4>
+
+<p>有时候两个组件（非父子关系）也需要通信。在简单情况下，可以用一个空的Vue实例作为中央事件总线。
+<code>vue bus = new Vue()</code>
+<code>bus.$emit('is-selected',1)</code>
+<code>bus.$on('id-selected',function(id){.....})</code></p>
+
+<pre><code>&lt;div id=&quot;app&quot;&gt;
+        &lt;my-acomponent ref='a'&gt;&lt;/my-acomponent&gt;
+        &lt;my-bcomponent ref='b'&gt;&lt;/my-bcomponent&gt;
+    &lt;/div&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js&quot;&gt;&lt;/script&gt;
+&lt;script&gt;
+    Vue.component('my-acomponent',{
+    template:'&lt;div&gt;&lt;button @click=&quot;handle&quot;&gt;点击我向B组件传递数据&lt;/button&gt;&lt;/div&gt;',
+    data:function () {
+    return{
+    aaa:'我是来自A组件的内容'
+    }
+    },
+    methods:{
+        handle:function () {
+            this.$root.bus.$emit('lala',this.aaa);
+            }
+        }
+    })
+    Vue.component('my-bcomponent',{
+        template:'&lt;div&gt;&lt;/div&gt;',
+        created:function () {
+    //A组件在实例创建的时候就监听事件---lala事件
+            this.$root.bus.$on('lala',function (value) {
+            alert(value)
+        });
+    }
+    })
+&lt;/script&gt;
+</code></pre>
+
+<p>父链：this.$parent</p>
+
+<pre><code>    Vue.component('child-component',{
+        template:'&lt;button @click=&quot;setFatherData&quot;&gt;通过点击我修改父亲的数据&lt;/button&gt;',
+        methods:{
+            setFatherData:function () {
+                this.$parent.msg = '数据已经修改了'
+                }
+            }
+        })
+</code></pre>
+
+<p>子链：this.$refs</p>
+
+<p>提供了为子组件提供索引的方法，用特殊的属性ref为其增加一个索引</p>
+
+<pre><code>    var app = new Vue({
+        el:'#app',
+        data:{//bus中介
+            bus:new Vue(),
+            msg:'数据还未修改',
+            formchild:'还未拿到'
+        },
+            methods:{
+            getChildData:function () {
+        //用来拿子组件中的内容 ----$refs
+            this.formchild = this.$refs.c.msg;
+            }
+        }
+    })
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>吴潇 </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=http://www.pigxw.top/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/>http://www.pigxw.top/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="http://www.pigxw.top/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="http://www.pigxw.top/js%E5%87%BD%E6%95%B0/" class="prev" rel="prev" title="JS函数"><i class="iconfont icon-left"></i>&nbsp;JS函数</a>
+         
+        
+        <a href="http://www.pigxw.top/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/" class="next" rel="next" title="vue组件详解">vue组件详解&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="http://www.pigxw.top/">吴潇</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
