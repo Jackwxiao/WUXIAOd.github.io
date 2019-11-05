@@ -33,6 +33,22 @@ const array= [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;].map( item =&amp;gt;parseInt(i
     </item>
     
     <item>
+      <title>Sass、Scss入门</title>
+      <link>http://www.pigxw.top/sassscss-%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Mon, 04 Nov 2019 11:26:04 +0800</pubDate>
+      
+      <guid>http://www.pigxw.top/sassscss-%E5%85%A5%E9%97%A8/</guid>
+      <description>Scss入门：  Sass（英文全称：Syntactically Awesome Stylesheets）是一个最初由Hampton Catlin设计并由Natalie Weizenbaum开发的类 CSS 语言。 发行时间：2007年；稳定版本：2016年3月28日； Sass 十分简洁，语法中几乎不含括号。 后来前端工程师表示不含括号看不懂，于是 Sass 的开发者又提供了 Scss，含括号。 弱弱的前端工程师终于表示能看懂了。Sass的官方解释器是开源的并且用Ruby语言写成，但是也有用PHP、C语言、Java等实现的版本（C语言版本叫做llibSass，Java语言版本叫做JSass）。SassScript提供以下功能：变量、嵌套、混入（Mixin）、选择器继承等。
+ 安装 parcel, 下面这条命令会自动安装node.sass
+npm i -D parcel
+运行：
+npx parcel index.html
+实例：
+HTML
+ &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;zh&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0&amp;quot;&amp;gt; &amp;lt;meta http-equiv=&amp;quot;X-UA-Compatible&amp;quot; content=&amp;quot;ie=edge&amp;quot;&amp;gt; &amp;lt;title&amp;gt;scss&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;./a.scss&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1&amp;gt;一起学 Scss 吧&amp;lt;/h1&amp;gt; &amp;lt;div class=&amp;quot;nav1&amp;quot;&amp;gt; &amp;lt;ul&amp;gt; &amp;lt;li&amp;gt;1&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;2&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;3&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;nav2&amp;quot;&amp;gt; &amp;lt;ul&amp;gt; &amp;lt;li&amp;gt;1&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;2&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;3&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;demo&amp;quot;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  SCSS：</description>
+    </item>
+    
+    <item>
       <title>移动端的问题</title>
       <link>http://www.pigxw.top/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>
       <pubDate>Thu, 24 Oct 2019 18:21:29 +0800</pubDate>

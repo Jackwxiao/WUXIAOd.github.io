@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="吴潇">
+  <meta name="description" content="吴潇的个人网站">
+  <meta name="keywords" content="吴潇,前端,程序猿">
+  
+  <link rel="prev" href="http://www.pigxw.top/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" />
+  <link rel="next" href="http://www.pigxw.top/promise/" />
+  <link rel="canonical" href="http://www.pigxw.top/sassscss-%E5%85%A5%E9%97%A8/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Sass、Scss入门 | 吴潇的个人博客
+       
+  </title>
+  <meta name="title" content="Sass、Scss入门 | 吴潇的个人博客">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "http:\/\/www.pigxw.top\/"
+    },
+    "articleSection" : "posts",
+    "name" : "Sass、Scss入门",
+    "headline" : "Sass、Scss入门",
+    "description" : "Scss入门：  Sass（英文全称：Syntactically Awesome Stylesheets）是一个最初由Hampton Catlin设计并由Natalie Weizenbaum开发的类 CSS 语言。 发行时间：2007年；稳定版本：2016年3月28日； Sass 十分简洁，语法中几乎不含括号。 后来前端工程师表示不含括号看不懂，于是 Sass 的开发者又提供了 Scss，含括号。 弱弱的前端工程师终于表示能看懂了。Sass的官方解释器是开源的并且用Ruby语言写成，但是也有用PHP、C语言、Java等实现的版本（C语言版本叫做llibSass，Java语言版本叫做JSass）。SassScript提供以下功能：变量、嵌套、混入（Mixin）、选择器继承等。\n 安装 parcel, 下面这条命令会自动安装node.sass\nnpm i -D parcel\n运行：\nnpx parcel index.html\n实例：\nHTML\n \x26lt;!DOCTYPE html\x26gt; \x26lt;html lang=\x26quot;zh\x26quot;\x26gt; \x26lt;head\x26gt; \x26lt;meta charset=\x26quot;UTF-8\x26quot;\x26gt; \x26lt;meta name=\x26quot;viewport\x26quot; content=\x26quot;width=device-width, initial-scale=1.0\x26quot;\x26gt; \x26lt;meta http-equiv=\x26quot;X-UA-Compatible\x26quot; content=\x26quot;ie=edge\x26quot;\x26gt; \x26lt;title\x26gt;scss\x26lt;\/title\x26gt; \x26lt;link rel=\x26quot;stylesheet\x26quot; href=\x26quot;.\/a.scss\x26quot;\x26gt; \x26lt;\/head\x26gt; \x26lt;body\x26gt; \x26lt;h1\x26gt;一起学 Scss 吧\x26lt;\/h1\x26gt; \x26lt;div class=\x26quot;nav1\x26quot;\x26gt; \x26lt;ul\x26gt; \x26lt;li\x26gt;1\x26lt;\/li\x26gt; \x26lt;li\x26gt;2\x26lt;\/li\x26gt; \x26lt;li\x26gt;3\x26lt;\/li\x26gt; \x26lt;\/ul\x26gt; \x26lt;\/div\x26gt; \x26lt;div class=\x26quot;nav2\x26quot;\x26gt; \x26lt;ul\x26gt; \x26lt;li\x26gt;1\x26lt;\/li\x26gt; \x26lt;li\x26gt;2\x26lt;\/li\x26gt; \x26lt;li\x26gt;3\x26lt;\/li\x26gt; \x26lt;\/ul\x26gt; \x26lt;\/div\x26gt; \x26lt;div class=\x26quot;demo\x26quot;\x26gt; \x26lt;\/div\x26gt; \x26lt;\/body\x26gt; \x26lt;\/html\x26gt;  SCSS：",
+    "inLanguage" : "zh-CN",
+    "author" : "吴潇",
+    "creator" : "吴潇",
+    "publisher": "吴潇",
+    "accountablePerson" : "吴潇",
+    "copyrightHolder" : "吴潇",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-11-04 11:26:04 \x2b0800 CST",
+    "dateModified" : "2019-11-04 11:26:04 \x2b0800 CST",
+    "url" : "http:\/\/www.pigxw.top\/sassscss-%E5%85%A5%E9%97%A8\/",
+    "wordCount" : "240",
+    "keywords" : [  "吴潇的个人博客"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">吴潇的个人博客</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/search/" title="">搜索</a>
+                
+                <a class="menu-item" href="/" title="">首页</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/contacts/" title="">联系我</a>
+                
+                <a class="menu-item" href="/wechat-subscribe/" title="">订阅</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">吴潇的个人博客</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/search/" title="">搜索</a>
+                
+                <a class="menu-item" href="/" title="">首页</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/contacts/" title="">联系我</a>
+                
+                <a class="menu-item" href="/wechat-subscribe/" title="">订阅</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Sass、Scss入门</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="http://www.pigxw.top/" rel="author">吴潇</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-11-04 itemprop="datePublished">November 4, 2019</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h3 id="scss入门">Scss入门：</h3>
+
+<blockquote>
+<p>Sass（英文全称：Syntactically Awesome Stylesheets）是一个最初由Hampton Catlin设计并由Natalie Weizenbaum开发的类 CSS 语言。
+发行时间：2007年；稳定版本：2016年3月28日；
+Sass 十分简洁，语法中几乎不含括号。
+后来前端工程师表示不含括号看不懂，于是 Sass 的开发者又提供了 Scss，含括号。
+弱弱的前端工程师终于表示能看懂了。Sass的官方解释器是开源的并且用Ruby语言写成，但是也有用PHP、C语言、Java等实现的版本（C语言版本叫做llibSass，Java语言版本叫做JSass）。SassScript提供以下功能：变量、嵌套、混入（Mixin）、选择器继承等。</p>
+</blockquote>
+
+<p>安装 parcel, 下面这条命令会自动安装node.sass</p>
+
+<p><code>npm i -D parcel</code></p>
+
+<p>运行：</p>
+
+<p><code>npx parcel index.html</code></p>
+
+<p>实例：</p>
+
+<p>HTML</p>
+
+<pre><code>
+&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;zh&quot;&gt;
+&lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;
+    &lt;title&gt;scss&lt;/title&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;./a.scss&quot;&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;h1&gt;一起学 Scss 吧&lt;/h1&gt;
+    &lt;div class=&quot;nav1&quot;&gt;
+        &lt;ul&gt;
+            &lt;li&gt;1&lt;/li&gt;
+            &lt;li&gt;2&lt;/li&gt;
+            &lt;li&gt;3&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;nav2&quot;&gt;
+        &lt;ul&gt;
+            &lt;li&gt;1&lt;/li&gt;
+            &lt;li&gt;2&lt;/li&gt;
+            &lt;li&gt;3&lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;demo&quot;&gt;
+        
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+
+</code></pre>
+
+<p>SCSS：</p>
+
+<pre><code> 
+// 嵌套：
+body{
+    h1{
+    color: green;
+}}
+.nav{
+    border: 1px solid grey;
+    &gt;ul{
+        background: white;
+        &gt;li{
+            border: 1px solid red;
+        }
+    }
+}
+
+// ---------------------++++++--------------
+// 变量 ：
+
+$grey: #666;
+$border-width: 1px;
+.nav{
+    border: $border-width solid $grey;
+    &gt;ul{
+        background: white;
+        &gt;li{
+            border: $border-width solid red;
+        }
+    }
+}
+
+// ---------------------++++++----------------
+// mixin :
+
+@mixin debug {
+    border: 1px solid red;
+}
+.nav1{
+    //border: 1px solid red; 等同于下面一句
+    @include debug;
+    &gt;ul{
+        background: white;
+        &gt;li{
+            border: 1px solid red;
+        }
+    }
+}
+// mixin 还支持参数
+//@mixin debug($border-color: red) { //如果传了其他色就显示其他色，默认为red
+//     border: 1px solid $border-color;
+// }
+// .nav1{
+//     //border: 1px solid red; 等同于下面一句
+//     @include debug; //默认red
+//     &gt;ul{
+//         background: white;
+//         &gt;li{
+//             @include debug(green); //传的green
+//         }
+//     }
+// }
+
+//-----------------------+=++=====-------------
+
+// placeholder ,解析成css 后不会把效果代码写两遍（用mixin 会生效但代码会重复），而是把选择器合并如 .nav2&gt;ul&gt;li,.demp{...}
+// 体现在 效果复用 ，demo 和 nav2 的阴影效果是一样的
+
+%box{
+    box-shadow: 0 0 3px grey;
+    margin: 10px;
+    background: white;
+    border-radius: 4px;
+}
+.nav2{
+    &gt;ul{
+        background: white;
+        &gt;li{
+           @extend %box;
+        }
+    }
+}
+.demo{
+    height:100px;
+    @extend %box;
+}
+
+</code></pre>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="/static/images/article/scss.png" alt="代码目录结构：" class="lazyload"><figcaption class="image-caption">代码目录结构：</figcaption></figure></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>吴潇 </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=http://www.pigxw.top/sassscss-%E5%85%A5%E9%97%A8/>http://www.pigxw.top/sassscss-%E5%85%A5%E9%97%A8/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="http://www.pigxw.top/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="http://www.pigxw.top/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/" class="prev" rel="prev" title="移动端的问题"><i class="iconfont icon-left"></i>&nbsp;移动端的问题</a>
+         
+        
+        <a href="http://www.pigxw.top/promise/" class="next" rel="next" title="Promise">Promise&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="http://www.pigxw.top/">吴潇</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
