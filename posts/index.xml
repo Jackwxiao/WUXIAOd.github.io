@@ -6,27 +6,23 @@
     <description>Recent content in Posts on 吴潇的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 05 Nov 2019 11:26:04 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 05 Nov 2019 21:26:04 +0800</lastBuildDate>
     
 	<atom:link href="http://www.pigxw.top/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>手机专用之动态 rem</title>
-      <link>http://www.pigxw.top/%E5%8A%A8%E6%80%81rem/</link>
-      <pubDate>Tue, 05 Nov 2019 11:26:04 +0800</pubDate>
+      <title>BFC</title>
+      <link>http://www.pigxw.top/bfc/</link>
+      <pubDate>Tue, 05 Nov 2019 21:26:04 +0800</pubDate>
       
-      <guid>http://www.pigxw.top/%E5%8A%A8%E6%80%81rem/</guid>
-      <description>手机专用的自适应方案 rem 是什么？
-em: 一个 m 的宽度, 一个汉字的宽度 rem: root em 根元素的 font-size 大小
-网页上的默认字体大小为 16px chrome 最小的字体大小为 12px
-em 是 元素自己的font-size 大小
-如： 自己 font-size: 16px; 则 1em = =font-size
- 百分比布局虽然可以适应各屏幕大小，但无法设置高度。还有很多其他不确定性
- 缩放
-动态rem：
- 首先： 让html 的font-size 和 页面宽度一样, 即 1rem = 页面宽度 1 rem == html font-size == viewport width 使用 JS 动态调整 REM
-&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&amp;quot;&amp;gt; &amp;lt;script&amp;gt; var pageWidth = window.</description>
+      <guid>http://www.pigxw.top/bfc/</guid>
+      <description>BFC （块级格式化上下文）block formatting context 当子元素 浮动 时，父容器一般是包不住子元素的，所以要给父容器设置BFC，它能保证不管子元素怎么闹腾，都不影响外部。
+如何设置？ * 浮动（float 不是 none） * 绝对定位（ position 为 absolute 或fixed） * 内联块（元素具有display: inline-block） * 表格单元格（display:table-cell） * 表格标题（display:table-caption ） * 具有 overflow 且值不是 visible 的元素 * display: flow-root
+在BFC 中，盒在竖直方向一个接一个的放置，从包含块的顶部开始，两兄弟之间的竖直margin 会合并
+功能1: 爸爸管儿子（但有些元素他就是要出去一部分，包住一部分，那就清除浮动或者加 display： flow-root）
+用BFC 包住浮动元素（不是清除浮动）
+ &amp;lt;div class =&amp;quot;baba&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;erzi&amp;quot;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/div&amp;gt; .baba{ border: 10px solid red; display: flow-root; } .erzi{ float: left; height: 100px; width: 200px; border: 5px solid green; }  功能2：兄弟之间划清界限（现在可以用flex 布局）</description>
     </item>
     
     <item>
@@ -339,6 +335,24 @@ cd codes hugo new site quickstart  //此处的 quickstart 必须更换为你的 
       
       <guid>http://www.pigxw.top/%E5%BC%80%E5%8D%9A%E5%A4%A7%E5%90%89/</guid>
       <description>hello everyone nice to meet you !</description>
+    </item>
+    
+    <item>
+      <title>手机专用之动态 rem</title>
+      <link>http://www.pigxw.top/%E5%8A%A8%E6%80%81rem/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://www.pigxw.top/%E5%8A%A8%E6%80%81rem/</guid>
+      <description>手机专用的自适应方案 rem 是什么？
+em: 一个 m 的宽度, 一个汉字的宽度 rem: root em 根元素的 font-size 大小
+网页上的默认字体大小为 16px chrome 最小的字体大小为 12px
+em 是 元素自己的font-size 大小
+如： 自己 font-size: 16px; 则 1em = =font-size
+ 百分比布局虽然可以适应各屏幕大小，但无法设置高度。还有很多其他不确定性
+ 缩放
+动态rem：
+ 首先： 让html 的font-size 和 页面宽度一样, 即 1rem = 页面宽度 1 rem == html font-size == viewport width 使用 JS 动态调整 REM
+&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&amp;quot;&amp;gt; &amp;lt;script&amp;gt; var pageWidth = window.</description>
     </item>
     
   </channel>
