@@ -6,10 +6,28 @@
     <description>Recent content in Posts on 吴潇的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Mon, 04 Nov 2019 19:17:26 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 05 Nov 2019 11:26:04 +0800</lastBuildDate>
     
 	<atom:link href="http://www.pigxw.top/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>手机专用之动态 rem</title>
+      <link>http://www.pigxw.top/%E5%8A%A8%E6%80%81rem/</link>
+      <pubDate>Tue, 05 Nov 2019 11:26:04 +0800</pubDate>
+      
+      <guid>http://www.pigxw.top/%E5%8A%A8%E6%80%81rem/</guid>
+      <description>手机专用的自适应方案 rem 是什么？
+em: 一个 m 的宽度, 一个汉字的宽度 rem: root em 根元素的 font-size 大小
+网页上的默认字体大小为 16px chrome 最小的字体大小为 12px
+em 是 元素自己的font-size 大小
+如： 自己 font-size: 16px; 则 1em = =font-size
+ 百分比布局虽然可以适应各屏幕大小，但无法设置高度。还有很多其他不确定性
+ 缩放
+动态rem：
+ 首先： 让html 的font-size 和 页面宽度一样, 即 1rem = 页面宽度 1 rem == html font-size == viewport width 使用 JS 动态调整 REM
+&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&amp;quot;&amp;gt; &amp;lt;script&amp;gt; var pageWidth = window.</description>
+    </item>
     
     <item>
       <title>Promise</title>
