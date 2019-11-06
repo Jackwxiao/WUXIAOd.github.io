@@ -47,19 +47,21 @@ const array= [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;].map( item =&amp;gt;parseInt(i
     </item>
     
     <item>
-      <title>Sass、Scss入门</title>
-      <link>http://www.pigxw.top/sassscss-%E5%85%A5%E9%97%A8/</link>
+      <title>手机专用之动态 rem</title>
+      <link>http://www.pigxw.top/%E5%8A%A8%E6%80%81rem/</link>
       <pubDate>Mon, 04 Nov 2019 11:26:04 +0800</pubDate>
       
-      <guid>http://www.pigxw.top/sassscss-%E5%85%A5%E9%97%A8/</guid>
-      <description>Scss入门：  Sass（英文全称：Syntactically Awesome Stylesheets）是一个最初由Hampton Catlin设计并由Natalie Weizenbaum开发的类 CSS 语言。 发行时间：2007年；稳定版本：2016年3月28日； Sass 十分简洁，语法中几乎不含括号。 后来前端工程师表示不含括号看不懂，于是 Sass 的开发者又提供了 Scss，含括号。 弱弱的前端工程师终于表示能看懂了。Sass的官方解释器是开源的并且用Ruby语言写成，但是也有用PHP、C语言、Java等实现的版本（C语言版本叫做llibSass，Java语言版本叫做JSass）。SassScript提供以下功能：变量、嵌套、混入（Mixin）、选择器继承等。
- 安装 parcel, 下面这条命令会自动安装node.sass
-npm i -D parcel
-运行：
-npx parcel index.html
-实例：
-HTML
- &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;zh&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0&amp;quot;&amp;gt; &amp;lt;meta http-equiv=&amp;quot;X-UA-Compatible&amp;quot; content=&amp;quot;ie=edge&amp;quot;&amp;gt; &amp;lt;title&amp;gt;scss&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;./a.scss&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1&amp;gt;一起学 Scss 吧&amp;lt;/h1&amp;gt; &amp;lt;div class=&amp;quot;nav1&amp;quot;&amp;gt; &amp;lt;ul&amp;gt; &amp;lt;li&amp;gt;1&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;2&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;3&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;nav2&amp;quot;&amp;gt; &amp;lt;ul&amp;gt; &amp;lt;li&amp;gt;1&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;2&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;3&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;demo&amp;quot;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  SCSS：</description>
+      <guid>http://www.pigxw.top/%E5%8A%A8%E6%80%81rem/</guid>
+      <description>手机专用的自适应方案 rem 是什么？
+em: 一个 m 的宽度, 一个汉字的宽度 rem: root em 根元素的 font-size 大小
+网页上的默认字体大小为 16px chrome 最小的字体大小为 12px
+em 是 元素自己的font-size 大小
+如： 自己 font-size: 16px; 则 1em = =font-size
+ 百分比布局虽然可以适应各屏幕大小，但无法设置高度。还有很多其他不确定性
+ 缩放
+动态rem：
+ 首先： 让html 的font-size 和 页面宽度一样, 即 1rem = 页面宽度 1 rem == html font-size == viewport width 使用 JS 动态调整 REM
+&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&amp;quot;&amp;gt; &amp;lt;script&amp;gt; var pageWidth = window.</description>
     </item>
     
     <item>
@@ -338,21 +340,19 @@ cd codes hugo new site quickstart  //此处的 quickstart 必须更换为你的 
     </item>
     
     <item>
-      <title>手机专用之动态 rem</title>
-      <link>http://www.pigxw.top/%E5%8A%A8%E6%80%81rem/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Sass、Scss入门</title>
+      <link>http://www.pigxw.top/sassscss-%E5%85%A5%E9%97%A8/</link>
+      <pubDate>Mon, 16 Sep 2019 11:26:04 +0800</pubDate>
       
-      <guid>http://www.pigxw.top/%E5%8A%A8%E6%80%81rem/</guid>
-      <description>手机专用的自适应方案 rem 是什么？
-em: 一个 m 的宽度, 一个汉字的宽度 rem: root em 根元素的 font-size 大小
-网页上的默认字体大小为 16px chrome 最小的字体大小为 12px
-em 是 元素自己的font-size 大小
-如： 自己 font-size: 16px; 则 1em = =font-size
- 百分比布局虽然可以适应各屏幕大小，但无法设置高度。还有很多其他不确定性
- 缩放
-动态rem：
- 首先： 让html 的font-size 和 页面宽度一样, 即 1rem = 页面宽度 1 rem == html font-size == viewport width 使用 JS 动态调整 REM
-&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&amp;quot;&amp;gt; &amp;lt;script&amp;gt; var pageWidth = window.</description>
+      <guid>http://www.pigxw.top/sassscss-%E5%85%A5%E9%97%A8/</guid>
+      <description>Scss入门：  Sass（英文全称：Syntactically Awesome Stylesheets）是一个最初由Hampton Catlin设计并由Natalie Weizenbaum开发的类 CSS 语言。 发行时间：2007年；稳定版本：2016年3月28日； Sass 十分简洁，语法中几乎不含括号。 后来前端工程师表示不含括号看不懂，于是 Sass 的开发者又提供了 Scss，含括号。 弱弱的前端工程师终于表示能看懂了。Sass的官方解释器是开源的并且用Ruby语言写成，但是也有用PHP、C语言、Java等实现的版本（C语言版本叫做llibSass，Java语言版本叫做JSass）。SassScript提供以下功能：变量、嵌套、混入（Mixin）、选择器继承等。
+ 安装 parcel, 下面这条命令会自动安装node.sass
+npm i -D parcel
+运行：
+npx parcel index.html
+实例：
+HTML
+ &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;zh&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0&amp;quot;&amp;gt; &amp;lt;meta http-equiv=&amp;quot;X-UA-Compatible&amp;quot; content=&amp;quot;ie=edge&amp;quot;&amp;gt; &amp;lt;title&amp;gt;scss&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;./a.scss&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1&amp;gt;一起学 Scss 吧&amp;lt;/h1&amp;gt; &amp;lt;div class=&amp;quot;nav1&amp;quot;&amp;gt; &amp;lt;ul&amp;gt; &amp;lt;li&amp;gt;1&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;2&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;3&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;nav2&amp;quot;&amp;gt; &amp;lt;ul&amp;gt; &amp;lt;li&amp;gt;1&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;2&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;3&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;demo&amp;quot;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  SCSS：</description>
     </item>
     
   </channel>
