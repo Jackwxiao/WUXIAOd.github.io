@@ -331,15 +331,6 @@ cd codes hugo new site quickstart  //此处的 quickstart 必须更换为你的 
     </item>
     
     <item>
-      <title>开博大吉</title>
-      <link>http://www.pigxw.top/%E5%BC%80%E5%8D%9A%E5%A4%A7%E5%90%89/</link>
-      <pubDate>Fri, 20 Sep 2019 18:32:04 +0800</pubDate>
-      
-      <guid>http://www.pigxw.top/%E5%BC%80%E5%8D%9A%E5%A4%A7%E5%90%89/</guid>
-      <description>hello everyone nice to meet you !</description>
-    </item>
-    
-    <item>
       <title>Sass、Scss入门</title>
       <link>http://www.pigxw.top/sassscss-%E5%85%A5%E9%97%A8/</link>
       <pubDate>Mon, 16 Sep 2019 11:26:04 +0800</pubDate>
@@ -353,6 +344,15 @@ npx parcel index.html
 实例：
 HTML
  &amp;lt;!DOCTYPE html&amp;gt; &amp;lt;html lang=&amp;quot;zh&amp;quot;&amp;gt; &amp;lt;head&amp;gt; &amp;lt;meta charset=&amp;quot;UTF-8&amp;quot;&amp;gt; &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, initial-scale=1.0&amp;quot;&amp;gt; &amp;lt;meta http-equiv=&amp;quot;X-UA-Compatible&amp;quot; content=&amp;quot;ie=edge&amp;quot;&amp;gt; &amp;lt;title&amp;gt;scss&amp;lt;/title&amp;gt; &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;./a.scss&amp;quot;&amp;gt; &amp;lt;/head&amp;gt; &amp;lt;body&amp;gt; &amp;lt;h1&amp;gt;一起学 Scss 吧&amp;lt;/h1&amp;gt; &amp;lt;div class=&amp;quot;nav1&amp;quot;&amp;gt; &amp;lt;ul&amp;gt; &amp;lt;li&amp;gt;1&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;2&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;3&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;nav2&amp;quot;&amp;gt; &amp;lt;ul&amp;gt; &amp;lt;li&amp;gt;1&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;2&amp;lt;/li&amp;gt; &amp;lt;li&amp;gt;3&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;div class=&amp;quot;demo&amp;quot;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/body&amp;gt; &amp;lt;/html&amp;gt;  SCSS：</description>
+    </item>
+    
+    <item>
+      <title>开博大吉</title>
+      <link>http://www.pigxw.top/%E5%BC%80%E5%8D%9A%E5%A4%A7%E5%90%89/</link>
+      <pubDate>Sun, 15 Sep 2019 18:32:04 +0800</pubDate>
+      
+      <guid>http://www.pigxw.top/%E5%BC%80%E5%8D%9A%E5%A4%A7%E5%90%89/</guid>
+      <description>hello everyone nice to meet you !</description>
     </item>
     
   </channel>
