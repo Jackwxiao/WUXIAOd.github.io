@@ -1,0 +1,18 @@
+---
+title: "node.js "
+date: 2019-11-17T16:24:04+08:00
+draft: false
+---
+
+node.js做三件事：
+
+1. 初始化 event loop
+2. 执行脚本
+3. 运行 event loop
+
+node.js中的 event loop
+
+timers阶段处理 setTimeout()、setInterval() 中该调的回调函数，到了调用时间就调用，没到时间就进入下一阶段（poll轮询阶段），
+
+ 一般是停留在poll阶段。poll阶段处理除了timers和check阶段的一切事，比如操作系统返回”文件读完了“poll就去处理文件拿出数据放到对应的回调，
+ 给回调执行。check 阶段只处理setImmediate()
