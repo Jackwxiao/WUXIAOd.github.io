@@ -6,7 +6,7 @@
     <description>Recent content in Posts on 吴潇的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 26 Nov 2019 14:56:04 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 17 Nov 2019 14:56:04 +0800</lastBuildDate>
     
 	<atom:link href="http://www.pigxw.top/posts/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>原生 || mpvue 小程序</title>
       <link>http://www.pigxw.top/%E5%8E%9F%E7%94%9F-mpvue-%E5%B0%8F%E7%A8%8B%E5%BA%8F/</link>
-      <pubDate>Tue, 26 Nov 2019 14:56:04 +0800</pubDate>
+      <pubDate>Sun, 17 Nov 2019 14:56:04 +0800</pubDate>
       
       <guid>http://www.pigxw.top/%E5%8E%9F%E7%94%9F-mpvue-%E5%B0%8F%E7%A8%8B%E5%BA%8F/</guid>
       <description>小程序：  无需下载，用完即走（体积小） 同App 互补，可以实现 App 基本功能。 微信扫一扫即可下载。 开发周期短，成本较低。  小程序适配方案： Iphone6：1rpx = 1物理像素 = 0.5px
