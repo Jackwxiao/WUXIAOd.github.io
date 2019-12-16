@@ -6,10 +6,38 @@
     <description>Recent content in Posts on 吴潇的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 17 Nov 2019 14:56:04 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 08 Dec 2019 10:36:04 +0800</lastBuildDate>
     
 	<atom:link href="http://www.pigxw.top/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Flutter 初识</title>
+      <link>http://www.pigxw.top/flutter%E5%88%9D%E8%AF%86/</link>
+      <pubDate>Sun, 08 Dec 2019 10:36:04 +0800</pubDate>
+      
+      <guid>http://www.pigxw.top/flutter%E5%88%9D%E8%AF%86/</guid>
+      <description>Flutter 官网介绍：
+Flutter中文网
+Flutter是谷歌的移动UI框架，可以快速在iOS和Android上构建高质量的原生用户界面。 Flutter可以与现有的代码一起工作。在全世界，Flutter正在被越来越多的开发者和组织使用，并且Flutter是完全免费、开源的。
+总结：
+ 跨平台：现在Flutter至少可以跨4种平台，甚至支持嵌入式开发。我们常用的有Linux、Android、IOS，甚至可以在谷歌最新的操作系统上Fuchsia进行运行,经过第三方扩展，甚至可以跑在MacOS和Windows上，到目前为止，Flutter算是支持平台最多的框架了，良好的跨平台性，直接带来的好处就是减少开发成本。
+ 原生用户界面： 它是原生的，让我们的体验更好，性能更好。用官方的话讲就是平滑而自然的滑动效果和平台感知，为您的用户带来全新的体验。（可以看一下图片，这是Flutter的表现）
+ 开源免费
+  github地址
+代表项目： 闲鱼app
+安装 安装JAVA环境 选择适合自己机型的版本（64位 or 32位）
+JAVA下载地址
+安装完成到终端（命令行）里输入java运行，如果出现一大堆命令，则表示安装成功。
+下载安装 FlutterSDK  去官网下载Flutter安装包，下载地址
+ 将安装包zip解压到你想安装Flutter SDK的路径（如： D:\fluter\flutter；注意，不要将flutter安装到需要一些高权限的路径如C:\Program Files)
+ 在Flutter安装目录的flutter文件下找到flutter_console.bat，双击运行并启动flutter命令行，接下来，你就可以在Flutter命令行运行flutter命令了。
+ 配置环境变量，在 高级系统设置中找到系统变量中的 Path 点击编辑添加: D:\Flutter\flutter\bin保存。这样就可以在任何地方执行 flutter 命令了。
+ 在终端中输入flutter doctor,会薄一些错，是因为还要安装 Android studio
+  Android Studio的安装  下载地址进入后下拉寻找下载按钮带=点击下载。
+ 安装Android Studio 软件，几乎就是点next就行了。也可以看此教程： Android Studio 软件安装教程
+ 打开Android Stuido 软件，然后找到Plugin的配置，搜索Flutter插件，点击 install 安装，安装完后重启 Android Stuido。</description>
+    </item>
     
     <item>
       <title>原生 || mpvue 小程序</title>
@@ -27,6 +55,41 @@ app.json ：全局配置文件；
  非冒泡事件：catch 事件绑定可以阻止冒泡事件向上冒泡。
   生命周期函数： onLoad : 做一些初始化工作，发送请求，开启定时器。 onReady : 监听页面初次渲染成功。 onShow : 监听页面显示。 &amp;hellip;
 模板（template）  定义： template属性： name（标识模板) 使用：template属性： is(模板的 name) 引入模板结构 引入模板样式 @import &amp;lsquo;路径&amp;rsquo; 传参 : data = &amp;lsquo;{{&amp;hellip;item}}&amp;rsquo;  列表渲染：  wx：for wx:key 为每个个体元素进行标记 遍历的个体： item 遍历的下标 : index  本地缓存 setStorage、getStorage</description>
+    </item>
+    
+    <item>
+      <title>node.js的EventLoop</title>
+      <link>http://www.pigxw.top/node.js%E7%9A%84eventloop/</link>
+      <pubDate>Tue, 12 Nov 2019 10:36:04 +0900</pubDate>
+      
+      <guid>http://www.pigxw.top/node.js%E7%9A%84eventloop/</guid>
+      <description>node.js node.js做三件事：
+ 初始化 event loop 执行脚本 运行 event loop  node.js中的 event loop :
+timers阶段处理 setTimeout()、setInterval() 中该调的回调函数，到了调用时间就调用，没到时间就进入下一阶段（poll轮询阶段），
+图解一.png
+一般是停留在poll阶段。poll阶段处理除了timers和check阶段的一切事，比如操作系统返回”文件读完了“poll就去处理文件拿出数据放到对应的回调， 给回调执行。check 阶段只处理setImmediate()
+next.Tick()存在时，永远是它先执行。一般情况下是setTimeout()先于setImmediate()执行。
+处理机制.png
+setTimeout（fn, ）中的函数放在 timers阶段，setImmediate(fn2) 放在check阶段，process.next.Tick(fn3)放在当前阶段的后面。
+相关试题：（建议画图做题）
+题1.png
+题2.png
+** 先打印出 script start 、script end 然后是promise1、promise2最后才是setTimeout **
+题2输出结果
+宏任务与微任务 Chrome中：
+setTimeout &amp;mdash;-&amp;gt; 一会儿（宏任务）macroTask promise .then(fn) &amp;mdash;&amp;mdash;&amp;gt; 马上做（微任务）microTask new promise( fn )，这个fn 是马上执行的，不用放到哪个队列里去。
+宏任务与微任务.png
+resolve 只是决定执行 then 的第一个函数还是第二个函数。resolve 执行第一个任务。 then 的时候就把 then 后面的 f函数 加入 马上做（微任务） 队列中。await 就把它改写成 promise.</description>
+    </item>
+    
+    <item>
+      <title>虚拟 DOM</title>
+      <link>http://www.pigxw.top/%E8%99%9A%E6%8B%9Fdom/</link>
+      <pubDate>Tue, 12 Nov 2019 08:56:04 +0800</pubDate>
+      
+      <guid>http://www.pigxw.top/%E8%99%9A%E6%8B%9Fdom/</guid>
+      <description>虚拟DOM 根据真实的 DOM 结构创建一个和真实DOM 一一映射的数据结构来进行操作，操作完再把数据结构的变化反映到真实的DOM 中。 作用：当DOM 结构的改变或操作很细微的时候，使用虚拟DOM 可以避免因微小改变而重新渲染一整个DOM 结构，类似于打补丁。
+class VNode { constructor(tag, children, text) { this.tag = tag this.text = text this.children = children } render() { if(this.tag === &#39;#text&#39;) { return document.createTextNode(this.text) } let el = document.createElement(this.tag) this.children.forEach(vChild =&amp;gt; { el.appendChild(vChild.render()) }) return el } } function v(tag, children, text) { if(typeof children === &#39;string&#39;) { text = children children = [] } return new VNode(tag, children, text) } /* let nodesData = { tag: &#39;div&#39;, children: [ { tag: &#39;p&#39;, children: [ { tag: &#39;span&#39;, children: [ { tag: &#39;#text&#39;, text: &#39;xiedaimala.</description>
     </item>
     
     <item>
@@ -147,9 +210,13 @@ var f3 = function myName() {}; f3.name // &#39;myName&#39;   上面代码中，f
       
       <guid>http://www.pigxw.top/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF/</guid>
       <description>JS模拟继承 继承：面向对象编程中的一个概念，继承可以使子类具有父类的各种属性和方法。
-能产生对象的东西即为类。 var person = new Human()中的person就是一个对象，所以Human()便是一个类。 但是父类Object（）到子类Human（）是一个自带的继承。
-ES5写继承： function Human(name){ //父类 Human() this.name = (name) //自有属性name } Human.prototype.run = function(){ //共有属性为run console.log(“我叫”+this.name&amp;quot;,我有run的属性&amp;quot;) return undefined } function Man(name){ //声明 Man() Human.call(this, name) //call 父类 this.gender = &#39;男&#39; //声明自身的属性gender } var f = function(){ } f.prototype = Human.prototype man.prototype = new f( ) Man.prototype.fight = function(){ console.log(&#39;如来神掌&#39;) }  这三句：
-var f = function(){ } f.prototype = Human.prototype man.prototype = new f( )  等价于：</description>
+能产生对象的东西即为类。
+ 定义一个类的一种方法是使用一个类声明。要声明一个类，使用带有class关键字的类名;
+ 一个类表达式是定义一个类的另一种方式。类表达式可以是被命名的或匿名的。赋予一个命名类表达式的名称是类的主体的本地名称。
+ constructor方法是一个特殊的方法，这种方法用于创建和初始化一个由class创建的对象。一个类只能拥有一个名为 “constructor”的特殊方法。如果类包含多个constructor的方法，则将抛出 一个SyntaxError 。一个构造函数可以使用 super 关键字来调用一个父类的构造函数。
+ 函数声明和类声明之间的一个重要区别是函数声明会提升，类声明不会。
+  var person = new Human()中的person就是一个对象，所以Human()便是一个类。 但是父类Object（）到子类Human（）是一个自带的继承。
+ES5写继承： function Human(name){ //父类 Human() this.name = (name) //自有属性name } Human.prototype.run = function(){ //共有属性为run console.log(“我叫”+this.name&amp;quot;,我有run的属性&amp;quot;) return undefined } function Man(name){ //声明 Man() Human.call(this, name) //call 父类 this.gender = &#39;男&#39; //声明自身的属性gender } var f = function(){ } f.prototype = Human.prototype man.prototype = new f( ) Man.prototype.fight = function(){ console.</description>
     </item>
     
     <item>

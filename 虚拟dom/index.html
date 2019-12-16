@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="吴潇">
+  <meta name="description" content="吴潇的个人网站">
+  <meta name="keywords" content="吴潇,前端,程序猿">
+  
+  <link rel="prev" href="http://www.pigxw.top/bfc/" />
+  <link rel="next" href="http://www.pigxw.top/node.js%E7%9A%84eventloop/" />
+  <link rel="canonical" href="http://www.pigxw.top/%E8%99%9A%E6%8B%9Fdom/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           虚拟 DOM | 吴潇的个人博客
+       
+  </title>
+  <meta name="title" content="虚拟 DOM | 吴潇的个人博客">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "http:\/\/www.pigxw.top\/"
+    },
+    "articleSection" : "posts",
+    "name" : "虚拟 DOM",
+    "headline" : "虚拟 DOM",
+    "description" : "虚拟DOM 根据真实的 DOM 结构创建一个和真实DOM 一一映射的数据结构来进行操作，操作完再把数据结构的变化反映到真实的DOM 中。 作用：当DOM 结构的改变或操作很细微的时候，使用虚拟DOM 可以避免因微小改变而重新渲染一整个DOM 结构，类似于打补丁。\nclass VNode { constructor(tag, children, text) { this.tag = tag this.text = text this.children = children } render() { if(this.tag === \x27#text\x27) { return document.createTextNode(this.text) } let el = document.createElement(this.tag) this.children.forEach(vChild =\x26gt; { el.appendChild(vChild.render()) }) return el } } function v(tag, children, text) { if(typeof children === \x27string\x27) { text = children children = [] } return new VNode(tag, children, text) } \/* let nodesData = { tag: \x27div\x27, children: [ { tag: \x27p\x27, children: [ { tag: \x27span\x27, children: [ { tag: \x27#text\x27, text: \x27xiedaimala.",
+    "inLanguage" : "zh-CN",
+    "author" : "吴潇",
+    "creator" : "吴潇",
+    "publisher": "吴潇",
+    "accountablePerson" : "吴潇",
+    "copyrightHolder" : "吴潇",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-11-12 08:56:04 \x2b0800 CST",
+    "dateModified" : "2019-11-12 08:56:04 \x2b0800 CST",
+    "url" : "http:\/\/www.pigxw.top\/%E8%99%9A%E6%8B%9Fdom\/",
+    "wordCount" : "243",
+    "keywords" : [  "吴潇的个人博客"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">吴潇的个人博客</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/search/" title="">搜索</a>
+                
+                <a class="menu-item" href="/" title="">首页</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/contacts/" title="">联系我</a>
+                
+                <a class="menu-item" href="/wechat-subscribe/" title="">订阅</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">吴潇的个人博客</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/search/" title="">搜索</a>
+                
+                <a class="menu-item" href="/" title="">首页</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/contacts/" title="">联系我</a>
+                
+                <a class="menu-item" href="/wechat-subscribe/" title="">订阅</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">虚拟 DOM</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="http://www.pigxw.top/" rel="author">吴潇</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-11-12 itemprop="datePublished">November 12, 2019</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h4 id="虚拟dom">虚拟DOM</h4>
+
+<p>根据真实的 DOM 结构创建一个和真实DOM 一一映射的数据结构来进行操作，操作完再把数据结构的变化反映到真实的DOM 中。
+作用：当DOM 结构的改变或操作很细微的时候，使用虚拟DOM 可以避免因微小改变而重新渲染一整个DOM 结构，类似于打补丁。</p>
+
+<pre><code>class VNode {
+  constructor(tag, children, text) {
+    this.tag = tag
+    this.text = text
+    this.children = children
+  }
+
+  render() {
+    if(this.tag === '#text') {
+      return document.createTextNode(this.text)
+    }
+    let el = document.createElement(this.tag)
+    this.children.forEach(vChild =&gt; {
+      el.appendChild(vChild.render())
+    })
+    return el
+  }
+}
+
+function v(tag, children, text) {
+  if(typeof children === 'string') {
+    text = children
+    children = []
+  }
+  return new VNode(tag, children, text)
+}
+
+
+/*
+
+let nodesData = {
+  tag: 'div',
+  children: [
+    {
+      tag: 'p',
+      children: [
+        {
+          tag: 'span',
+          children: [
+            {
+              tag: '#text',
+              text: 'xiedaimala.com'
+            }
+          ]
+        }
+      ]
+    },
+    {
+      tag: 'span',
+        children: [
+          {
+            tag: '#text',
+            text: 'jirengu.com'
+          }
+        ]
+    }
+  ]
+}
+
+ */
+
+
+let vNodes = v('div', [
+      v('p', [
+        v('span', [ v('#text', 'xiedaimala.com') ] )
+        ]
+      ),
+      v('span', [
+        v('#text',  'jirengu.com')
+        ])
+    ]
+  )
+console.log(vNodes.render())
+
+function patchElement(parent, newVNode, oldVNode, index = 0) {
+  if(!oldVNode) {
+    parent.appendChild(newVNode.render())
+  } else if(!newVNode) {
+    parent.removeChild(parent.childNodes[index])
+  } else if(newVNode.tag !== oldVNode.tag || newVNode.text !== oldVNode.text) {
+    parent.replaceChild(newVNode.render(), parent.childNodes[index])
+  }  else {
+    for(let i = 0; i &lt; newVNode.children.length || i &lt; oldVNode.children.length; i++) {
+      patchElement(parent.childNodes[index], newVNode.children[i], oldVNode.children[i], i)
+    }
+  }
+}
+
+
+let vNodes1 = v('div', [
+      v('p', [
+        v('span', [ v('#text', 'xiedaimala.com') ] )
+        ]
+      ),
+      v('span', [
+        v('#text',  'jirengu.com')
+        ])
+    ]
+  )
+
+let vNodes2 = v('div', [
+      v('p', [
+        v('span', [ 
+          v('#text', 'xiedaimala.com') 
+          ] )
+        ]
+      ),
+      v('span', [
+        v('#text',  'jirengu.coms'),
+        v('#text',  'ruoyu')
+        ])
+    ]
+  )
+const root = document.querySelector('#root')
+patchElement(root, vNodes1)
+
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>吴潇 </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=http://www.pigxw.top/%E8%99%9A%E6%8B%9Fdom/>http://www.pigxw.top/%E8%99%9A%E6%8B%9Fdom/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="http://www.pigxw.top/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="http://www.pigxw.top/bfc/" class="prev" rel="prev" title="BFC"><i class="iconfont icon-left"></i>&nbsp;BFC</a>
+         
+        
+        <a href="http://www.pigxw.top/node.js%E7%9A%84eventloop/" class="next" rel="next" title="node.js的EventLoop">node.js的EventLoop&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="http://www.pigxw.top/">吴潇</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

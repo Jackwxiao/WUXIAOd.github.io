@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="吴潇">
+  <meta name="description" content="吴潇的个人网站">
+  <meta name="keywords" content="吴潇,前端,程序猿">
+  
+  <link rel="prev" href="http://www.pigxw.top/%E8%99%9A%E6%8B%9Fdom/" />
+  <link rel="next" href="http://www.pigxw.top/%E5%8E%9F%E7%94%9F-mpvue-%E5%B0%8F%E7%A8%8B%E5%BA%8F/" />
+  <link rel="canonical" href="http://www.pigxw.top/node.js%E7%9A%84eventloop/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           node.js的EventLoop | 吴潇的个人博客
+       
+  </title>
+  <meta name="title" content="node.js的EventLoop | 吴潇的个人博客">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "http:\/\/www.pigxw.top\/"
+    },
+    "articleSection" : "posts",
+    "name" : "node.js的EventLoop",
+    "headline" : "node.js的EventLoop",
+    "description" : "node.js node.js做三件事：\n 初始化 event loop 执行脚本 运行 event loop  node.js中的 event loop :\ntimers阶段处理 setTimeout()、setInterval() 中该调的回调函数，到了调用时间就调用，没到时间就进入下一阶段（poll轮询阶段），\n图解一.png\n一般是停留在poll阶段。poll阶段处理除了timers和check阶段的一切事，比如操作系统返回”文件读完了“poll就去处理文件拿出数据放到对应的回调， 给回调执行。check 阶段只处理setImmediate()\nnext.Tick()存在时，永远是它先执行。一般情况下是setTimeout()先于setImmediate()执行。\n处理机制.png\nsetTimeout（fn, ）中的函数放在 timers阶段，setImmediate(fn2) 放在check阶段，process.next.Tick(fn3)放在当前阶段的后面。\n相关试题：（建议画图做题）\n题1.png\n题2.png\n** 先打印出 script start 、script end 然后是promise1、promise2最后才是setTimeout **\n题2输出结果\n宏任务与微任务 Chrome中：\nsetTimeout \x26mdash;-\x26gt; 一会儿（宏任务）macroTask promise .then(fn) \x26mdash;\x26mdash;\x26gt; 马上做（微任务）microTask new promise( fn )，这个fn 是马上执行的，不用放到哪个队列里去。\n宏任务与微任务.png\nresolve 只是决定执行 then 的第一个函数还是第二个函数。resolve 执行第一个任务。 then 的时候就把 then 后面的 f函数 加入 马上做（微任务） 队列中。await 就把它改写成 promise.",
+    "inLanguage" : "zh-CN",
+    "author" : "吴潇",
+    "creator" : "吴潇",
+    "publisher": "吴潇",
+    "accountablePerson" : "吴潇",
+    "copyrightHolder" : "吴潇",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-11-12 10:36:04 \x2b0900 \x2b0900",
+    "dateModified" : "2019-11-12 10:36:04 \x2b0900 \x2b0900",
+    "url" : "http:\/\/www.pigxw.top\/node.js%E7%9A%84eventloop\/",
+    "wordCount" : "85",
+    "keywords" : [  "吴潇的个人博客"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">吴潇的个人博客</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/search/" title="">搜索</a>
+                
+                <a class="menu-item" href="/" title="">首页</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/contacts/" title="">联系我</a>
+                
+                <a class="menu-item" href="/wechat-subscribe/" title="">订阅</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">吴潇的个人博客</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/search/" title="">搜索</a>
+                
+                <a class="menu-item" href="/" title="">首页</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/contacts/" title="">联系我</a>
+                
+                <a class="menu-item" href="/wechat-subscribe/" title="">订阅</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">node.js的EventLoop</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="http://www.pigxw.top/" rel="author">吴潇</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-11-12 itemprop="datePublished">November 12, 2019</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h3 id="node-js">node.js</h3>
+
+<p>node.js做三件事：</p>
+
+<ol>
+<li>初始化 event loop</li>
+<li>执行脚本</li>
+<li>运行 event loop</li>
+</ol>
+
+<p>node.js中的 event loop :</p>
+
+<p>timers阶段处理 setTimeout()、setInterval() 中该调的回调函数，到了调用时间就调用，没到时间就进入下一阶段（poll轮询阶段），</p>
+
+<p><a href="https://i.loli.net/2019/12/14/3EYkncfK2WtHLmb.png" rel="nofollow noreferrer" target="_blank">图解一.png</a></p>
+
+<p>一般是停留在poll阶段。poll阶段处理除了timers和check阶段的一切事，比如操作系统返回”文件读完了“poll就去处理文件拿出数据放到对应的回调，
+ 给回调执行。check 阶段只处理setImmediate()</p>
+
+<p>next.Tick()存在时，永远是它先执行。一般情况下是setTimeout()先于setImmediate()执行。</p>
+
+<p><a href="https://i.loli.net/2019/12/14/wx5loRp81bfEsdI.png" rel="nofollow noreferrer" target="_blank">处理机制.png</a></p>
+
+<p>setTimeout（fn, ）中的函数放在 timers阶段，setImmediate(fn2) 放在check阶段，process.next.Tick(fn3)放在当前阶段的后面。</p>
+
+<hr />
+
+<p>相关试题：（建议画图做题）</p>
+
+<p><a href="https://i.loli.net/2019/12/14/tz5aiIQWSZ2reD7.png" rel="nofollow noreferrer" target="_blank">题1.png</a></p>
+
+<p><a href="https://i.loli.net/2019/12/14/Oae1YBPQUch95nd.png" rel="nofollow noreferrer" target="_blank">题2.png</a></p>
+
+<p>** 先打印出 script start 、script end 然后是promise1、promise2最后才是setTimeout **</p>
+
+<p><a href="https://i.loli.net/2019/12/14/QdrpELFIe8jX4xR.png" rel="nofollow noreferrer" target="_blank">题2输出结果</a></p>
+
+<hr />
+
+<h3 id="宏任务与微任务">宏任务与微任务</h3>
+
+<p>Chrome中：</p>
+
+<p>setTimeout &mdash;-&gt; 一会儿（宏任务）macroTask
+promise .then(fn) &mdash;&mdash;&gt; 马上做（微任务）microTask
+new promise( fn )，这个fn 是马上执行的，不用放到哪个队列里去。</p>
+
+<p><a href="https://i.loli.net/2019/12/14/oci9XnOvQpUEg2T.png" rel="nofollow noreferrer" target="_blank">宏任务与微任务.png</a></p>
+
+<p>resolve 只是决定执行 then 的第一个函数还是第二个函数。resolve 执行第一个任务。
+then 的时候就把 then 后面的 f函数 加入 马上做（微任务） 队列中。await 就把它改写成 promise.then( f )</p>
+
+<p>两者具体实现：</p>
+
+<p>macrotasks: setTimeout 、setInterval 、setImmediate 、 I/O UI渲染
+microtasks: promise 、 process.nextTick 、 Object.observe 、mutationObserve</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>吴潇 </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=http://www.pigxw.top/node.js%E7%9A%84eventloop/>http://www.pigxw.top/node.js%E7%9A%84eventloop/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="http://www.pigxw.top/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="http://www.pigxw.top/%E8%99%9A%E6%8B%9Fdom/" class="prev" rel="prev" title="虚拟 DOM"><i class="iconfont icon-left"></i>&nbsp;虚拟 DOM</a>
+         
+        
+        <a href="http://www.pigxw.top/%E5%8E%9F%E7%94%9F-mpvue-%E5%B0%8F%E7%A8%8B%E5%BA%8F/" class="next" rel="next" title="原生 || mpvue 小程序">原生 || mpvue 小程序&nbsp;<i class="iconfont icon-right"></i></a>
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="http://www.pigxw.top/">吴潇</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
