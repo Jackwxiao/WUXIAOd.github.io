@@ -6,10 +6,21 @@
     <description>Recent content in Posts on 吴潇的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Sun, 08 Dec 2019 10:36:04 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 10 Dec 2019 14:56:04 +0800</lastBuildDate>
     
 	<atom:link href="http://www.pigxw.top/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>冒泡与捕获</title>
+      <link>http://www.pigxw.top/%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E4%B8%8E%E6%8D%95%E8%8E%B7/</link>
+      <pubDate>Tue, 10 Dec 2019 14:56:04 +0800</pubDate>
+      
+      <guid>http://www.pigxw.top/%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E4%B8%8E%E6%8D%95%E8%8E%B7/</guid>
+      <description>一个popover轮子制作引发的 BUG HTML
+&amp;lt;div id=&amp;quot;app&amp;quot; style=&amp;quot;padding-left: 100px;padding-top: 100px;&amp;quot;&amp;gt; &amp;lt;g-popover&amp;gt; &amp;lt;template slot=&amp;quot;content&amp;quot;&amp;gt; &amp;lt;div&amp;gt;popover内容&amp;lt;/div&amp;gt; &amp;lt;/template&amp;gt; &amp;lt;template&amp;gt; &amp;lt;button&amp;gt;点我&amp;lt;/button&amp;gt; &amp;lt;/template&amp;gt; &amp;lt;/g-popover&amp;gt; &amp;lt;/div&amp;gt;  JS
+&amp;lt;template&amp;gt; &amp;lt;div class=&amp;quot;popover&amp;quot; @click=&amp;quot;xxx&amp;quot;&amp;gt; &amp;lt;div class=&amp;quot;content-wrapper&amp;quot; v-if=&amp;quot;visible&amp;quot;&amp;gt; &amp;lt;slot name=&amp;quot;content&amp;quot;&amp;gt;&amp;lt;/slot&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;slot&amp;gt;&amp;lt;/slot&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;/template&amp;gt; &amp;lt;script&amp;gt; export default { name: &amp;quot;GuLuPopover&amp;quot;, data(){ return {visible: false} }, methods:{ xxx(){ this.visible = !this.visible } } } &amp;lt;/script&amp;gt; &amp;lt;style scoped lang=&amp;quot;scss&amp;quot;&amp;gt; .popover{ display: inline-block; vertical-align: top; position: relative;} .content-wrapper{ position: absolute; bottom: 100%; left: 0; border: 1px solid red; box-shadow: 0 0 3px rgba(0,0,0,0.</description>
+    </item>
     
     <item>
       <title>Flutter 初识</title>
@@ -60,7 +71,7 @@ app.json ：全局配置文件；
     <item>
       <title>node.js的EventLoop</title>
       <link>http://www.pigxw.top/node.js%E7%9A%84eventloop/</link>
-      <pubDate>Tue, 12 Nov 2019 10:36:04 +0900</pubDate>
+      <pubDate>Thu, 14 Nov 2019 10:36:04 +0900</pubDate>
       
       <guid>http://www.pigxw.top/node.js%E7%9A%84eventloop/</guid>
       <description>node.js node.js做三件事：

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="吴潇">
+  <meta name="description" content="吴潇的个人网站">
+  <meta name="keywords" content="吴潇,前端,程序猿">
+  
+  <link rel="prev" href="http://www.pigxw.top/flutter%E5%88%9D%E8%AF%86/" />
+  
+  <link rel="canonical" href="http://www.pigxw.top/%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E4%B8%8E%E6%8D%95%E8%8E%B7/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           冒泡与捕获 | 吴潇的个人博客
+       
+  </title>
+  <meta name="title" content="冒泡与捕获 | 吴潇的个人博客">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "http:\/\/www.pigxw.top\/"
+    },
+    "articleSection" : "posts",
+    "name" : "冒泡与捕获",
+    "headline" : "冒泡与捕获",
+    "description" : "一个popover轮子制作引发的 BUG HTML\n\x26lt;div id=\x26quot;app\x26quot; style=\x26quot;padding-left: 100px;padding-top: 100px;\x26quot;\x26gt; \x26lt;g-popover\x26gt; \x26lt;template slot=\x26quot;content\x26quot;\x26gt; \x26lt;div\x26gt;popover内容\x26lt;\/div\x26gt; \x26lt;\/template\x26gt; \x26lt;template\x26gt; \x26lt;button\x26gt;点我\x26lt;\/button\x26gt; \x26lt;\/template\x26gt; \x26lt;\/g-popover\x26gt; \x26lt;\/div\x26gt;  JS\n\x26lt;template\x26gt; \x26lt;div class=\x26quot;popover\x26quot; @click=\x26quot;xxx\x26quot;\x26gt; \x26lt;div class=\x26quot;content-wrapper\x26quot; v-if=\x26quot;visible\x26quot;\x26gt; \x26lt;slot name=\x26quot;content\x26quot;\x26gt;\x26lt;\/slot\x26gt; \x26lt;\/div\x26gt; \x26lt;slot\x26gt;\x26lt;\/slot\x26gt; \x26lt;\/div\x26gt; \x26lt;\/template\x26gt; \x26lt;script\x26gt; export default { name: \x26quot;GuLuPopover\x26quot;, data(){ return {visible: false} }, methods:{ xxx(){ this.visible = !this.visible } } } \x26lt;\/script\x26gt; \x26lt;style scoped lang=\x26quot;scss\x26quot;\x26gt; .popover{ display: inline-block; vertical-align: top; position: relative;} .content-wrapper{ position: absolute; bottom: 100%; left: 0; border: 1px solid red; box-shadow: 0 0 3px rgba(0,0,0,0.",
+    "inLanguage" : "zh-CN",
+    "author" : "吴潇",
+    "creator" : "吴潇",
+    "publisher": "吴潇",
+    "accountablePerson" : "吴潇",
+    "copyrightHolder" : "吴潇",
+    "copyrightYear" : "2019",
+    "datePublished": "2019-12-10 14:56:04 \x2b0800 CST",
+    "dateModified" : "2019-12-10 14:56:04 \x2b0800 CST",
+    "url" : "http:\/\/www.pigxw.top\/%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E4%B8%8E%E6%8D%95%E8%8E%B7\/",
+    "wordCount" : "207",
+    "keywords" : [  "吴潇的个人博客"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">吴潇的个人博客</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/search/" title="">搜索</a>
+                
+                <a class="menu-item" href="/" title="">首页</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/contacts/" title="">联系我</a>
+                
+                <a class="menu-item" href="/wechat-subscribe/" title="">订阅</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">吴潇的个人博客</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/search/" title="">搜索</a>
+                
+                <a class="menu-item" href="/" title="">首页</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/contacts/" title="">联系我</a>
+                
+                <a class="menu-item" href="/wechat-subscribe/" title="">订阅</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">冒泡与捕获</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="http://www.pigxw.top/" rel="author">吴潇</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2019-12-10 itemprop="datePublished">December 10, 2019</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+            
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h4 id="一个popover轮子制作引发的-bug">一个popover轮子制作引发的 BUG</h4>
+
+<p>HTML</p>
+
+<pre><code class="language-html">&lt;div id=&quot;app&quot; style=&quot;padding-left: 100px;padding-top: 100px;&quot;&gt;
+    &lt;g-popover&gt;
+        &lt;template slot=&quot;content&quot;&gt;
+            &lt;div&gt;popover内容&lt;/div&gt;
+        &lt;/template&gt; 
+        &lt;template&gt; 
+            &lt;button&gt;点我&lt;/button&gt;
+        &lt;/template&gt;
+    &lt;/g-popover&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>JS</p>
+
+<pre><code class="language-js">&lt;template&gt;    
+    &lt;div class=&quot;popover&quot; @click=&quot;xxx&quot;&gt; 
+        &lt;div class=&quot;content-wrapper&quot; v-if=&quot;visible&quot;&gt; 
+            &lt;slot name=&quot;content&quot;&gt;&lt;/slot&gt;   
+        &lt;/div&gt;    
+        &lt;slot&gt;&lt;/slot&gt;  
+    &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt; 
+    export default {  
+         name: &quot;GuLuPopover&quot;,   
+        data(){         
+            return {visible: false}  
+        },        
+        methods:{ 
+            xxx(){   
+                this.visible = !this.visible  
+            }       
+        }   
+    }
+&lt;/script&gt;
+
+&lt;style scoped lang=&quot;scss&quot;&gt;
+    .popover{ display: inline-block; vertical-align: top;  position: relative;}    
+    .content-wrapper{ position: absolute; bottom: 100%; left: 0; border: 1px solid red; box-shadow: 0 0 3px rgba(0,0,0,0.5);   }
+&lt;/style&gt;
+
+</code></pre>
+
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="en-resource://database/2794:1" alt="2eb4877b78968cdc4b4a249e1a581d13.png" class="lazyload"><figcaption class="image-caption">2eb4877b78968cdc4b4a249e1a581d13.png</figcaption></figure></p>
+
+<p>第一个问题：</p>
+
+<p>点击按钮正常出现和消失 popover ，但实际需要是 点击其他地方 popover 也能消失</p>
+
+<p>思路 1：</p>
+
+<p>在 methods 中 添加事件监听来监听body;</p>
+
+<pre><code class="language-js"> methods:{
+     xxx(){
+        this.visible = ! this.visible
+        if (this.visible === true){
+        document.body.addEventListener('click', ()=&gt;{
+        this.visible = false
+        })
+        }
+     }
+}
+</code></pre>
+
+<p>问题1：刚点击就关闭了，页面上什么都没有。</p>
+
+<p><strong>原因： 事件还没结束就监听，点击一次全部执行了</strong></p>
+
+<p>想到用<strong>异步</strong>来接着解决：</p>
+
+<p>思路 2：使用this.nextTick(()=&gt;{
+    document&hellip;&hellip;.
+ })</p>
+
+<p>问题 2：</p>
+
+<p>点击其他地方 popover 消失还是没实现，</p>
+
+<p>思路三： 监听document</p>
+
+<pre><code>document.addEventListener('click',()=&gt;{})
+</code></pre>
+
+<p>初步解决</p>
+
+<p>但第三次点击又出现了一次点击全部执行的问题，问题出在document 的监听在这一次应该被移除掉</p>
+
+<p>思路 4：</p>
+
+<pre><code class="language-js">   if(this.visible === true){
+   this.nextTick(()=&gt;{
+   document.addEventListener('click', function x(){
+   document.removeEventListener('click', x )
+   }.bind(this))
+   })
+   }
+</code></pre>
+
+<p>但是函数bind 后的就变成了一个新的函数，所以移除的x函数并非bind的函数，bind(this)返回的是新函数</p>
+
+<p>思路 5 ： 用变量来引用这个箭头函数吧：</p>
+
+<pre><code class="language-js"> this.nextTick(()=&gt;{
+    let eventHandler = ()=&gt;{
+        this.visible = false
+        document.removeEventListener('click',eventHandle)
+        document.addEventListener('click', evenHandle)
+ })
+</code></pre>
+
+<p>问题又来了：
+点击 popover 它也消失了。。</p>
+
+<p>思路 6 ：阻止冒泡
+n
+在<code>popover</code> 和<code>content-wrapper</code>的  <code>@click</code> 后面加<code>.stop</code>，可以解决</p>
+
+<p><strong>但是。。。。</strong></p>
+
+<p>要实现完美的 popover 这样是远远不够的。。。</p>
+
+<hr />
+
+<p>inline 元素 上下对不齐解决方法：vertical-align:middle;</p>
+
+<p>属性检查器： validator( ) { }</p>
+
+<h4 id="单元测试">单元测试：</h4>
+
+<p>使用Chai.js</p>
+
+<p>BDD(behavior driven development):行为驱动开发</p>
+
+<p>TDD(test driven development)：测试驱动开发</p>
+
+<p>Assert： 断言（主观认为）</p>
+
+<p>npm i -D chai-spies</p>
+
+<p>import spies from &lsquo;chai-spies&rsquo;
+chai.use(spies)</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>吴潇 </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=http://www.pigxw.top/%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E4%B8%8E%E6%8D%95%E8%8E%B7/>http://www.pigxw.top/%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E4%B8%8E%E6%8D%95%E8%8E%B7/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="http://www.pigxw.top/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="http://www.pigxw.top/flutter%E5%88%9D%E8%AF%86/" class="prev" rel="prev" title="Flutter 初识"><i class="iconfont icon-left"></i>&nbsp;Flutter 初识</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2019</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="http://www.pigxw.top/">吴潇</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+     <link href="//lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css" rel="stylesheet">  
+      
+     <script src="/js/vendor_gallery.min.js" async="" ></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>
