@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="吴潇">
+  <meta name="description" content="吴潇的个人网站">
+  <meta name="keywords" content="吴潇,前端,程序猿">
+  
+  <link rel="prev" href="http://www.pigxw.top/%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E4%B8%8E%E6%8D%95%E8%8E%B7/" />
+  
+  <link rel="canonical" href="http://www.pigxw.top/vuex-%E5%9F%BA%E7%A1%80%E5%88%B0%E6%B7%B1%E5%85%A5/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           Vuex 从基础到深入 | 吴潇的个人博客
+       
+  </title>
+  <meta name="title" content="Vuex 从基础到深入 | 吴潇的个人博客">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "http:\/\/www.pigxw.top\/"
+    },
+    "articleSection" : "posts",
+    "name" : "Vuex 从基础到深入",
+    "headline" : "Vuex 从基础到深入",
+    "description" : "小范围数据共享方式：\n 父向子传值： v-bind属性绑定 子向父传值： v-on 事件绑定 兄弟组件之间共享数据： eventBus   数据接收方定义 $on 事件\n 数据发送方定义 $emit 触发\n  Vuex Vuex 是实现组件全局状态（数据）管理的一种机制，可以方便的实现组件之间数据的共享。\n有无 Vuex 的区别图解\n使用 Vuex 统一管理状态的好处：  能够在 Vuex 中集中管理共享的数据，已于开发和后期维护； 能够高效实现组件之间的数据共享，提高开发效率； 存储在 Vuex 中的数据都是响应式的，能够实时保持数据与页面同步。  一般情况下，只有组件之间共享的数据才有必要存储到 Vuex 中，对于组件中的私有数据，依旧存储在组件自身的 data 中即可。具体需求视情况而定\n基本使用  安装依赖包 npm install vuex --save 导入 Vuex 包\nimport Vuex from \x27vuex\x27 Vue.use(Vuex)  创建 store 对象\nconst store = new Vuex.Store({ state: { count: 0 } \/\/ state 中存放的是全局共享的数据 })  将 store 对象挂载到 Vue 实例中",
+    "inLanguage" : "zh-CN",
+    "author" : "吴潇",
+    "creator" : "吴潇",
+    "publisher": "吴潇",
+    "accountablePerson" : "吴潇",
+    "copyrightHolder" : "吴潇",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-03-03 21:29:04 \x2b0800 CST",
+    "dateModified" : "2020-03-03 21:29:04 \x2b0800 CST",
+    "url" : "http:\/\/www.pigxw.top\/vuex-%E5%9F%BA%E7%A1%80%E5%88%B0%E6%B7%B1%E5%85%A5\/",
+    "wordCount" : "385",
+    "keywords" : [  "吴潇的个人博客"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">吴潇的个人博客</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/search/" title="">搜索</a>
+                
+                <a class="menu-item" href="/" title="">首页</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/contacts/" title="">联系我</a>
+                
+                <a class="menu-item" href="/wechat-subscribe/" title="">订阅</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">吴潇的个人博客</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/search/" title="">搜索</a>
+                
+                <a class="menu-item" href="/" title="">首页</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/contacts/" title="">联系我</a>
+                
+                <a class="menu-item" href="/wechat-subscribe/" title="">订阅</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">Vuex 从基础到深入</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="http://www.pigxw.top/" rel="author">吴潇</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-03-03 itemprop="datePublished">March 3, 2020</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<p>小范围数据共享方式：</p>
+
+<ol>
+<li>父向子传值： v-bind属性绑定</li>
+<li>子向父传值： v-on 事件绑定</li>
+<li>兄弟组件之间共享数据： eventBus</li>
+</ol>
+
+<ul>
+<li><p>数据接收方定义 $on 事件</p></li>
+
+<li><p>数据发送方定义 $emit 触发</p></li>
+</ul>
+
+<h2 id="vuex">Vuex</h2>
+
+<p>Vuex 是实现组件全局状态（数据）管理的一种机制，可以方便的实现组件之间数据的共享。</p>
+
+<p><a href="/static/images/article/有无%20Vuex%20的区别图解1.png">有无 Vuex 的区别图解</a></p>
+
+<h2 id="使用-vuex-统一管理状态的好处">使用 Vuex 统一管理状态的好处：</h2>
+
+<ol>
+<li>能够在 Vuex 中集中管理共享的数据，已于开发和后期维护；</li>
+<li>能够高效实现组件之间的数据共享，提高开发效率；</li>
+<li>存储在 Vuex 中的数据都是响应式的，能够实时保持数据与页面同步。</li>
+</ol>
+
+<p><strong>一般情况下，只有组件之间共享的数据才有必要存储到 Vuex 中，对于组件中的私有数据，依旧存储在组件自身的 data 中即可。具体需求视情况而定</strong></p>
+
+<h2 id="基本使用">基本使用</h2>
+
+<ol>
+<li>安装依赖包
+<code>npm install vuex --save</code></li>
+
+<li><p>导入 Vuex 包</p>
+
+<pre><code>import Vuex from 'vuex'
+Vue.use(Vuex)
+</code></pre></li>
+
+<li><p>创建 store 对象</p>
+
+<pre><code>const store = new Vuex.Store({
+state: { count: 0 }
+// state 中存放的是全局共享的数据
+})
+</code></pre></li>
+
+<li><p>将 store 对象挂载到 Vue 实例中</p>
+
+<pre><code>new Vue({
+ el: '#app',
+ render: h =&gt; h(app),
+ router,
+ // 将创建的共享数据对象挂载到 Vue 实例中，
+ // 所有组件就可以直接从store 中获取全局数据了
+ store
+})
+</code></pre></li>
+</ol>
+
+<h3 id="vuex-核心概念">Vuex 核心概念</h3>
+
+<h4 id="state">State</h4>
+
+<ul>
+<li><p>State 提供唯一的公共数据源，所有的共享数据都要统一都要放到 Store 的 State 中存储</p></li>
+
+<li><p>组件访问 State 中数据的方式一：</p></li>
+</ul>
+
+<p><code>this.$store.state.全局数据名称</code></p>
+
+<ul>
+<li><p>组件访问 State 中数据的方式二：</p>
+
+<pre><code>// 1. 从 Vuex 中按需导入 mapState 函数
+import { mapState } from 'vuex'
+</code></pre></li>
+</ul>
+
+<p>通过刚才导入的mapState函数，将当前组件需要的数据映射为当前组件的 computed 计算属性：</p>
+
+<pre><code> // 2. 将全局数据映射当前组件的计算属性
+ computed: {
+     ...mapState(['count'])
+ }
+ // 3. 在template 模板中 使用插值表达式 {{count}} 渲染
+</code></pre>
+
+<p><strong>不允许组件直接修改 store 中的公有属性，只能通过 mutation 变更 store 数据 ，这样虽然繁琐但可以集中监控所有数据的变化</strong></p>
+
+<h4 id="mutation">Mutation</h4>
+
+<pre><code>// 定义 mutation
+ const store = new Store({
+     state: {
+         count: 0
+     },
+     mutations: {
+        add(state) {
+            state.count++
+            &lt;!-- 
+            add(state, step) { 可接受参数step 
+                state.count += step
+            }
+            --&gt;
+         }
+     }
+ })
+// 触发 mutations
+  methods: {
+      handle(){ 
+          // 方式一
+          this.$store.commit('add') 
+          &lt;!-- 
+          this.$store.commit('add', 3) 携带参数 3
+          --&gt;
+      }
+  }
+
+</code></pre>
+
+<p>触发mutations的第二种方式：</p>
+
+<pre><code>// 1. 从Vuex 中按需导入 mapMutations 函数
+import { mapMutations } from 'vuex'
+// 2. 将需要的mutations函数映射为当前组件的 methods 方法： 
+ methods: {
+     ...mapMutations(['add', 'addN']),
+     handler(){
+         this.add()
+         // this.addN(3)
+     }
+ }
+</code></pre>
+
+<p><strong>commit 的作用就是调用某个 mutation 函数</strong></p>
+
+<p><strong>mutations 函数中不能执行异步操作,于是有了下面的 Action</strong></p>
+
+<h3 id="actions">Actions</h3>
+
+<p>Action 用于处理异步任务。如果通过异步操作变更数据，必须通过使用Action, 而不能使用Mutation,但在Action中还是要通过触发Mutation的方式间接变更数据。</p>
+
+<pre><code> // 定义 action
+ const store = new Vuex.Store({
+     // ....代码省略
+     mutations: {
+         add(state){
+             state.count++
+         }
+     },
+     actions: {
+         addAsync(context){ // 也可接受参数
+             setTimeout (() =&gt; { // commit 触发某个mutation 函数 
+                 context.commit('add'), 1000)
+             }
+         }
+     }
+ })
+    // 触发 action 的方式一：
+  methods: {
+      handle(){
+          // dispatch 用来触发某个 action 
+          this.$store.dispatch('addAsync')
+      }
+  }
+--------
+    // 触发 action 的方式二：
+    // 1. 从 vuex 中按需导入 mapActions 函数
+ import { mapActions } from 'vuex'
+    // 2. 将指定的 actions 函数映射为当前组件的 methods 函数：
+  methods: {
+      ...mapActions(['addAsync','addNSync']),
+      handle(){
+          this.addAsync()
+      }
+  } 
+</code></pre>
+
+<p><em>可以直接在template中添加  <code>&lt;button @click=&quot;addAsync&quot;&gt; +1 async &lt;/button&gt;</code> 而不需要定义 handle 事件 ，因为mapActions将actions中的异步函数映射为自己的 methods 了</em></p>
+
+<h4 id="getter">Getter</h4>
+
+<p>Getter 用于对Store  中的数据进行加工处理形成新的数据。</p>
+
+<ol>
+<li>Getter 可以对 Store 中已有的数据加工处理之后形成新的数据，类似 Vue 的计算属性。</li>
+
+<li><p>Store 中数据发生变化，Getter 的数据也会跟着变化。</p>
+
+<pre><code>// 定义 getter 
+const store = new Vuex.Store({
+ state: {
+     count: 0
+ },
+ getters: {
+     showNum(state) {
+         return '当前最新数据是【'+ state.count + '】' 
+     }
+ }
+})
+
+// 使用getters 的第一种方法：
+
+this.$store.getters.名称
+
+// 使用getters 的第二种方法：
+
+import { mapGetters } from 'vuex'
+computed:{
+...mapGetters(['showNum'])
+}
+</code></pre></li>
+</ol>
+
+<p>附： <a href="https://github.com/WUXIAOd/vue-todolist" rel="nofollow noreferrer" target="_blank"> todolist : 一个使用 Vuex 完成状态管理的 demo</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>吴潇 </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=http://www.pigxw.top/vuex-%E5%9F%BA%E7%A1%80%E5%88%B0%E6%B7%B1%E5%85%A5/>http://www.pigxw.top/vuex-%E5%9F%BA%E7%A1%80%E5%88%B0%E6%B7%B1%E5%85%A5/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="http://www.pigxw.top/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="http://www.pigxw.top/%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E4%B8%8E%E6%8D%95%E8%8E%B7/" class="prev" rel="prev" title="冒泡与捕获"><i class="iconfont icon-left"></i>&nbsp;冒泡与捕获</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="http://www.pigxw.top/">吴潇</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

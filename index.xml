@@ -5,25 +5,41 @@
     <description>Recent content in 吴潇的个人博客 on 吴潇的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 10 Dec 2019 14:56:04 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 03 Mar 2020 21:29:04 +0800</lastBuildDate>
     <atom:link href="/" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Posts</title>
       <link>http://www.pigxw.top/posts/</link>
-      <pubDate>Tue, 10 Dec 2019 14:56:04 +0800</pubDate>
+      <pubDate>Tue, 03 Mar 2020 21:29:04 +0800</pubDate>
       
       <guid>http://www.pigxw.top/posts/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>Mys</title>
-      <link>http://www.pigxw.top/my/</link>
+      <title>我的简历</title>
+      <link>http://www.pigxw.top/resume/</link>
       <pubDate>Sat, 02 Nov 2019 04:04:02 +0800</pubDate>
       
-      <guid>http://www.pigxw.top/my/</guid>
-      <description></description>
+      <guid>http://www.pigxw.top/resume/</guid>
+      <description>&lt;p&gt;2019年毕业于南华大学物联网工程专业。&lt;/p&gt;
+
+&lt;h2 id=&#34;技术栈&#34;&gt;技术栈&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Web 前端开发技术（CSS、JavaScript、TypeScript、Vue等）&lt;/li&gt;
+&lt;li&gt;Node.js 、Java&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;工具箱&#34;&gt;工具箱&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;编辑器喜欢用 Webstorm 、VS Code ，熟悉 Vim 命令&lt;/li&gt;
+&lt;li&gt;使用 Ditto.app 管理剪切板&lt;/li&gt;
+&lt;li&gt;使用印象笔记管理知识&lt;/li&gt;
+&lt;li&gt;常用开发浏览器为 Chrome、 Firefox&lt;/li&gt;
+&lt;/ul&gt;</description>
     </item>
     
     <item>
@@ -65,7 +81,7 @@
       <guid>http://www.pigxw.top/contacts/</guid>
       <description>&lt;p&gt;邮箱：pigxw0106@gmail.com&lt;/p&gt;
 
-&lt;p&gt;知乎：&lt;a href=&#34;https://www.zhihu.com/people/pigxw&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;zhihusucks&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;知乎：&lt;a href=&#34;https://www.zhihu.com/people/pigxw&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;知乎主页&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     

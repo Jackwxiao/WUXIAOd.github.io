@@ -6,10 +6,27 @@
     <description>Recent content in Posts on 吴潇的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 10 Dec 2019 14:56:04 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 03 Mar 2020 21:29:04 +0800</lastBuildDate>
     
 	<atom:link href="http://www.pigxw.top/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vuex 从基础到深入</title>
+      <link>http://www.pigxw.top/vuex-%E5%9F%BA%E7%A1%80%E5%88%B0%E6%B7%B1%E5%85%A5/</link>
+      <pubDate>Tue, 03 Mar 2020 21:29:04 +0800</pubDate>
+      
+      <guid>http://www.pigxw.top/vuex-%E5%9F%BA%E7%A1%80%E5%88%B0%E6%B7%B1%E5%85%A5/</guid>
+      <description>小范围数据共享方式：
+ 父向子传值： v-bind属性绑定 子向父传值： v-on 事件绑定 兄弟组件之间共享数据： eventBus   数据接收方定义 $on 事件
+ 数据发送方定义 $emit 触发
+  Vuex Vuex 是实现组件全局状态（数据）管理的一种机制，可以方便的实现组件之间数据的共享。
+有无 Vuex 的区别图解
+使用 Vuex 统一管理状态的好处：  能够在 Vuex 中集中管理共享的数据，已于开发和后期维护； 能够高效实现组件之间的数据共享，提高开发效率； 存储在 Vuex 中的数据都是响应式的，能够实时保持数据与页面同步。  一般情况下，只有组件之间共享的数据才有必要存储到 Vuex 中，对于组件中的私有数据，依旧存储在组件自身的 data 中即可。具体需求视情况而定
+基本使用  安装依赖包 npm install vuex --save 导入 Vuex 包
+import Vuex from &#39;vuex&#39; Vue.use(Vuex)  创建 store 对象
+const store = new Vuex.Store({ state: { count: 0 } // state 中存放的是全局共享的数据 })  将 store 对象挂载到 Vue 实例中</description>
+    </item>
     
     <item>
       <title>冒泡与捕获</title>
@@ -283,7 +300,7 @@ Cache-Control可以让浏览器在一段时间内不访问浏览器，直接用�
       
       <guid>http://www.pigxw.top/vue-routeraxiosvuex/</guid>
       <description>vue-router 路由的基本加载  安装 npm install --save vue-router 2.引用
-在router 的index.js中 import router from &#39;vue-router&#39; Vue.use(router)  配置路由文件，并在vue实例中注入
+在router 的 index.js 中 import router from &#39;vue-router&#39; Vue.use(router)  配置路由文件，并在vue实例中注入
 var rt = new router({ routes:[{ path:&#39;/&#39;, //指定要跳转的路径 component: HelloWorld //指定要跳转的组件 }] }) new Vue({ el: &#39;#app&#39;, router, components: { App }, template: &#39;&#39; })  确定试图加载的位置
 &amp;lt;router-view&amp;gt;&amp;lt;/router-view&amp;gt;  路由的跳转  &amp;lt;template&amp;gt; &amp;lt;ul&amp;gt; &amp;lt;li&amp;gt; &amp;lt;router-link to=&amp;quot;/helloearth&amp;quot;&amp;gt;HELLO EARTH 33&amp;lt;/router-link&amp;gt; &amp;lt;/li&amp;gt; &amp;lt;li&amp;gt; &amp;lt;router-link to=&amp;quot;/helloworld&amp;quot;&amp;gt;HELLO WORLD 22&amp;lt;/router-link&amp;gt; &amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; &amp;lt;/template&amp;gt;   路由参数传递  必须在路由内加入路由的name .</description>
     </item>
