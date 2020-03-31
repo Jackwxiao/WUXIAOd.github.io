@@ -22,10 +22,10 @@
   <title>
        
        
-           移动端适配方案 | 吴潇的个人博客
+           移动端适配方案 | 小xiao潇的个人博客
        
   </title>
-  <meta name="title" content="移动端适配方案 | 吴潇的个人博客">
+  <meta name="title" content="移动端适配方案 | 小xiao潇的个人博客">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -46,7 +46,7 @@
     "articleSection" : "posts",
     "name" : "移动端适配方案",
     "headline" : "移动端适配方案",
-    "description" : "移动端适配的几种方案： viewport适配 开发流程: 1. 开发者拿到设计稿（假设设计稿尺寸为750px，设计稿的元素标是基于此宽度标注） 2. 开始开发，css以设计稿标注的尺寸来开发，比如页面元素字体标注的大小是32px 4. 在html的head里引入适配代码\n简言之：CSS按照设计稿写，加几句动态生成meta标签的JS代码。\n\x26lt;meta name=\x26quot;viewport\x26quot; content=\x26quot;width=device-width\x26quot;\x26gt; \x26lt;script\x26gt; const WIDTH = 750 const mobileAdapter = () =\x26gt; { let scale = screen.width\/WIDTH let content = `width=${WIDTH}, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}` let meta = document.querySelector(\x27meta[name=viewport]\x27) if(!meta) { meta = document.createElement(\x27meta\x27) meta.setAttribute(\x27name\x27, \x27viewport\x27) document.head.appendChild(meta) } meta.setAttribute(\x27content\x27, content) } mobileAdapter() window.onorientationchange = mobileAdapter \x26lt;\/script\x26gt;  原理解析：\n\x26lt;meta name=\x26quot;viewport\x26quot; content=\x26quot;width=750px,inital-scale=0.5\x26quot;\x26gt;  content=750px是设计稿的尺寸。 initial-scale为默认缩放比，它是由设备尺寸\/设计稿尺寸决定，不能写死，所以要动态生成。 优点是使用简单，缺点是页面整体缩放，如果页面中有一个1px的边框，经整体缩放，这个1px可能就不见了或者又太大了。\nvw适配： 750px=100vw; 1px=0.1333vw; 84px=11.20vw\x26hellip;\x26hellip;",
+    "description" : "移动端适配的几种方案： viewport适配 开发流程: 1. 开发者拿到设计稿（假设设计稿尺寸为750px，设计稿的元素标是基于此宽度标注） 2. 开始开发，css以设计稿标注的尺寸来开发，比如页面元素字体标注的大小是32px 4. 在html的head里引入适配代码\n简言之：CSS按照设计稿写，加几句动态生成meta标签的JS代码。\n\x26lt;meta name=\x26quot;viewport\x26quot; content=\x26quot;width=device-width\x26quot;\x26gt; \x26lt;script\x26gt; const WIDTH = 750 const mobileAdapter = () =\x26gt; { let scale = screen.width\/WIDTH let content = `width=${WIDTH}, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}` let meta = document.querySelector(\x27meta[name=viewport]\x27) if(!meta) { meta = document.createElement(\x27meta\x27) meta.setAttribute(\x27name\x27, \x27viewport\x27) document.head.appendChild(meta) } meta.setAttribute(\x27content\x27, content) } mobileAdapter() window.onOrientationChange = mobileAdapter \x26lt;\/script\x26gt;  原理解析：\n\x26lt;meta name=\x26quot;viewport\x26quot; content=\x26quot;width=750px,inital-scale=0.5\x26quot;\x26gt;  content=750px是设计稿的尺寸。 initial-scale为默认缩放比，它是由设备尺寸\/设计稿尺寸决定，不能写死，所以要动态生成。 优点是使用简单，缺点是页面整体缩放，如果页面中有一个1px的边框，经整体缩放，这个1px可能就不见了或者又太大了。\nvw适配： 750px=100vw; 1px=0.1333vw; 84px=11.20vw\x26hellip;\x26hellip;",
     "inLanguage" : "zh-CN",
     "author" : "吴潇",
     "creator" : "吴潇",
@@ -58,7 +58,7 @@
     "dateModified" : "2019-10-24 11:32:33 \x2b0800 CST",
     "url" : "http:\/\/www.pigxw.top\/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D\/",
     "wordCount" : "218",
-    "keywords" : [  "吴潇的个人博客"]
+    "keywords" : [  "小xiao潇的个人博客"]
 }
 </script>
 
@@ -72,7 +72,7 @@
         <nav class="navbar">
     <div class="container">
         <div class="navbar-header header-logo">
-        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">吴潇的个人博客</a>
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">小xiao潇的个人博客</a>
         </div>
         <div class="menu navbar-right">
                 
@@ -93,7 +93,7 @@
 <nav class="navbar-mobile" id="nav-mobile" style="display: none">
      <div class="container">
         <div class="navbar-header">
-            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">吴潇的个人博客</a></div>
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">小xiao潇的个人博客</a></div>
             <div class="menu-toggle">
                 <span></span><span></span><span></span>
             </div>
@@ -174,7 +174,7 @@
       meta.setAttribute('content', content)
     }
     mobileAdapter()
-    window.onorientationchange = mobileAdapter
+    window.onOrientationChange = mobileAdapter
   &lt;/script&gt; 
 </code></pre>
 
@@ -240,7 +240,7 @@ initial-scale为默认缩放比，它是由设备尺寸/设计稿尺寸决定，
       console.log(screen.width)
       document.documentElement.style.fontSize = (100*screen.width/WIDTH) + 'px'
     }
-    window.onorientationchange = setView
+    window.onOrientationChange = setView
     setView()
   &lt;/script&gt;
   

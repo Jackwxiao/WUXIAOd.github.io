@@ -1,8 +1,8 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>吴潇的个人博客 on 吴潇的个人博客</title>
+    <title>小xiao潇的个人博客 on 小xiao潇的个人博客</title>
     <link>http://www.pigxw.top/</link>
-    <description>Recent content in 吴潇的个人博客 on 吴潇的个人博客</description>
+    <description>Recent content in 小xiao潇的个人博客 on 小xiao潇的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <lastBuildDate>Tue, 03 Mar 2020 21:29:04 +0800</lastBuildDate>
@@ -58,18 +58,7 @@
       <pubDate>Tue, 08 Oct 2019 03:43:41 +0800</pubDate>
       
       <guid>http://www.pigxw.top/search/</guid>
-      <description>&lt;p&gt;&lt;script&gt;
-    (function() {
-      var cx = &amp;lsquo;016234742734663680094:g9uzclyqqqa&amp;rsquo;;
-      var gcse = document.createElement(&amp;lsquo;script&amp;rsquo;);
-      gcse.type = &amp;lsquo;text/javascript&amp;rsquo;;
-      gcse.async = true;
-      gcse.src = &amp;lsquo;&lt;a href=&#34;https://cse.google.com/cse.js?cx=&#39;&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;https://cse.google.com/cse.js?cx=&#39;&lt;/a&gt; + cx;
-      var s = document.getElementsByTagName(&amp;lsquo;script&amp;rsquo;)[0];
-      s.parentNode.insertBefore(gcse, s);
-    })();
-  &lt;/script&gt;
-  &lt;a href=&#34;gcse:search&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;gcse:search&lt;/a&gt;&lt;a href=&#34;http://www.pigxw.top/gcse:search&#34;&gt;/gcse:search&lt;/a&gt;&lt;/p&gt;
+      <description>&lt;p&gt;{{&lt;a href=&#34;https://cn.bing.com/&#34; rel=&#34;nofollow noreferrer&#34; target=&#34;_blank&#34;&gt;search&lt;/a&gt;}}&lt;/p&gt;
 </description>
     </item>
     
