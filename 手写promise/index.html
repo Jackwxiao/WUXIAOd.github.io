@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noodp"/>
+  <meta name="author" content="吴潇">
+  <meta name="description" content="吴潇的个人网站">
+  <meta name="keywords" content="吴潇,前端,程序猿">
+  
+  <link rel="prev" href="http://www.pigxw.top/vuex-%E5%9F%BA%E7%A1%80%E5%88%B0%E6%B7%B1%E5%85%A5/" />
+  
+  <link rel="canonical" href="http://www.pigxw.top/%E6%89%8B%E5%86%99promise/" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <title>
+       
+       
+           手写Promise | 小xiao潇的个人博客
+       
+  </title>
+  <meta name="title" content="手写Promise | 小xiao潇的个人博客">
+    
+  
+  <link rel="stylesheet" href="/font/iconfont.css">
+  <link rel="stylesheet" href="/css/main.min.css">
+
+
+  
+  
+ 
+
+<script type="application/ld+json">
+ "@context" : "http://schema.org",
+    "@type" : "BlogPosting",
+    "mainEntityOfPage": {
+         "@type": "WebPage",
+         "@id": "http:\/\/www.pigxw.top\/"
+    },
+    "articleSection" : "posts",
+    "name" : "手写Promise",
+    "headline" : "手写Promise",
+    "description" : "自定义实现 Promise promise 构造函数的实现：  \/* Promise 构造函数 executor: 内部同步执行的函数 (resolve, reject) =\x26gt; {} *\/ function Promise(executor) { const self = this self.status = \x27pending\x27 \x26lt;!-- 状态值, 初始状态为 pending, 成功了变为 resolved, 失败了变为 rejected --\x26gt; self.data = undefined \x26lt;!-- 用来保存成功 value 或失败 reason 的属性 --\x26gt; self.callbacks = [] \x26lt;!-- 用来保存所有待调用的包含 onResolved 和 onRejected 回 调函数的对象的数组 --\x26gt; \/* 异步处理成功后应该调用的函数 value: 将交给 onResolve()的成功数据 *\/ function resolve(value) { if (self.status !== \x27pending\x27) { \x26lt;!",
+    "inLanguage" : "zh-CN",
+    "author" : "吴潇",
+    "creator" : "吴潇",
+    "publisher": "吴潇",
+    "accountablePerson" : "吴潇",
+    "copyrightHolder" : "吴潇",
+    "copyrightYear" : "2020",
+    "datePublished": "2020-03-31 21:31:29 \x2b0800 CST",
+    "dateModified" : "2020-03-31 21:31:29 \x2b0800 CST",
+    "url" : "http:\/\/www.pigxw.top\/%E6%89%8B%E5%86%99promise\/",
+    "wordCount" : "775",
+    "keywords" : [  "小xiao潇的个人博客"]
+}
+</script>
+
+</head>
+
+  
+
+
+  <body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+    <div class="container">
+        <div class="navbar-header header-logo">
+        	<a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">小xiao潇的个人博客</a>
+        </div>
+        <div class="menu navbar-right">
+                
+                
+                <a class="menu-item" href="/search/" title="">搜索</a>
+                
+                <a class="menu-item" href="/" title="">首页</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/contacts/" title="">联系我</a>
+                
+                <a class="menu-item" href="/wechat-subscribe/" title="">订阅</a>
+                
+        </div>
+    </div>
+</nav>
+<nav class="navbar-mobile" id="nav-mobile" style="display: none">
+     <div class="container">
+        <div class="navbar-header">
+            <div>  <a href="javascript:void(0);" class="theme-switch"><i class="iconfont icon-xihuan"></i></a>&nbsp;<a href="http://www.pigxw.top/">小xiao潇的个人博客</a></div>
+            <div class="menu-toggle">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+     
+          <div class="menu" id="mobile-menu">
+                
+                
+                <a class="menu-item" href="/search/" title="">搜索</a>
+                
+                <a class="menu-item" href="/" title="">首页</a>
+                
+                <a class="menu-item" href="/posts/" title="">文章</a>
+                
+                <a class="menu-item" href="/contacts/" title="">联系我</a>
+                
+                <a class="menu-item" href="/wechat-subscribe/" title="">订阅</a>
+                
+        </div>
+    </div>
+</nav>
+    	 <main class="main">
+          <div class="container">
+      		
+<article class="post-warp" itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">手写Promise</h1>
+        <div class="post-meta">
+                Written by <a itemprop="name" href="http://www.pigxw.top/" rel="author">吴潇</a> with ♥ 
+                <span class="post-time">
+                on <time datetime=2020-03-31 itemprop="datePublished">March 31, 2020</time>
+                </span>
+                in
+                
+        </div>
+    </header>
+    <div class="post-content">
+        
+
+        
+
+        
+        
+     
+          
+          
+          
+
+          
+          
+          
+
+          
+
+<h2 id="自定义实现-promise">自定义实现 Promise</h2>
+
+<h3 id="promise-构造函数的实现">promise 构造函数的实现：</h3>
+
+<pre><code>
+/* 
+Promise 构造函数
+executor: 内部同步执行的函数
+(resolve, reject) =&gt; {}
+*/
+
+function Promise(executor) {
+    const self = this
+    self.status = 'pending' 
+        &lt;!-- 状态值, 初始状态为 pending, 成功了变为 resolved, 失败了变为 rejected --&gt;
+    self.data = undefined
+        &lt;!-- 用来保存成功 value 或失败 reason 的属性 --&gt;
+    self.callbacks = [] 
+        &lt;!-- 用来保存所有待调用的包含 onResolved 和 onRejected 回 调函数的对象的数组  --&gt;
+
+        /* 异步处理成功后应该调用的函数 value: 将交给 onResolve()的成功数据 */
+
+    function resolve(value) {
+        if (self.status !== 'pending') { 
+            &lt;!-- 如果当前不是 pending, 直接结束 --&gt;
+            return
+        } 
+            &lt;!-- 立即更新状态, 保存数据 --&gt;
+        self.status = 'resolved'
+        self.data = value 
+            &lt;!-- 异步调用所有待处理的 onResolved 成功回调函数  --&gt;
+        if (self.callbacks.length &gt; 0) {
+            setTimeout(() =&gt; {
+                self.callbacks.forEach(obj =&gt; {
+                    obj.onResolved(value)
+                })
+            })
+        }
+    }
+
+    /*异步处理失败后应该调用的函数 reason: 将交给 onRejected()的失败数据 */
+
+    function reject(reason) {
+        if (self.status !== 'pending') {
+                &lt;!-- 如果当前不是 pending, 直接结束 --&gt;
+            return
+        }
+                &lt;!-- 立即更新状态, 保存数据 --&gt;
+        self.status = 'rejected'
+        self.data = reason
+                &lt;!-- 异步调用所有待处理的 onRejected 回调函数 --&gt;
+        setTimeout(() =&gt; {
+            self.callbacks.forEach(obj =&gt; {
+                obj.onRejected(reason)
+            })
+        })
+    } try {
+                &lt;!-- 立即同步调用 executor()处理 --&gt;
+        executor(resolve, reject)
+    } catch (error) {
+                &lt;!-- 如果出了异常, 直接失败 --&gt;
+        reject(error)
+    }
+}
+
+</code></pre>
+
+<h3 id="promise-then-catch-的实现">promise.then() / catch() 的实现：</h3>
+
+<pre><code>
+/*
+为 promise 指定成功/失败的回调函数
+函数的返回值是一个新的 promise 对象
+*/
+
+Promise.prototype.then = function (onResolved, onRejected) {
+    const self = this
+        &lt;!-- 如果 onResolved/onRejected 不是函数, 可它指定一个默认的函数 --&gt;
+    onResolved = typeof onResolved === 'function' ? onResolved : value =&gt; value
+        &lt;!-- 指定返回的 promise 为一个成功状态, 结果值为 value --&gt;
+    onRejected = typeof onRejected === 'function' ? onRejected : reason =&gt; {
+        throw reason
+    } 
+        &lt;!-- 指定返回的 promise 为一个失败状态, 结果值为 reason --&gt;
+        &lt;!-- 返回一个新的 promise 对象 --&gt;
+    return new Promise((resolve, reject) =&gt; {
+        /*
+        专门抽取的用来处理 promise 成功/失败结果的函数
+        callback: 成功/失败的回调函数
+        */
+        
+        function handle(callback) {
+                &lt;!-- 1. 抛出异常 ===&gt; 返回的 promise 变为 rejected --&gt;
+            try {
+                const x = callback(self.data)
+                    &lt;!-- 2. 返回一个新的 promise ===&gt; 得到新的 promise 的结果值作为返回的 --&gt;
+                promise 的结果值
+                if (x instanceof Promise) {
+                    x.then(resolve, reject)
+                    &lt;!-- 一旦 x 成功了, resolve(value), 一旦 x 失败了: reject(reason) --&gt;
+                } else {
+                    &lt;!-- 3. 返回一个一般值(undefined) ===&gt; 将这个值作为返回的 promise 的成功值 --&gt;
+                    resolve(x)
+                }
+            } catch (error) {
+                reject(error)
+            }
+        }
+        if (self.status === 'resolved') {
+                 &lt;!-- 当前 promise 已经成功了 --&gt;
+            setTimeout(() =&gt; {
+                handle(onResolved)
+            })
+        } else if (self.status === 'rejected') {
+                 &lt;!-- 当前 promise 已经失败了 --&gt;
+            setTimeout(() =&gt; {
+                handle(onRejected)
+            })
+        } else { 
+                &lt;!-- 当前 promise 还未确定 pending --&gt;
+                &lt;!-- 将 onResolved 和 onRejected 保存起来 --&gt;
+            self.callbacks.push({
+                onResolved(value) {
+                    handle(onResolved)
+                },
+                onRejected(reason) {
+                    handle(onRejected)
+                }
+            })
+        }
+    })
+}
+
+/*
+为 promise 指定失败的回调函数
+是 then(null, onRejected)的语法糖
+*/
+
+Promise.prototype.catch = function (onRejected) {
+    return this.then(null, onRejected)
+}
+
+</code></pre>
+
+<h3 id="promise-resolve-reject-的实现">promise.resolve()/reject() 的实现：</h3>
+
+<pre><code>
+/*
+返回一个指定了成功 value 的 promise 对象
+value: 一般数据或 promise
+*/
+
+Promise.resolve = function (value) {
+    return new Promise((resolve, reject) =&gt; {
+        if (value instanceof Promise) {
+            value.then(resolve, reject)
+        } else {
+            resolve(value)
+        }
+    })
+}
+
+/*
+返回一个指定了失败 reason 的 promise 对象
+reason: 一般数据/error
+*/
+
+Promise.reject = function (reason) {
+    return new Promise((resolve, reject) =&gt; {
+        reject(reason)
+    })
+}
+
+</code></pre>
+
+<h3 id="promise-all-race-的实现">Promise.all/race()的实现:</h3>
+
+<pre><code>
+/*
+返回一个新的 promise 对象, 只有 promises 中所有 promise 都产生成功 value 时, 才最
+终成功, 只要有一个失败就直接失败
+*/
+
+Promise.all = function (promises) {
+        &lt;!-- 返回一个新的 promise --&gt;
+    return new Promise((resolve, reject) =&gt; {
+            &lt;!-- 已成功的数量 --&gt;
+        let resolvedCount = 0
+            &lt;!-- 待处理的 promises 数组的长度 --&gt;
+        const promisesLength = promises.length
+            &lt;!-- 准备一个保存成功值的数组 --&gt;
+        const values = new Array(promisesLength)
+            &lt;!--遍历每个待处理的 promise --&gt;
+        for (let i = 0; i &lt; promisesLength; i++) {
+                &lt;!-- promises 中元素可能不是一个数组, 需要用 resolve 包装一下 --&gt;
+            Promise.resolve(promises[i]).then(
+                value =&gt; {
+                        &lt;!-- 成功当前 promise 成功的值到对应的下标 --&gt;
+                    values[i] = value
+                        &lt;!-- 成功的数量加 1 --&gt;
+                    resolvedCount++
+                        &lt;!-- 一旦全部成功 --&gt;
+                    if (resolvedCount === promisesLength) {
+                        &lt;!--  将所有成功值的数组作为返回 promise 对象的成功结果值 --&gt;
+                        resolve(values)
+                    }
+                },
+                reason =&gt; {
+                    &lt;!-- 一旦有一个promise产生了失败结果值, 将其作为返回promise对象的失败结果值 --&gt;
+                    reject(reason)
+                }
+            )
+        }
+    })
+}
+/*
+返回一个 promise，一旦某个 promise 解决或拒绝， 返回的 promise 就会解决或拒绝。
+*/
+Promise.race = function (promises) {
+    &lt;!-- 返回新的 promise 对象 --&gt;
+    return new Promise((resolve, reject) =&gt; {
+        &lt;!-- 遍历所有 promise --&gt;
+        for (var i = 0; i &lt; promises.length; i++) {
+            Promise.resolve(promises[i]).then(
+                &lt;!-- (value) =&gt; { 只要有一个成功了, 返回的 promise 就成功了 --&gt;
+                    resolve(value)
+                },
+                &lt;!-- (reason) =&gt; { 只要有一个失败了, 返回的结果就失败了 --&gt;
+                    reject(reason)
+                }
+
+            )
+        }
+    })
+}
+
+</code></pre>
+
+<h3 id="promise-resolvedelay-rejectdelay-的实现">Promise.resolveDelay()/rejectDelay()的实现:</h3>
+
+<pre><code>
+/*
+返回一个延迟指定时间才确定结果的 promise 对象
+*/
+Promise.resolveDelay = function (value, time) {
+    return new Promise((resolve, reject) =&gt; {
+        setTimeout(() =&gt; {
+            if (value instanceof Promise) { 
+            &lt;!-- 如果 value 是一个 promise, 取这个promise 的结果值作为返回的 promise 的结果值 --&gt;
+            value.then(resolve, reject)
+            &lt;!-- 如果 value 成功, 调用resolve(val), 如果value 失败了, 调用 reject(reason) --&gt;
+            } else {
+                resolve(value)
+            }
+        }, time);
+    })
+}
+/*
+返回一个延迟指定时间才失败的 Promise 对象。
+*/
+Promise.rejectDelay = function (reason, time) {
+    return new Promise((resolve, reject) =&gt; {
+        setTimeout(() =&gt; {
+            reject(reason)
+        }, time)
+
+    })
+}
+
+</code></pre>
+
+<h3 id="async-函数">async 函数：</h3>
+
+<ol>
+<li>函数的返回值为 promise 对象</li>
+<li>promise 对象的结果由 async 函数执行的返回值决定</li>
+</ol>
+
+<h3 id="await-表达式">await 表达式：</h3>
+
+<ol>
+<li>await 右侧的表达式一般为 promise 对象, 但也可以是其它的值</li>
+<li>如果表达式是 promise 对象, await 返回的是 promise 成功的值</li>
+<li>如果表达式是其它值, 直接将此值作为 await 的返回值</li>
+</ol>
+
+<p>注意：
+1. await 必须写在 async 函数中, 但 async 函数中可以没有 await
+2. 如果 await 的 promise 失败了, 就会抛出异常, 需要通过 try&hellip;catch 捕获处理</p>
+
+    </div>
+
+    <div class="post-copyright">
+             
+            <p class="copyright-item">
+                <span>Author:</span>
+                <span>吴潇 </span>
+                </p>
+            
+           
+             
+            <p class="copyright-item">
+                    <span>Link:</span>
+                    <a href=http://www.pigxw.top/%E6%89%8B%E5%86%99promise/>http://www.pigxw.top/%E6%89%8B%E5%86%99promise/</span>
+            </p>
+            
+             
+            <p class="copyright-item lincese">
+                本文采用<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank">知识共享署名-非商业性使用 4.0 国际许可协议</a>进行许可
+            </p>
+            
+    </div>
+
+  
+    <div class="post-tags">
+        
+        <section>
+                <a href="javascript:window.history.back();">back</a></span> · 
+                <span><a href="http://www.pigxw.top/">home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+        
+        <a href="http://www.pigxw.top/vuex-%E5%9F%BA%E7%A1%80%E5%88%B0%E6%B7%B1%E5%85%A5/" class="prev" rel="prev" title="Vuex 从基础到深入"><i class="iconfont icon-left"></i>&nbsp;Vuex 从基础到深入</a>
+         
+        
+    </div>
+
+    <div class="post-comment">
+          
+                 
+          
+    </div>
+</article>
+          </div>
+		   </main>
+      <footer class="footer">
+    <div class="copyright">
+        &copy;
+        
+        <span itemprop="copyrightYear">2019 - 2020</span>
+        
+        <span class="with-love">
+    	 <i class="iconfont icon-love"></i> 
+         </span>
+         
+            <span class="author" itemprop="copyrightHolder"><a href="http://www.pigxw.top/">吴潇</a> | </span> 
+         
+
+         
+		  <span>Powered by <a href="https://gohugo.io/" target="_blank" rel="external nofollow">Hugo</a> & <a href="https://github.com/liuzc/leaveit" target="_blank" rel="external nofollow">LeaveIt</a></span> 
+    </div>
+</footer>
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    <script src="/js/vendor_no_gallery.min.js" async=""></script>
+    
+  
+
+
+
+     </div>
+  </body>
+</html>

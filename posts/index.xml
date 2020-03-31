@@ -6,10 +6,19 @@
     <description>Recent content in Posts on 小xiao潇的个人博客</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
-    <lastBuildDate>Tue, 03 Mar 2020 21:29:04 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 31 Mar 2020 21:31:29 +0800</lastBuildDate>
     
 	<atom:link href="http://www.pigxw.top/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>手写Promise</title>
+      <link>http://www.pigxw.top/%E6%89%8B%E5%86%99promise/</link>
+      <pubDate>Tue, 31 Mar 2020 21:31:29 +0800</pubDate>
+      
+      <guid>http://www.pigxw.top/%E6%89%8B%E5%86%99promise/</guid>
+      <description>自定义实现 Promise promise 构造函数的实现：  /* Promise 构造函数 executor: 内部同步执行的函数 (resolve, reject) =&amp;gt; {} */ function Promise(executor) { const self = this self.status = &#39;pending&#39; &amp;lt;!-- 状态值, 初始状态为 pending, 成功了变为 resolved, 失败了变为 rejected --&amp;gt; self.data = undefined &amp;lt;!-- 用来保存成功 value 或失败 reason 的属性 --&amp;gt; self.callbacks = [] &amp;lt;!-- 用来保存所有待调用的包含 onResolved 和 onRejected 回 调函数的对象的数组 --&amp;gt; /* 异步处理成功后应该调用的函数 value: 将交给 onResolve()的成功数据 */ function resolve(value) { if (self.status !== &#39;pending&#39;) { &amp;lt;!</description>
+    </item>
     
     <item>
       <title>Vuex 从基础到深入</title>
