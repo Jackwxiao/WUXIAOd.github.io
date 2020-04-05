@@ -5,9 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noodp"/>
-  <meta name="author" content="吴潇">
-  <meta name="description" content="吴潇的个人网站">
-  <meta name="keywords" content="吴潇,前端,程序猿">
+  <meta name="author" content="小xiao潇">
+  <meta name="description" content="小xiao潇的个人网站">
+  <meta name="keywords" content="Vue,前端,程序猿">
   
   <link rel="prev" href="http://www.pigxw.top/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/" />
   <link rel="next" href="http://www.pigxw.top/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF/" />
@@ -48,11 +48,11 @@
     "headline" : "HTTP之Cookie、Cache-control、Session",
     "description" : "HTTP请求与响应\n前言： URI : 统一资源标识符,一个URI 可能包含 协议、登录信息、服务器地址、服务器端口、带层次的文件路径、查询参数等 URL : 统一资源定位符，是URI 的子集。\nHTTP 协议是无状态协议，即HTTP 协议自身不会对请求和响应之间的通信状态进行保存。以确保协议的可伸缩性。 HTTP\/1.1 虽然是无状态协议，但为了实现保持状态功能，于是就引入了 Cookie 技术用来管理状态。\nCookie Cookie 是什么？  Cookie 是浏览器访问服务器后，服务器传给浏览器的一段数据。 浏览器需要保存这段数据，不得轻易删除。 此后每次浏览器访问该服务器，都必须带上这段数据。  Cookie特点：  服务器通过 Set-Cookie 头设给客户端一串字符串 浏览器（客户端）得到Cookie 之后，每次访问相同域名的网页时都要带上这段字符串 服务器读取Cookie就知道登录用户的信息。客户端要在一段时间内保存这个Cookie。  cookie会被用户更改，所以要使用session来阻止用户更改。\n什么是Session? 服务器通过Cookie给用户一个session id,session id对应服务器里面的一小块内存，每次用户访问服务器时，服务器通过session id去读取对应的session就知道用户的隐私信息了。\nSession是基于Cookie实现的，反过来说，cookie是session的基石。\ncookie和localstorage的区别：  localstorage和http无关，不会被带到服务器上，cookie每次请求的时候会被浏览器带到服务器上；\n localstorage最大存储量为5Mb左右,cookie为4k左右。\n  localstorage和sessionstorage的区别：  sessionstroage在用户关闭页面后就失效（会话结束后），localstorage永久有效。\n cookie默认在用户关闭页面后就失效，后台代码可以任意设置Cookie的失效期限。\n  Cache-control 你想要哪个请求被缓存，就给一个Cache-Control response.setHeader(\x27Cache-Control\x27,\x27max-age=30\x27)\/\/30秒内请求时返回的是内存给你的\n但是首页不能设置Cache-Conrol,如果首页都缓存了，用户在缓存时间内无法获得最新内容。\nCache-Control可以让浏览器在一段时间内不访问浏览器，直接用本地的内存或硬盘作为响应，可以极快的请求到资源。 如果要更新，只要在入口（html）文件里把URL变一下，跟以前的所有URL不一样就不会使用缓存，会把最新版的缓存下来，如果又过时了，再改一下就可以了。 #### Expires和Cache-Control的区别：\n Cache-Control是多长时间过期，Expires是什么时候过期，也就是设置的时候，C是设置时长，E设置时间点。   #### cache-control与Etag: 设置了Cache-Control直接不请求,Etag会请求但如果MD5一样就不会下载。",
     "inLanguage" : "zh-CN",
-    "author" : "吴潇",
-    "creator" : "吴潇",
-    "publisher": "吴潇",
-    "accountablePerson" : "吴潇",
-    "copyrightHolder" : "吴潇",
+    "author" : "小xiao潇",
+    "creator" : "小xiao潇",
+    "publisher": "小xiao潇",
+    "accountablePerson" : "小xiao潇",
+    "copyrightHolder" : "小xiao潇",
     "copyrightYear" : "2019",
     "datePublished": "2019-09-26 11:17:26 \x2b0800 CST",
     "dateModified" : "2019-09-26 11:17:26 \x2b0800 CST",
@@ -122,7 +122,7 @@
     <header class="post-header">
         <h1 class="post-title" itemprop="name headline">HTTP之Cookie、Cache-control、Session</h1>
         <div class="post-meta">
-                Written by <a itemprop="name" href="http://www.pigxw.top/" rel="author">吴潇</a> with ♥ 
+                Written by <a itemprop="name" href="http://www.pigxw.top/" rel="author">小xiao潇</a> with ♥ 
                 <span class="post-time">
                 on <time datetime=2019-09-26 itemprop="datePublished">September 26, 2019</time>
                 </span>
@@ -235,7 +235,7 @@ HTTP/1.1 虽然是无状态协议，但为了实现保持状态功能，于是�
              
             <p class="copyright-item">
                 <span>Author:</span>
-                <span>吴潇 </span>
+                <span>小xiao潇 </span>
                 </p>
             
            
@@ -288,7 +288,7 @@ HTTP/1.1 虽然是无状态协议，但为了实现保持状态功能，于是�
     	 <i class="iconfont icon-love"></i> 
          </span>
          
-            <span class="author" itemprop="copyrightHolder"><a href="http://www.pigxw.top/">吴潇</a> | </span> 
+            <span class="author" itemprop="copyrightHolder"><a href="http://www.pigxw.top/">小xiao潇</a> | </span> 
          
 
          

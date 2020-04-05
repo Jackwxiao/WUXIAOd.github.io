@@ -5,9 +5,9 @@
   <meta http-equiv="X-UA-Compatible" content="chrome=1">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noodp"/>
-  <meta name="author" content="吴潇">
-  <meta name="description" content="吴潇的个人网站">
-  <meta name="keywords" content="吴潇,前端,程序猿">
+  <meta name="author" content="小xiao潇">
+  <meta name="description" content="小xiao潇的个人网站">
+  <meta name="keywords" content="Vue,前端,程序猿">
   
   <link rel="prev" href="http://www.pigxw.top/vue%E5%88%9D%E4%BD%93%E9%AA%8C/" />
   <link rel="next" href="http://www.pigxw.top/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/" />
@@ -48,11 +48,11 @@
     "headline" : "vue组件详解一",
     "description" : "组件（一） 一、组件的作用 组件的作用：提高代码的复用性。\n二、组件的使用方法 1.全局注册组件：\n全局注册： \x26lt;html\x26gt; \x26lt;my-component\x26gt;\x26lt;\/my-component\x26gt; \x26lt;\/html\x26gt; \x26lt;script\x26gt; Vue.component(\x27my-component\x27,{ template:\x27\x26lt;div\x26gt;这是全局注册的组件\x26lt;\/div\x26gt;\x27 }) \x26lt;\/script\x26gt;  2.局部注册组件：\n\x26lt;html\x26gt; \x26lt;app-component\x26gt;\x26lt;\/app-component\x26gt; \x26lt;\/html\x26gt; 在vue实例中定义组件 \x26lt;script\x26gt; var app = new Vue({ el:\x27#app\x27, components:{ \x27app-component\x27:{ template:\x27\x26lt;div\x26gt;这是局部注册的组件\x26lt;\/div\x26gt;\x27 } } }) \x26lt;\/script\x26gt;  两种注册方式的优缺点： 全局注册：优点是所有的vue实例都可以使用；缺点是权限太大，容错率低。 局部注册：只能在所注册的vue实例中使用。 注意事项： 1. html标签受限：Vue组件模板在某些情况下回受到html标签的限制，如table标签内只能有tr、td、tbody这些元素,如果把组件名挂载到table内,实际内容是不会被渲染到table标签中的，会把组件内容踢出去。 此时需要 is 属性来挂载组件名，is=\x27组件名\x27\n\x26lt;table\x26gt; \x26lt;tbody is = \x27app-component\x27\x26gt;\x26lt;\/tbody\x26gt; \x26lt;\/table\x26gt;   组件名使用小写字母或小写字母加 - 来命名； template中的内容必须被一个DOM元素包裹，可以嵌套； 在组件定义中，除了template之外的其他选项:data,omputed,methods 组件中，data必须是一个方法。  三、使用props传递数据 在子组件中使用props接收来自父组件的数据，在props中定义的属性，都可以在组件中直接使用； 子组件中的props来自父组件，子组件中的data return的是组件自己的数据；props中定义的和data返回的，其作用域都是组件本身，可以在template,methods,computed中直接使用。\n\x26lt;div id=\x26quot;app\x26quot; style=\x26quot;border:1px solid red;height: 350px;\x26quot;\x26gt; \x26lt;h5 style=\x26quot;text-align: center\x26quot;\x26gt;父组件\x26lt;\/h5\x26gt; \x26lt;child-component msg=\x26quot;这是来自父组件的内容\x26quot;\x26gt;\x26lt;\/child-component\x26gt; \x26lt;!",
     "inLanguage" : "zh-CN",
-    "author" : "吴潇",
-    "creator" : "吴潇",
-    "publisher": "吴潇",
-    "accountablePerson" : "吴潇",
-    "copyrightHolder" : "吴潇",
+    "author" : "小xiao潇",
+    "creator" : "小xiao潇",
+    "publisher": "小xiao潇",
+    "accountablePerson" : "小xiao潇",
+    "copyrightHolder" : "小xiao潇",
     "copyrightYear" : "2019",
     "datePublished": "2019-09-15 15:30:30 \x2b0800 CST",
     "dateModified" : "2019-09-15 15:30:30 \x2b0800 CST",
@@ -122,7 +122,7 @@
     <header class="post-header">
         <h1 class="post-title" itemprop="name headline">vue组件详解一</h1>
         <div class="post-meta">
-                Written by <a itemprop="name" href="http://www.pigxw.top/" rel="author">吴潇</a> with ♥ 
+                Written by <a itemprop="name" href="http://www.pigxw.top/" rel="author">小xiao潇</a> with ♥ 
                 <span class="post-time">
                 on <time datetime=2019-09-15 itemprop="datePublished">September 15, 2019</time>
                 </span>
@@ -484,7 +484,7 @@ Vue.component('width-component',{
              
             <p class="copyright-item">
                 <span>Author:</span>
-                <span>吴潇 </span>
+                <span>小xiao潇 </span>
                 </p>
             
            
@@ -537,7 +537,7 @@ Vue.component('width-component',{
     	 <i class="iconfont icon-love"></i> 
          </span>
          
-            <span class="author" itemprop="copyrightHolder"><a href="http://www.pigxw.top/">吴潇</a> | </span> 
+            <span class="author" itemprop="copyrightHolder"><a href="http://www.pigxw.top/">小xiao潇</a> | </span> 
          
 
          
