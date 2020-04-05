@@ -22,10 +22,10 @@
   <title>
        
        
-           node.js的EventLoop | 小xiao潇的个人博客
+           node.js 的 Event loop | 小xiao潇的个人博客
        
   </title>
-  <meta name="title" content="node.js的EventLoop | 小xiao潇的个人博客">
+  <meta name="title" content="node.js 的 Event loop | 小xiao潇的个人博客">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -44,8 +44,8 @@
          "@id": "http:\/\/www.pigxw.top\/"
     },
     "articleSection" : "posts",
-    "name" : "node.js的EventLoop",
-    "headline" : "node.js的EventLoop",
+    "name" : "node.js 的 Event loop",
+    "headline" : "node.js 的 Event loop",
     "description" : "node.js node.js做三件事：\n 初始化 event loop 执行脚本 运行 event loop  node.js中的 event loop :\ntimers阶段处理 setTimeout()、setInterval() 中该调的回调函数，到了调用时间就调用，没到时间就进入下一阶段（poll轮询阶段），\n图解一.png\n一般是停留在poll阶段。poll阶段处理除了timers和check阶段的一切事，比如操作系统返回”文件读完了“poll就去处理文件拿出数据放到对应的回调， 给回调执行。check 阶段只处理setImmediate()\nnext.Tick()存在时，永远是它先执行。一般情况下是setTimeout()先于setImmediate()执行。\n处理机制.png\nsetTimeout（fn, ）中的函数放在 timers阶段，setImmediate(fn2) 放在check阶段，process.next.Tick(fn3)放在当前阶段的后面。\n相关试题：（建议画图做题）\n题1.png\n题2.png\n** 先打印出 script start 、script end 然后是promise1、promise2最后才是setTimeout **\n题2输出结果\n宏任务与微任务 Chrome中：\nsetTimeout \x26mdash;-\x26gt; 一会儿（宏任务）macroTask promise .then(fn) \x26mdash;\x26mdash;\x26gt; 马上做（微任务）microTask new promise( fn )，这个fn 是马上执行的，不用放到哪个队列里去。\n宏任务与微任务.png\nresolve 只是决定执行 then 的第一个函数还是第二个函数。resolve 执行第一个任务。 then 的时候就把 then 后面的 f函数 加入 马上做（微任务） 队列中。await 就把它改写成 promise.",
     "inLanguage" : "zh-CN",
     "author" : "吴潇",
@@ -54,8 +54,8 @@
     "accountablePerson" : "吴潇",
     "copyrightHolder" : "吴潇",
     "copyrightYear" : "2019",
-    "datePublished": "2019-11-14 10:36:04 \x2b0900 \x2b0900",
-    "dateModified" : "2019-11-14 10:36:04 \x2b0900 \x2b0900",
+    "datePublished": "2019-11-16 10:36:04 \x2b0900 \x2b0900",
+    "dateModified" : "2019-11-16 10:36:04 \x2b0900 \x2b0900",
     "url" : "http:\/\/www.pigxw.top\/node.js%E7%9A%84eventloop\/",
     "wordCount" : "85",
     "keywords" : [  "小xiao潇的个人博客"]
@@ -120,11 +120,11 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">node.js的EventLoop</h1>
+        <h1 class="post-title" itemprop="name headline">node.js 的 Event loop</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="http://www.pigxw.top/" rel="author">吴潇</a> with ♥ 
                 <span class="post-time">
-                on <time datetime=2019-11-14 itemprop="datePublished">November 14, 2019</time>
+                on <time datetime=2019-11-16 itemprop="datePublished">November 16, 2019</time>
                 </span>
                 in
                 

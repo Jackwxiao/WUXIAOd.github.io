@@ -40,7 +40,7 @@ const store = new Vuex.Store({ state: { count: 0 } // state 中存放的是全�
     <item>
       <title>冒泡与捕获</title>
       <link>http://www.pigxw.top/%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E4%B8%8E%E6%8D%95%E8%8E%B7/</link>
-      <pubDate>Tue, 10 Dec 2019 14:56:04 +0800</pubDate>
+      <pubDate>Fri, 20 Dec 2019 14:56:04 +0800</pubDate>
       
       <guid>http://www.pigxw.top/%E4%BA%8B%E4%BB%B6%E5%86%92%E6%B3%A1%E4%B8%8E%E6%8D%95%E8%8E%B7/</guid>
       <description>一个popover轮子制作引发的 BUG HTML
@@ -79,7 +79,7 @@ JAVA下载地址
     <item>
       <title>原生 || mpvue 小程序</title>
       <link>http://www.pigxw.top/%E5%8E%9F%E7%94%9F-mpvue-%E5%B0%8F%E7%A8%8B%E5%BA%8F/</link>
-      <pubDate>Sun, 17 Nov 2019 14:56:04 +0800</pubDate>
+      <pubDate>Wed, 27 Nov 2019 14:56:04 +0800</pubDate>
       
       <guid>http://www.pigxw.top/%E5%8E%9F%E7%94%9F-mpvue-%E5%B0%8F%E7%A8%8B%E5%BA%8F/</guid>
       <description>小程序：  无需下载，用完即走（体积小） 同App 互补，可以实现 App 基本功能。 微信扫一扫即可下载。 开发周期短，成本较低。  小程序适配方案： Iphone6：1rpx = 1物理像素 = 0.5px
@@ -95,9 +95,9 @@ app.json ：全局配置文件；
     </item>
     
     <item>
-      <title>node.js的EventLoop</title>
+      <title>node.js 的 Event loop</title>
       <link>http://www.pigxw.top/node.js%E7%9A%84eventloop/</link>
-      <pubDate>Thu, 14 Nov 2019 10:36:04 +0900</pubDate>
+      <pubDate>Sat, 16 Nov 2019 10:36:04 +0900</pubDate>
       
       <guid>http://www.pigxw.top/node.js%E7%9A%84eventloop/</guid>
       <description>node.js node.js做三件事：
@@ -122,7 +122,7 @@ resolve 只是决定执行 then 的第一个函数还是第二个函数。resolv
     <item>
       <title>虚拟 DOM</title>
       <link>http://www.pigxw.top/%E8%99%9A%E6%8B%9Fdom/</link>
-      <pubDate>Tue, 12 Nov 2019 08:56:04 +0800</pubDate>
+      <pubDate>Sat, 02 Nov 2019 08:56:04 +0800</pubDate>
       
       <guid>http://www.pigxw.top/%E8%99%9A%E6%8B%9Fdom/</guid>
       <description>虚拟DOM 根据真实的 DOM 结构创建一个和真实DOM 一一映射的数据结构来进行操作，操作完再把数据结构的变化反映到真实的DOM 中。 作用：当DOM 结构的改变或操作很细微的时候，使用虚拟DOM 可以避免因微小改变而重新渲染一整个DOM 结构，类似于打补丁。
@@ -132,7 +132,7 @@ class VNode { constructor(tag, children, text) { this.tag = tag this.text = text
     <item>
       <title>BFC</title>
       <link>http://www.pigxw.top/bfc/</link>
-      <pubDate>Tue, 05 Nov 2019 21:26:04 +0800</pubDate>
+      <pubDate>Fri, 25 Oct 2019 21:26:04 +0800</pubDate>
       
       <guid>http://www.pigxw.top/bfc/</guid>
       <description>BFC （块级格式化上下文）block formatting context 当子元素 浮动 时，父容器一般是包不住子元素的，所以要给父容器设置BFC，它能保证不管子元素怎么闹腾，都不影响外部。
@@ -144,48 +144,9 @@ class VNode { constructor(tag, children, text) { this.tag = tag this.text = text
     </item>
     
     <item>
-      <title>Promise</title>
-      <link>http://www.pigxw.top/promise/</link>
-      <pubDate>Mon, 04 Nov 2019 19:17:26 +0800</pubDate>
-      
-      <guid>http://www.pigxw.top/promise/</guid>
-      <description>异步与Promise 如果 JS 不能直接拿到一个函数的结果，可以先去执行别的代码，等结果到了再取结果，这就是异步
-异步的结果可以通过轮询获取，轮询就是定时去询问结果拿到了没有
-异步的结果可以通过回调获取，一般来说结果会被作为回调的第一个参数
-异步的好处是可以把用来等待的时间拿去做别的事情
-promise的由来  promise 是现在前端解决异步问题的统一方案！！！！
-Promise 不是前端发明的
-window.Promise 是一个全局函数，可以用来构造 Promise 对象
-使用 return new Promise((resolve, reject)=&amp;gt; {}) 就可以构造一个 Promise 对象
-构造出来的 Promise 对象含有一个 .then() 函数属性
-resolve 和 reject 都只接受一个参数
-resolve 和 reject 并不是 .then(succes, fail) 里面的 success 和 fail，resolve 会去调用 &amp;gt;success，reject 会去调用 fail 插一道面试题：
- const array= [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;].map( parseInt） console.log( array ) // [1,NaN,NaN]  只能这样写：
-const array= [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;].map( item =&amp;gt;parseInt(item)） console.log( array ) // [1,2,3]  异步任务拿不到结果，于是传一个回调给异步任务，异步任务完成时调用回调，调用的时候把结果作为参数。 如果有两结果呢，比如成功和失败</description>
-    </item>
-    
-    <item>
-      <title>手机专用之动态 rem</title>
-      <link>http://www.pigxw.top/%E5%8A%A8%E6%80%81rem/</link>
-      <pubDate>Mon, 04 Nov 2019 11:26:04 +0800</pubDate>
-      
-      <guid>http://www.pigxw.top/%E5%8A%A8%E6%80%81rem/</guid>
-      <description>手机专用的自适应方案 rem 是什么？
-em: 一个 m 的宽度, 一个汉字的宽度 rem: root em 根元素的 font-size 大小
-网页上的默认字体大小为 16px chrome 最小的字体大小为 12px
-em 是 元素自己的font-size 大小
-如： 自己 font-size: 16px; 则 1em = =font-size
- 百分比布局虽然可以适应各屏幕大小，但无法设置高度。还有很多其他不确定性
- 缩放
-动态rem：
- 首先： 让html 的font-size 和 页面宽度一样, 即 1rem = 页面宽度 1 rem == html font-size == viewport width 使用 JS 动态调整 REM
-&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&amp;quot;&amp;gt; &amp;lt;script&amp;gt; var pageWidth = window.</description>
-    </item>
-    
-    <item>
       <title>移动端的问题</title>
       <link>http://www.pigxw.top/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</link>
-      <pubDate>Thu, 24 Oct 2019 18:21:29 +0800</pubDate>
+      <pubDate>Tue, 15 Oct 2019 21:21:29 +0800</pubDate>
       
       <guid>http://www.pigxw.top/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
       <description>300ms延迟问题： 延迟的原因：
@@ -212,9 +173,30 @@ fastClick库，或者不用click用touchStart
     </item>
     
     <item>
+      <title>Promise</title>
+      <link>http://www.pigxw.top/promise/</link>
+      <pubDate>Mon, 14 Oct 2019 19:17:26 +0800</pubDate>
+      
+      <guid>http://www.pigxw.top/promise/</guid>
+      <description>异步与Promise 如果 JS 不能直接拿到一个函数的结果，可以先去执行别的代码，等结果到了再取结果，这就是异步
+异步的结果可以通过轮询获取，轮询就是定时去询问结果拿到了没有
+异步的结果可以通过回调获取，一般来说结果会被作为回调的第一个参数
+异步的好处是可以把用来等待的时间拿去做别的事情
+promise的由来  promise 是现在前端解决异步问题的统一方案！！！！
+Promise 不是前端发明的
+window.Promise 是一个全局函数，可以用来构造 Promise 对象
+使用 return new Promise((resolve, reject)=&amp;gt; {}) 就可以构造一个 Promise 对象
+构造出来的 Promise 对象含有一个 .then() 函数属性
+resolve 和 reject 都只接受一个参数
+resolve 和 reject 并不是 .then(succes, fail) 里面的 success 和 fail，resolve 会去调用 &amp;gt;success，reject 会去调用 fail 插一道面试题：
+ const array= [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;].map( parseInt） console.log( array ) // [1,NaN,NaN]  只能这样写：
+const array= [&#39;1&#39;,&#39;2&#39;,&#39;3&#39;].map( item =&amp;gt;parseInt(item)） console.log( array ) // [1,2,3]  异步任务拿不到结果，于是传一个回调给异步任务，异步任务完成时调用回调，调用的时候把结果作为参数。 如果有两结果呢，比如成功和失败</description>
+    </item>
+    
+    <item>
       <title>移动端适配方案</title>
       <link>http://www.pigxw.top/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/</link>
-      <pubDate>Thu, 24 Oct 2019 11:32:33 +0800</pubDate>
+      <pubDate>Mon, 14 Oct 2019 11:32:33 +0800</pubDate>
       
       <guid>http://www.pigxw.top/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/</guid>
       <description>移动端适配的几种方案： viewport适配 开发流程: 1. 开发者拿到设计稿（假设设计稿尺寸为750px，设计稿的元素标是基于此宽度标注） 2. 开始开发，css以设计稿标注的尺寸来开发，比如页面元素字体标注的大小是32px 4. 在html的head里引入适配代码
@@ -225,9 +207,27 @@ vw适配： 750px=100vw; 1px=0.1333vw; 84px=11.20vw&amp;hellip;&amp;hellip;</des
     </item>
     
     <item>
+      <title>手机专用之动态 rem</title>
+      <link>http://www.pigxw.top/%E5%8A%A8%E6%80%81rem/</link>
+      <pubDate>Mon, 14 Oct 2019 09:26:04 +0800</pubDate>
+      
+      <guid>http://www.pigxw.top/%E5%8A%A8%E6%80%81rem/</guid>
+      <description>手机专用的自适应方案 rem 是什么？
+em: 一个 m 的宽度, 一个汉字的宽度 rem: root em 根元素的 font-size 大小
+网页上的默认字体大小为 16px chrome 最小的字体大小为 12px
+em 是 元素自己的font-size 大小
+如： 自己 font-size: 16px; 则 1em = =font-size
+ 百分比布局虽然可以适应各屏幕大小，但无法设置高度。还有很多其他不确定性
+ 缩放
+动态rem：
+ 首先： 让html 的font-size 和 页面宽度一样, 即 1rem = 页面宽度 1 rem == html font-size == viewport width 使用 JS 动态调整 REM
+&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0&amp;quot;&amp;gt; &amp;lt;script&amp;gt; var pageWidth = window.</description>
+    </item>
+    
+    <item>
       <title>JS之函数</title>
       <link>http://www.pigxw.top/js%E4%B9%8B%E5%87%BD%E6%95%B0/</link>
-      <pubDate>Wed, 23 Oct 2019 19:21:26 +0800</pubDate>
+      <pubDate>Tue, 08 Oct 2019 19:21:26 +0800</pubDate>
       
       <guid>http://www.pigxw.top/js%E4%B9%8B%E5%87%BD%E6%95%B0/</guid>
       <description>函数 指可以执行代码的对象，和数组一样有不一致性。
@@ -242,7 +242,7 @@ var f3 = function myName() {}; f3.name // &#39;myName&#39;   上面代码中，f
     <item>
       <title>JS模拟继承</title>
       <link>http://www.pigxw.top/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF/</link>
-      <pubDate>Tue, 22 Oct 2019 19:17:26 +0800</pubDate>
+      <pubDate>Fri, 04 Oct 2019 19:17:26 +0800</pubDate>
       
       <guid>http://www.pigxw.top/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF/</guid>
       <description>JS模拟继承 继承：面向对象编程中的一个概念，继承可以使子类具有父类的各种属性和方法。
@@ -256,9 +256,9 @@ ES5写继承： function Human(name){ //父类 Human() this.name = (name) //自�
     </item>
     
     <item>
-      <title>http之Cookie、Cache-control、Session</title>
+      <title>HTTP之Cookie、Cache-control、Session</title>
       <link>http://www.pigxw.top/cookiecache-controlsession/</link>
-      <pubDate>Tue, 22 Oct 2019 11:17:26 +0800</pubDate>
+      <pubDate>Thu, 26 Sep 2019 11:17:26 +0800</pubDate>
       
       <guid>http://www.pigxw.top/cookiecache-controlsession/</guid>
       <description>HTTP请求与响应
@@ -275,125 +275,6 @@ cookie和localstorage的区别：  localstorage和http无关，不会被带到�
 但是首页不能设置Cache-Conrol,如果首页都缓存了，用户在缓存时间内无法获得最新内容。
 Cache-Control可以让浏览器在一段时间内不访问浏览器，直接用本地的内存或硬盘作为响应，可以极快的请求到资源。 如果要更新，只要在入口（html）文件里把URL变一下，跟以前的所有URL不一样就不会使用缓存，会把最新版的缓存下来，如果又过时了，再改一下就可以了。 #### Expires和Cache-Control的区别：
  Cache-Control是多长时间过期，Expires是什么时候过期，也就是设置的时候，C是设置时长，E设置时间点。   #### cache-control与Etag: 设置了Cache-Control直接不请求,Etag会请求但如果MD5一样就不会下载。</description>
-    </item>
-    
-    <item>
-      <title>web性能优化</title>
-      <link>http://www.pigxw.top/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</link>
-      <pubDate>Sun, 20 Oct 2019 19:17:26 +0800</pubDate>
-      
-      <guid>http://www.pigxw.top/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</guid>
-      <description> web性能优化：（从理论上来讲） 地址栏输入url到按下回车这一过程中有哪些前端相关的内容：
- 看有没有缓存 DNS查询 建立TCP连接 发送HTTP请求 后台处理 接收响应 接收完成得到一个html 判断文本类型，DOCTYPE html/xml 浏览器逐行解析html 看到chrom会等css加载完再渲染到页面 看到CSS，下载css，如果有多个css便同时下载(chrom8个)。css,并行下载，串行解析。 看JS，下载并行，串行解析。在chrom中，css会阻塞html渲染，IE不会。JS一定会阻塞html渲染（不管什么浏览器）。  跟前端无关的优化：  优化DNS查询：减少DNS查询（减少域名数量）。
- TCP连接复用（keep-alive）http/2.0多路复用。
-  前端优化：  发送http请求：   减少cookie体积（减少请求）；合并文件。
- 使用cache-control（干掉请求）；
- 同时发多个请求，如ie中一个域名能发4个请求，但我可以使用两个域名或多个。于是与上面的DNS查询优化有矛盾，但是经过权衡之后，文件少的时候，就减少域名使用。文件多时，增加DNS查询时间，但减少了请求时间（用户带宽足够前提下）。
-   接收响应   使用ETAG，如果请求时带上服务器给的ETAG时，服务器便不再响应新的内容，返回304,表示not modifile；
- 文件大时使用Gzip压缩。
-   返回的html中的DOCTYPE不能不写，不能写错。尽量减少标签。
- CSS和JS优化：
-   使用CDN（内容分发网络）；
- CSS放到head, JS 放body最后。css放前面的原因是让它尽早下载完，下载完就可以渲染了。js放后面是因为页面没有js还是可以看的，所以可以保证用户优先看到完整的页面。尽早显示页面，获取节点。
- 延迟加载，懒加载：必须初始化的先加载，剩余的延迟加载。如第一屏先加载，其余的等用户滚到再加载。
- 使用外部js和css，就是不要把js,css写在html中。
- 压缩图片。
-  </description>
-    </item>
-    
-    <item>
-      <title>vue-router、axios、vuex</title>
-      <link>http://www.pigxw.top/vue-routeraxiosvuex/</link>
-      <pubDate>Tue, 15 Oct 2019 20:30:30 +0900</pubDate>
-      
-      <guid>http://www.pigxw.top/vue-routeraxiosvuex/</guid>
-      <description>vue-router 路由的基本加载  安装 npm install --save vue-router 2.引用
-在router 的 index.js 中 import router from &#39;vue-router&#39; Vue.use(router)  配置路由文件，并在vue实例中注入
-var rt = new router({ routes:[{ path:&#39;/&#39;, //指定要跳转的路径 component: HelloWorld //指定要跳转的组件 }] }) new Vue({ el: &#39;#app&#39;, router, components: { App }, template: &#39;&#39; })  确定试图加载的位置
-&amp;lt;router-view&amp;gt;&amp;lt;/router-view&amp;gt;  路由的跳转  &amp;lt;template&amp;gt; &amp;lt;ul&amp;gt; &amp;lt;li&amp;gt; &amp;lt;router-link to=&amp;quot;/helloearth&amp;quot;&amp;gt;HELLO EARTH 33&amp;lt;/router-link&amp;gt; &amp;lt;/li&amp;gt; &amp;lt;li&amp;gt; &amp;lt;router-link to=&amp;quot;/helloworld&amp;quot;&amp;gt;HELLO WORLD 22&amp;lt;/router-link&amp;gt; &amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; &amp;lt;/template&amp;gt;   路由参数传递  必须在路由内加入路由的name .</description>
-    </item>
-    
-    <item>
-      <title>vue自定义指令</title>
-      <link>http://www.pigxw.top/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/</link>
-      <pubDate>Wed, 09 Oct 2019 20:30:30 +0900</pubDate>
-      
-      <guid>http://www.pigxw.top/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/</guid>
-      <description>自定义指令 自定义指令的基本用法 和组件类似分全局注册和局部注册，区别就是把component换成了derective
-需求：自动获取焦点 &amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt; 获取焦点：&amp;lt;input type=&amp;quot;text&amp;quot; v-focus&amp;gt;&amp;lt;br&amp;gt; 未加自定义指令v-focus：&amp;lt;br&amp;gt; &amp;lt;input type=&amp;quot;text&amp;quot;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; Vue.directive(&#39;focus&#39;,{ inserted:function(el){ //el：指令所绑定的元素可以用来直接操作DOM el.focus(); } }); var app = new Vue({ el:&#39;#app&#39;, data:{ } }) &amp;lt;/script  钩子函数 指令定义函数提供了几个钩子函数（可选）：
- bind: 只调用一次，指令第一次绑定到元素时调用，用这个钩子函数可以定义一个在绑定时执行一次的初始化动作。
- inserted: 被绑定元素插入父节点时调用（父节点存在即可调用，不必存在于 document中）
- update: 被绑定元素所在的模板更新时调用，而不论绑定值是否变化。通过比较更新前后的绑定值，可以忽略不必要的模板更新（详细的钩子函数参数见下）。
- componentUpdated: 被绑定元素所在模板完成一次更新周期时调用。
- unbind: 只调用一次， 指令与元素解绑时调用。
-  钩子函数的参数有：  el: 指令所绑定的元素，可以用来直接操作 DOM 。
- binding: 一个对象，包含以下属性： ——–name: 指令名，不包括 v­ 前缀。 ——–value: 指令的绑定值， 例如： v­my­directive=”1 + 1”, value 的值是 2。 ——–oldValue: 指令绑定的前一个值，仅在 update 和 componentUpdated 钩子中可用。无 论值是否改变都可用。 ——–expression: 绑定值的字符串形式。 例如 v­my­directive=”1 + 1” ， expression 的值是 “1 + 1”。 ——–arg: 传给指令的参数。例如 v­my­directive:foo， arg 的值是 “foo”。 ——–modifiers: 一个包含修饰符的对象。 例如： v­my­directive.</description>
-    </item>
-    
-    <item>
-      <title>vue组件详解</title>
-      <link>http://www.pigxw.top/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/</link>
-      <pubDate>Wed, 09 Oct 2019 15:30:30 +0800</pubDate>
-      
-      <guid>http://www.pigxw.top/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/</guid>
-      <description>组件（二） 七、插槽slot  插槽：为了让组件可以组合，我们需要一种方式来混合父组件的内容与子组件自己的模板。这个过程被称为 内容分发。Vue.js 实现了一个内容分发 API，使用特殊的 ‘slot’ 元素作为原始内容的插槽。 编译的作用域：假定模板为：
-&amp;lt;child-component&amp;gt; {{ message }} &amp;lt;/child-component&amp;gt;  message 应该绑定到父组件的数据，还是绑定到子组件的数据？答案是父组件。组件作用域简单地说是： 父组件模板的内容在父组件作用域内编译； 子组件模板的内容在子组件作用域内编译。 插槽的用法：父组件的内容与子组件相混合，从而弥补了视图的不足。 混合父组件的内容与子组件自己的模板
- 单个插槽：
-&amp;lt;div id=&amp;quot;app&amp;quot; &amp;gt; &amp;lt;my-component&amp;gt; &amp;lt;p&amp;gt;我是父组件的内容&amp;lt;/p&amp;gt; &amp;lt;/my-component&amp;gt; &amp;lt;/div&amp;gt; Vue.component(&#39;my-component&#39;,{ template:&#39;&amp;lt;div&amp;gt;\ &amp;lt;slot&amp;gt;\ 如果父组件没有插入内容，我就作为默认出现\ &amp;lt;/slot&amp;gt;\ &amp;lt;/div&amp;gt;&#39; })  具名插槽：
-&amp;lt;name-component&amp;gt; &amp;lt;h3 slot=&amp;quot;header&amp;quot;&amp;gt;我是标题&amp;lt;/h3&amp;gt; &amp;lt;p&amp;gt;我是正文内容&amp;lt;/p&amp;gt; &amp;lt;p&amp;gt;正文内容有两段&amp;lt;/p&amp;gt; &amp;lt;p slot=&amp;quot;footer&amp;quot;&amp;gt;我是底部信息&amp;lt;/p&amp;gt; &amp;lt;/name-component&amp;gt; Vue.component(&#39;name-component&#39;,{ template:&#39;&amp;lt;div&amp;gt;\ &amp;lt;div class=&amp;quot;header&amp;quot;&amp;gt;\n&#39; + &#39;&amp;lt;slot name=&amp;quot;header&amp;quot;&amp;gt;\n&#39; + &#39; \n&#39; + &#39; &amp;lt;/slot&amp;gt;\n&#39; + &#39;&amp;lt;/div&amp;gt;\n&#39; + &#39;&amp;lt;div class=&amp;quot;contatiner&amp;quot;&amp;gt;\n&#39; + &#39; &amp;lt;slot&amp;gt;\n&#39; + &#39; \n&#39; + &#39; &amp;lt;/slot&amp;gt;\n&#39; + &#39;&amp;lt;/div&amp;gt;\n&#39; + &#39;&amp;lt;div class=&amp;quot;footer&amp;quot;&amp;gt;\n&#39; + &#39; &amp;lt;slot name=&amp;quot;footer&amp;quot;&amp;gt;\n&#39; + &#39;\n&#39; + &#39; &amp;lt;/slot&amp;gt; \n&#39; + &#39;&amp;lt;/div&amp;gt;&#39;+ &#39; &amp;lt;/div&amp;gt;&#39; })  作用域插槽：作用域插槽是一种特殊的slot，使用一个可以复用的模板来替换已经渲染的元素——从子组件获取数据===template模板是不会被渲染的</description>
-    </item>
-    
-    <item>
-      <title>vue组件详解</title>
-      <link>http://www.pigxw.top/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/</link>
-      <pubDate>Tue, 08 Oct 2019 15:30:30 +0800</pubDate>
-      
-      <guid>http://www.pigxw.top/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/</guid>
-      <description>组件（一） 一、组件的作用 组件的作用：提高代码的复用性。
-二、组件的使用方法 1.全局注册组件：
-全局注册： &amp;lt;html&amp;gt; &amp;lt;my-component&amp;gt;&amp;lt;/my-component&amp;gt; &amp;lt;/html&amp;gt; &amp;lt;script&amp;gt; Vue.component(&#39;my-component&#39;,{ template:&#39;&amp;lt;div&amp;gt;这是全局注册的组件&amp;lt;/div&amp;gt;&#39; }) &amp;lt;/script&amp;gt;  2.局部注册组件：
-&amp;lt;html&amp;gt; &amp;lt;app-component&amp;gt;&amp;lt;/app-component&amp;gt; &amp;lt;/html&amp;gt; 在vue实例中定义组件 &amp;lt;script&amp;gt; var app = new Vue({ el:&#39;#app&#39;, components:{ &#39;app-component&#39;:{ template:&#39;&amp;lt;div&amp;gt;这是局部注册的组件&amp;lt;/div&amp;gt;&#39; } } }) &amp;lt;/script&amp;gt;  两种注册方式的优缺点： 全局注册：优点是所有的vue实例都可以使用；缺点是权限太大，容错率低。 局部注册：只能在所注册的vue实例中使用。 注意事项： 1. html标签受限：Vue组件模板在某些情况下回受到html标签的限制，如table标签内只能有tr、td、tbody这些元素,如果把组件名挂载到table内,实际内容是不会被渲染到table标签中的，会把组件内容踢出去。 此时需要 is 属性来挂载组件名，is=&#39;组件名&#39;
-&amp;lt;table&amp;gt; &amp;lt;tbody is = &#39;app-component&#39;&amp;gt;&amp;lt;/tbody&amp;gt; &amp;lt;/table&amp;gt;   组件名使用小写字母或小写字母加 - 来命名； template中的内容必须被一个DOM元素包裹，可以嵌套； 在组件定义中，除了template之外的其他选项:data,omputed,methods 组件中，data必须是一个方法。  三、使用props传递数据 在子组件中使用props接收来自父组件的数据，在props中定义的属性，都可以在组件中直接使用； 子组件中的props来自父组件，子组件中的data return的是组件自己的数据；props中定义的和data返回的，其作用域都是组件本身，可以在template,methods,computed中直接使用。
-&amp;lt;div id=&amp;quot;app&amp;quot; style=&amp;quot;border:1px solid red;height: 350px;&amp;quot;&amp;gt; &amp;lt;h5 style=&amp;quot;text-align: center&amp;quot;&amp;gt;父组件&amp;lt;/h5&amp;gt; &amp;lt;child-component msg=&amp;quot;这是来自父组件的内容&amp;quot;&amp;gt;&amp;lt;/child-component&amp;gt; &amp;lt;!</description>
-    </item>
-    
-    <item>
-      <title>JS函数</title>
-      <link>http://www.pigxw.top/js%E5%87%BD%E6%95%B0/</link>
-      <pubDate>Sat, 28 Sep 2019 23:01:04 +0800</pubDate>
-      
-      <guid>http://www.pigxw.top/js%E5%87%BD%E6%95%B0/</guid>
-      <description>###函数 指可以执行代码的对象，和数组一样有不一致性。 #####三种函数声明方式
- function f() { }
- var f = function f() { }; //注意分号
- f = new Function (&amp;lsquo;x&amp;rsquo;,&amp;lsquo;y&amp;rsquo;,&amp;lsquo;return x+y&amp;rsquo;) //只有最后一个参数会被当作函数体，可以不使用new 命令，不推荐使用这种声明方式
-  注意：如果同一个函数被多次声明，后面的声明会覆盖前面的声明。也就是说起前面的声明会失效。
-函数名的提升
-JS引擎将函数名视同变量名，使用function 声明函数时，整个函数回想变量声明一样被提升到代码头部。如果同时使用function命令和赋值语句声明同一个函数，左后总是采用赋值语句的定义
-var f = function () { console.log(&#39;1&#39;); } function f() { console.log(&#39;2&#39;); } f() // 1  函数的属性和方法
- name :f.name返回函数的名字，如果通过变量赋值定义的匿名函数则返回变量名。具名函数返回function关键字后的函数名。 var f3 = function myName() {}; f3.name // &#39;myName&#39;  上面代码中，f3.name返回函数表达式的名字。注意，真正的函数名还是f3，而myName这个名字只在函数体内部可用。
-  用处：可用来获取参数函数的名字。
- length: f.length 返回函数预期传入的参数个数。</description>
-    </item>
-    
-    <item>
-      <title>JSONP</title>
-      <link>http://www.pigxw.top/jsonp/</link>
-      <pubDate>Fri, 27 Sep 2019 11:26:04 +0800</pubDate>
-      
-      <guid>http://www.pigxw.top/jsonp/</guid>
-      <description>JSONP JSONP是什么:
-当浏览器不支持CORS跨域（IE不支持）时，必须通过其他方法进行跨域，通过请求 JS 文件，JS文件执行一个回调，回调里有我们请求的数据。回调函数名是可以随意设置的随机数， 创建script 请求js ，js 把数据夹带过来，然后就可以拿到js 数据了。
-优点：支持IE 、可以跨域; 缺点：script标签读不到AJAX 的精准状态，也就是读不到状态码是什么，只知道成功或失败。
-script 请求只能发get 请求,所以JSONP不能发post 请求.
-JSONP是服务器与客户端跨源通信的常用方法。最大特点就是简单适用，老式浏览器全部支持，服务器改造非常小。
-它的基本思想是，网页通过添加一个script元素，向服务器请求JSON数据，这种做法不受同源政策限制；服务器收到请求后，将数据放在一个指定名字的回调函数里传回来。
-如何向服务器发请求？  用 form 可以发请求，但是会刷新页面或新开页面
- 用 a 可以发 get 请求，但是也会刷新页面或新开页面
- 用 img 可以发 get 请求，但是只能以图片的形式展示
- 用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示
- 用 script 可以发 get 请求，但是只能以脚本的形式运行
-  其中，通过动态创建 script 并添加 callback 查询参数来发 get 请求的就是 JSONP &amp;gt;请求方：frank.com 的前端程序员（浏览器） &amp;gt;响应方：jack.com 的后端程序员（服务器） &amp;gt; 1.请求方创建 script，src 指向响应方，同时传一个查询参数 ?</description>
     </item>
     
     <item>
@@ -427,9 +308,89 @@ v­-on具体介绍 在普通元素上，v-­on可以监听原生的 DOM 事件�
     </item>
     
     <item>
+      <title>web性能优化</title>
+      <link>http://www.pigxw.top/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</link>
+      <pubDate>Fri, 20 Sep 2019 19:17:26 +0800</pubDate>
+      
+      <guid>http://www.pigxw.top/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</guid>
+      <description> web性能优化：（从理论上来讲） 地址栏输入url到按下回车这一过程中有哪些前端相关的内容：
+ 看有没有缓存 DNS查询 建立TCP连接 发送HTTP请求 后台处理 接收响应 接收完成得到一个html 判断文本类型，DOCTYPE html/xml 浏览器逐行解析html 看到chrom会等css加载完再渲染到页面 看到CSS，下载css，如果有多个css便同时下载(chrom8个)。css,并行下载，串行解析。 看JS，下载并行，串行解析。在chrom中，css会阻塞html渲染，IE不会。JS一定会阻塞html渲染（不管什么浏览器）。  跟前端无关的优化：  优化DNS查询：减少DNS查询（减少域名数量）。
+ TCP连接复用（keep-alive）http/2.0多路复用。
+  前端优化：  发送http请求：   减少cookie体积（减少请求）；合并文件。
+ 使用cache-control（干掉请求）；
+ 同时发多个请求，如ie中一个域名能发4个请求，但我可以使用两个域名或多个。于是与上面的DNS查询优化有矛盾，但是经过权衡之后，文件少的时候，就减少域名使用。文件多时，增加DNS查询时间，但减少了请求时间（用户带宽足够前提下）。
+   接收响应   使用ETAG，如果请求时带上服务器给的ETAG时，服务器便不再响应新的内容，返回304,表示not modifile；
+ 文件大时使用Gzip压缩。
+   返回的html中的DOCTYPE不能不写，不能写错。尽量减少标签。
+ CSS和JS优化：
+   使用CDN（内容分发网络）；
+ CSS放到head, JS 放body最后。css放前面的原因是让它尽早下载完，下载完就可以渲染了。js放后面是因为页面没有js还是可以看的，所以可以保证用户优先看到完整的页面。尽早显示页面，获取节点。
+ 延迟加载，懒加载：必须初始化的先加载，剩余的延迟加载。如第一屏先加载，其余的等用户滚到再加载。
+ 使用外部js和css，就是不要把js,css写在html中。
+ 压缩图片。
+  </description>
+    </item>
+    
+    <item>
+      <title>vue-router、axios、vuex</title>
+      <link>http://www.pigxw.top/vue-routeraxiosvuex/</link>
+      <pubDate>Tue, 17 Sep 2019 20:30:30 +0900</pubDate>
+      
+      <guid>http://www.pigxw.top/vue-routeraxiosvuex/</guid>
+      <description>vue-router 路由的基本加载  安装 npm install --save vue-router 2.引用
+在router 的 index.js 中 import router from &#39;vue-router&#39; Vue.use(router)  配置路由文件，并在vue实例中注入
+var rt = new router({ routes:[{ path:&#39;/&#39;, //指定要跳转的路径 component: HelloWorld //指定要跳转的组件 }] }) new Vue({ el: &#39;#app&#39;, router, components: { App }, template: &#39;&#39; })  确定试图加载的位置
+&amp;lt;router-view&amp;gt;&amp;lt;/router-view&amp;gt;  路由的跳转  &amp;lt;template&amp;gt; &amp;lt;ul&amp;gt; &amp;lt;li&amp;gt; &amp;lt;router-link to=&amp;quot;/helloearth&amp;quot;&amp;gt;HELLO EARTH 33&amp;lt;/router-link&amp;gt; &amp;lt;/li&amp;gt; &amp;lt;li&amp;gt; &amp;lt;router-link to=&amp;quot;/helloworld&amp;quot;&amp;gt;HELLO WORLD 22&amp;lt;/router-link&amp;gt; &amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt; &amp;lt;/template&amp;gt;   路由参数传递  必须在路由内加入路由的name .</description>
+    </item>
+    
+    <item>
+      <title>vue自定义指令</title>
+      <link>http://www.pigxw.top/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/</link>
+      <pubDate>Mon, 16 Sep 2019 20:30:30 +0900</pubDate>
+      
+      <guid>http://www.pigxw.top/vue%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4/</guid>
+      <description>自定义指令 自定义指令的基本用法 和组件类似分全局注册和局部注册，区别就是把component换成了derective
+需求：自动获取焦点 &amp;lt;div id=&amp;quot;app&amp;quot;&amp;gt; 获取焦点：&amp;lt;input type=&amp;quot;text&amp;quot; v-focus&amp;gt;&amp;lt;br&amp;gt; 未加自定义指令v-focus：&amp;lt;br&amp;gt; &amp;lt;input type=&amp;quot;text&amp;quot;&amp;gt; &amp;lt;/div&amp;gt; &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; &amp;lt;script&amp;gt; Vue.directive(&#39;focus&#39;,{ inserted:function(el){ //el：指令所绑定的元素可以用来直接操作DOM el.focus(); } }); var app = new Vue({ el:&#39;#app&#39;, data:{ } }) &amp;lt;/script  钩子函数 指令定义函数提供了几个钩子函数（可选）：
+ bind: 只调用一次，指令第一次绑定到元素时调用，用这个钩子函数可以定义一个在绑定时执行一次的初始化动作。
+ inserted: 被绑定元素插入父节点时调用（父节点存在即可调用，不必存在于 document中）
+ update: 被绑定元素所在的模板更新时调用，而不论绑定值是否变化。通过比较更新前后的绑定值，可以忽略不必要的模板更新（详细的钩子函数参数见下）。
+ componentUpdated: 被绑定元素所在模板完成一次更新周期时调用。
+ unbind: 只调用一次， 指令与元素解绑时调用。
+  钩子函数的参数有：  el: 指令所绑定的元素，可以用来直接操作 DOM 。
+ binding: 一个对象，包含以下属性： ——–name: 指令名，不包括 v­ 前缀。 ——–value: 指令的绑定值， 例如： v­my­directive=”1 + 1”, value 的值是 2。 ——–oldValue: 指令绑定的前一个值，仅在 update 和 componentUpdated 钩子中可用。无 论值是否改变都可用。 ——–expression: 绑定值的字符串形式。 例如 v­my­directive=”1 + 1” ， expression 的值是 “1 + 1”。 ——–arg: 传给指令的参数。例如 v­my­directive:foo， arg 的值是 “foo”。 ——–modifiers: 一个包含修饰符的对象。 例如： v­my­directive.</description>
+    </item>
+    
+    <item>
+      <title>vue组件详解二</title>
+      <link>http://www.pigxw.top/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/</link>
+      <pubDate>Sun, 15 Sep 2019 16:30:30 +0800</pubDate>
+      
+      <guid>http://www.pigxw.top/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/</guid>
+      <description>组件（二） 七、插槽slot  插槽：为了让组件可以组合，我们需要一种方式来混合父组件的内容与子组件自己的模板。这个过程被称为 内容分发。Vue.js 实现了一个内容分发 API，使用特殊的 ‘slot’ 元素作为原始内容的插槽。 编译的作用域：假定模板为：
+&amp;lt;child-component&amp;gt; {{ message }} &amp;lt;/child-component&amp;gt;  message 应该绑定到父组件的数据，还是绑定到子组件的数据？答案是父组件。组件作用域简单地说是： 父组件模板的内容在父组件作用域内编译； 子组件模板的内容在子组件作用域内编译。 插槽的用法：父组件的内容与子组件相混合，从而弥补了视图的不足。 混合父组件的内容与子组件自己的模板
+ 单个插槽：
+&amp;lt;div id=&amp;quot;app&amp;quot; &amp;gt; &amp;lt;my-component&amp;gt; &amp;lt;p&amp;gt;我是父组件的内容&amp;lt;/p&amp;gt; &amp;lt;/my-component&amp;gt; &amp;lt;/div&amp;gt; Vue.component(&#39;my-component&#39;,{ template:&#39;&amp;lt;div&amp;gt;\ &amp;lt;slot&amp;gt;\ 如果父组件没有插入内容，我就作为默认出现\ &amp;lt;/slot&amp;gt;\ &amp;lt;/div&amp;gt;&#39; })  具名插槽：
+&amp;lt;name-component&amp;gt; &amp;lt;h3 slot=&amp;quot;header&amp;quot;&amp;gt;我是标题&amp;lt;/h3&amp;gt; &amp;lt;p&amp;gt;我是正文内容&amp;lt;/p&amp;gt; &amp;lt;p&amp;gt;正文内容有两段&amp;lt;/p&amp;gt; &amp;lt;p slot=&amp;quot;footer&amp;quot;&amp;gt;我是底部信息&amp;lt;/p&amp;gt; &amp;lt;/name-component&amp;gt; Vue.component(&#39;name-component&#39;,{ template:&#39;&amp;lt;div&amp;gt;\ &amp;lt;div class=&amp;quot;header&amp;quot;&amp;gt;\n&#39; + &#39;&amp;lt;slot name=&amp;quot;header&amp;quot;&amp;gt;\n&#39; + &#39; \n&#39; + &#39; &amp;lt;/slot&amp;gt;\n&#39; + &#39;&amp;lt;/div&amp;gt;\n&#39; + &#39;&amp;lt;div class=&amp;quot;contatiner&amp;quot;&amp;gt;\n&#39; + &#39; &amp;lt;slot&amp;gt;\n&#39; + &#39; \n&#39; + &#39; &amp;lt;/slot&amp;gt;\n&#39; + &#39;&amp;lt;/div&amp;gt;\n&#39; + &#39;&amp;lt;div class=&amp;quot;footer&amp;quot;&amp;gt;\n&#39; + &#39; &amp;lt;slot name=&amp;quot;footer&amp;quot;&amp;gt;\n&#39; + &#39;\n&#39; + &#39; &amp;lt;/slot&amp;gt; \n&#39; + &#39;&amp;lt;/div&amp;gt;&#39;+ &#39; &amp;lt;/div&amp;gt;&#39; })  作用域插槽：作用域插槽是一种特殊的slot，使用一个可以复用的模板来替换已经渲染的元素——从子组件获取数据===template模板是不会被渲染的</description>
+    </item>
+    
+    <item>
+      <title>vue组件详解一</title>
+      <link>http://www.pigxw.top/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/</link>
+      <pubDate>Sun, 15 Sep 2019 15:30:30 +0800</pubDate>
+      
+      <guid>http://www.pigxw.top/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/</guid>
+      <description>组件（一） 一、组件的作用 组件的作用：提高代码的复用性。
+二、组件的使用方法 1.全局注册组件：
+全局注册： &amp;lt;html&amp;gt; &amp;lt;my-component&amp;gt;&amp;lt;/my-component&amp;gt; &amp;lt;/html&amp;gt; &amp;lt;script&amp;gt; Vue.component(&#39;my-component&#39;,{ template:&#39;&amp;lt;div&amp;gt;这是全局注册的组件&amp;lt;/div&amp;gt;&#39; }) &amp;lt;/script&amp;gt;  2.局部注册组件：
+&amp;lt;html&amp;gt; &amp;lt;app-component&amp;gt;&amp;lt;/app-component&amp;gt; &amp;lt;/html&amp;gt; 在vue实例中定义组件 &amp;lt;script&amp;gt; var app = new Vue({ el:&#39;#app&#39;, components:{ &#39;app-component&#39;:{ template:&#39;&amp;lt;div&amp;gt;这是局部注册的组件&amp;lt;/div&amp;gt;&#39; } } }) &amp;lt;/script&amp;gt;  两种注册方式的优缺点： 全局注册：优点是所有的vue实例都可以使用；缺点是权限太大，容错率低。 局部注册：只能在所注册的vue实例中使用。 注意事项： 1. html标签受限：Vue组件模板在某些情况下回受到html标签的限制，如table标签内只能有tr、td、tbody这些元素,如果把组件名挂载到table内,实际内容是不会被渲染到table标签中的，会把组件内容踢出去。 此时需要 is 属性来挂载组件名，is=&#39;组件名&#39;
+&amp;lt;table&amp;gt; &amp;lt;tbody is = &#39;app-component&#39;&amp;gt;&amp;lt;/tbody&amp;gt; &amp;lt;/table&amp;gt;   组件名使用小写字母或小写字母加 - 来命名； template中的内容必须被一个DOM元素包裹，可以嵌套； 在组件定义中，除了template之外的其他选项:data,omputed,methods 组件中，data必须是一个方法。  三、使用props传递数据 在子组件中使用props接收来自父组件的数据，在props中定义的属性，都可以在组件中直接使用； 子组件中的props来自父组件，子组件中的data return的是组件自己的数据；props中定义的和data返回的，其作用域都是组件本身，可以在template,methods,computed中直接使用。
+&amp;lt;div id=&amp;quot;app&amp;quot; style=&amp;quot;border:1px solid red;height: 350px;&amp;quot;&amp;gt; &amp;lt;h5 style=&amp;quot;text-align: center&amp;quot;&amp;gt;父组件&amp;lt;/h5&amp;gt; &amp;lt;child-component msg=&amp;quot;这是来自父组件的内容&amp;quot;&amp;gt;&amp;lt;/child-component&amp;gt; &amp;lt;!</description>
+    </item>
+    
+    <item>
       <title>vue基础之实例与数据绑定</title>
       <link>http://www.pigxw.top/vue%E5%88%9D%E4%BD%93%E9%AA%8C/</link>
-      <pubDate>Tue, 24 Sep 2019 15:30:30 +0800</pubDate>
+      <pubDate>Sat, 14 Sep 2019 15:30:30 +0800</pubDate>
       
       <guid>http://www.pigxw.top/vue%E5%88%9D%E4%BD%93%E9%AA%8C/</guid>
       <description>vue实例和数据绑定  cdn引入vue.js：&amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt; 通过构造函数 Vue 就可以创建一个 Vue 的根实例，并启动 Vue 应用&amp;mdash;入口
@@ -440,9 +401,48 @@ var app ＝new Vue({ el:&#39;&#39;, data:{ } })  必不可少的一个选项就�
     </item>
     
     <item>
+      <title>JSONP</title>
+      <link>http://www.pigxw.top/jsonp/</link>
+      <pubDate>Tue, 10 Sep 2019 11:26:04 +0800</pubDate>
+      
+      <guid>http://www.pigxw.top/jsonp/</guid>
+      <description>JSONP JSONP是什么:
+当浏览器不支持CORS跨域（IE不支持）时，必须通过其他方法进行跨域，通过请求 JS 文件，JS文件执行一个回调，回调里有我们请求的数据。回调函数名是可以随意设置的随机数， 创建script 请求js ，js 把数据夹带过来，然后就可以拿到js 数据了。
+优点：支持IE 、可以跨域; 缺点：script标签读不到AJAX 的精准状态，也就是读不到状态码是什么，只知道成功或失败。
+script 请求只能发get 请求,所以JSONP不能发post 请求.
+JSONP是服务器与客户端跨源通信的常用方法。最大特点就是简单适用，老式浏览器全部支持，服务器改造非常小。
+它的基本思想是，网页通过添加一个script元素，向服务器请求JSON数据，这种做法不受同源政策限制；服务器收到请求后，将数据放在一个指定名字的回调函数里传回来。
+如何向服务器发请求？  用 form 可以发请求，但是会刷新页面或新开页面
+ 用 a 可以发 get 请求，但是也会刷新页面或新开页面
+ 用 img 可以发 get 请求，但是只能以图片的形式展示
+ 用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示
+ 用 script 可以发 get 请求，但是只能以脚本的形式运行
+  其中，通过动态创建 script 并添加 callback 查询参数来发 get 请求的就是 JSONP &amp;gt;请求方：frank.com 的前端程序员（浏览器） &amp;gt;响应方：jack.com 的后端程序员（服务器） &amp;gt; 1.请求方创建 script，src 指向响应方，同时传一个查询参数 ?</description>
+    </item>
+    
+    <item>
+      <title>JS函数</title>
+      <link>http://www.pigxw.top/js%E5%87%BD%E6%95%B0/</link>
+      <pubDate>Sun, 08 Sep 2019 23:01:04 +0800</pubDate>
+      
+      <guid>http://www.pigxw.top/js%E5%87%BD%E6%95%B0/</guid>
+      <description>函数 指可以执行代码的对象，和数组一样有不一致性。
+三种函数声明方式  function f() { }
+ var f = function f() { }; //注意分号
+ f = new Function (&amp;lsquo;x&amp;rsquo;,&amp;lsquo;y&amp;rsquo;,&amp;lsquo;return x+y&amp;rsquo;) //只有最后一个参数会被当作函数体，可以不使用new 命令，不推荐使用这种声明方式
+  注意：如果同一个函数被多次声明，后面的声明会覆盖前面的声明。也就是说起前面的声明会失效。
+函数名的提升
+JS引擎将函数名视同变量名，使用function 声明函数时，整个函数回想变量声明一样被提升到代码头部。如果同时使用function命令和赋值语句声明同一个函数，左后总是采用赋值语句的定义
+var f = function () { console.log(&#39;1&#39;); } function f() { console.log(&#39;2&#39;); } f() // 1  函数的属性和方法
+ name :f.name返回函数的名字，如果通过变量赋值定义的匿名函数则返回变量名。具名函数返回function关键字后的函数名。 var f3 = function myName() {}; f3.name // &#39;myName&#39;  上面代码中，f3.name返回函数表达式的名字。注意，真正的函数名还是f3，而myName这个名字只在函数体内部可用。
+  用处：可用来获取参数函数的名字。
+ length: f.</description>
+    </item>
+    
+    <item>
       <title>如何使用 hugo 搭建个人博客</title>
       <link>http://www.pigxw.top/hugo-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</link>
-      <pubDate>Fri, 20 Sep 2019 19:17:26 +0800</pubDate>
+      <pubDate>Fri, 06 Sep 2019 19:17:26 +0800</pubDate>
       
       <guid>http://www.pigxw.top/hugo-%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</guid>
       <description>本文默认大家都会在github上部署自己的博客，在此基础上，阐述如何使用hugo搭建一个自己的博客平台，hugo是用go语言实现的一个博客生成器。用它不需要有多好的基础，照着抄代码就行。本文于官方教程的区别是，详细，够详细！基本能避免实现过程中的一些暗坑。
@@ -458,7 +458,7 @@ cd codes hugo new site quickstart  //此处的 quickstart 必须更换为你的 
     <item>
       <title>Sass、Scss入门</title>
       <link>http://www.pigxw.top/sassscss-%E5%85%A5%E9%97%A8/</link>
-      <pubDate>Mon, 16 Sep 2019 11:26:04 +0800</pubDate>
+      <pubDate>Mon, 26 Aug 2019 11:26:04 +0800</pubDate>
       
       <guid>http://www.pigxw.top/sassscss-%E5%85%A5%E9%97%A8/</guid>
       <description>Scss入门：  Sass（英文全称：Syntactically Awesome Stylesheets）是一个最初由Hampton Catlin设计并由Natalie Weizenbaum开发的类 CSS 语言。 发行时间：2007年；稳定版本：2016年3月28日； Sass 十分简洁，语法中几乎不含括号。 后来前端工程师表示不含括号看不懂，于是 Sass 的开发者又提供了 Scss，含括号。 弱弱的前端工程师终于表示能看懂了。Sass的官方解释器是开源的并且用Ruby语言写成，但是也有用PHP、C语言、Java等实现的版本（C语言版本叫做llibSass，Java语言版本叫做JSass）。SassScript提供以下功能：变量、嵌套、混入（Mixin）、选择器继承等。
@@ -474,10 +474,10 @@ HTML
     <item>
       <title>开博大吉</title>
       <link>http://www.pigxw.top/%E5%BC%80%E5%8D%9A%E5%A4%A7%E5%90%89/</link>
-      <pubDate>Sun, 15 Sep 2019 18:32:04 +0800</pubDate>
+      <pubDate>Thu, 15 Aug 2019 18:32:04 +0800</pubDate>
       
       <guid>http://www.pigxw.top/%E5%BC%80%E5%8D%9A%E5%A4%A7%E5%90%89/</guid>
-      <description>hello everyone nice to meet you !</description>
+      <description>hello everyone nice to meet you !::::)))))</description>
     </item>
     
   </channel>

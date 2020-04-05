@@ -9,7 +9,7 @@
   <meta name="description" content="吴潇的个人网站">
   <meta name="keywords" content="吴潇,前端,程序猿">
   
-  <link rel="prev" href="http://www.pigxw.top/js%E5%87%BD%E6%95%B0/" />
+  <link rel="prev" href="http://www.pigxw.top/vue%E5%88%9D%E4%BD%93%E9%AA%8C/" />
   <link rel="next" href="http://www.pigxw.top/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/" />
   <link rel="canonical" href="http://www.pigxw.top/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3/" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -22,10 +22,10 @@
   <title>
        
        
-           vue组件详解 | 小xiao潇的个人博客
+           vue组件详解一 | 小xiao潇的个人博客
        
   </title>
-  <meta name="title" content="vue组件详解 | 小xiao潇的个人博客">
+  <meta name="title" content="vue组件详解一 | 小xiao潇的个人博客">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -44,8 +44,8 @@
          "@id": "http:\/\/www.pigxw.top\/"
     },
     "articleSection" : "posts",
-    "name" : "vue组件详解",
-    "headline" : "vue组件详解",
+    "name" : "vue组件详解一",
+    "headline" : "vue组件详解一",
     "description" : "组件（一） 一、组件的作用 组件的作用：提高代码的复用性。\n二、组件的使用方法 1.全局注册组件：\n全局注册： \x26lt;html\x26gt; \x26lt;my-component\x26gt;\x26lt;\/my-component\x26gt; \x26lt;\/html\x26gt; \x26lt;script\x26gt; Vue.component(\x27my-component\x27,{ template:\x27\x26lt;div\x26gt;这是全局注册的组件\x26lt;\/div\x26gt;\x27 }) \x26lt;\/script\x26gt;  2.局部注册组件：\n\x26lt;html\x26gt; \x26lt;app-component\x26gt;\x26lt;\/app-component\x26gt; \x26lt;\/html\x26gt; 在vue实例中定义组件 \x26lt;script\x26gt; var app = new Vue({ el:\x27#app\x27, components:{ \x27app-component\x27:{ template:\x27\x26lt;div\x26gt;这是局部注册的组件\x26lt;\/div\x26gt;\x27 } } }) \x26lt;\/script\x26gt;  两种注册方式的优缺点： 全局注册：优点是所有的vue实例都可以使用；缺点是权限太大，容错率低。 局部注册：只能在所注册的vue实例中使用。 注意事项： 1. html标签受限：Vue组件模板在某些情况下回受到html标签的限制，如table标签内只能有tr、td、tbody这些元素,如果把组件名挂载到table内,实际内容是不会被渲染到table标签中的，会把组件内容踢出去。 此时需要 is 属性来挂载组件名，is=\x27组件名\x27\n\x26lt;table\x26gt; \x26lt;tbody is = \x27app-component\x27\x26gt;\x26lt;\/tbody\x26gt; \x26lt;\/table\x26gt;   组件名使用小写字母或小写字母加 - 来命名； template中的内容必须被一个DOM元素包裹，可以嵌套； 在组件定义中，除了template之外的其他选项:data,omputed,methods 组件中，data必须是一个方法。  三、使用props传递数据 在子组件中使用props接收来自父组件的数据，在props中定义的属性，都可以在组件中直接使用； 子组件中的props来自父组件，子组件中的data return的是组件自己的数据；props中定义的和data返回的，其作用域都是组件本身，可以在template,methods,computed中直接使用。\n\x26lt;div id=\x26quot;app\x26quot; style=\x26quot;border:1px solid red;height: 350px;\x26quot;\x26gt; \x26lt;h5 style=\x26quot;text-align: center\x26quot;\x26gt;父组件\x26lt;\/h5\x26gt; \x26lt;child-component msg=\x26quot;这是来自父组件的内容\x26quot;\x26gt;\x26lt;\/child-component\x26gt; \x26lt;!",
     "inLanguage" : "zh-CN",
     "author" : "吴潇",
@@ -54,8 +54,8 @@
     "accountablePerson" : "吴潇",
     "copyrightHolder" : "吴潇",
     "copyrightYear" : "2019",
-    "datePublished": "2019-10-08 15:30:30 \x2b0800 CST",
-    "dateModified" : "2019-10-08 15:30:30 \x2b0800 CST",
+    "datePublished": "2019-09-15 15:30:30 \x2b0800 CST",
+    "dateModified" : "2019-09-15 15:30:30 \x2b0800 CST",
     "url" : "http:\/\/www.pigxw.top\/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3\/",
     "wordCount" : "426",
     "keywords" : [  "小xiao潇的个人博客"]
@@ -120,11 +120,11 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">vue组件详解</h1>
+        <h1 class="post-title" itemprop="name headline">vue组件详解一</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="http://www.pigxw.top/" rel="author">吴潇</a> with ♥ 
                 <span class="post-time">
-                on <time datetime=2019-10-08 itemprop="datePublished">October 8, 2019</time>
+                on <time datetime=2019-09-15 itemprop="datePublished">September 15, 2019</time>
                 </span>
                 in
                 
@@ -512,10 +512,10 @@ Vue.component('width-component',{
 
     <div class="post-nav">
         
-        <a href="http://www.pigxw.top/js%E5%87%BD%E6%95%B0/" class="prev" rel="prev" title="JS函数"><i class="iconfont icon-left"></i>&nbsp;JS函数</a>
+        <a href="http://www.pigxw.top/vue%E5%88%9D%E4%BD%93%E9%AA%8C/" class="prev" rel="prev" title="vue基础之实例与数据绑定"><i class="iconfont icon-left"></i>&nbsp;vue基础之实例与数据绑定</a>
          
         
-        <a href="http://www.pigxw.top/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/" class="next" rel="next" title="vue组件详解">vue组件详解&nbsp;<i class="iconfont icon-right"></i></a>
+        <a href="http://www.pigxw.top/vue%E7%BB%84%E4%BB%B6%E8%AF%A6%E8%A7%A3%E7%BB%AD/" class="next" rel="next" title="vue组件详解二">vue组件详解二&nbsp;<i class="iconfont icon-right"></i></a>
         
     </div>
 
