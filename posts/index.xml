@@ -146,8 +146,9 @@ resolve 只是决定执行 then 的第一个函数还是第二个函数。resolv
       <pubDate>Sat, 02 Nov 2019 08:56:04 +0800</pubDate>
       
       <guid>http://www.pigxw.top/%E8%99%9A%E6%8B%9Fdom/</guid>
-      <description>虚拟DOM 根据真实的 DOM 结构创建一个和真实DOM 一一映射的数据结构来进行操作，操作完再把数据结构的变化反映到真实的DOM 中。 作用：当DOM 结构的改变或操作很细微的时候，使用虚拟DOM 可以避免因微小改变而重新渲染一整个DOM 结构，类似于打补丁。
-class VNode { constructor(tag, children, text) { this.tag = tag this.text = text this.children = children } render() { if(this.tag === &#39;#text&#39;) { return document.createTextNode(this.text) } let el = document.createElement(this.tag) this.children.forEach(vChild =&amp;gt; { el.appendChild(vChild.render()) }) return el } } function v(tag, children, text) { if(typeof children === &#39;string&#39;) { text = children children = [] } return new VNode(tag, children, text) } /* let nodesData = { tag: &#39;div&#39;, children: [ { tag: &#39;p&#39;, children: [ { tag: &#39;span&#39;, children: [ { tag: &#39;#text&#39;, text: &#39;xiedaimala.</description>
+      <description>虚拟DOM 根据真实的 DOM 结构创建一个和真实DOM 一一映射的数据结构来进行操作，操作完再把数据结构的变化反映到真实的DOM 中。
+作用：当DOM 结构的改变或操作很细微的时候，使用虚拟DOM 可以避免因微小改变而重新渲染一整个DOM 结构，类似于打补丁。
+class VNode { constructor(tag, children, text) { this.tag = tag this.text = text this.children = children } render() { if(this.tag === &#39;#text&#39;) { return document.createTextNode(this.text) } let el = document.createElement(this.tag) this.children.forEach(vChild =&amp;gt; { el.appendChild(vChild.render()) }) return el } } function v(tag, children, text) { if(typeof children === &#39;string&#39;) { text = children children = [] } return new VNode(tag, children, text) } let vNodes = v(&#39;div&#39;, [ v(&#39;p&#39;, [ v(&#39;span&#39;, [ v(&#39;#text&#39;, &#39;QWERTYU&#39;) ] ) ] ), v(&#39;span&#39;, [ v(&#39;#text&#39;, &#39;12345678&#39;) ]) ] ) console.</description>
     </item>
     
     <item>
@@ -249,10 +250,12 @@ var f3 = function myName() {}; f3.name // &#39;myName&#39;   上面代码中，f
 能产生对象的东西即为类。
  定义一个类的一种方法是使用一个类声明。要声明一个类，使用带有class关键字的类名;
  一个类表达式是定义一个类的另一种方式。类表达式可以是被命名的或匿名的。赋予一个命名类表达式的名称是类的主体的本地名称。
- constructor方法是一个特殊的方法，这种方法用于创建和初始化一个由class创建的对象。一个类只能拥有一个名为 “constructor”的特殊方法。如果类包含多个constructor的方法，则将抛出 一个SyntaxError 。一个构造函数可以使用 super 关键字来调用一个父类的构造函数。
+ constructor方法是一个特殊的方法，这种方法用于创建和初始化一个由class创建的对象。一个类只能拥有一个名为 “constructor”的特殊方法。
+ 如果类包含多个constructor的方法，则将抛出 一个SyntaxError
+ 一个构造函数可以使用 super 关键字来调用一个父类的构造函数。
  函数声明和类声明之间的一个重要区别是函数声明会提升，类声明不会。
   var person = new Human()中的person就是一个对象，所以Human()便是一个类。 但是父类Object（）到子类Human（）是一个自带的继承。
-ES5写继承： function Human(name){ //父类 Human() this.name = (name) //自有属性name } Human.prototype.run = function(){ //共有属性为run console.log(“我叫”+this.name&amp;quot;,我有run的属性&amp;quot;) return undefined } function Man(name){ //声明 Man() Human.call(this, name) //call 父类 this.gender = &#39;男&#39; //声明自身的属性gender } var f = function(){ } f.prototype = Human.prototype man.prototype = new f( ) Man.prototype.fight = function(){ console.</description>
+ES5写继承： function Human(name){ //父类 Human() this.name = name //自有属性name } Human.prototype.run = function(){ //共有属性为run console.log(&amp;quot;我叫&amp;quot;+this.name&amp;quot;,我有run的属性&amp;quot;) return undefined } function Man(name){ //声明 Man() Human.call(this, name) //call 父类 this.gender = &#39;男&#39; //声明自身的属性gender } var f = function(){} f.prototype = Human.prototype man.prototype = new f( ) Man.</description>
     </item>
     
     <item>
@@ -283,22 +286,13 @@ Cache-Control可以让浏览器在一段时间内不访问浏览器，直接用�
       <pubDate>Sun, 22 Sep 2019 19:17:26 +0800</pubDate>
       
       <guid>http://www.pigxw.top/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</guid>
-      <description> web性能优化：（从理论上来讲） 地址栏输入url到按下回车这一过程中有哪些前端相关的内容：
- 看有没有缓存 DNS查询 建立TCP连接 发送HTTP请求 后台处理 接收响应 接收完成得到一个html 判断文本类型，DOCTYPE html/xml 浏览器逐行解析html 看到chrom会等css加载完再渲染到页面 看到CSS，下载css，如果有多个css便同时下载(chrom8个)。css,并行下载，串行解析。 看JS，下载并行，串行解析。在chrom中，css会阻塞html渲染，IE不会。JS一定会阻塞html渲染（不管什么浏览器）。  跟前端无关的优化：  优化DNS查询：减少DNS查询（减少域名数量）。
+      <description>web性能优化：（从理论上来讲） 地址栏输入url到按下回车这一过程中有哪些前端相关的内容：
+ 看有没有缓存 DNS 查询 建立 TCP 连接 发送 HTTP 请求,后台处理 接收响应 接收完成得到一个 html 判断文本类型，DOCTYPE,html/xml 浏览器逐行解析 html 看到 Chrome 会等 CSS 加载完再渲染到页面 看到 CSS，下载 CSS，如果有多个 CSS 便同时下载(Chrome8个)。CSS 并行下载，串行解析。 看 JS，下载并行，串行解析。在 Chrome 中，CSS 会阻塞 HTM 渲染，IE 不会。JS 一定会阻塞 HTML 渲染（不管什么浏览器）。  跟前端无关的优化：  优化DNS查询：减少DNS查询（减少域名数量）。
  TCP连接复用（keep-alive）http/2.0多路复用。
-  前端优化：  发送http请求：   减少cookie体积（减少请求）；合并文件。
- 使用cache-control（干掉请求）；
- 同时发多个请求，如ie中一个域名能发4个请求，但我可以使用两个域名或多个。于是与上面的DNS查询优化有矛盾，但是经过权衡之后，文件少的时候，就减少域名使用。文件多时，增加DNS查询时间，但减少了请求时间（用户带宽足够前提下）。
-   接收响应   使用ETAG，如果请求时带上服务器给的ETAG时，服务器便不再响应新的内容，返回304,表示not modifile；
- 文件大时使用Gzip压缩。
-   返回的html中的DOCTYPE不能不写，不能写错。尽量减少标签。
- CSS和JS优化：
-   使用CDN（内容分发网络）；
- CSS放到head, JS 放body最后。css放前面的原因是让它尽早下载完，下载完就可以渲染了。js放后面是因为页面没有js还是可以看的，所以可以保证用户优先看到完整的页面。尽早显示页面，获取节点。
- 延迟加载，懒加载：必须初始化的先加载，剩余的延迟加载。如第一屏先加载，其余的等用户滚到再加载。
- 使用外部js和css，就是不要把js,css写在html中。
- 压缩图片。
-  </description>
+  前端优化：  发送http请求：   减少 cookie 体积（减少请求）；合并文件。
+ 使用 cache-control（干掉请求）；
+ 同时发多个请求，如 IE 中一个域名能发4个请求，但我可以使用两个域名或多个。于是与上面的DNS查询优化有矛盾，但是经过权衡之后，文件少的时候，就减少域名使用。文件多时，增加DNS查询时间，但减少了请求时间（用户带宽足够前提下）。
+   接收响应   使用 ETAG ，如果请求时带上服务器给的 ETAG 时，服务器便不再响应新的内容，返回304,表示 not modifile；</description>
     </item>
     
     <item>

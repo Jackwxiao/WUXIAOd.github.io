@@ -46,7 +46,7 @@
     "articleSection" : "posts",
     "name" : "JS模拟继承",
     "headline" : "JS模拟继承",
-    "description" : "JS模拟继承 继承：面向对象编程中的一个概念，继承可以使子类具有父类的各种属性和方法。\n能产生对象的东西即为类。\n 定义一个类的一种方法是使用一个类声明。要声明一个类，使用带有class关键字的类名;\n 一个类表达式是定义一个类的另一种方式。类表达式可以是被命名的或匿名的。赋予一个命名类表达式的名称是类的主体的本地名称。\n constructor方法是一个特殊的方法，这种方法用于创建和初始化一个由class创建的对象。一个类只能拥有一个名为 “constructor”的特殊方法。如果类包含多个constructor的方法，则将抛出 一个SyntaxError 。一个构造函数可以使用 super 关键字来调用一个父类的构造函数。\n 函数声明和类声明之间的一个重要区别是函数声明会提升，类声明不会。\n  var person = new Human()中的person就是一个对象，所以Human()便是一个类。 但是父类Object（）到子类Human（）是一个自带的继承。\nES5写继承： function Human(name){ \/\/父类 Human() this.name = (name) \/\/自有属性name } Human.prototype.run = function(){ \/\/共有属性为run console.log(“我叫”\x2bthis.name\x26quot;,我有run的属性\x26quot;) return undefined } function Man(name){ \/\/声明 Man() Human.call(this, name) \/\/call 父类 this.gender = \x27男\x27 \/\/声明自身的属性gender } var f = function(){ } f.prototype = Human.prototype man.prototype = new f( ) Man.prototype.fight = function(){ console.",
+    "description" : "JS模拟继承 继承：面向对象编程中的一个概念，继承可以使子类具有父类的各种属性和方法。\n能产生对象的东西即为类。\n 定义一个类的一种方法是使用一个类声明。要声明一个类，使用带有class关键字的类名;\n 一个类表达式是定义一个类的另一种方式。类表达式可以是被命名的或匿名的。赋予一个命名类表达式的名称是类的主体的本地名称。\n constructor方法是一个特殊的方法，这种方法用于创建和初始化一个由class创建的对象。一个类只能拥有一个名为 “constructor”的特殊方法。\n 如果类包含多个constructor的方法，则将抛出 一个SyntaxError\n 一个构造函数可以使用 super 关键字来调用一个父类的构造函数。\n 函数声明和类声明之间的一个重要区别是函数声明会提升，类声明不会。\n  var person = new Human()中的person就是一个对象，所以Human()便是一个类。 但是父类Object（）到子类Human（）是一个自带的继承。\nES5写继承： function Human(name){ \/\/父类 Human() this.name = name \/\/自有属性name } Human.prototype.run = function(){ \/\/共有属性为run console.log(\x26quot;我叫\x26quot;\x2bthis.name\x26quot;,我有run的属性\x26quot;) return undefined } function Man(name){ \/\/声明 Man() Human.call(this, name) \/\/call 父类 this.gender = \x27男\x27 \/\/声明自身的属性gender } var f = function(){} f.prototype = Human.prototype man.prototype = new f( ) Man.",
     "inLanguage" : "zh-CN",
     "author" : "小xiao潇",
     "creator" : "小xiao潇",
@@ -57,7 +57,7 @@
     "datePublished": "2019-10-04 19:17:26 \x2b0800 CST",
     "dateModified" : "2019-10-04 19:17:26 \x2b0800 CST",
     "url" : "http:\/\/www.pigxw.top\/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF\/",
-    "wordCount" : "287",
+    "wordCount" : "299",
     "keywords" : [  "小xiao潇的个人博客"]
 }
 </script>
@@ -165,7 +165,11 @@
 
 <li><p>一个类表达式是定义一个类的另一种方式。类表达式可以是被命名的或匿名的。赋予一个命名类表达式的名称是类的主体的本地名称。</p></li>
 
-<li><p>constructor方法是一个特殊的方法，这种方法用于创建和初始化一个由class创建的对象。一个类只能拥有一个名为 “constructor”的特殊方法。如果类包含多个constructor的方法，则将抛出 一个SyntaxError 。一个构造函数可以使用 super 关键字来调用一个父类的构造函数。</p></li>
+<li><p>constructor方法是一个特殊的方法，这种方法用于创建和初始化一个由class创建的对象。一个类只能拥有一个名为 “constructor”的特殊方法。</p></li>
+
+<li><p>如果类包含多个constructor的方法，则将抛出 一个SyntaxError</p></li>
+
+<li><p>一个构造函数可以使用 super 关键字来调用一个父类的构造函数。</p></li>
 
 <li><p>函数声明和类声明之间的一个重要区别是函数声明会提升，类声明不会。</p></li>
 </ul>
@@ -176,10 +180,10 @@
 <h4 id="es5写继承">ES5写继承：</h4>
 
 <pre><code>function Human(name){     //父类 Human()
-    this.name = (name) //自有属性name
+    this.name = name //自有属性name
 }
 Human.prototype.run = function(){ //共有属性为run
-    console.log(“我叫”+this.name&quot;,我有run的属性&quot;)
+    console.log(&quot;我叫&quot;+this.name&quot;,我有run的属性&quot;)
     return undefined
 }
 
@@ -188,7 +192,7 @@ function Man(name){  //声明 Man()
     this.gender = '男'   //声明自身的属性gender
 }
 
-var f = function(){ }
+var f = function(){}
     f.prototype = Human.prototype
     man.prototype = new f( )
     
@@ -210,7 +214,7 @@ var f = function(){ }
 
 <pre><code>Man.prototype.__proto__ = Human.prototype  //Man的原型的原型等于Human的原型
 
-IE不支持上面代码，所以用上面的三句话代替。
+IE不支持上面代码，所以用上上面的三句话代替。
 </code></pre>
 
 <p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://i.loli.net/2019/10/22/jvCDkybAQ983BMe.png" alt="原型链的继承.png" class="lazyload"><figcaption class="image-caption">原型链的继承.png</figcaption></figure></p>
@@ -222,7 +226,7 @@ IE不支持上面代码，所以用上面的三句话代替。
 <p>但是如果按上图红字那样写<code>Man prototype  =new Human()</code>虽然可以达到插入原型链的目的，即<code>Man.prototype.__proto__ = Human.prototype</code>
 但会出现不该出现的东西如下图所示：这是因为上图第四句，执行了this.name = name。所以就有了那三句话代替这一句。。</p>
 
-<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://i.loli.net/2019/10/22/utlJdCf4m7IThFA.png" alt="出错图.png" class="lazyload"><figcaption class="image-caption">出错图.png</figcaption></figure></p>
+<p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://i.loli.net/2019/10/22/utlJdCf4m7IThFA.png" alt="出错.png" class="lazyload"><figcaption class="image-caption">出错.png</figcaption></figure></p>
 
 <h4 id="es6写法">ES6写法：</h4>
 
@@ -257,19 +261,25 @@ IE不支持上面代码，所以用上面的三句话代替。
 
 <p>Object.create()方法创建一个新对象，使用现有的对象来提供新创建的对象的<strong>proto</strong></p>
 
-<pre><code>// Shape - 父类(superclass)function Shape() {
+<pre><code>// Shape - 父类(superclass)
+function Shape() {
   this.x = 0;
   this.y = 0;}
 
-// 父类的方法Shape.prototype.move = function(x, y) {
+// 父类的方法
+Shape.prototype.move = function(x, y) {
   this.x += x;
   this.y += y;
   console.info('Shape moved.');};
 
-// Rectangle - 子类(subclass)function Rectangle() {
-  Shape.call(this); // call super constructor.}
+// Rectangle - 子类(subclass)
+function Rectangle() {
+  Shape.call(this); // call super constructor.
+  }
 
-// 子类续承父类Rectangle.prototype = Object.create(Shape.prototype);Rectangle.prototype.constructor = Rectangle;
+// 子类继承父类
+Rectangle.prototype = Object.create(Shape.prototype);
+Rectangle.prototype.constructor = Rectangle;
 
 var rect = new Rectangle();
 
@@ -287,14 +297,18 @@ function MyClass() {
      SuperClass.call(this);
      OtherSuperClass.call(this);}
 
-// 继承一个类MyClass.prototype = Object.create(SuperClass.prototype);// 混合其它
-Object.assign(MyClass.prototype, OtherSuperClass.prototype);// 重新指定constructorMyClass.prototype.constructor = MyClass;
+// 继承一个类
+MyClass.prototype = Object.create(SuperClass.prototype);
+// 混合其它
+Object.assign(MyClass.prototype, OtherSuperClass.prototype);
+// 重新指定constructor
+MyClass.prototype.constructor = MyClass;
 
 MyClass.prototype.myMethod = function() {
      // do a thing};
 </code></pre>
 
-<p>Object.assign 会把  OtherSuperClass原型上的函数拷贝到 MyClass原型上，使 MyClass 的所有实例都可用 OtherSuperClass 的方法。Object.assign 是在 ES2015 引入的，且可用 polyfilled。要支持旧浏览器的话，可用使用 jQuery.extend() 或者 _.assign()。</p>
+<p>Object.assign 会把  OtherSuperClass 原型上的函数拷贝到 MyClass 原型上，使 MyClass 的所有实例都可用 OtherSuperClass 的方法。Object.assign 是在 ES2015 引入的，且可用 polyfilled。要支持旧浏览器的话，可使用 jQuery.extend() 或者 _.assign()。</p>
 
 <h4 id="使用-super-调用超类">使用 super 调用超类</h4>
 
