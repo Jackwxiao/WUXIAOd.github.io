@@ -241,21 +241,22 @@ var f3 = function myName() {}; f3.name // &#39;myName&#39;   上面代码中，f
     </item>
     
     <item>
-      <title>JS模拟继承</title>
+      <title>JS 模拟继承</title>
       <link>http://www.pigxw.top/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF/</link>
       <pubDate>Fri, 04 Oct 2019 19:17:26 +0800</pubDate>
       
       <guid>http://www.pigxw.top/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF/</guid>
-      <description>JS模拟继承 继承：面向对象编程中的一个概念，继承可以使子类具有父类的各种属性和方法。
-能产生对象的东西即为类。
+      <description>JS 模拟继承 何为继承？ 继承：面向对象编程中的一个概念，是类和类之间的一种关系（在2015年前JS中是没有类的，所以就是函数与函数之间的关系），继承可以使子类具有父类的各种属性和方法。
+JS 的 Window 下有对象（Object()）、数组（Array()）、函数（Function()）三个函数，这三个函数都有一个 prototype 属性,如 Object.prototype、Array.prototype ,虽然 Object.prototype 和Array.prototype 没有直接的关系，但因为对象都是由new Object()new 出来的，所以存在一个间接关系就是Array.prototype.__proto__ === Object.prototype,继承在 JS 中可以理解为原型链继承。
+何为类？ 能产生对象的东西即为类。
  定义一个类的一种方法是使用一个类声明。要声明一个类，使用带有class关键字的类名;
  一个类表达式是定义一个类的另一种方式。类表达式可以是被命名的或匿名的。赋予一个命名类表达式的名称是类的主体的本地名称。
- constructor方法是一个特殊的方法，这种方法用于创建和初始化一个由class创建的对象。一个类只能拥有一个名为 “constructor”的特殊方法。
+ constructor 方法是一个特殊的方法，这种方法用于创建和初始化一个由 class 创建的对象。一个类只能拥有一个名为 “constructor”的特殊方法。
  如果类包含多个constructor的方法，则将抛出 一个SyntaxError
  一个构造函数可以使用 super 关键字来调用一个父类的构造函数。
  函数声明和类声明之间的一个重要区别是函数声明会提升，类声明不会。
   var person = new Human()中的person就是一个对象，所以Human()便是一个类。 但是父类Object（）到子类Human（）是一个自带的继承。
-ES5写继承： function Human(name){ //父类 Human() this.name = name //自有属性name } Human.prototype.run = function(){ //共有属性为run console.log(&amp;quot;我叫&amp;quot;+this.name&amp;quot;,我有run的属性&amp;quot;) return undefined } function Man(name){ //声明 Man() Human.call(this, name) //call 父类 this.gender = &#39;男&#39; //声明自身的属性gender } var f = function(){} f.prototype = Human.prototype man.prototype = new f( ) Man.</description>
+ES5写继承： function Human(name){ //父类 Human() this.name = name //自有属性name } Human.prototype.run = function(){ //共有属性为run console.log(&amp;quot;我叫&amp;quot;+this.name&amp;quot;,我有run的属性&amp;quot;) return undefined } function Man(name){ //声明 Man() Human.</description>
     </item>
     
     <item>
@@ -267,15 +268,15 @@ ES5写继承： function Human(name){ //父类 Human() this.name = name //自有
       <description>HTTP请求与响应
 前言： URI : 统一资源标识符,一个URI 可能包含 协议、登录信息、服务器地址、服务器端口、带层次的文件路径、查询参数等 URL : 统一资源定位符，是URI 的子集。
 HTTP 协议是无状态协议，即HTTP 协议自身不会对请求和响应之间的通信状态进行保存。以确保协议的可伸缩性。 HTTP/1.1 虽然是无状态协议，但为了实现保持状态功能，于是就引入了 Cookie 技术用来管理状态。
-Cookie Cookie 是什么？  Cookie 是浏览器访问服务器后，服务器传给浏览器的一段数据。 浏览器需要保存这段数据，不得轻易删除。 此后每次浏览器访问该服务器，都必须带上这段数据。  Cookie特点：  服务器通过 Set-Cookie 头设给客户端一串字符串 浏览器（客户端）得到Cookie 之后，每次访问相同域名的网页时都要带上这段字符串 服务器读取Cookie就知道登录用户的信息。客户端要在一段时间内保存这个Cookie。  cookie会被用户更改，所以要使用session来阻止用户更改。
+Cookie Cookie 是什么？  Cookie 是浏览器访问服务器后，服务器传给浏览器的一段数据。 浏览器需要保存这段数据，不得轻易删除。 此后每次浏览器访问该服务器，都必须带上这段数据。  Cookie特点：  服务器通过 Set-Cookie 头设给客户端一串字符串 浏览器（客户端）得到Cookie 之后，每次访问相同域名的网页时都要带上这段字符串 服务器读取Cookie就知道登录用户的信息。客户端要在一段时间内保存这个Cookie。  cookie可以被用户更改，所以要使用session来阻止用户更改。
 什么是Session? 服务器通过Cookie给用户一个session id,session id对应服务器里面的一小块内存，每次用户访问服务器时，服务器通过session id去读取对应的session就知道用户的隐私信息了。
 Session是基于Cookie实现的，反过来说，cookie是session的基石。
-cookie和localstorage的区别：  localstorage和http无关，不会被带到服务器上，cookie每次请求的时候会被浏览器带到服务器上；
- localstorage最大存储量为5Mb左右,cookie为4k左右。
-  localstorage和sessionstorage的区别：  sessionstroage在用户关闭页面后就失效（会话结束后），localstorage永久有效。
- cookie默认在用户关闭页面后就失效，后台代码可以任意设置Cookie的失效期限。
-  Cache-control 你想要哪个请求被缓存，就给一个Cache-Control response.setHeader(&#39;Cache-Control&#39;,&#39;max-age=30&#39;)//30秒内请求时返回的是内存给你的
-但是首页不能设置Cache-Conrol,如果首页都缓存了，用户在缓存时间内无法获得最新内容。
+cookie和localStorage的区别：  localStorage和http无关，不会被带到服务器上，cookie每次请求的时候会被浏览器带到服务器上；
+ localStorage最大存储量为5Mb左右,cookie为4k左右。
+  localStorage和sessionStorage的区别： r * sessionStorage在用户关闭页面后就失效（会话结束后），localStorage永久有效。
+ cookie默认在用户关闭页面后就失效，后台代码可以任意设置Cookie的失效期限。  Cache-control 你想要哪个请求被缓存，就给一个Cache-Control
+response.setHeader(&#39;Cache-Control&#39;,&#39;max-age=30&#39;)//30秒内请求时返回的是内存给你的
+但是首页不能设置Cache-Control,如果首页都缓存了，用户在缓存时间内无法获得最新内容。
 Cache-Control可以让浏览器在一段时间内不访问浏览器，直接用本地的内存或硬盘作为响应，可以极快的请求到资源。 如果要更新，只要在入口（html）文件里把URL变一下，跟以前的所有URL不一样就不会使用缓存，会把最新版的缓存下来，如果又过时了，再改一下就可以了。 #### Expires和Cache-Control的区别：
  Cache-Control是多长时间过期，Expires是什么时候过期，也就是设置的时候，C是设置时长，E设置时间点。   #### cache-control与Etag: 设置了Cache-Control直接不请求,Etag会请求但如果MD5一样就不会下载。</description>
     </item>
@@ -286,13 +287,14 @@ Cache-Control可以让浏览器在一段时间内不访问浏览器，直接用�
       <pubDate>Sun, 22 Sep 2019 19:17:26 +0800</pubDate>
       
       <guid>http://www.pigxw.top/web%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/</guid>
-      <description>web性能优化：（从理论上来讲） 地址栏输入url到按下回车这一过程中有哪些前端相关的内容：
- 看有没有缓存 DNS 查询 建立 TCP 连接 发送 HTTP 请求,后台处理 接收响应 接收完成得到一个 html 判断文本类型，DOCTYPE,html/xml 浏览器逐行解析 html 看到 Chrome 会等 CSS 加载完再渲染到页面 看到 CSS，下载 CSS，如果有多个 CSS 便同时下载(Chrome8个)。CSS 并行下载，串行解析。 看 JS，下载并行，串行解析。在 Chrome 中，CSS 会阻塞 HTM 渲染，IE 不会。JS 一定会阻塞 HTML 渲染（不管什么浏览器）。  跟前端无关的优化：  优化DNS查询：减少DNS查询（减少域名数量）。
+      <description>web性能优化：（从理论上来讲） 目的： 让用户访问网页时以最快的速度获取网页内容。
+先思考一个问题： 地址栏输入url到按下回车后这一过程中有哪些前端相关的内容？
+ 看有没有缓存 DNS 查询 建立 TCP 连接（后端） 发送 HTTP 请求,后台处理 接收响应 接收完成得到一个 html 判断文本类型，DOCTYPE,html/xml ？ 浏览器逐行解析 html 看到html标签，Chrome 会先等 CSS 加载完再渲染到页面 看到 CSS，下载 CSS，如果有多个 CSS 便同时下载(Chrome8个)。CSS 并行下载，串行解析。 看 JS，下载并行，串行解析。在 Chrome 中，CSS 会阻塞 HTM 渲染，IE 不会。JS 一定会阻塞 HTML 渲染（不管什么浏览器）。  跟前端无关的优化：  优化DNS查询：减少DNS查询（减少域名数量）。
  TCP连接复用（keep-alive）http/2.0多路复用。
   前端优化：  发送http请求：   减少 cookie 体积（减少请求）；合并文件。
- 使用 cache-control（干掉请求）；
- 同时发多个请求，如 IE 中一个域名能发4个请求，但我可以使用两个域名或多个。于是与上面的DNS查询优化有矛盾，但是经过权衡之后，文件少的时候，就减少域名使用。文件多时，增加DNS查询时间，但减少了请求时间（用户带宽足够前提下）。
-   接收响应   使用 ETAG ，如果请求时带上服务器给的 ETAG 时，服务器便不再响应新的内容，返回304,表示 not modifile；</description>
+ 使用 cache-control（干掉请求）；有缓存就不需要请求了，直接本地响应。
+ 同时发多个请求。如 IE 中一个域名能发4个请求，但我可以使用两个域名或多个。于是与上面的DNS查询优化有矛盾，但是经过权衡之后，文件少的时候，就减少域名使用。文件多时，增加DNS查询时间，但减少了请求时间（用户带宽足够前提下）。
+   接收响应：   使用 ETag ，如果请求时带上服务器给的 ETag 时，服务器便不再响应新的内容，返回304,表示 not modifiled ,未修改；</description>
     </item>
     
     <item>

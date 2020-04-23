@@ -22,10 +22,10 @@
   <title>
        
        
-           JS模拟继承 | 小xiao潇的个人博客
+           JS 模拟继承 | 小xiao潇的个人博客
        
   </title>
-  <meta name="title" content="JS模拟继承 | 小xiao潇的个人博客">
+  <meta name="title" content="JS 模拟继承 | 小xiao潇的个人博客">
     
   
   <link rel="stylesheet" href="/font/iconfont.css">
@@ -44,9 +44,9 @@
          "@id": "http:\/\/www.pigxw.top\/"
     },
     "articleSection" : "posts",
-    "name" : "JS模拟继承",
-    "headline" : "JS模拟继承",
-    "description" : "JS模拟继承 继承：面向对象编程中的一个概念，继承可以使子类具有父类的各种属性和方法。\n能产生对象的东西即为类。\n 定义一个类的一种方法是使用一个类声明。要声明一个类，使用带有class关键字的类名;\n 一个类表达式是定义一个类的另一种方式。类表达式可以是被命名的或匿名的。赋予一个命名类表达式的名称是类的主体的本地名称。\n constructor方法是一个特殊的方法，这种方法用于创建和初始化一个由class创建的对象。一个类只能拥有一个名为 “constructor”的特殊方法。\n 如果类包含多个constructor的方法，则将抛出 一个SyntaxError\n 一个构造函数可以使用 super 关键字来调用一个父类的构造函数。\n 函数声明和类声明之间的一个重要区别是函数声明会提升，类声明不会。\n  var person = new Human()中的person就是一个对象，所以Human()便是一个类。 但是父类Object（）到子类Human（）是一个自带的继承。\nES5写继承： function Human(name){ \/\/父类 Human() this.name = name \/\/自有属性name } Human.prototype.run = function(){ \/\/共有属性为run console.log(\x26quot;我叫\x26quot;\x2bthis.name\x26quot;,我有run的属性\x26quot;) return undefined } function Man(name){ \/\/声明 Man() Human.call(this, name) \/\/call 父类 this.gender = \x27男\x27 \/\/声明自身的属性gender } var f = function(){} f.prototype = Human.prototype man.prototype = new f( ) Man.",
+    "name" : "JS 模拟继承",
+    "headline" : "JS 模拟继承",
+    "description" : "JS 模拟继承 何为继承？ 继承：面向对象编程中的一个概念，是类和类之间的一种关系（在2015年前JS中是没有类的，所以就是函数与函数之间的关系），继承可以使子类具有父类的各种属性和方法。\nJS 的 Window 下有对象（Object()）、数组（Array()）、函数（Function()）三个函数，这三个函数都有一个 prototype 属性,如 Object.prototype、Array.prototype ,虽然 Object.prototype 和Array.prototype 没有直接的关系，但因为对象都是由new Object()new 出来的，所以存在一个间接关系就是Array.prototype.__proto__ === Object.prototype,继承在 JS 中可以理解为原型链继承。\n何为类？ 能产生对象的东西即为类。\n 定义一个类的一种方法是使用一个类声明。要声明一个类，使用带有class关键字的类名;\n 一个类表达式是定义一个类的另一种方式。类表达式可以是被命名的或匿名的。赋予一个命名类表达式的名称是类的主体的本地名称。\n constructor 方法是一个特殊的方法，这种方法用于创建和初始化一个由 class 创建的对象。一个类只能拥有一个名为 “constructor”的特殊方法。\n 如果类包含多个constructor的方法，则将抛出 一个SyntaxError\n 一个构造函数可以使用 super 关键字来调用一个父类的构造函数。\n 函数声明和类声明之间的一个重要区别是函数声明会提升，类声明不会。\n  var person = new Human()中的person就是一个对象，所以Human()便是一个类。 但是父类Object（）到子类Human（）是一个自带的继承。\nES5写继承： function Human(name){ \/\/父类 Human() this.name = name \/\/自有属性name } Human.prototype.run = function(){ \/\/共有属性为run console.log(\x26quot;我叫\x26quot;\x2bthis.name\x26quot;,我有run的属性\x26quot;) return undefined } function Man(name){ \/\/声明 Man() Human.",
     "inLanguage" : "zh-CN",
     "author" : "小xiao潇",
     "creator" : "小xiao潇",
@@ -57,7 +57,7 @@
     "datePublished": "2019-10-04 19:17:26 \x2b0800 CST",
     "dateModified" : "2019-10-04 19:17:26 \x2b0800 CST",
     "url" : "http:\/\/www.pigxw.top\/js%E6%A8%A1%E6%8B%9F%E7%BB%A7%E6%89%BF\/",
-    "wordCount" : "299",
+    "wordCount" : "364",
     "keywords" : [  "小xiao潇的个人博客"]
 }
 </script>
@@ -124,7 +124,7 @@
       		
 <article class="post-warp" itemscope itemtype="http://schema.org/Article">
     <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">JS模拟继承</h1>
+        <h1 class="post-title" itemprop="name headline">JS 模拟继承</h1>
         <div class="post-meta">
                 Written by <a itemprop="name" href="http://www.pigxw.top/" rel="author">小xiao潇</a> with ♥ 
                 <span class="post-time">
@@ -154,18 +154,22 @@
 
           
 
-<h3 id="js模拟继承">JS模拟继承</h3>
+<h3 id="js-模拟继承">JS 模拟继承</h3>
 
-<p>继承：面向对象编程中的一个概念，继承可以使子类具有父类的各种属性和方法。</p>
+<p>何为继承？
+继承：面向对象编程中的一个概念，是类和类之间的一种关系（在2015年前JS中是没有类的，所以就是函数与函数之间的关系），继承可以使子类具有父类的各种属性和方法。</p>
 
-<p>能产生对象的东西即为类。</p>
+<p>JS 的 Window 下有对象（Object()）、数组（Array()）、函数（Function()）三个函数，这三个函数都有一个 prototype 属性,如 Object.prototype、Array.prototype ,虽然 Object.prototype 和Array.prototype 没有直接的关系，但因为对象都是由<code>new Object()</code>new 出来的，所以存在一个间接关系就是<code>Array.prototype.__proto__ === Object.prototype</code>,继承在 JS 中可以理解为原型链继承。</p>
+
+<p>何为类？
+能产生对象的东西即为类。</p>
 
 <ul>
 <li><p>定义一个类的一种方法是使用一个类声明。要声明一个类，使用带有class关键字的类名;</p></li>
 
 <li><p>一个类表达式是定义一个类的另一种方式。类表达式可以是被命名的或匿名的。赋予一个命名类表达式的名称是类的主体的本地名称。</p></li>
 
-<li><p>constructor方法是一个特殊的方法，这种方法用于创建和初始化一个由class创建的对象。一个类只能拥有一个名为 “constructor”的特殊方法。</p></li>
+<li><p>constructor 方法是一个特殊的方法，这种方法用于创建和初始化一个由 class 创建的对象。一个类只能拥有一个名为 “constructor”的特殊方法。</p></li>
 
 <li><p>如果类包含多个constructor的方法，则将抛出 一个SyntaxError</p></li>
 
@@ -188,13 +192,13 @@ Human.prototype.run = function(){ //共有属性为run
 }
 
 function Man(name){  //声明 Man()
-    Human.call(this, name) //call 父类
+    Human.call(this, name) //call 父类，实现本身属性的可添加
     this.gender = '男'   //声明自身的属性gender
 }
 
-var f = function(){}
+var f = function(){} // 为了没有自身的name属性!!!
     f.prototype = Human.prototype
-    man.prototype = new f( )
+    Man.prototype = new f( )
     
     Man.prototype.fight = function(){
     console.log('如来神掌')
@@ -207,7 +211,7 @@ var f = function(){}
 
 <pre><code>var f = function(){ }
     f.prototype = Human.prototype
-    man.prototype = new f( )
+    Man.prototype = new f( )
 </code></pre>
 
 <p>等价于：</p>
@@ -244,9 +248,10 @@ IE不支持上面代码，所以用上上面的三句话代替。
          return undefined
      }
  }
+  /* Man extends Human 就是为了实现 Man.prototype.__proto__ = Human.prototype */
  class Man extends Human{
      constructor(name){
-         super(name)
+         super(name) // 调用父类构造函数
          this.gender = '男'
      }
      fight(){
@@ -254,6 +259,26 @@ IE不支持上面代码，所以用上上面的三句话代替。
      }
  }
 </code></pre>
+
+<p>ES6 实现继承看起来分简单，但如果需要在human中添加一个非方法的属性如 种族：人类，就必须这样写</p>
+
+<pre><code> class Human{
+     constructor(name){
+         this.name = name
+     }
+     get z(){
+       return '人类'
+     }
+     run(){
+         console.log(&quot;我叫&quot;+this.name+&quot;，我有run的属性&quot;)
+         return undefined
+     }
+ }
+</code></pre>
+
+<p>而在 ES5 中只要 <code>Human.prototype.z = 人类</code> 即可。</p>
+
+<p>以上便是现在前端比较常用的两种继承写法。</p>
 
 <hr />
 
@@ -284,9 +309,9 @@ Rectangle.prototype.constructor = Rectangle;
 var rect = new Rectangle();
 
 console.log('Is rect an instance of Rectangle?',
-  rect instanceof Rectangle); // true
+  rect instanceOf Rectangle); // true
 console.log('Is rect an instance of Shape?',
-  rect instanceof Shape); // true
+  rect instanceOf Shape); // true
 rect.move(1, 1); // Outputs, 'Shape moved.'
 </code></pre>
 
