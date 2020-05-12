@@ -46,7 +46,7 @@
     "articleSection" : "posts",
     "name" : "移动端适配方案",
     "headline" : "移动端适配方案",
-    "description" : "移动端适配的几种方案： viewport适配 开发流程: 1. 开发者拿到设计稿（假设设计稿尺寸为750px，设计稿的元素标是基于此宽度标注） 2. 开始开发，css以设计稿标注的尺寸来开发，比如页面元素字体标注的大小是32px 4. 在html的head里引入适配代码\n简言之：CSS按照设计稿写，加几句动态生成meta标签的JS代码。\n\x26lt;meta name=\x26quot;viewport\x26quot; content=\x26quot;width=device-width\x26quot;\x26gt; \x26lt;script\x26gt; const WIDTH = 750 const mobileAdapter = () =\x26gt; { let scale = screen.width\/WIDTH let content = `width=${WIDTH}, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}` let meta = document.querySelector(\x27meta[name=viewport]\x27) if(!meta) { meta = document.createElement(\x27meta\x27) meta.setAttribute(\x27name\x27, \x27viewport\x27) document.head.appendChild(meta) } meta.setAttribute(\x27content\x27, content) } mobileAdapter() window.onOrientationChange = mobileAdapter \x26lt;\/script\x26gt;  原理解析：\n\x26lt;meta name=\x26quot;viewport\x26quot; content=\x26quot;width=750px,inital-scale=0.5\x26quot;\x26gt;  content=750px是设计稿的尺寸。 initial-scale为默认缩放比，它是由设备尺寸\/设计稿尺寸决定，不能写死，所以要动态生成。 优点是使用简单，缺点是页面整体缩放，如果页面中有一个1px的边框，经整体缩放，这个1px可能就不见了或者又太大了。\nvw适配： 750px=100vw; 1px=0.1333vw; 84px=11.20vw\x26hellip;\x26hellip;",
+    "description" : "移动端适配的几种方案： viewport适配 开发流程:\n 开发者拿到设计稿（假设设计稿尺寸为750px，设计稿的元素标是基于此宽度标注） 开始开发，css以设计稿标注的尺寸来开发，比如页面元素字体标注的大小是32px 在html的head里引入适配代码  简言之：CSS按照设计稿写，加几句动态生成meta标签的JS代码。\n\x26lt;meta name=\x26quot;viewport\x26quot; content=\x26quot;width=device-width\x26quot;\x26gt; \x26lt;script\x26gt; const WIDTH = 750 const mobileAdapter = () =\x26gt; { let scale = screen.width\/WIDTH let content = `width=${WIDTH}, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}` let meta = document.querySelector(\x27meta[name=viewport]\x27) if(!meta) { meta = document.createElement(\x27meta\x27) meta.setAttribute(\x27name\x27, \x27viewport\x27) document.head.appendChild(meta) } meta.setAttribute(\x27content\x27, content) } mobileAdapter() window.onOrientationChange = mobileAdapter \x26lt;\/script\x26gt;  原理解析：\n\x26lt;meta name=\x26quot;viewport\x26quot; content=\x26quot;width=750px,inital-scale=0.5\x26quot;\x26gt;  content=750px是设计稿的尺寸。 initial-scale为默认缩放比，它是由设备尺寸\/设计稿尺寸决定，不能写死，所以要动态生成。 优点是使用简单，缺点是页面整体缩放，如果页面中有一个1px的边框，经整体缩放，这个1px可能就不见了或者又太大了。\nvw适配： 750px=100vw; 1px=0.1333vw; 84px=11.20vw\x26hellip;\x26hellip;\n开发流程:",
     "inLanguage" : "zh-CN",
     "author" : "小xiao潇",
     "creator" : "小xiao潇",
@@ -57,7 +57,7 @@
     "datePublished": "2019-10-14 11:32:33 \x2b0800 CST",
     "dateModified" : "2019-10-14 11:32:33 \x2b0800 CST",
     "url" : "http:\/\/www.pigxw.top\/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D\/",
-    "wordCount" : "218",
+    "wordCount" : "209",
     "keywords" : [  "小xiao潇的个人博客"]
 }
 </script>
@@ -156,10 +156,13 @@
 
 <h3 id="viewport适配">viewport适配</h3>
 
-<p>开发流程:
-1. 开发者拿到设计稿（假设设计稿尺寸为750px，设计稿的元素标是基于此宽度标注）
-2. 开始开发，css以设计稿标注的尺寸来开发，比如页面元素字体标注的大小是32px
-4. 在html的head里引入适配代码</p>
+<p>开发流程:</p>
+
+<ol>
+<li>开发者拿到设计稿（假设设计稿尺寸为750px，设计稿的元素标是基于此宽度标注）</li>
+<li>开始开发，css以设计稿标注的尺寸来开发，比如页面元素字体标注的大小是32px</li>
+<li>在html的head里引入适配代码</li>
+</ol>
 
 <p>简言之：CSS按照设计稿写，加几句动态生成meta标签的JS代码。</p>
 
@@ -197,13 +200,18 @@ initial-scale为默认缩放比，它是由设备尺寸/设计稿尺寸决定，
 1px=0.1333vw;
 84px=11.20vw&hellip;&hellip;</p>
 
-<p>开发流程:
-1. 开发者拿到设计稿（假设设计稿尺寸为750px，设计稿的元素标是基于此宽度标注）
-2. 开始开发，对设计稿的标注进行转换，把px换成vw。比如页面元素字体标注的大小是32px，换成vw为 (<sup>100</sup>&frasl;<sub>750</sub>)*32 vw
-3. 对于需要等比缩放的元素，CSS使用转换后的单位
-4.对于不需要缩放的元素，比如边框阴影，使用固定单位px</p>
+<p>开发流程:</p>
 
-<p>但是不能每次都手动计算吧。所以：使用CSS的自定义属性</p>
+<ol>
+<li>开发者拿到设计稿（假设设计稿尺寸为750px，设计稿的元素标是基于此宽度标注）</li>
+<li>开始开发，对设计稿的标注进行转换，把px换成vw。比如页面元素字体标注的大小是32px，换成vw为 (<sup>100</sup>&frasl;<sub>750</sub>)*32 vw</li>
+<li>对于需要等比缩放的元素，CSS使用转换后的单位</li>
+<li>对于不需要缩放的元素，比如边框阴影，使用固定单位px</li>
+</ol>
+
+<p>但是不能每次都手动计算吧。</p>
+
+<p>所以：使用CSS的自定义属性吧</p>
 
 <pre><code>&lt;style&gt;
  :root {//相当于html
@@ -231,10 +239,15 @@ initial-scale为默认缩放比，它是由设备尺寸/设计稿尺寸决定，
 
 <h3 id="动态rem适配">动态rem适配：</h3>
 
-<p>rem: 相对于根元素html的font-size的大小。
- 如： 设计稿的字体大小为40px,设计稿宽度为750px,设备实际宽度为420px,那么40px在设备上的实际大小应该为 <sup>420</sup>&frasl;<sub>750</sub> *40
- 假设html的font-size为100px，那么420/750 *40就是对应的结果。但是这个结果算出来的数字未必是一些整数或者好看的数。
- 于是做一个规定：如果设计稿是28px，那对应的rem为0.28rem。这样的话需要进行设置。其实就是加几句JS来转换而已：</p>
+<p>rem: 相对于根元素html的font-size的大小。</p>
+
+<p>如：</p>
+
+<p>设计稿的字体大小为40px,设计稿宽度为750px,设备实际宽度为420px,那么40px在设备上的实际大小应该为 <sup>420</sup>&frasl;<sub>750</sub> *40</p>
+
+<p>假设html的font-size为100px，那么420/750 *40就是对应的结果。但是这个结果算出来的数字未必是一些整数或者好看的数。</p>
+
+<p>于是做一个规定：如果设计稿是28px，那对应的rem为0.28rem。这样的话需要进行设置。其实就是加几句JS来转换而已：</p>
 
 <pre><code> 
 &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1&quot;&gt;
@@ -263,10 +276,15 @@ initial-scale为默认缩放比，它是由设备尺寸/设计稿尺寸决定，
   
 </code></pre>
 
-<p>解析：
-1. viewport设置 <code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1&quot;&gt; </code>。把layout viewport 宽度设置为设备宽度，不需要缩放。
-2. 用js定义html的fontSize。假设设计稿的宽度和屏幕宽度相同，我们设置html的fontSize为100px，对应设计稿的20px即为0.2rem。若设计稿的尺寸和屏幕尺寸不同，那让html的fontSize为 100*屏幕宽度/设计稿宽度，此时设计稿中的20px仍然对应0.2rem。
-3. 对于不需要等比缩放的元素，比如边框，可以直接使用固定单位px即可。比如<code>border-bottom: 1px solid #ccc</code></p>
+<p>解析：</p>
+
+<ol>
+<li><p>viewport设置 <code>&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1&quot;&gt; </code>。把layout viewport 宽度设置为设备宽度，不需要缩放。</p></li>
+
+<li><p>用js定义html的fontSize。假设设计稿的宽度和屏幕宽度相同，我们设置html的fontSize为100px，对应设计稿的20px即为0.2rem。若设计稿的尺寸和屏幕尺寸不同，那让html的fontSize为 100*屏幕宽度/设计稿宽度，此时设计稿中的20px仍然对应0.2rem。</p></li>
+
+<li><p>对于不需要等比缩放的元素，比如边框，可以直接使用固定单位px即可。比如<code>border-bottom: 1px solid #ccc</code></p></li>
+</ol>
 
 <p>以上三种方案都是属于整体缩放比例。</p>
 
@@ -282,7 +300,6 @@ initial-scale为默认缩放比，它是由设备尺寸/设计稿尺寸决定，
         margin-left: 10px;
         flex: 1;
       }
-......
 </code></pre>
 
 <p><strong>对于大屏适配，可以使用vh适配。</strong></p>

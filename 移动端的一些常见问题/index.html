@@ -46,7 +46,7 @@
     "articleSection" : "posts",
     "name" : "移动端的问题",
     "headline" : "移动端的问题",
-    "description" : "300ms延迟问题： 延迟的原因：\nIphone 是无键盘全触屏手机的始祖，当时的网站都是为大屏幕设备所设计的（没有设置），为了便于用户阅读浏览器引入了双击缩放的功能。手指在屏幕上快速点击两次，iOS 自带的 Safari 浏览器会将网页缩放至原始比例。那如何判断用户快速点击两次呢？假定用户点击后300ms内如果有第二次点击，就认为用户的目的是双击缩放而不是普通的点击页面元素。所以用户第一次点击一个链接后，必须等300ms，浏览器才能决定是否是跳转还是缩放页面。 后来全触屏手机流行后，其他设备浏览器也开始效仿。\n如何解决：\n方法1、设置 meta\x26lt;meta name=\x26quot;viewport\x26quot; content=\x26quot;width=device-width\x26quot;\x26gt;\n经过测试，在android手机只要添加name=viewport的meta即可消除延迟， 在ios上必须设置width=device-width。\n其他方法:\nfastClick库，或者不用click用touchStart\n什么时候使用: 1. 当移动端因为一些原因未使用 的时候使用。 2. 2017年以前使用，现在一般不用。但为了应付面试仍然学习它，因为不少面试官还生活在2017年以前。\n如何使用:\n \x26lt;script src=\x26quot;https:\/\/cdn.bootcss.com\/fastclick\/1.0.6\/fastclick.js\x26quot;\x26gt;\x26lt;\/script\x26gt; document.addEventListener(\x27DOMContentLoaded\x27, function() { FastClick.attach(document.body) }, false)  fastClick 原理: 在检测到touchEnd事件的时候，会通过DOM自定义事件立即出发模拟一个click事件，并把浏览器在300ms之后真正的click事件阻止掉\n点击穿透现象： 在移动端，当用户通过绑定touchStart事件监听函数让浮层关闭时，关闭后浮层后面对应位置页面其他元素也被点击，比如浮层的关闭按钮下是一个链接，当用户点击浮层关闭按钮浮层消失后大约300ms页面同时发生跳转。\n原因分析： 触屏设备为了区分用户双击缩放，对click做了300ms延迟触发，因此用户在移动端触屏设备的操作流程以及事件触发为：\n 手指触摸屏幕到屏幕，触发 touchStart 手指在屏幕短暂停留(如果是移动，触发 touchMove) 手指离开屏幕, 触发 touchEnd 等待约300ms，看用户在此时间内是否再次触摸屏幕。如果没有 300ms后 在用户手指离开的位置触发 click事件  击穿的根源在第4步。当用户用户点击关闭让遮罩隐藏后，浏览器在300ms后在原来用户手指离开的位置触发click事件，此时遮罩不存在了，自然“点击”到后面的元素。\n解决方法:\n方法1\n设置\x26lt;meta name=\x26quot;viewport\x26quot; content=\x26quot;device-width\x26quot;\x26gt; 表面上看起来解决了300ms延时，就能解决穿透。实际上这种方法不可行。因为click事件是在touchEnd事件之后，更晚于touchStart（间隔了60~100ms），如果在touchStart 里绑定关闭了浮层，约100ms后 click事件触发的时候仍然会引发问题。\n方法2\n关闭浮层用click，不用touchStart。 可行。因为浮层关闭监听的是click，当浮层消失后不会再在原来的位置再冒出个click\n方法3\n浮层关闭的时间延长。可行。当用户触发touchStart关闭浮层时，浮层可以使用渐变消失（可设置浮层关闭动画在300ms以上），此刻click事件在原来的位置触发时点击的还是浮层，而不是浮层后面的链接\n方法4",
+    "description" : "300ms延迟问题： 延迟的原因：\nIphone 是无键盘全触屏手机的始祖，当时的网站都是为大屏幕设备所设计的（没有设置），为了便于用户阅读浏览器引入了双击缩放的功能。 手指在屏幕上快速点击两次，iOS 自带的 Safari 浏览器会将网页缩放至原始比例。\n那如何判断用户快速点击两次呢？假定用户点击后300ms内如果有第二次点击，就认为用户的目的是双击缩放而不是普通的点击页面元素。所以用户第一次点击一个链接后，必须等300ms，浏览器才能决定是否是跳转还是缩放页面。\n后来全触屏手机流行后，其他设备浏览器也开始效仿。\n如何解决：\n方法1、设置 meta\x26lt;meta name=\x26quot;viewport\x26quot; content=\x26quot;width=device-width\x26quot;\x26gt;\n经过测试，在android手机只要添加name=viewport的meta即可消除延迟， 在ios上必须设置width=device-width。\n其他方法:\nfastClick库，或者不用click用touchStart\n什么时候使用: 1. 当移动端因为一些原因未使用 的时候使用。 2. 2017年以前使用，现在一般不用。但为了应付面试仍然学习它，因为不少面试官还生活在2017年以前。\n如何使用:\n \x26lt;script src=\x26quot;https:\/\/cdn.bootcss.com\/fastclick\/1.0.6\/fastclick.js\x26quot;\x26gt;\x26lt;\/script\x26gt; document.addEventListener(\x27DOMContentLoaded\x27, function() { FastClick.attach(document.body) }, false)  fastClick 原理: 在检测到touchEnd事件的时候，会通过DOM自定义事件立即出发模拟一个click事件，并把浏览器在300ms之后真正的click事件阻止掉\n点击穿透现象： 在移动端，当用户通过绑定touchStart事件监听函数让浮层关闭时，关闭后浮层后面对应位置页面其他元素也被点击，比如浮层的关闭按钮下是一个链接，当用户点击浮层关闭按钮浮层消失后大约300ms页面同时发生跳转。\n原因分析： 触屏设备为了区分用户双击缩放，对click做了300ms延迟触发，因此用户在移动端触屏设备的操作流程以及事件触发为：\n 手指触摸屏幕到屏幕，触发 touchStart 手指在屏幕短暂停留(如果是移动，触发 touchMove) 手指离开屏幕, 触发 touchEnd 等待约300ms，看用户在此时间内是否再次触摸屏幕。如果没有 300ms后 在用户手指离开的位置触发 click事件  击穿的根源在第4步。当用户用户点击关闭让遮罩隐藏后，浏览器在300ms后在原来用户手指离开的位置触发click事件，此时遮罩不存在了，自然“点击”到后面的元素。\n解决方法:\n方法1\n设置\x26lt;meta name=\x26quot;viewport\x26quot; content=\x26quot;device-width\x26quot;\x26gt; 表面上看起来解决了300ms延时，就能解决穿透。实际上这种方法不可行。因为click事件是在touchEnd事件之后，更晚于touchStart（间隔了60~100ms），如果在touchStart 里绑定关闭了浮层，约100ms后 click事件触发的时候仍然会引发问题。\n方法2\n关闭浮层用click，不用touchStart。 可行。因为浮层关闭监听的是click，当浮层消失后不会再在原来的位置再冒出个click\n方法3",
     "inLanguage" : "zh-CN",
     "author" : "小xiao潇",
     "creator" : "小xiao潇",
@@ -57,7 +57,7 @@
     "datePublished": "2019-10-15 21:21:29 \x2b0800 CST",
     "dateModified" : "2019-10-15 21:21:29 \x2b0800 CST",
     "url" : "http:\/\/www.pigxw.top\/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98\/",
-    "wordCount" : "141",
+    "wordCount" : "143",
     "keywords" : [  "小xiao潇的个人博客"]
 }
 </script>
@@ -156,7 +156,12 @@
 
 <p>延迟的原因：</p>
 
-<p>Iphone 是无键盘全触屏手机的始祖，当时的网站都是为大屏幕设备所设计的（没有设置<meta name="viewport">），为了便于用户阅读浏览器引入了双击缩放的功能。手指在屏幕上快速点击两次，iOS 自带的 Safari 浏览器会将网页缩放至原始比例。那如何判断用户快速点击两次呢？假定用户点击后300ms内如果有第二次点击，就认为用户的目的是双击缩放而不是普通的点击页面元素。所以用户第一次点击一个链接后，必须等300ms，浏览器才能决定是否是跳转还是缩放页面。 后来全触屏手机流行后，其他设备浏览器也开始效仿。</p>
+<p>Iphone 是无键盘全触屏手机的始祖，当时的网站都是为大屏幕设备所设计的（没有设置<meta name="viewport">），为了便于用户阅读浏览器引入了双击缩放的功能。
+手指在屏幕上快速点击两次，iOS 自带的 Safari 浏览器会将网页缩放至原始比例。</p>
+
+<p>那如何判断用户快速点击两次呢？假定用户点击后300ms内如果有第二次点击，就认为用户的目的是双击缩放而不是普通的点击页面元素。所以用户第一次点击一个链接后，必须等300ms，浏览器才能决定是否是跳转还是缩放页面。</p>
+
+<p>后来全触屏手机流行后，其他设备浏览器也开始效仿。</p>
 
 <p>如何解决：</p>
 

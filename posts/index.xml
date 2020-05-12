@@ -172,7 +172,9 @@ class VNode { constructor(tag, children, text) { this.tag = tag this.text = text
       
       <guid>http://www.pigxw.top/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E7%9A%84%E4%B8%80%E4%BA%9B%E5%B8%B8%E8%A7%81%E9%97%AE%E9%A2%98/</guid>
       <description>300ms延迟问题： 延迟的原因：
-Iphone 是无键盘全触屏手机的始祖，当时的网站都是为大屏幕设备所设计的（没有设置），为了便于用户阅读浏览器引入了双击缩放的功能。手指在屏幕上快速点击两次，iOS 自带的 Safari 浏览器会将网页缩放至原始比例。那如何判断用户快速点击两次呢？假定用户点击后300ms内如果有第二次点击，就认为用户的目的是双击缩放而不是普通的点击页面元素。所以用户第一次点击一个链接后，必须等300ms，浏览器才能决定是否是跳转还是缩放页面。 后来全触屏手机流行后，其他设备浏览器也开始效仿。
+Iphone 是无键盘全触屏手机的始祖，当时的网站都是为大屏幕设备所设计的（没有设置），为了便于用户阅读浏览器引入了双击缩放的功能。 手指在屏幕上快速点击两次，iOS 自带的 Safari 浏览器会将网页缩放至原始比例。
+那如何判断用户快速点击两次呢？假定用户点击后300ms内如果有第二次点击，就认为用户的目的是双击缩放而不是普通的点击页面元素。所以用户第一次点击一个链接后，必须等300ms，浏览器才能决定是否是跳转还是缩放页面。
+后来全触屏手机流行后，其他设备浏览器也开始效仿。
 如何解决：
 方法1、设置 meta&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width&amp;quot;&amp;gt;
 经过测试，在android手机只要添加name=viewport的meta即可消除延迟， 在ios上必须设置width=device-width。
@@ -189,9 +191,7 @@ fastClick库，或者不用click用touchStart
 设置&amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;device-width&amp;quot;&amp;gt; 表面上看起来解决了300ms延时，就能解决穿透。实际上这种方法不可行。因为click事件是在touchEnd事件之后，更晚于touchStart（间隔了60~100ms），如果在touchStart 里绑定关闭了浮层，约100ms后 click事件触发的时候仍然会引发问题。
 方法2
 关闭浮层用click，不用touchStart。 可行。因为浮层关闭监听的是click，当浮层消失后不会再在原来的位置再冒出个click
-方法3
-浮层关闭的时间延长。可行。当用户触发touchStart关闭浮层时，浮层可以使用渐变消失（可设置浮层关闭动画在300ms以上），此刻click事件在原来的位置触发时点击的还是浮层，而不是浮层后面的链接
-方法4</description>
+方法3</description>
     </item>
     
     <item>
@@ -200,11 +200,12 @@ fastClick库，或者不用click用touchStart
       <pubDate>Mon, 14 Oct 2019 11:32:33 +0800</pubDate>
       
       <guid>http://www.pigxw.top/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%80%82%E9%85%8D/</guid>
-      <description>移动端适配的几种方案： viewport适配 开发流程: 1. 开发者拿到设计稿（假设设计稿尺寸为750px，设计稿的元素标是基于此宽度标注） 2. 开始开发，css以设计稿标注的尺寸来开发，比如页面元素字体标注的大小是32px 4. 在html的head里引入适配代码
-简言之：CSS按照设计稿写，加几句动态生成meta标签的JS代码。
+      <description>移动端适配的几种方案： viewport适配 开发流程:
+ 开发者拿到设计稿（假设设计稿尺寸为750px，设计稿的元素标是基于此宽度标注） 开始开发，css以设计稿标注的尺寸来开发，比如页面元素字体标注的大小是32px 在html的head里引入适配代码  简言之：CSS按照设计稿写，加几句动态生成meta标签的JS代码。
 &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=device-width&amp;quot;&amp;gt; &amp;lt;script&amp;gt; const WIDTH = 750 const mobileAdapter = () =&amp;gt; { let scale = screen.width/WIDTH let content = `width=${WIDTH}, initial-scale=${scale}, maximum-scale=${scale}, minimum-scale=${scale}` let meta = document.querySelector(&#39;meta[name=viewport]&#39;) if(!meta) { meta = document.createElement(&#39;meta&#39;) meta.setAttribute(&#39;name&#39;, &#39;viewport&#39;) document.head.appendChild(meta) } meta.setAttribute(&#39;content&#39;, content) } mobileAdapter() window.onOrientationChange = mobileAdapter &amp;lt;/script&amp;gt;  原理解析：
 &amp;lt;meta name=&amp;quot;viewport&amp;quot; content=&amp;quot;width=750px,inital-scale=0.5&amp;quot;&amp;gt;  content=750px是设计稿的尺寸。 initial-scale为默认缩放比，它是由设备尺寸/设计稿尺寸决定，不能写死，所以要动态生成。 优点是使用简单，缺点是页面整体缩放，如果页面中有一个1px的边框，经整体缩放，这个1px可能就不见了或者又太大了。
-vw适配： 750px=100vw; 1px=0.1333vw; 84px=11.20vw&amp;hellip;&amp;hellip;</description>
+vw适配： 750px=100vw; 1px=0.1333vw; 84px=11.20vw&amp;hellip;&amp;hellip;
+开发流程:</description>
     </item>
     
     <item>
@@ -273,12 +274,15 @@ Cookie Cookie 是什么？  Cookie 是浏览器访问服务器后，服务器传
 Session是基于Cookie实现的，反过来说，cookie是session的基石。
 cookie和localStorage的区别：  localStorage和http无关，不会被带到服务器上，cookie每次请求的时候会被浏览器带到服务器上；
  localStorage最大存储量为5Mb左右,cookie为4k左右。
-  localStorage和sessionStorage的区别： r * sessionStorage在用户关闭页面后就失效（会话结束后），localStorage永久有效。
- cookie默认在用户关闭页面后就失效，后台代码可以任意设置Cookie的失效期限。  Cache-control 你想要哪个请求被缓存，就给一个Cache-Control
+  localStorage和sessionStorage的区别：  sessionStorage在用户关闭页面后就失效（会话结束后），localStorage永久有效。
+ cookie默认在用户关闭页面后就失效，后台代码可以任意设置Cookie的失效期限。
+  Cache-control 你想要哪个请求被缓存，就给它一个Cache-Control
 response.setHeader(&#39;Cache-Control&#39;,&#39;max-age=30&#39;)//30秒内请求时返回的是内存给你的
 但是首页不能设置Cache-Control,如果首页都缓存了，用户在缓存时间内无法获得最新内容。
-Cache-Control可以让浏览器在一段时间内不访问浏览器，直接用本地的内存或硬盘作为响应，可以极快的请求到资源。 如果要更新，只要在入口（html）文件里把URL变一下，跟以前的所有URL不一样就不会使用缓存，会把最新版的缓存下来，如果又过时了，再改一下就可以了。 #### Expires和Cache-Control的区别：
- Cache-Control是多长时间过期，Expires是什么时候过期，也就是设置的时候，C是设置时长，E设置时间点。   #### cache-control与Etag: 设置了Cache-Control直接不请求,Etag会请求但如果MD5一样就不会下载。</description>
+Cache-Control可以让浏览器在一段时间内不访问服务器，直接用本地的内存或硬盘作为响应，可以极快的请求到资源。
+如果要更新，只要在入口（html）文件里把URL变一下，跟以前的所有URL不一样就不会使用缓存，会把最新版的缓存下来，如果又过时了，再改一下就可以了。
+#### Expires和Cache-Control的区别：
+ Cache-Control是多长时间过期，Expires是什么时候过期，也就是设置的时候，C是设置时长，E设置时间点。   #### cache-control与Etag:</description>
     </item>
     
     <item>

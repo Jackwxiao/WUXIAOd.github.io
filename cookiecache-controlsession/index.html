@@ -46,7 +46,7 @@
     "articleSection" : "posts",
     "name" : "HTTP之Cookie、Cache-control、Session",
     "headline" : "HTTP之Cookie、Cache-control、Session",
-    "description" : "HTTP请求与响应\n前言： URI : 统一资源标识符,一个URI 可能包含 协议、登录信息、服务器地址、服务器端口、带层次的文件路径、查询参数等 URL : 统一资源定位符，是URI 的子集。\nHTTP 协议是无状态协议，即HTTP 协议自身不会对请求和响应之间的通信状态进行保存。以确保协议的可伸缩性。 HTTP\/1.1 虽然是无状态协议，但为了实现保持状态功能，于是就引入了 Cookie 技术用来管理状态。\nCookie Cookie 是什么？  Cookie 是浏览器访问服务器后，服务器传给浏览器的一段数据。 浏览器需要保存这段数据，不得轻易删除。 此后每次浏览器访问该服务器，都必须带上这段数据。  Cookie特点：  服务器通过 Set-Cookie 头设给客户端一串字符串 浏览器（客户端）得到Cookie 之后，每次访问相同域名的网页时都要带上这段字符串 服务器读取Cookie就知道登录用户的信息。客户端要在一段时间内保存这个Cookie。  cookie可以被用户更改，所以要使用session来阻止用户更改。\n什么是Session? 服务器通过Cookie给用户一个session id,session id对应服务器里面的一小块内存，每次用户访问服务器时，服务器通过session id去读取对应的session就知道用户的隐私信息了。\nSession是基于Cookie实现的，反过来说，cookie是session的基石。\ncookie和localStorage的区别：  localStorage和http无关，不会被带到服务器上，cookie每次请求的时候会被浏览器带到服务器上；\n localStorage最大存储量为5Mb左右,cookie为4k左右。\n  localStorage和sessionStorage的区别： r * sessionStorage在用户关闭页面后就失效（会话结束后），localStorage永久有效。\n cookie默认在用户关闭页面后就失效，后台代码可以任意设置Cookie的失效期限。  Cache-control 你想要哪个请求被缓存，就给一个Cache-Control\nresponse.setHeader(\x27Cache-Control\x27,\x27max-age=30\x27)\/\/30秒内请求时返回的是内存给你的\n但是首页不能设置Cache-Control,如果首页都缓存了，用户在缓存时间内无法获得最新内容。\nCache-Control可以让浏览器在一段时间内不访问浏览器，直接用本地的内存或硬盘作为响应，可以极快的请求到资源。 如果要更新，只要在入口（html）文件里把URL变一下，跟以前的所有URL不一样就不会使用缓存，会把最新版的缓存下来，如果又过时了，再改一下就可以了。 #### Expires和Cache-Control的区别：\n Cache-Control是多长时间过期，Expires是什么时候过期，也就是设置的时候，C是设置时长，E设置时间点。   #### cache-control与Etag: 设置了Cache-Control直接不请求,Etag会请求但如果MD5一样就不会下载。",
+    "description" : "HTTP请求与响应\n前言： URI : 统一资源标识符,一个URI 可能包含 协议、登录信息、服务器地址、服务器端口、带层次的文件路径、查询参数等 URL : 统一资源定位符，是URI 的子集。\nHTTP 协议是无状态协议，即HTTP 协议自身不会对请求和响应之间的通信状态进行保存。以确保协议的可伸缩性。 HTTP\/1.1 虽然是无状态协议，但为了实现保持状态功能，于是就引入了 Cookie 技术用来管理状态。\nCookie Cookie 是什么？  Cookie 是浏览器访问服务器后，服务器传给浏览器的一段数据。 浏览器需要保存这段数据，不得轻易删除。 此后每次浏览器访问该服务器，都必须带上这段数据。  Cookie特点：  服务器通过 Set-Cookie 头设给客户端一串字符串 浏览器（客户端）得到Cookie 之后，每次访问相同域名的网页时都要带上这段字符串 服务器读取Cookie就知道登录用户的信息。客户端要在一段时间内保存这个Cookie。  cookie可以被用户更改，所以要使用session来阻止用户更改。\n什么是Session? 服务器通过Cookie给用户一个session id,session id对应服务器里面的一小块内存，每次用户访问服务器时，服务器通过session id去读取对应的session就知道用户的隐私信息了。\nSession是基于Cookie实现的，反过来说，cookie是session的基石。\ncookie和localStorage的区别：  localStorage和http无关，不会被带到服务器上，cookie每次请求的时候会被浏览器带到服务器上；\n localStorage最大存储量为5Mb左右,cookie为4k左右。\n  localStorage和sessionStorage的区别：  sessionStorage在用户关闭页面后就失效（会话结束后），localStorage永久有效。\n cookie默认在用户关闭页面后就失效，后台代码可以任意设置Cookie的失效期限。\n  Cache-control 你想要哪个请求被缓存，就给它一个Cache-Control\nresponse.setHeader(\x27Cache-Control\x27,\x27max-age=30\x27)\/\/30秒内请求时返回的是内存给你的\n但是首页不能设置Cache-Control,如果首页都缓存了，用户在缓存时间内无法获得最新内容。\nCache-Control可以让浏览器在一段时间内不访问服务器，直接用本地的内存或硬盘作为响应，可以极快的请求到资源。\n如果要更新，只要在入口（html）文件里把URL变一下，跟以前的所有URL不一样就不会使用缓存，会把最新版的缓存下来，如果又过时了，再改一下就可以了。\n#### Expires和Cache-Control的区别：\n Cache-Control是多长时间过期，Expires是什么时候过期，也就是设置的时候，C是设置时长，E设置时间点。   #### cache-control与Etag:",
     "inLanguage" : "zh-CN",
     "author" : "小xiao潇",
     "creator" : "小xiao潇",
@@ -57,7 +57,7 @@
     "datePublished": "2019-09-26 11:17:26 \x2b0800 CST",
     "dateModified" : "2019-09-26 11:17:26 \x2b0800 CST",
     "url" : "http:\/\/www.pigxw.top\/cookiecache-controlsession\/",
-    "wordCount" : "60",
+    "wordCount" : "58",
     "keywords" : [  "小xiao潇的个人博客"]
 }
 </script>
@@ -204,16 +204,15 @@ HTTP/1.1 虽然是无状态协议，但为了实现保持状态功能，于是�
 
 <h4 id="localstorage和sessionstorage的区别">localStorage和sessionStorage的区别：</h4>
 
-<p>r
-* sessionStorage在用户关闭页面后就失效（会话结束后），localStorage永久有效。</p>
-
 <ul>
-<li>cookie默认在用户关闭页面后就失效，后台代码可以任意设置Cookie的失效期限。</li>
+<li><p>sessionStorage在用户关闭页面后就失效（会话结束后），localStorage永久有效。</p></li>
+
+<li><p>cookie默认在用户关闭页面后就失效，后台代码可以任意设置Cookie的失效期限。</p></li>
 </ul>
 
 <h4 id="cache-control">Cache-control</h4>
 
-<p><strong>你想要哪个请求被缓存，就给一个Cache-Control</strong></p>
+<p><strong>你想要哪个请求被缓存，就给它一个Cache-Control</strong></p>
 
 <p><code>response.setHeader('Cache-Control','max-age=30')//30秒内请求时返回的是内存给你的</code></p>
 
@@ -221,16 +220,20 @@ HTTP/1.1 虽然是无状态协议，但为了实现保持状态功能，于是�
 
 <p><figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://i.loli.net/2019/10/22/o2a91Bmiyzu7r5l.png" alt="Cache-control.png" class="lazyload"><figcaption class="image-caption">Cache-control.png</figcaption></figure></p>
 
-<p>Cache-Control可以让浏览器在一段时间内不访问浏览器，直接用本地的内存或硬盘作为响应，可以极快的请求到资源。 如果要更新，只要在入口（html）文件里把URL变一下，跟以前的所有URL不一样就不会使用缓存，会把最新版的缓存下来，如果又过时了，再改一下就可以了。
- #### Expires和Cache-Control的区别：</p>
+<p>Cache-Control可以让浏览器在一段时间内不访问服务器，直接用本地的内存或硬盘作为响应，可以极快的请求到资源。</p>
+
+<p>如果要更新，只要在入口（html）文件里把URL变一下，跟以前的所有URL不一样就不会使用缓存，会把最新版的缓存下来，如果又过时了，再改一下就可以了。</p>
+
+<p>#### Expires和Cache-Control的区别：</p>
 
 <ul>
 <li>Cache-Control是多长时间过期，Expires是什么时候过期，也就是设置的时候，C是设置时长，E设置时间点。
 <br /></li>
 </ul>
 
-<p>#### cache-control与Etag:
- 设置了Cache-Control直接不请求,Etag会请求但如果MD5一样就不会下载。</p>
+<p>#### cache-control与Etag:</p>
+
+<p>设置了Cache-Control直接不请求,Etag会请求但如果MD5一样就不会下载。</p>
 
 <p>登陆注册图解：
 <figure><img src="/images/ring.svg" data-sizes="auto" data-src="https://i.loli.net/2019/10/22/aXdWhxKSziBkpTr.png" alt="登陆注册图解.png" class="lazyload"><figcaption class="image-caption">登陆注册图解.png</figcaption></figure></p>
